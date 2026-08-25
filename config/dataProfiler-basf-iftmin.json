@@ -10,47 +10,58 @@
       "sender": "BASF",
       "receiver": "CARLO",
       "subject": "IFTMIN",
-      "inputMimeType": "application/edifact",
       "nextResource": {
-        "host": "data-pipeline-host.us-e2.cloudhub.io",
+        "protocol": "HTTPS",
+        "host": "api-ch2.fracht-connect.com",
         "port": "443",
-        "path": "/api/v1/data-pipeline/pass-thru",
-        "method": "POST"
-      }
-    },
-    {
-      "type": "dataPipeline",
-      "sequence": 2,
-      "inputMimeType": "application/edifact",
-      "nextResource": {
-        "host": "data-transformer-host.us-e2.cloudhub.io",
-        "port": "443",
-        "path": "/api/v1/data-transformer/transform",
+        "headers": {
+          "client_id": "a151bfbb76a84c9dbf2a02bcf53627d7",
+          "client_secret": "cC4878E549784d459AD642FAF3e9a8f7",
+          "Content-Type": "application/json"
+        },
+        "path": "/dev/s/v1/data-transformer/transform",
         "method": "POST"
       }
     },
     {
       "type": "dataTransformer",
-      "sequence": 3,
+      "sequence": 2,
       "dwlPath": "basf/BasfIftmin.dwl",
-      "inputMimeType": "application/edifact",
+      "inputMimeType": "application/json",
       "reportingContacts": "integration.support@fracht.com",
       "nextResource": {
-        "host": "data-delivery-host.us-e2.cloudhub.io",
+        "protocol": "HTTPS",
+        "host": "api-ch2.fracht-connect.com",
         "port": "443",
-        "path": "/api/v1/data-delivery/https",
+        "headers": {
+          "client_id": "2603a16897af4fa1906afe4440b2f4ca",
+          "client_secret": "6E49D43886D240E9AE92c612b03BAF0c",
+          "Content-Type": "application/json"
+        },
+        "path": "/dev/s/v1/data-delivery/https",
         "method": "POST"
       }
     },
     {
       "type": "dataDelivery",
-      "sequence": 4,
+      "sequence": 3,
       "host": "api-carlo-test.fracht.be",
       "port": "4712",
       "path": "/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment",
       "method": "POST",
-      "mimeType": "application/json",
-      "validResponseCodes": "200..299"
+      "inputMimeType": "application/json",
+      "validResponseCodes": "200..299",
+      "headers": {
+        "X-API-Key": "o!x_ygTjTb25QbOmEJSf_test"
+      },
+      "nextResource": {
+        "host": "",
+        "port": "",
+        "username": "",
+        "password": "",
+        "path": "",
+        "method": ""
+      }
     }
   ]
 }
