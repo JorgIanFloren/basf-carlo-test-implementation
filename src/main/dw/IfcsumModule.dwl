@@ -1,3 +1,4 @@
+%dw 2.0
 /**
 * BASF IFCSUM (forwarding & consolidation summary, parsed JSON) -> Carlo / Soloplan v3
 * `shipmentCargo` mapping library.

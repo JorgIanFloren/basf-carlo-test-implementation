@@ -1,3 +1,4 @@
+%dw 2.0
 /**
 * BASF IFTMIN (parsed JSON) -> Carlo / Soloplan v3 `seaHouseShipment` mapping library.
 *

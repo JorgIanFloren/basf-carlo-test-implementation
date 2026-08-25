@@ -1,5 +1,5 @@
-/**
-* BASF IFTMBF (firm booking, parsed JSON) -> Carlo / Soloplan v3 `seaHouseShipment` library.
+%dw 2.0
+/* BASF IFTMBF (firm booking, parsed JSON) -> Carlo / Soloplan v3 `seaHouseShipment` library.
 *
 * Sibling of IftminModule.dwl, aimed at the same Carlo endpoint. Where IFTMIN *creates* the
 * shipment, IFTMBF *updates* it, so the mapping sheet (docs/iftmbf/IFTMBF_mapping_v1.xlsx,
