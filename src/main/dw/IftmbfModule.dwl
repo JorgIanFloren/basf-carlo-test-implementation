@@ -1,4 +1,6 @@
 %dw 2.0
+output application/json encoding="UTF-8"
+
 /* BASF IFTMBF (firm booking, parsed JSON) -> Carlo / Soloplan v3 `seaHouseShipment` library.
 *
 * Sibling of IftminModule.dwl, aimed at the same Carlo endpoint. Where IFTMIN *creates* the
@@ -419,3 +421,8 @@ fun toCarloBookingUpdates(payload) =
         filter ((m) -> !isCancel(m))
         map ((m) -> toCarloBookingUpdate(m)))
         filter ((s) -> s != null)
+
+---
+{
+    seaHouseShipment: toCarloBookingUpdates(payload) map ((s) -> camelKeys(s))
+}

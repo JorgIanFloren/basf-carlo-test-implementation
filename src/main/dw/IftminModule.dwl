@@ -1,4 +1,6 @@
 %dw 2.0
+output application/json encoding="UTF-8"
+
 /**
 * BASF IFTMIN (parsed JSON) -> Carlo / Soloplan v3 `seaHouseShipment` mapping library.
 *
@@ -770,4 +772,9 @@ fun toCarloShipments(payload) = do {
     ---
     msgs map ((m) -> if (isCancel(m)) cancelShipment(m) else toCarloShipment(m, masterSub))
           filter ((s) -> s != null)
+}
+
+---
+{
+    seaHouseShipment: toCarloShipments(payload) map ((s) -> camelKeys(s))
 }

@@ -1,4 +1,6 @@
 %dw 2.0
+output application/json encoding="UTF-8"
+
 /**
 * BASF IFCSUM (forwarding & consolidation summary, parsed JSON) -> Carlo / Soloplan v3
 * `shipmentCargo` mapping library.
@@ -329,3 +331,7 @@ fun toCarloCargoUpdates(payload) =
     (messagesOfType(payload, "IFCSUM")
         filter ((m) -> !isCancel(m)))
         flatMap ((m) -> toCarloCargoUpdate(m))
+---
+{
+    shipmentCargo: toCarloCargoUpdates(payload) map ((c) -> camelKeys(c))
+}
