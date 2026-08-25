@@ -1,0 +1,484 @@
+{
+  "name": "BASF IFCSUM mapping",
+  "time": 366,
+  "status": "OK",
+  "tests": [
+    {
+      "name": "fcl/20260625-093948-681.json (fcl, 1 cargo line(s))",
+      "time": 65,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "fcl/20260625-142940-681-v2.json (fcl, 3 cargo line(s))",
+      "time": 48,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "fcl/trissquid-message-sequence-1.json (fcl, 1 cargo line(s))",
+      "time": 15,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "lcl/ifcsum-136579804.json (lcl, 6 cargo line(s))",
+      "time": 29,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "a cargo line is keyed by delivery note, position and the IFTMIN join key",
+      "time": 7,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 2867,
+          "line": 67,
+          "column": 11
+        },
+        "end": {
+          "index": 2941,
+          "line": 67,
+          "column": 85
+        },
+        "locationString": "\n67|     () -> \"a cargo line is keyed by delivery note, position and the IFTMIN join key\" in (\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a cargo line is keyed by delivery note, position and the IFTMIN join key\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "every cargo line is an update, never an upsert",
+      "time": 25,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 3346,
+          "line": 76,
+          "column": 11
+        },
+        "end": {
+          "index": 3394,
+          "line": 76,
+          "column": 59
+        },
+        "locationString": "\n76|     () -> \"every cargo line is an update, never an upsert\" in (\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"every cargo line is an update, never an upsert\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "an FCL summary carries the container VGM, seal and signatory",
+      "time": 11,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 3672,
+          "line": 81,
+          "column": 11
+        },
+        "end": {
+          "index": 3734,
+          "line": 81,
+          "column": 73
+        },
+        "locationString": "\n81|     () -> \"an FCL summary carries the container VGM, seal and signatory\" in (\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"an FCL summary carries the container VGM, seal and signatory\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "every consignment of an FCL summary lands on the same container",
+      "time": 5,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 4153,
+          "line": 90,
+          "column": 11
+        },
+        "end": {
+          "index": 4218,
+          "line": 90,
+          "column": 76
+        },
+        "locationString": "\n90|     () -> \"every consignment of an FCL summary lands on the same container\" in (\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"every consignment of an FCL summary lands on the same container\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "an FCL summary has no MRN to report",
+      "time": 5,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 4421,
+          "line": 94,
+          "column": 11
+        },
+        "end": {
+          "index": 4458,
+          "line": 94,
+          "column": 48
+        },
+        "locationString": "\n94|     () -> \"an FCL summary has no MRN to report\" in (\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"an FCL summary has no MRN to report\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "an LCL summary carries a customs MRN per consignment",
+      "time": 9,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 4708,
+          "line": 99,
+          "column": 11
+        },
+        "end": {
+          "index": 4762,
+          "line": 99,
+          "column": 65
+        },
+        "locationString": "\n99|     () -> \"an LCL summary carries a customs MRN per consignment\" in (\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"an LCL summary carries a customs MRN per consignment\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "the pre-carriage truck of an LCL summary is not written onto the cargo line",
+      "time": 6,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 5314,
+          "line": 107,
+          "column": 11
+        },
+        "end": {
+          "index": 5391,
+          "line": 107,
+          "column": 88
+        },
+        "locationString": "\n107|     () -> \"the pre-carriage truck of an LCL summary is not written onto the cargo line\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"the pre-carriage truck of an LCL summary is not written onto the cargo line\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "a truck is not a container",
+      "time": 4,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 5563,
+          "line": 111,
+          "column": 11
+        },
+        "end": {
+          "index": 5591,
+          "line": 111,
+          "column": 39
+        },
+        "locationString": "\n111|     () -> \"a truck is not a container\" in (soleContainer(load(\"lcl/ifcsum-136579804.json\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a truck is not a container\" in (soleContainer(load(\"lcl/ifcsum-136579804.json\")",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "a container with an ISO type code is",
+      "time": 1,
+      "status": "OK",
+      "errorMessage": "Expected value not to be Null type. From `.EDI.Messages.D08A.IFCSUM[0]) must notBeNull()),` at line 115 of IfcsumMappingTest.dwl.",
+      "location": {
+        "start": {
+          "index": 5714,
+          "line": 114,
+          "column": 11
+        },
+        "end": {
+          "index": 5752,
+          "line": 114,
+          "column": 49
+        },
+        "locationString": "\n114|     () -> \"a container with an ISO type code is\" in (soleContainer(load(\"fcl/20260625-093948-681.json\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a container with an ISO type code is\" in (soleContainer(load(\"fcl/20260625-093948-681.json\")",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "six consignments yield six cargo lines",
+      "time": 9,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 5876,
+          "line": 117,
+          "column": 11
+        },
+        "end": {
+          "index": 5916,
+          "line": 117,
+          "column": 51
+        },
+        "locationString": "\n117|     () -> \"six consignments yield six cargo lines\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"six consignments yield six cargo lines\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "a cancel is recognised",
+      "time": 2,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 6118,
+          "line": 121,
+          "column": 11
+        },
+        "end": {
+          "index": 6142,
+          "line": 121,
+          "column": 35
+        },
+        "locationString": "\n121|     () -> \"a cancel is recognised\" in (isCancel(message(\"1\")) must equalTo(true)),\n               ^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a cancel is recognised\" in (isCancel(message(\"1\")) must equalTo(true)),",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "a create is not a cancel",
+      "time": 1,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 6201,
+          "line": 122,
+          "column": 11
+        },
+        "end": {
+          "index": 6227,
+          "line": 122,
+          "column": 37
+        },
+        "locationString": "\n122|     () -> \"a create is not a cancel\" in (isCancel(message(\"9\")) must equalTo(false)),\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a create is not a cancel\" in (isCancel(message(\"9\")) must equalTo(false)),",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "a cancelled summary produces no cargo update at all",
+      "time": 2,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 6287,
+          "line": 123,
+          "column": 11
+        },
+        "end": {
+          "index": 6340,
+          "line": 123,
+          "column": 64
+        },
+        "locationString": "\n123|     () -> \"a cancelled summary produces no cargo update at all\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a cancelled summary produces no cargo update at all\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "a message with no consignments yields no cargo lines",
+      "time": 1,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 6575,
+          "line": 128,
+          "column": 11
+        },
+        "end": {
+          "index": 6629,
+          "line": 128,
+          "column": 65
+        },
+        "locationString": "\n128|     () -> \"a message with no consignments yields no cargo lines\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a message with no consignments yields no cargo lines\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "a consignment with no delivery note is dropped",
+      "time": 1,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 6706,
+          "line": 131,
+          "column": 11
+        },
+        "end": {
+          "index": 6754,
+          "line": 131,
+          "column": 59
+        },
+        "locationString": "\n131|     () -> \"a consignment with no delivery note is dropped\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a consignment with no delivery note is dropped\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "the delivery note falls back to CNI02 when the goods item has no RFF+LI",
+      "time": 2,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 7071,
+          "line": 138,
+          "column": 11
+        },
+        "end": {
+          "index": 7144,
+          "line": 138,
+          "column": 84
+        },
+        "locationString": "\n138|     () -> \"the delivery note falls back to CNI02 when the goods item has no RFF+LI\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"the delivery note falls back to CNI02 when the goods item has no RFF+LI\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "the document is a camelCase shipmentCargo array",
+      "time": 26,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 7568,
+          "line": 145,
+          "column": 11
+        },
+        "end": {
+          "index": 7617,
+          "line": 145,
+          "column": 60
+        },
+        "locationString": "\n145|     () -> \"the document is a camelCase shipmentCargo array\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"the document is a camelCase shipmentCargo array\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    },
+    {
+      "name": "an interchange with no IFCSUM message yields an empty array",
+      "time": 1,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 7964,
+          "line": 155,
+          "column": 11
+        },
+        "end": {
+          "index": 8025,
+          "line": 155,
+          "column": 72
+        },
+        "locationString": "\n155|     () -> \"an interchange with no IFCSUM message yields an empty array\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"an interchange with no IFCSUM message yields an empty array\" in (",
+        "sourceIdentifier": "IfcsumMappingTest"
+      }
+    }
+  ],
+  "location": {
+    "start": {
+      "index": 2235,
+      "line": 56,
+      "column": 1
+    },
+    "end": {
+      "index": 2256,
+      "line": 56,
+      "column": 22
+    },
+    "locationString": "\n56| \"BASF IFCSUM mapping\" describedBy (\n    ^^^^^^^^^^^^^^^^^^^^^",
+    "text": "\"BASF IFCSUM mapping\" describedBy (",
+    "sourceIdentifier": "IfcsumMappingTest"
+  }
+}

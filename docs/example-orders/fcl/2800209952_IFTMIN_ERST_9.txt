@@ -1,0 +1,3144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRS_DATA>
+   <ORDERS>
+      <FMSWFM_ORDER KEY="FMS-1" ACTION="CREATE_UPDATE" SERVICE_CODE="ERST_CR" DATA_LEVEL="MS" SEARCH_FIELDS="PI_STATUS,CUSTOMER_REFERENCE,COMPANY_CODE,GROUP_CODE,PI_CATEGORY,PI_SUBTYPE">
+         <GEN_UDF_INSTANCES>
+            <GEN_UDF_INSTANCE KEY="FUDF-REC-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>BASF_REC</UDF_CODE>
+               <UDF_VALUE>BASFAG2</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-MBF-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_BEFART</UDF_CODE>
+               <UDF_VALUE></UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-MBF-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_AZONE</UDF_CODE>
+               <UDF_VALUE></UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-MBF-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_AZONEFULL</UDF_CODE>
+               <UDF_VALUE></UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-MBF-1-4" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_ITR</UDF_CODE>
+               <UDF_VALUE></UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-MBF-1-5" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_ITRFULL</UDF_CODE>
+               <UDF_VALUE></UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-MBF-1-8" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_KPI-NTFY</UDF_CODE>
+               <UDF_VALUE></UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-MBF-1-9" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_KPI-DEL</UDF_CODE>
+               <UDF_VALUE></UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-MBF-1-10" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_KPI-2NTF</UDF_CODE>
+               <UDF_VALUE>Second notify not found.</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-MBF-1-11" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_KPI-STICH</UDF_CODE>
+               <UDF_VALUE></UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_PLACE-TOD</UDF_CODE>
+               <UDF_VALUE>Columbus Rail Ramp</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_MSSGFNCTION</UDF_CODE>
+               <UDF_VALUE>9</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_FL_FTX-SIC</UDF_CODE>
+               <UDF_VALUE>Reefer container, genset required, Temp. set to + 20?C, connect at loading site, terminal and bargeCIP Columbus Rail Rampex Y130USA/CANADAMain leg: Billing without our UST-IDVAT must not be calculated with billing</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-4" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_FL_FTX-ABR</UDF_CODE>
+               <UDF_VALUE>ECB has to be presented to addresses at latest 3 working days after departure of vessel. In case of any difficulties, new vessel booking or delays, please inform the responsible Transport Manager. Please send documents depending on Notify to: BDP,,basfdocs@bdpint.com</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-5" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_FL_FTX-ABO</UDF_CODE>
+               <UDF_VALUE>ERSTINFO INITIAL INFOYE22</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-6" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_FL_FTX-AAS</UDF_CODE>
+               <UDF_VALUE>Date Shipped On BoardDepending on order: freight prepaid&quot; (CIP: Ocean Freight + On-carriage Freight + Destination Terminal Handling) or &quot;freight collect&quot;Please show Container No. &amp; Seal NoName, address and phone number of the carrier s agent at port of destinationIn case of dangerous goods: Emergency Response Center BASF: +1 800 832 4357 USA Emergency Contact: CHEMTREC +1 800 424 9300 or +1 703 527 3887 CHEMTREC CONTRACT ID: CCN2407</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-7-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_FL_FTX-DOC1</UDF_CODE>
+               <UDF_VALUE>The followings must be shown on B/L: IMDG-class, UN number and propper shipping name in case of dangerous goods cargo. PO# must appear on waybill. Waybill must include number of individual collis per pallet and the sum of individual collis.For bulk-containers: - tare weight is to be mentioned on the B/L - stock-number must be included, if mentioned in the order.</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-7-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_FL_FTX-DOC2</UDF_CODE>
+               <UDF_VALUE></UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-7-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_FL_FTX-DOC3</UDF_CODE>
+               <UDF_VALUE></UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-8" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_FL_RFF-AHI</UDF_CODE>
+               <UDF_VALUE>2800209301</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-9" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_TMD</UDF_CODE>
+               <UDF_VALUE>Carriers Haulage</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-10" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_CNTRCRRGE-C</UDF_CODE>
+               <UDF_VALUE>30</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-11" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_CNTRCRRGE-D</UDF_CODE>
+               <UDF_VALUE>Pier-to pier</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-12" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_BLDART-CODE</UDF_CODE>
+               <UDF_VALUE>3</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-1-13" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_BLDART-DESC</UDF_CODE>
+               <UDF_VALUE>FCLFCL</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-PA-1-BL1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_BL1-710-ORG</UDF_CODE>
+               <UDF_VALUE>0</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-PA-1-BL1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_BL1-710-CPY</UDF_CODE>
+               <UDF_VALUE>1</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-PA-1-BL1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_BL1-710-COM</UDF_CODE>
+               <UDF_VALUE>EM</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-PA-SUM-1-BL1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_BL1_SUM</UDF_CODE>
+               <UDF_VALUE>C: EM - C: 1 - O: 0 - Consignee - To Consignee</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-PA-1-BL2-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_BL2-710-ORG</UDF_CODE>
+               <UDF_VALUE>0</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-PA-1-BL2-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_BL2-710-CPY</UDF_CODE>
+               <UDF_VALUE>1</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-PA-1-BL2-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_BL2-710-COM</UDF_CODE>
+               <UDF_VALUE>EM</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+            <GEN_UDF_INSTANCE KEY="FUDF-PA-SUM-1-BL2-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+               <UDF_CODE>POL_BASF_BL2_SUM</UDF_CODE>
+               <UDF_VALUE>C: EM - C: 1 - O: 0 - Notify - Notify</UDF_VALUE>
+            </GEN_UDF_INSTANCE>
+         </GEN_UDF_INSTANCES>
+         <WFM_PI_TASKS>
+            <WFM_PI_TASK KEY="TASK-1" ACTION="CREATE">
+               <SLA_SERVICE_CODE>ERST_CR-T</SLA_SERVICE_CODE>
+               <STATUS>DEX</STATUS>
+            </WFM_PI_TASK>
+         </WFM_PI_TASKS>
+         <FMSDOM_PARTIES>
+            <FMSDOM_PARTY KEY="FPA-TM-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>JESSEY.HO@BASF.COM</CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>TM</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>Mrs Ho</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-DG-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER">
+               <PARTY_QUALIFIER>DG</PARTY_QUALIFIER>
+               <VARIATION>PA</VARIATION>
+               <THIRDPARTY_CODE>00240001</THIRDPARTY_CODE>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>Ludwigshafen Friesenheim/Nord  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF SE</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 67063</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Carl-Bosch-Strasse 38</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>COR</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF SE</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BASF SE
+Carl-Bosch-Strasse 38
+67063 Ludwigshafen Friesenheim/Nord
+ GERMANY</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="999912" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>13  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY></ADDRESS_COUNTRY>
+               <ADDRESS_NAME>CMA-CGM AGENCIES WORLDWIDE S.A.S.</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> FR</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>4 quai d
+Arenc BOULEVARD JACQUES SAAD+Marseille</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>CARR</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>CMA-CGM AGENCIES WORLDWIDE S.A.S.</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <THIRDPARTY_CODE>00300618</THIRDPARTY_CODE>
+               <PARTY_FORMATTED>CMA-CGM AGENCIES WORLDWIDE S.A.S.
+4 quai d
+Arenc BOULEVARD JACQUES 
+SAAD+Marseille
+FR 13</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>ANTWERPEN  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>BE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>POLYTRA N.V.</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 2018</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Desguinlei 92 box V 15 Verzicht gebouw</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX>032050419</CONTACT_FAX>
+               <PARTY_QUALIFIER>FW</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>POLYTRA N.V.</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>POLYTRA N.V.
+Desguinlei 92 box V 15 Verzicht 
+gebouw
+2018 ANTWERPEN BELGIUM
+Fax: 032050419</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-4" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>Ludwigshafen  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF SE</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 67056</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Carl-Bosch-Str. 38</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>DGB</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF SE</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BASF SE
+Carl-Bosch-Str. 38
+67056 Ludwigshafen GERMANY</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-5" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>Ludwigshafen Friesenheim/Nord  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF SE</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 67063</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Carl-Bosch-Strasse 38</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>FP</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF SE</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <THIRDPARTY_CODE>00025000</THIRDPARTY_CODE>
+               <PARTY_FORMATTED>BASF SE
+Carl-Bosch-Strasse 38
+67063 Ludwigshafen Friesenheim/Nord
+ GERMANY</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-6" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER">
+               <ADDRESS_BUILDING>Carl-Bosch-Strasse 38</ADDRESS_BUILDING>
+               <ADDRESS_CITY>67056 Ludwigshafen  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF SE</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE></ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET></ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>SHIP</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF SE</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BASF SE
+Carl-Bosch-Strasse 38
+67056 Ludwigshafen GERMANY
+2800209301BL00</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-7" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY></ADDRESS_CITY>
+               <ADDRESS_COUNTRY>US</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>To Consignee</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE></ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET></ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>Consignee</CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>BL1</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>To Consignee</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>To Consignee
+
+UNITED STATES
+Email: Consignee</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-8" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY></ADDRESS_CITY>
+               <ADDRESS_COUNTRY></ADDRESS_COUNTRY>
+               <ADDRESS_NAME>Notify</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE></ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET></ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>Notify</CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>BL2</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>Notify</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>Notify
+
+
+Email: Notify</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-9" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING>MIDWEST DISTRIBUTION CENTER</ADDRESS_BUILDING>
+               <ADDRESS_CITY>COLUMBUS   Ohio</ADDRESS_CITY>
+               <ADDRESS_COUNTRY>US</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF CORPORATION</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 432170000</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>9565 LOGISTICS CT</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>IntercompanyNorthAmerica@basf.com</CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>DOC1</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF CORPORATION</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BASF CORPORATION
+MIDWEST DISTRIBUTION CENTER
+9565 LOGISTICS CT
+432170000 COLUMBUS Ohio UNITED 
+STATES
+Email: 
+IntercompanyNorthAmerica@basf.com</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-10" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>Berlin  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>Mrs Juppi</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 10407</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Storkower Stra?e 146</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>FABIENNE.JUPPI@BASF.COM</CONTACT_EMAIL>
+               <CONTACT_TEL>+49 30 2005-5660</CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>DOC4</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>Mrs Juppi</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>Mrs Juppi
+Storkower Stra?e 146
+10407 Berlin GERMANY
+Tel: +49 30 2005-5660
+Email: FABIENNE.JUPPI@BASF.COM</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-11" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER">
+               <ADDRESS_BUILDING>BASF IMPORT OPERATIONS</ADDRESS_BUILDING>
+               <ADDRESS_CITY>PHILADELPHIA Pennsylvania</ADDRESS_CITY>
+               <ADDRESS_COUNTRY>US</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BDP INTERNATIONAL</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE>191063690</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>510 WALNUT ST, FL 3</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>BASFDocs@bdpint.com</CONTACT_EMAIL>
+               <CONTACT_TEL>8564201182</CONTACT_TEL>
+               <CONTACT_FAX>2155585751</CONTACT_FAX>
+               <PARTY_QUALIFIER>NTF1</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BDP INTERNATIONAL</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BDP INTERNATIONAL
+BASF IMPORT OPERATIONS
+510 WALNUT ST, FL 3
+191063690 PHILADELPHIA Pennsylvania
+ UNITED STATES
+Tel: 8564201182</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-12" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>FLORHAM PARK New Jersey</ADDRESS_CITY>
+               <ADDRESS_COUNTRY>US</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF CORPORATION</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE>MORRIS 079321089</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>100 Park Avenue
+PO Box 685</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>Inquiries-Intercompany-MX-CAC@basf.com</CONTACT_EMAIL>
+               <CONTACT_TEL>9732456000</CONTACT_TEL>
+               <CONTACT_FAX>9732456002</CONTACT_FAX>
+               <PARTY_QUALIFIER>CEE</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF CORPORATION</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BASF CORPORATION
+100 Park Avenue
+PO Box 685
+MORRIS 079321089 FLORHAM PARK New 
+Jersey UNITED STATES
+Tel: 9732456000</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="FPA-1-13" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING>Shipping Agency</ADDRESS_BUILDING>
+               <ADDRESS_CITY>Bremen  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>CMA-CGM (Deutschland) GmbH</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 28217</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Schellackstr. 1</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>DCP</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>CMA-CGM (Deutschland) GmbH</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>CMA-CGM (Deutschland) GmbH
+Shipping Agency
+Schellackstr. 1
+28217 Bremen GERMANY</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="9999114" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>Ludwigshafen  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>Contargo Rhein-Neckar GmbH</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 67065</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Shellstr. 5</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>TRPT</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>Contargo Rhein-Neckar GmbH</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <THIRDPARTY_CODE>00301864</THIRDPARTY_CODE>
+               <PARTY_FORMATTED>Contargo Rhein-Neckar GmbH
+Shellstr. 5
+67065 Ludwigshafen GERMANY</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+         </FMSDOM_PARTIES>
+         <FMSDOM_GOODS>
+            <FMSDOM_GOOD KEY="FGO-1-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TECHNICAL_REFERENCE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-1-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING1</UDF_CODE>
+                     <UDF_VALUE>CP3</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-2-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING2</UDF_CODE>
+                     <UDF_VALUE>1H1</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-3-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_BUYORDNR</UDF_CODE>
+                     <UDF_VALUE>P.O. NBR 4994886331</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-4-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_ARTNR</UDF_CODE>
+                     <UDF_VALUE>50403932</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-5-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_GTIN</UDF_CODE>
+                     <UDF_VALUE>4014439010826</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-6-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL1</UDF_CODE>
+                     <UDF_VALUE>Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-6-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-7-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAW</UDF_CODE>
+                     <UDF_VALUE>6253</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-8-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAA</UDF_CODE>
+                     <UDF_VALUE>Luviquat? Hold AT 3 120KG Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-9-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAS</UDF_CODE>
+                     <UDF_VALUE>US Harmonized tariff code:390591</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-10-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAC</UDF_CODE>
+                     <UDF_VALUE>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-11-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-ACB</UDF_CODE>
+                     <UDF_VALUE>Odor: faint specific odour</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-12-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI1</UDF_CODE>
+                     <UDF_VALUE>Properties of the product change irreversibly on exceeding the limit t emperature.</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-12-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-13-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAN</UDF_CODE>
+                     <UDF_VALUE>Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-14-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS1</UDF_CODE>
+                     <UDF_VALUE>7</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-15-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS2</UDF_CODE>
+                     <UDF_VALUE>35</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-16-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-17-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY1</UDF_CODE>
+                     <UDF_VALUE>Pallet,wood,CP3,1140x1140x138mm,HT</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-18-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY2</UDF_CODE>
+                     <UDF_VALUE>Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-19-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-20-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI</UDF_CODE>
+                     <UDF_VALUE>3550879430</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-21-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI2</UDF_CODE>
+                     <UDF_VALUE>000010</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-22-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-VN</UDF_CODE>
+                     <UDF_VALUE>3020963670</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-23-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-CO</UDF_CODE>
+                     <UDF_VALUE>4994886331</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-24-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-OP</UDF_CODE>
+                     <UDF_VALUE>4994886331</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-25-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-AQV</UDF_CODE>
+                     <UDF_VALUE>39059100</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-26-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-WT</UDF_CODE>
+                     <UDF_VALUE>147.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-1-1-27-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-AAE</UDF_CODE>
+                     <UDF_VALUE>4396.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_GOOD_ITEMS>
+                  <FMSDOM_GOOD_ITEM KEY="FGO-IT-1-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="ITEM_IDENTIFIER">
+                     <FMSDOM_GOOD_ITEM_GIETS>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-11"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-11"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-11"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-11"/>
+                     </FMSDOM_GOOD_ITEM_GIETS>
+                     <GROSS_WEIGHT>4543.000</GROSS_WEIGHT>
+                     <NET_WEIGHT>4200.000</NET_WEIGHT>
+                     <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+                     <ITEM_IDENTIFIER>3550879430-000010</ITEM_IDENTIFIER>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_ITEMS>35</NUMBER_OF_ITEMS>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                     <VOLUME>8.736</VOLUME>
+                     <VOLUME_UNIT>CBM</VOLUME_UNIT>
+                     <VOLUME_WEIGHT>8.736</VOLUME_WEIGHT>
+                     <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+                  </FMSDOM_GOOD_ITEM>
+               </FMSDOM_GOOD_ITEMS>
+               <FMSDOM_GOOD_GIETS>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-11"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-11"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-11"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-11"/>
+               </FMSDOM_GOOD_GIETS>
+               <FMSDOM_DANGEROUS_GOODS>
+                  <FMSDOM_DANGEROUS_GOOD KEY="FGO-DG-1-1-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UNDG_CODE">
+                     <EMERGENCY_CONTACT_NAME>BASF SE /LUDW. 24 HOUR NUMBER</EMERGENCY_CONTACT_NAME>
+                     <EMERGENCY_CONTACT_NUMBER>00491802273112</EMERGENCY_CONTACT_NUMBER>
+                     <EMS_NUMBER>F-AS-F</EMS_NUMBER>
+                     <FLASH_POINT>101</FLASH_POINT>
+                     <FLASH_POINT_UNIT>C</FLASH_POINT_UNIT>
+                     <IMDG_CODE_PAGE>9</IMDG_CODE_PAGE>
+                     <IMO_CLASS>9</IMO_CLASS>
+                     <PACKING_GROUP>3</PACKING_GROUP>
+                     <PROPER_SHIPPING_NAME>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG I</PROPER_SHIPPING_NAME>
+                     <UNDG_CODE>3082</UNDG_CODE>
+                     <NET_WEIGHT>4200.000</NET_WEIGHT>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <SUBSIDIARY_HAZARD>6.1</SUBSIDIARY_HAZARD>
+                     <NUMBER_OF_PACKAGES>35</NUMBER_OF_PACKAGES>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                  </FMSDOM_DANGEROUS_GOOD>
+               </FMSDOM_DANGEROUS_GOODS>
+               <HS_CODE>39059100</HS_CODE>
+               <TECHNICAL_REFERENCE>3550879430-000010-1</TECHNICAL_REFERENCE>
+               <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+               <VOLUME_WEIGHT>8.736</VOLUME_WEIGHT>
+               <REFERENCE>3020963670</REFERENCE>
+               <REFERENCE_QUALIFIER>FLN</REFERENCE_QUALIFIER>
+               <GROSS_WEIGHT>4543.000</GROSS_WEIGHT>
+               <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+               <NET_WEIGHT>4200.000</NET_WEIGHT>
+               <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+               <NUMBER_OF_PACKAGES>35</NUMBER_OF_PACKAGES>
+               <PACKAGE_CODE>DR</PACKAGE_CODE>
+               <VOLUME>8.736</VOLUME>
+               <VOLUME_UNIT>CBM</VOLUME_UNIT>
+               <CARGO_DESCRIPTION>Plastic drums
+7 
+Pallet,wood,CP3,1140x1140x138mm,HT
+Luviquat? Hold AT 3 120KG Plastic 
+drums
+US Harmonized tariff code:390591
+P.O. NBR 4994886331
+3020963670
+IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate
+EMS: F-AS-F
+Flashpoint: 101 C</CARGO_DESCRIPTION>
+               <MARKS_AND_NUMBERS>BASF
+3020963670/000010</MARKS_AND_NUMBERS>
+               <BOOKING_REFERENCE>3550879430-000010</BOOKING_REFERENCE>
+            </FMSDOM_GOOD>
+            <FMSDOM_GOOD KEY="FGO-1-2-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TECHNICAL_REFERENCE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-1-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING1</UDF_CODE>
+                     <UDF_VALUE>CP3</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-2-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING2</UDF_CODE>
+                     <UDF_VALUE>1H1</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-3-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_BUYORDNR</UDF_CODE>
+                     <UDF_VALUE>P.O. NBR 4994886335</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-4-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_ARTNR</UDF_CODE>
+                     <UDF_VALUE>50403932</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-5-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_GTIN</UDF_CODE>
+                     <UDF_VALUE>4014439010826</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-6-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL1</UDF_CODE>
+                     <UDF_VALUE>Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-6-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-7-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAW</UDF_CODE>
+                     <UDF_VALUE>6253</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-8-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAA</UDF_CODE>
+                     <UDF_VALUE>Luviquat? Hold AT 3 120KG Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-9-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAS</UDF_CODE>
+                     <UDF_VALUE>US Harmonized tariff code:390591</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-10-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAC</UDF_CODE>
+                     <UDF_VALUE>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-11-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-ACB</UDF_CODE>
+                     <UDF_VALUE>Odor: faint specific odour</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-12-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI1</UDF_CODE>
+                     <UDF_VALUE>Properties of the product change irreversibly on exceeding the limit t emperature.</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-12-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-13-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAN</UDF_CODE>
+                     <UDF_VALUE>Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-14-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS1</UDF_CODE>
+                     <UDF_VALUE>10</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-15-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS2</UDF_CODE>
+                     <UDF_VALUE>50</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-16-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-17-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY1</UDF_CODE>
+                     <UDF_VALUE>Pallet,wood,CP3,1140x1140x138mm,HT</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-18-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY2</UDF_CODE>
+                     <UDF_VALUE>Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-19-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-20-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI</UDF_CODE>
+                     <UDF_VALUE>3550879730</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-21-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI2</UDF_CODE>
+                     <UDF_VALUE>000010</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-22-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-VN</UDF_CODE>
+                     <UDF_VALUE>3020963671</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-23-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-CO</UDF_CODE>
+                     <UDF_VALUE>4994886335</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-24-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-OP</UDF_CODE>
+                     <UDF_VALUE>4994886335</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-25-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-AQV</UDF_CODE>
+                     <UDF_VALUE>39059100</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-26-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-WT</UDF_CODE>
+                     <UDF_VALUE>210.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-2-1-27-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-AAE</UDF_CODE>
+                     <UDF_VALUE>6280.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_GOOD_ITEMS>
+                  <FMSDOM_GOOD_ITEM KEY="FGO-IT-1-2-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="ITEM_IDENTIFIER">
+                     <FMSDOM_GOOD_ITEM_GIETS>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-12"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-12"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-12"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-12"/>
+                     </FMSDOM_GOOD_ITEM_GIETS>
+                     <GROSS_WEIGHT>6490.000</GROSS_WEIGHT>
+                     <NET_WEIGHT>6000.000</NET_WEIGHT>
+                     <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+                     <ITEM_IDENTIFIER>3550879730-000010</ITEM_IDENTIFIER>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_ITEMS>50</NUMBER_OF_ITEMS>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                     <VOLUME>12.480</VOLUME>
+                     <VOLUME_UNIT>CBM</VOLUME_UNIT>
+                     <VOLUME_WEIGHT>12.480</VOLUME_WEIGHT>
+                     <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+                  </FMSDOM_GOOD_ITEM>
+               </FMSDOM_GOOD_ITEMS>
+               <FMSDOM_GOOD_GIETS>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-12"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-12"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-12"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-12"/>
+               </FMSDOM_GOOD_GIETS>
+               <FMSDOM_DANGEROUS_GOODS>
+                  <FMSDOM_DANGEROUS_GOOD KEY="FGO-DG-1-2-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UNDG_CODE">
+                     <EMERGENCY_CONTACT_NAME>BASF SE /LUDW. 24 HOUR NUMBER</EMERGENCY_CONTACT_NAME>
+                     <EMERGENCY_CONTACT_NUMBER>00491802273112</EMERGENCY_CONTACT_NUMBER>
+                     <EMS_NUMBER>F-AS-F</EMS_NUMBER>
+                     <FLASH_POINT>101</FLASH_POINT>
+                     <FLASH_POINT_UNIT>C</FLASH_POINT_UNIT>
+                     <IMDG_CODE_PAGE>9</IMDG_CODE_PAGE>
+                     <IMO_CLASS>9</IMO_CLASS>
+                     <PACKING_GROUP>3</PACKING_GROUP>
+                     <PROPER_SHIPPING_NAME>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG I</PROPER_SHIPPING_NAME>
+                     <UNDG_CODE>3082</UNDG_CODE>
+                     <NET_WEIGHT>6000.000</NET_WEIGHT>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_PACKAGES>50</NUMBER_OF_PACKAGES>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                  </FMSDOM_DANGEROUS_GOOD>
+               </FMSDOM_DANGEROUS_GOODS>
+               <HS_CODE>39059100</HS_CODE>
+               <TECHNICAL_REFERENCE>3550879730-000010-1</TECHNICAL_REFERENCE>
+               <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+               <VOLUME_WEIGHT>12.480</VOLUME_WEIGHT>
+               <REFERENCE>3020963671</REFERENCE>
+               <REFERENCE_QUALIFIER>FLN</REFERENCE_QUALIFIER>
+               <GROSS_WEIGHT>6490.000</GROSS_WEIGHT>
+               <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+               <NET_WEIGHT>6000.000</NET_WEIGHT>
+               <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+               <NUMBER_OF_PACKAGES>50</NUMBER_OF_PACKAGES>
+               <PACKAGE_CODE>DR</PACKAGE_CODE>
+               <VOLUME>12.480</VOLUME>
+               <VOLUME_UNIT>CBM</VOLUME_UNIT>
+               <CARGO_DESCRIPTION>Plastic drums
+10 
+Pallet,wood,CP3,1140x1140x138mm,HT
+Luviquat? Hold AT 3 120KG Plastic 
+drums
+US Harmonized tariff code:390591
+P.O. NBR 4994886335
+3020963671
+IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate
+EMS: F-AS-F
+Flashpoint: 101 C</CARGO_DESCRIPTION>
+               <MARKS_AND_NUMBERS>BASF
+3020963671/000010</MARKS_AND_NUMBERS>
+               <BOOKING_REFERENCE>3550879730-000010</BOOKING_REFERENCE>
+            </FMSDOM_GOOD>
+            <FMSDOM_GOOD KEY="FGO-1-3-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TECHNICAL_REFERENCE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-1-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING1</UDF_CODE>
+                     <UDF_VALUE>CP3</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-2-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING2</UDF_CODE>
+                     <UDF_VALUE>1H1</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-3-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_BUYORDNR</UDF_CODE>
+                     <UDF_VALUE>P.O. NBR 4995117414</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-4-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_ARTNR</UDF_CODE>
+                     <UDF_VALUE>50403932</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-5-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_GTIN</UDF_CODE>
+                     <UDF_VALUE>4014439010826</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-6-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL1</UDF_CODE>
+                     <UDF_VALUE>Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-6-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-7-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAW</UDF_CODE>
+                     <UDF_VALUE>6253</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-8-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAA</UDF_CODE>
+                     <UDF_VALUE>Luviquat? Hold AT 3 120KG Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-9-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAS</UDF_CODE>
+                     <UDF_VALUE>US Harmonized tariff code:390591</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-10-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAC</UDF_CODE>
+                     <UDF_VALUE>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-11-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-ACB</UDF_CODE>
+                     <UDF_VALUE>Odor: faint specific odour</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-12-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI1</UDF_CODE>
+                     <UDF_VALUE>Properties of the product change irreversibly on exceeding the limit t emperature.</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-12-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-13-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAN</UDF_CODE>
+                     <UDF_VALUE>Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-14-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS1</UDF_CODE>
+                     <UDF_VALUE>10</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-15-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS2</UDF_CODE>
+                     <UDF_VALUE>50</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-16-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-17-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY1</UDF_CODE>
+                     <UDF_VALUE>Pallet,wood,CP3,1140x1140x138mm,HT</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-18-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY2</UDF_CODE>
+                     <UDF_VALUE>Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-19-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-20-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI</UDF_CODE>
+                     <UDF_VALUE>3550879847</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-21-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI2</UDF_CODE>
+                     <UDF_VALUE>000010</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-22-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-VN</UDF_CODE>
+                     <UDF_VALUE>3020991631</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-23-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-CO</UDF_CODE>
+                     <UDF_VALUE>4995117414</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-24-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-OP</UDF_CODE>
+                     <UDF_VALUE>4995117414</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-25-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-AQV</UDF_CODE>
+                     <UDF_VALUE>39059100</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-26-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-WT</UDF_CODE>
+                     <UDF_VALUE>210.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-3-1-27-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-AAE</UDF_CODE>
+                     <UDF_VALUE>6280.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_GOOD_ITEMS>
+                  <FMSDOM_GOOD_ITEM KEY="FGO-IT-1-3-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="ITEM_IDENTIFIER">
+                     <FMSDOM_GOOD_ITEM_GIETS>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-13"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-13"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-13"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-13"/>
+                     </FMSDOM_GOOD_ITEM_GIETS>
+                     <GROSS_WEIGHT>6490.000</GROSS_WEIGHT>
+                     <NET_WEIGHT>6000.000</NET_WEIGHT>
+                     <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+                     <ITEM_IDENTIFIER>3550879847-000010</ITEM_IDENTIFIER>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_ITEMS>50</NUMBER_OF_ITEMS>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                     <VOLUME>12.480</VOLUME>
+                     <VOLUME_UNIT>CBM</VOLUME_UNIT>
+                     <VOLUME_WEIGHT>12.480</VOLUME_WEIGHT>
+                     <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+                  </FMSDOM_GOOD_ITEM>
+               </FMSDOM_GOOD_ITEMS>
+               <FMSDOM_GOOD_GIETS>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-13"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-13"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-13"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-13"/>
+               </FMSDOM_GOOD_GIETS>
+               <FMSDOM_DANGEROUS_GOODS>
+                  <FMSDOM_DANGEROUS_GOOD KEY="FGO-DG-1-3-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UNDG_CODE">
+                     <EMERGENCY_CONTACT_NAME>BASF SE /LUDW. 24 HOUR NUMBER</EMERGENCY_CONTACT_NAME>
+                     <EMERGENCY_CONTACT_NUMBER>00491802273112</EMERGENCY_CONTACT_NUMBER>
+                     <EMS_NUMBER>F-AS-F</EMS_NUMBER>
+                     <FLASH_POINT>101</FLASH_POINT>
+                     <FLASH_POINT_UNIT>C</FLASH_POINT_UNIT>
+                     <IMDG_CODE_PAGE>9</IMDG_CODE_PAGE>
+                     <IMO_CLASS>9</IMO_CLASS>
+                     <PACKING_GROUP>3</PACKING_GROUP>
+                     <PROPER_SHIPPING_NAME>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG I</PROPER_SHIPPING_NAME>
+                     <UNDG_CODE>3082</UNDG_CODE>
+                     <NET_WEIGHT>6000.000</NET_WEIGHT>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_PACKAGES>50</NUMBER_OF_PACKAGES>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                  </FMSDOM_DANGEROUS_GOOD>
+               </FMSDOM_DANGEROUS_GOODS>
+               <HS_CODE>39059100</HS_CODE>
+               <TECHNICAL_REFERENCE>3550879847-000010-1</TECHNICAL_REFERENCE>
+               <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+               <VOLUME_WEIGHT>12.480</VOLUME_WEIGHT>
+               <REFERENCE>3020991631</REFERENCE>
+               <REFERENCE_QUALIFIER>FLN</REFERENCE_QUALIFIER>
+               <GROSS_WEIGHT>6490.000</GROSS_WEIGHT>
+               <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+               <NET_WEIGHT>6000.000</NET_WEIGHT>
+               <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+               <NUMBER_OF_PACKAGES>50</NUMBER_OF_PACKAGES>
+               <PACKAGE_CODE>DR</PACKAGE_CODE>
+               <VOLUME>12.480</VOLUME>
+               <VOLUME_UNIT>CBM</VOLUME_UNIT>
+               <CARGO_DESCRIPTION>Plastic drums
+10 
+Pallet,wood,CP3,1140x1140x138mm,HT
+Luviquat? Hold AT 3 120KG Plastic 
+drums
+US Harmonized tariff code:390591
+P.O. NBR 4995117414
+3020991631
+IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate
+EMS: F-AS-F
+Flashpoint: 101 C</CARGO_DESCRIPTION>
+               <MARKS_AND_NUMBERS>BASF
+3020991631/000010</MARKS_AND_NUMBERS>
+               <BOOKING_REFERENCE>3550879847-000010</BOOKING_REFERENCE>
+            </FMSDOM_GOOD>
+            <FMSDOM_GOOD KEY="FGO-1-4-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TECHNICAL_REFERENCE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-1-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING1</UDF_CODE>
+                     <UDF_VALUE>CP3</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-2-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING2</UDF_CODE>
+                     <UDF_VALUE>1H1</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-3-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_BUYORDNR</UDF_CODE>
+                     <UDF_VALUE>P.O. NBR 4995488194</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-4-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_ARTNR</UDF_CODE>
+                     <UDF_VALUE>50403932</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-5-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_GTIN</UDF_CODE>
+                     <UDF_VALUE>4014439010826</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-6-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL1</UDF_CODE>
+                     <UDF_VALUE>Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-6-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-7-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAW</UDF_CODE>
+                     <UDF_VALUE>6253</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-8-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAA</UDF_CODE>
+                     <UDF_VALUE>Luviquat? Hold AT 3 120KG Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-9-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAS</UDF_CODE>
+                     <UDF_VALUE>US Harmonized tariff code:390591</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-10-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAC</UDF_CODE>
+                     <UDF_VALUE>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-11-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-ACB</UDF_CODE>
+                     <UDF_VALUE>Odor: faint specific odour</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-12-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI1</UDF_CODE>
+                     <UDF_VALUE>Properties of the product change irreversibly on exceeding the limit t emperature.</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-12-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-13-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAN</UDF_CODE>
+                     <UDF_VALUE>Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-14-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS1</UDF_CODE>
+                     <UDF_VALUE>30</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-15-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS2</UDF_CODE>
+                     <UDF_VALUE>150</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-16-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-17-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY1</UDF_CODE>
+                     <UDF_VALUE>Pallet,wood,CP3,1140x1140x138mm,HT</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-18-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY2</UDF_CODE>
+                     <UDF_VALUE>Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-19-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-20-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI</UDF_CODE>
+                     <UDF_VALUE>3550879994</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-21-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI2</UDF_CODE>
+                     <UDF_VALUE>000010</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-22-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-VN</UDF_CODE>
+                     <UDF_VALUE>3021036468</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-23-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-CO</UDF_CODE>
+                     <UDF_VALUE>4995488194</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-24-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-OP</UDF_CODE>
+                     <UDF_VALUE>4995488194</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-25-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-AQV</UDF_CODE>
+                     <UDF_VALUE>39059100</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-26-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-WT</UDF_CODE>
+                     <UDF_VALUE>630.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-4-1-27-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-AAE</UDF_CODE>
+                     <UDF_VALUE>18840.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_GOOD_ITEMS>
+                  <FMSDOM_GOOD_ITEM KEY="FGO-IT-1-4-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="ITEM_IDENTIFIER">
+                     <FMSDOM_GOOD_ITEM_GIETS>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-14"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-14"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-14"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-14"/>
+                     </FMSDOM_GOOD_ITEM_GIETS>
+                     <GROSS_WEIGHT>19470.000</GROSS_WEIGHT>
+                     <NET_WEIGHT>18000.000</NET_WEIGHT>
+                     <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+                     <ITEM_IDENTIFIER>3550879994-000010</ITEM_IDENTIFIER>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_ITEMS>150</NUMBER_OF_ITEMS>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                     <VOLUME>37.440</VOLUME>
+                     <VOLUME_UNIT>CBM</VOLUME_UNIT>
+                     <VOLUME_WEIGHT>37.440</VOLUME_WEIGHT>
+                     <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+                  </FMSDOM_GOOD_ITEM>
+               </FMSDOM_GOOD_ITEMS>
+               <FMSDOM_GOOD_GIETS>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-14"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-14"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-14"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-14"/>
+               </FMSDOM_GOOD_GIETS>
+               <FMSDOM_DANGEROUS_GOODS>
+                  <FMSDOM_DANGEROUS_GOOD KEY="FGO-DG-1-4-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UNDG_CODE">
+                     <EMERGENCY_CONTACT_NAME>BASF SE /LUDW. 24 HOUR NUMBER</EMERGENCY_CONTACT_NAME>
+                     <EMERGENCY_CONTACT_NUMBER>00491802273112</EMERGENCY_CONTACT_NUMBER>
+                     <EMS_NUMBER>F-AS-F</EMS_NUMBER>
+                     <FLASH_POINT>101</FLASH_POINT>
+                     <FLASH_POINT_UNIT>C</FLASH_POINT_UNIT>
+                     <IMDG_CODE_PAGE>9</IMDG_CODE_PAGE>
+                     <IMO_CLASS>9</IMO_CLASS>
+                     <PACKING_GROUP>3</PACKING_GROUP>
+                     <PROPER_SHIPPING_NAME>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG I</PROPER_SHIPPING_NAME>
+                     <UNDG_CODE>3082</UNDG_CODE>
+                     <NET_WEIGHT>18000.000</NET_WEIGHT>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_PACKAGES>150</NUMBER_OF_PACKAGES>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                  </FMSDOM_DANGEROUS_GOOD>
+               </FMSDOM_DANGEROUS_GOODS>
+               <HS_CODE>39059100</HS_CODE>
+               <TECHNICAL_REFERENCE>3550879994-000010-1</TECHNICAL_REFERENCE>
+               <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+               <VOLUME_WEIGHT>37.440</VOLUME_WEIGHT>
+               <REFERENCE>3021036468</REFERENCE>
+               <REFERENCE_QUALIFIER>FLN</REFERENCE_QUALIFIER>
+               <GROSS_WEIGHT>19470.000</GROSS_WEIGHT>
+               <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+               <NET_WEIGHT>18000.000</NET_WEIGHT>
+               <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+               <NUMBER_OF_PACKAGES>150</NUMBER_OF_PACKAGES>
+               <PACKAGE_CODE>DR</PACKAGE_CODE>
+               <VOLUME>37.440</VOLUME>
+               <VOLUME_UNIT>CBM</VOLUME_UNIT>
+               <CARGO_DESCRIPTION>Plastic drums
+30 
+Pallet,wood,CP3,1140x1140x138mm,HT
+Luviquat? Hold AT 3 120KG Plastic 
+drums
+US Harmonized tariff code:390591
+P.O. NBR 4995488194
+3021036468
+IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate
+EMS: F-AS-F
+Flashpoint: 101 C</CARGO_DESCRIPTION>
+               <MARKS_AND_NUMBERS>BASF
+3021036468/000010</MARKS_AND_NUMBERS>
+               <BOOKING_REFERENCE>3550879994-000010</BOOKING_REFERENCE>
+            </FMSDOM_GOOD>
+            <FMSDOM_GOOD KEY="FGO-1-5-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TECHNICAL_REFERENCE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-1-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING1</UDF_CODE>
+                     <UDF_VALUE>CP3</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-2-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING2</UDF_CODE>
+                     <UDF_VALUE>1H1</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-3-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_BUYORDNR</UDF_CODE>
+                     <UDF_VALUE>P.O. NBR 4995488195</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-4-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_ARTNR</UDF_CODE>
+                     <UDF_VALUE>50403932</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-5-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_GTIN</UDF_CODE>
+                     <UDF_VALUE>4014439010826</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-6-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL1</UDF_CODE>
+                     <UDF_VALUE>Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-6-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-7-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAW</UDF_CODE>
+                     <UDF_VALUE>6253</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-8-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAA</UDF_CODE>
+                     <UDF_VALUE>Luviquat? Hold AT 3 120KG Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-9-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAS</UDF_CODE>
+                     <UDF_VALUE>US Harmonized tariff code:390591</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-10-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAC</UDF_CODE>
+                     <UDF_VALUE>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-11-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-ACB</UDF_CODE>
+                     <UDF_VALUE>Odor: faint specific odour</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-12-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI1</UDF_CODE>
+                     <UDF_VALUE>Properties of the product change irreversibly on exceeding the limit t emperature.</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-12-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-13-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAN</UDF_CODE>
+                     <UDF_VALUE>Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-14-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS1</UDF_CODE>
+                     <UDF_VALUE>30</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-15-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS2</UDF_CODE>
+                     <UDF_VALUE>150</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-16-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-17-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY1</UDF_CODE>
+                     <UDF_VALUE>Pallet,wood,CP3,1140x1140x138mm,HT</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-18-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY2</UDF_CODE>
+                     <UDF_VALUE>Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-19-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-20-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI</UDF_CODE>
+                     <UDF_VALUE>3550880113</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-21-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI2</UDF_CODE>
+                     <UDF_VALUE>000010</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-22-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-VN</UDF_CODE>
+                     <UDF_VALUE>3021036470</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-23-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-CO</UDF_CODE>
+                     <UDF_VALUE>4995488195</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-24-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-OP</UDF_CODE>
+                     <UDF_VALUE>4995488195</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-25-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-AQV</UDF_CODE>
+                     <UDF_VALUE>39059100</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-26-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-WT</UDF_CODE>
+                     <UDF_VALUE>630.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="GUDF-1-5-1-27-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-AAE</UDF_CODE>
+                     <UDF_VALUE>18840.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_GOOD_ITEMS>
+                  <FMSDOM_GOOD_ITEM KEY="FGO-IT-1-5-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="ITEM_IDENTIFIER">
+                     <FMSDOM_GOOD_ITEM_GIETS>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-15"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-15"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-15"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-15"/>
+                     </FMSDOM_GOOD_ITEM_GIETS>
+                     <GROSS_WEIGHT>19470.000</GROSS_WEIGHT>
+                     <NET_WEIGHT>18000.000</NET_WEIGHT>
+                     <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+                     <ITEM_IDENTIFIER>3550880113-000010</ITEM_IDENTIFIER>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_ITEMS>150</NUMBER_OF_ITEMS>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                     <VOLUME>37.440</VOLUME>
+                     <VOLUME_UNIT>CBM</VOLUME_UNIT>
+                     <VOLUME_WEIGHT>37.440</VOLUME_WEIGHT>
+                     <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+                  </FMSDOM_GOOD_ITEM>
+               </FMSDOM_GOOD_ITEMS>
+               <FMSDOM_GOOD_GIETS>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-15"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-15"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-15"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-15"/>
+               </FMSDOM_GOOD_GIETS>
+               <FMSDOM_DANGEROUS_GOODS>
+                  <FMSDOM_DANGEROUS_GOOD KEY="FGO-DG-1-5-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UNDG_CODE">
+                     <EMERGENCY_CONTACT_NAME>BASF SE /LUDW. 24 HOUR NUMBER</EMERGENCY_CONTACT_NAME>
+                     <EMERGENCY_CONTACT_NUMBER>00491802273112</EMERGENCY_CONTACT_NUMBER>
+                     <EMS_NUMBER>F-AS-F</EMS_NUMBER>
+                     <FLASH_POINT>101</FLASH_POINT>
+                     <FLASH_POINT_UNIT>C</FLASH_POINT_UNIT>
+                     <IMDG_CODE_PAGE>9</IMDG_CODE_PAGE>
+                     <IMO_CLASS>9</IMO_CLASS>
+                     <PACKING_GROUP>3</PACKING_GROUP>
+                     <PROPER_SHIPPING_NAME>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG I</PROPER_SHIPPING_NAME>
+                     <UNDG_CODE>3082</UNDG_CODE>
+                     <NET_WEIGHT>18000.000</NET_WEIGHT>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_PACKAGES>150</NUMBER_OF_PACKAGES>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                  </FMSDOM_DANGEROUS_GOOD>
+               </FMSDOM_DANGEROUS_GOODS>
+               <HS_CODE>39059100</HS_CODE>
+               <TECHNICAL_REFERENCE>3550880113-000010-1</TECHNICAL_REFERENCE>
+               <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+               <VOLUME_WEIGHT>37.440</VOLUME_WEIGHT>
+               <REFERENCE>3021036470</REFERENCE>
+               <REFERENCE_QUALIFIER>FLN</REFERENCE_QUALIFIER>
+               <GROSS_WEIGHT>19470.000</GROSS_WEIGHT>
+               <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+               <NET_WEIGHT>18000.000</NET_WEIGHT>
+               <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+               <NUMBER_OF_PACKAGES>150</NUMBER_OF_PACKAGES>
+               <PACKAGE_CODE>DR</PACKAGE_CODE>
+               <VOLUME>37.440</VOLUME>
+               <VOLUME_UNIT>CBM</VOLUME_UNIT>
+               <CARGO_DESCRIPTION>Plastic drums
+30 
+Pallet,wood,CP3,1140x1140x138mm,HT
+Luviquat? Hold AT 3 120KG Plastic 
+drums
+US Harmonized tariff code:390591
+P.O. NBR 4995488195
+3021036470
+IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate
+EMS: F-AS-F
+Flashpoint: 101 C</CARGO_DESCRIPTION>
+               <MARKS_AND_NUMBERS>BASF
+3021036470/000010</MARKS_AND_NUMBERS>
+               <BOOKING_REFERENCE>3550880113-000010</BOOKING_REFERENCE>
+            </FMSDOM_GOOD>
+         </FMSDOM_GOODS>
+         <FMSDOM_TRANSPORTS>
+            <FMSDOM_TRANSPORT KEY="FTR-PRE-1-11" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TRANSPORT_MODE,REMARKS">
+               <FMSDOM_TRANSPORT_STOPS>
+                  <FMSDOM_TRANSPORT_STOP KEY="FTRS-PRE-1-11-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>LOAD</HANDLING_TYPE>
+                     <ADDRESS_CITY></ADDRESS_CITY>
+                     <LOCATION_NAME></LOCATION_NAME>
+                     <PLACE_QUALIFIER>88</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE></LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+                  <FMSDOM_TRANSPORT_STOP KEY="FTRS-PRE-1-11-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>UNLOAD</HANDLING_TYPE>
+                     <LOCATION_NAME>BEANR</LOCATION_NAME>
+                     <PLACE_QUALIFIER>9P</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE>BEANR</LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+               </FMSDOM_TRANSPORT_STOPS>
+               <FMSDOM_TRANSPORT_GIETS>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-14"/>
+               </FMSDOM_TRANSPORT_GIETS>
+               <TRANSPORT_MODE>PRE</TRANSPORT_MODE>
+               <TYPE>31</TYPE>
+               <SUPPLIER_PARTY_ID>9999114</SUPPLIER_PARTY_ID>
+               <REMARKS>3550879994</REMARKS>
+               <TYPEBEHAVIOUR>ROAD</TYPEBEHAVIOUR>
+            </FMSDOM_TRANSPORT>
+            <FMSDOM_TRANSPORT KEY="FTR-PRE-1-12" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TRANSPORT_MODE,REMARKS">
+               <FMSDOM_TRANSPORT_STOPS>
+                  <FMSDOM_TRANSPORT_STOP KEY="FTRS-PRE-1-12-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>LOAD</HANDLING_TYPE>
+                     <ADDRESS_CITY></ADDRESS_CITY>
+                     <LOCATION_NAME></LOCATION_NAME>
+                     <PLACE_QUALIFIER>88</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE></LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+                  <FMSDOM_TRANSPORT_STOP KEY="FTRS-PRE-1-12-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>UNLOAD</HANDLING_TYPE>
+                     <LOCATION_NAME>BEANR</LOCATION_NAME>
+                     <PLACE_QUALIFIER>9P</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE>BEANR</LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+               </FMSDOM_TRANSPORT_STOPS>
+               <FMSDOM_TRANSPORT_GIETS>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-15"/>
+               </FMSDOM_TRANSPORT_GIETS>
+               <TRANSPORT_MODE>PRE</TRANSPORT_MODE>
+               <TYPE>31</TYPE>
+               <SUPPLIER_PARTY_ID>9999114</SUPPLIER_PARTY_ID>
+               <REMARKS>3550880113</REMARKS>
+               <TYPEBEHAVIOUR>ROAD</TYPEBEHAVIOUR>
+            </FMSDOM_TRANSPORT>
+            <FMSDOM_TRANSPORT KEY="FTR-PRE-1-13" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TRANSPORT_MODE,REMARKS">
+               <FMSDOM_TRANSPORT_STOPS>
+                  <FMSDOM_TRANSPORT_STOP KEY="FTRS-PRE-1-13-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>LOAD</HANDLING_TYPE>
+                     <ADDRESS_CITY></ADDRESS_CITY>
+                     <LOCATION_NAME></LOCATION_NAME>
+                     <PLACE_QUALIFIER>88</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE></LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+                  <FMSDOM_TRANSPORT_STOP KEY="FTRS-PRE-1-13-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>UNLOAD</HANDLING_TYPE>
+                     <LOCATION_NAME>BEANR</LOCATION_NAME>
+                     <PLACE_QUALIFIER>9P</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE>BEANR</LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+               </FMSDOM_TRANSPORT_STOPS>
+               <FMSDOM_TRANSPORT_GIETS>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-11"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-12"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-13"/>
+               </FMSDOM_TRANSPORT_GIETS>
+               <TRANSPORT_MODE>PRE</TRANSPORT_MODE>
+               <TYPE>31</TYPE>
+               <SUPPLIER_PARTY_ID>9999114</SUPPLIER_PARTY_ID>
+               <REMARKS>3550879430-3550879730-3550879847</REMARKS>
+               <TYPEBEHAVIOUR>ROAD</TYPEBEHAVIOUR>
+            </FMSDOM_TRANSPORT>
+            <FMSDOM_TRANSPORT KEY="FTR-MAIN-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TRANSPORT_MODE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="TUDF-REC-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>BASF_REC</UDF_CODE>
+                     <UDF_VALUE>BASFAG2</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="TUDF-VOYNBR-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_VOYNBR</UDF_CODE>
+                     <UDF_VALUE>Ocean Vessel</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="TUDF-VESSEL-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-VESSEL</UDF_CODE>
+                     <UDF_VALUE>COSCO HOPE</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="TUDF-TOD-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-TOD</UDF_CODE>
+                     <UDF_VALUE>Columbus Rail Ramp</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="TUDF-LOYDSN-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-LOYDSN</UDF_CODE>
+                     <UDF_VALUE>9472165</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="TUDF-ETD-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-ETD</UDF_CODE>
+                     <UDF_VALUE>20/04/2026</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="TUDF-ETA-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-ETA</UDF_CODE>
+                     <UDF_VALUE>//</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="TUDF-POL-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-POL</UDF_CODE>
+                     <UDF_VALUE>BEANR</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="TUDF-POD-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-POD</UDF_CODE>
+                     <UDF_VALUE>USNYC</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_TRANSPORT_STOPS>
+                  <FMSDOM_TRANSPORT_STOP KEY="FTRS-MAIN-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>LOAD</HANDLING_TYPE>
+                     <START_TIME>2026-04-20T00:00:00</START_TIME>
+                     <PLACE_QUALIFIER>9</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE>BEANR</LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+                  <FMSDOM_TRANSPORT_STOP KEY="FTRS-MAIN-2-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>UNLOAD</HANDLING_TYPE>
+                     <PLACE_QUALIFIER>11</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE>USNYC</LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+               </FMSDOM_TRANSPORT_STOPS>
+               <FMSDOM_TRANSPORT_GIETS>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-11"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-12"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-13"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-14"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-15"/>
+               </FMSDOM_TRANSPORT_GIETS>
+               <FMS_TRANSPORT_CLAUSES>
+                  <FMS_TRANSPORT_CLAUSE KEY="FTRC-MAIN-0-1" ACTION="CREATE" SEARCH_FIELDS="TYPE">
+                     <TYPE>C</TYPE>
+                     <CONTENT>FREIGHT AND ON CARRIAGE PREPAID
+SHIPPED ON BOARD
+SHIPPER'S LOAD STOW AND COUNT</CONTENT>
+                  </FMS_TRANSPORT_CLAUSE>
+                  <FMS_TRANSPORT_CLAUSE KEY="FTRC-MAIN-1-1" ACTION="CREATE" SEARCH_FIELDS="TYPE">
+                     <TYPE>C</TYPE>
+                     <CONTENT>FOR CHEMICAL EMERGENCY (SPILL-LEAK-FIRE EXPOSURE OR ACCIDENT) CALL
+EMERGENCY RESPONSE CENTER BASF: +1 800 832 4357
+USA EMERGENCY CONTACT: CHEMTREC +1 800 424 9300 or +1 703 527 3887</CONTENT>
+                  </FMS_TRANSPORT_CLAUSE>
+                  <FMS_TRANSPORT_CLAUSE KEY="FTRC-MAIN-3-1" ACTION="CREATE" SEARCH_FIELDS="TYPE">
+                     <TYPE>NP</TYPE>
+                     <CONTENT>Name, address and phone number of the carriers agent at port of destination.
+
+For ICS2 filing: Fracht is not issuing a House BL - F10 (Straight BL) - Single ENS filing by the shipping line</CONTENT>
+                  </FMS_TRANSPORT_CLAUSE>
+                  <FMS_TRANSPORT_CLAUSE KEY="FTRC-MAIN-4-1-2" ACTION="CREATE" SEARCH_FIELDS="TYPE">
+                     <TYPE>C</TYPE>
+                     <CONTENT>Extra Notify information:
+Fax: 2155585751
+Email: BASFDocs@bdpint.com</CONTENT>
+                  </FMS_TRANSPORT_CLAUSE>
+                  <FMS_TRANSPORT_CLAUSE KEY="FTRC-MAIN-4-1-3" ACTION="CREATE" SEARCH_FIELDS="TYPE">
+                     <TYPE>C</TYPE>
+                     <CONTENT>Extra Consignee information:
+Fax: 9732456002
+Email: 
+Inquiries-Intercompany-MX-CAC@basf.
+com</CONTENT>
+                  </FMS_TRANSPORT_CLAUSE>
+               </FMS_TRANSPORT_CLAUSES>
+               <CARRIER_BOOKING_NBR></CARRIER_BOOKING_NBR>
+               <TRANSPORT_MODE>MAIN</TRANSPORT_MODE>
+               <TYPE>11</TYPE>
+               <TRANSPORT_IDENTIFIER>COSCO HOPE</TRANSPORT_IDENTIFIER>
+               <TECHNICAL_REFERENCE>2800209301</TECHNICAL_REFERENCE>
+               <SUPPLIER_PARTY_ID>999912</SUPPLIER_PARTY_ID>
+               <TYPEBEHAVIOUR>VESSEL</TYPEBEHAVIOUR>
+            </FMSDOM_TRANSPORT>
+            <FMSDOM_TRANSPORT KEY="FTR-ON" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TRANSPORT_MODE">
+               <FMSDOM_TRANSPORT_STOPS>
+                  <FMSDOM_TRANSPORT_STOP KEY="FTRS-ON-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>LOAD</HANDLING_TYPE>
+                     <SEQUENCE>1</SEQUENCE>
+                     <PLACE_QUALIFIER>11O</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE>USNYC</LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+                  <FMSDOM_TRANSPORT_STOP KEY="FTRS-ON-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>UNLOAD</HANDLING_TYPE>
+                     <SEQUENCE>2</SEQUENCE>
+                     <PLACE_QUALIFIER>7</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE>USCMH</LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+               </FMSDOM_TRANSPORT_STOPS>
+               <FMSDOM_TRANSPORT_GIETS>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-11"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-12"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-13"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-14"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-15"/>
+               </FMSDOM_TRANSPORT_GIETS>
+               <TRANSPORT_MODE>ON</TRANSPORT_MODE>
+               <TYPE>31</TYPE>
+               <TYPEBEHAVIOUR>ROAD</TYPEBEHAVIOUR>
+            </FMSDOM_TRANSPORT>
+         </FMSDOM_TRANSPORTS>
+         <FMSDOM_EQUIPMENTS>
+            <FMSDOM_EQUIPMENT ACTION="CREATE_UPDATE" SEARCH_FIELDS="EQUIPMENT_IDENTIFIER,TECHNICAL_REFERENCE" KEY="FCO-1-11">
+               <FMSDOM_EQUIPMENT_GIETS>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-14"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-14"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-14"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-14"/>
+               </FMSDOM_EQUIPMENT_GIETS>
+               <EQUIPMENT_IDENTIFIER>1288724478</EQUIPMENT_IDENTIFIER>
+               <EQUIPMENT_SIZE>45</EQUIPMENT_SIZE>
+               <EQUIPMENT_TYPE>RT</EQUIPMENT_TYPE>
+               <EQUIPMENT_VARIATION>CO</EQUIPMENT_VARIATION>
+               <GROSS_WEIGHT></GROSS_WEIGHT>
+               <NET_WEIGHT></NET_WEIGHT>
+               <SEAL1></SEAL1>
+               <SEAL2></SEAL2>
+               <TECHNICAL_REFERENCE>3550879994</TECHNICAL_REFERENCE>
+            </FMSDOM_EQUIPMENT>
+            <FMSDOM_EQUIPMENT ACTION="CREATE_UPDATE" SEARCH_FIELDS="EQUIPMENT_IDENTIFIER,TECHNICAL_REFERENCE" KEY="FCO-1-12">
+               <FMSDOM_EQUIPMENT_GIETS>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-15"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-15"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-15"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-15"/>
+               </FMSDOM_EQUIPMENT_GIETS>
+               <EQUIPMENT_IDENTIFIER>1288724479</EQUIPMENT_IDENTIFIER>
+               <EQUIPMENT_SIZE>45</EQUIPMENT_SIZE>
+               <EQUIPMENT_TYPE>RT</EQUIPMENT_TYPE>
+               <EQUIPMENT_VARIATION>CO</EQUIPMENT_VARIATION>
+               <GROSS_WEIGHT></GROSS_WEIGHT>
+               <NET_WEIGHT></NET_WEIGHT>
+               <SEAL1></SEAL1>
+               <SEAL2></SEAL2>
+               <TECHNICAL_REFERENCE>3550880113</TECHNICAL_REFERENCE>
+            </FMSDOM_EQUIPMENT>
+            <FMSDOM_EQUIPMENT ACTION="CREATE_UPDATE" SEARCH_FIELDS="EQUIPMENT_IDENTIFIER,TECHNICAL_REFERENCE" KEY="FCO-1-13">
+               <FMSDOM_EQUIPMENT_GIETS>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-11"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-11"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-11"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-11"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-12"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-12"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-12"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-12"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-13"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-PRE-13"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-MAIN-13"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="FCO-GO-IT-ON-13"/>
+               </FMSDOM_EQUIPMENT_GIETS>
+               <EQUIPMENT_IDENTIFIER>1288725860</EQUIPMENT_IDENTIFIER>
+               <EQUIPMENT_SIZE>45</EQUIPMENT_SIZE>
+               <EQUIPMENT_TYPE>RT</EQUIPMENT_TYPE>
+               <EQUIPMENT_VARIATION>CO</EQUIPMENT_VARIATION>
+               <GROSS_WEIGHT></GROSS_WEIGHT>
+               <NET_WEIGHT></NET_WEIGHT>
+               <SEAL1></SEAL1>
+               <SEAL2></SEAL2>
+               <TECHNICAL_REFERENCE>3550879430-3550879730-3550879847</TECHNICAL_REFERENCE>
+            </FMSDOM_EQUIPMENT>
+         </FMSDOM_EQUIPMENTS>
+         <DELIVERY_TERM>CIP</DELIVERY_TERM>
+         <CUSTOMER_REFERENCE>2800209301BL00</CUSTOMER_REFERENCE>
+         <COMPANY_CODE>POLYTRA</COMPANY_CODE>
+         <DEPARTMENT_CODE>71</DEPARTMENT_CODE>
+         <GROUP_CODE>02</GROUP_CODE>
+         <PI_CATEGORY>FMS</PI_CATEGORY>
+         <PI_OWNER>TRISESB</PI_OWNER>
+         <PI_STATUS>OP</PI_STATUS>
+         <PI_TYPE>EXP</PI_TYPE>
+         <VARIATION>B</VARIATION>
+         <SLA_CODE>71BASF FCL</SLA_CODE>
+         <CUSTOMER_THIRDPARTY_CODE>00025000</CUSTOMER_THIRDPARTY_CODE>
+         <PI_SUBTYPE>BASFFCL</PI_SUBTYPE>
+      </FMSWFM_ORDER>
+      <FMSWFM_ORDER KEY="BL-1FMS-1" ACTION="CREATE_UPDATE" DATA_LEVEL="MS" SEARCH_FIELDS="PI_STATUS,CUSTOMER_REFERENCE,COMPANY_CODE,GROUP_CODE,PI_CATEGORY,PI_SUBTYPE" PARENT_KEY="FMS-1">
+         <FMSDOM_PARTIES>
+            <FMSDOM_PARTY KEY="BL-1FPA-TM-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>JESSEY.HO@BASF.COM</CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>TM</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>Mrs Ho</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-DG-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER">
+               <PARTY_QUALIFIER>DG</PARTY_QUALIFIER>
+               <VARIATION>PA</VARIATION>
+               <THIRDPARTY_CODE>00240001</THIRDPARTY_CODE>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>Ludwigshafen Friesenheim/Nord  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF SE</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 67063</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Carl-Bosch-Strasse 38</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>COR</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF SE</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BASF SE
+Carl-Bosch-Strasse 38
+67063 Ludwigshafen Friesenheim/Nord
+ GERMANY</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="1999912" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>13  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY></ADDRESS_COUNTRY>
+               <ADDRESS_NAME>CMA-CGM AGENCIES WORLDWIDE S.A.S.</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> FR</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>4 quai d
+Arenc BOULEVARD JACQUES SAAD+Marseille</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>CARR</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>CMA-CGM AGENCIES WORLDWIDE S.A.S.</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <THIRDPARTY_CODE>00300618</THIRDPARTY_CODE>
+               <PARTY_FORMATTED>CMA-CGM AGENCIES WORLDWIDE S.A.S.
+4 quai d
+Arenc BOULEVARD JACQUES 
+SAAD+Marseille
+FR 13</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>ANTWERPEN  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>BE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>POLYTRA N.V.</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 2018</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Desguinlei 92 box V 15 Verzicht gebouw</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX>032050419</CONTACT_FAX>
+               <PARTY_QUALIFIER>FW</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>POLYTRA N.V.</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>POLYTRA N.V.
+Desguinlei 92 box V 15 Verzicht 
+gebouw
+2018 ANTWERPEN BELGIUM
+Fax: 032050419</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-4" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>Ludwigshafen  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF SE</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 67056</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Carl-Bosch-Str. 38</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>DGB</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF SE</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BASF SE
+Carl-Bosch-Str. 38
+67056 Ludwigshafen GERMANY</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-5" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>Ludwigshafen Friesenheim/Nord  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF SE</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 67063</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Carl-Bosch-Strasse 38</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>FP</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF SE</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <THIRDPARTY_CODE>00025000</THIRDPARTY_CODE>
+               <PARTY_FORMATTED>BASF SE
+Carl-Bosch-Strasse 38
+67063 Ludwigshafen Friesenheim/Nord
+ GERMANY</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-6" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER">
+               <ADDRESS_BUILDING>Carl-Bosch-Strasse 38</ADDRESS_BUILDING>
+               <ADDRESS_CITY>67056 Ludwigshafen  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF SE</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE></ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET></ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>SHIP</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF SE</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BASF SE
+Carl-Bosch-Strasse 38
+67056 Ludwigshafen GERMANY
+2800209301BL00</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-7" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY></ADDRESS_CITY>
+               <ADDRESS_COUNTRY>US</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>To Consignee</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE></ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET></ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>Consignee</CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>BL1</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>To Consignee</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>To Consignee
+
+UNITED STATES
+Email: Consignee</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-8" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY></ADDRESS_CITY>
+               <ADDRESS_COUNTRY></ADDRESS_COUNTRY>
+               <ADDRESS_NAME>Notify</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE></ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET></ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>Notify</CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>BL2</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>Notify</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>Notify
+
+
+Email: Notify</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-9" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING>MIDWEST DISTRIBUTION CENTER</ADDRESS_BUILDING>
+               <ADDRESS_CITY>COLUMBUS   Ohio</ADDRESS_CITY>
+               <ADDRESS_COUNTRY>US</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF CORPORATION</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 432170000</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>9565 LOGISTICS CT</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>IntercompanyNorthAmerica@basf.com</CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>DOC1</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF CORPORATION</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BASF CORPORATION
+MIDWEST DISTRIBUTION CENTER
+9565 LOGISTICS CT
+432170000 COLUMBUS Ohio UNITED 
+STATES
+Email: 
+IntercompanyNorthAmerica@basf.com</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-10" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>Berlin  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>Mrs Juppi</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 10407</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Storkower Stra?e 146</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>FABIENNE.JUPPI@BASF.COM</CONTACT_EMAIL>
+               <CONTACT_TEL>+49 30 2005-5660</CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>DOC4</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>Mrs Juppi</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>Mrs Juppi
+Storkower Stra?e 146
+10407 Berlin GERMANY
+Tel: +49 30 2005-5660
+Email: FABIENNE.JUPPI@BASF.COM</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-11" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER">
+               <ADDRESS_BUILDING>BASF IMPORT OPERATIONS</ADDRESS_BUILDING>
+               <ADDRESS_CITY>PHILADELPHIA Pennsylvania</ADDRESS_CITY>
+               <ADDRESS_COUNTRY>US</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BDP INTERNATIONAL</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE>191063690</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>510 WALNUT ST, FL 3</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>BASFDocs@bdpint.com</CONTACT_EMAIL>
+               <CONTACT_TEL>8564201182</CONTACT_TEL>
+               <CONTACT_FAX>2155585751</CONTACT_FAX>
+               <PARTY_QUALIFIER>NTF1</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BDP INTERNATIONAL</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BDP INTERNATIONAL
+BASF IMPORT OPERATIONS
+510 WALNUT ST, FL 3
+191063690 PHILADELPHIA Pennsylvania
+ UNITED STATES
+Tel: 8564201182</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-12" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>FLORHAM PARK New Jersey</ADDRESS_CITY>
+               <ADDRESS_COUNTRY>US</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>BASF CORPORATION</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE>MORRIS 079321089</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>100 Park Avenue
+PO Box 685</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL>Inquiries-Intercompany-MX-CAC@basf.com</CONTACT_EMAIL>
+               <CONTACT_TEL>9732456000</CONTACT_TEL>
+               <CONTACT_FAX>9732456002</CONTACT_FAX>
+               <PARTY_QUALIFIER>CEE</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>BASF CORPORATION</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>BASF CORPORATION
+100 Park Avenue
+PO Box 685
+MORRIS 079321089 FLORHAM PARK New 
+Jersey UNITED STATES
+Tel: 9732456000</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="BL-1FPA-1-13" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING>Shipping Agency</ADDRESS_BUILDING>
+               <ADDRESS_CITY>Bremen  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>CMA-CGM (Deutschland) GmbH</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 28217</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Schellackstr. 1</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>DCP</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>CMA-CGM (Deutschland) GmbH</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <PARTY_FORMATTED>CMA-CGM (Deutschland) GmbH
+Shipping Agency
+Schellackstr. 1
+28217 Bremen GERMANY</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+            <FMSDOM_PARTY KEY="19999114" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PARTY_QUALIFIER,THIRDPARTY_NAME">
+               <ADDRESS_BUILDING></ADDRESS_BUILDING>
+               <ADDRESS_CITY>Ludwigshafen  </ADDRESS_CITY>
+               <ADDRESS_COUNTRY>DE</ADDRESS_COUNTRY>
+               <ADDRESS_NAME>Contargo Rhein-Neckar GmbH</ADDRESS_NAME>
+               <ADDRESS_POSTAL_CODE> 67065</ADDRESS_POSTAL_CODE>
+               <ADDRESS_STREET>Shellstr. 5</ADDRESS_STREET>
+               <ADDRESS_TYPE>OPER</ADDRESS_TYPE>
+               <CONTACT_EMAIL></CONTACT_EMAIL>
+               <CONTACT_TEL></CONTACT_TEL>
+               <CONTACT_FAX></CONTACT_FAX>
+               <PARTY_QUALIFIER>TRPT</PARTY_QUALIFIER>
+               <THIRDPARTY_NAME>Contargo Rhein-Neckar GmbH</THIRDPARTY_NAME>
+               <VARIATION>PA</VARIATION>
+               <THIRDPARTY_CODE>00301864</THIRDPARTY_CODE>
+               <PARTY_FORMATTED>Contargo Rhein-Neckar GmbH
+Shellstr. 5
+67065 Ludwigshafen GERMANY</PARTY_FORMATTED>
+            </FMSDOM_PARTY>
+         </FMSDOM_PARTIES>
+         <FMSDOM_GOODS>
+            <FMSDOM_GOOD KEY="BL-1FGO-1-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TECHNICAL_REFERENCE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-1-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING1</UDF_CODE>
+                     <UDF_VALUE>CP3</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-2-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING2</UDF_CODE>
+                     <UDF_VALUE>1H1</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-3-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_BUYORDNR</UDF_CODE>
+                     <UDF_VALUE>P.O. NBR 4994886331</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-4-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_ARTNR</UDF_CODE>
+                     <UDF_VALUE>50403932</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-5-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_GTIN</UDF_CODE>
+                     <UDF_VALUE>4014439010826</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-6-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL1</UDF_CODE>
+                     <UDF_VALUE>Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-6-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-7-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAW</UDF_CODE>
+                     <UDF_VALUE>6253</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-8-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAA</UDF_CODE>
+                     <UDF_VALUE>Luviquat? Hold AT 3 120KG Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-9-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAS</UDF_CODE>
+                     <UDF_VALUE>US Harmonized tariff code:390591</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-10-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAC</UDF_CODE>
+                     <UDF_VALUE>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-11-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-ACB</UDF_CODE>
+                     <UDF_VALUE>Odor: faint specific odour</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-12-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI1</UDF_CODE>
+                     <UDF_VALUE>Properties of the product change irreversibly on exceeding the limit t emperature.</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-12-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-13-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAN</UDF_CODE>
+                     <UDF_VALUE>Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-14-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS1</UDF_CODE>
+                     <UDF_VALUE>7</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-15-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS2</UDF_CODE>
+                     <UDF_VALUE>35</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-16-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-17-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY1</UDF_CODE>
+                     <UDF_VALUE>Pallet,wood,CP3,1140x1140x138mm,HT</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-18-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY2</UDF_CODE>
+                     <UDF_VALUE>Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-19-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-20-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI</UDF_CODE>
+                     <UDF_VALUE>3550879430</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-21-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI2</UDF_CODE>
+                     <UDF_VALUE>000010</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-22-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-VN</UDF_CODE>
+                     <UDF_VALUE>3020963670</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-23-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-CO</UDF_CODE>
+                     <UDF_VALUE>4994886331</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-24-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-OP</UDF_CODE>
+                     <UDF_VALUE>4994886331</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-25-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-AQV</UDF_CODE>
+                     <UDF_VALUE>39059100</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-26-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-WT</UDF_CODE>
+                     <UDF_VALUE>147.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-1-1-27-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-AAE</UDF_CODE>
+                     <UDF_VALUE>4396.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_GOOD_ITEMS>
+                  <FMSDOM_GOOD_ITEM KEY="BL-1FGO-IT-1-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="ITEM_IDENTIFIER">
+                     <FMSDOM_GOOD_ITEM_GIETS>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-11"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-11"/>
+                     </FMSDOM_GOOD_ITEM_GIETS>
+                     <GROSS_WEIGHT>4543.000</GROSS_WEIGHT>
+                     <NET_WEIGHT>4200.000</NET_WEIGHT>
+                     <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+                     <ITEM_IDENTIFIER>3550879430-000010</ITEM_IDENTIFIER>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_ITEMS>35</NUMBER_OF_ITEMS>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                     <VOLUME>8.736</VOLUME>
+                     <VOLUME_UNIT>CBM</VOLUME_UNIT>
+                     <VOLUME_WEIGHT>8.736</VOLUME_WEIGHT>
+                     <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+                  </FMSDOM_GOOD_ITEM>
+               </FMSDOM_GOOD_ITEMS>
+               <FMSDOM_GOOD_GIETS>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-11"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-11"/>
+               </FMSDOM_GOOD_GIETS>
+               <FMSDOM_DANGEROUS_GOODS>
+                  <FMSDOM_DANGEROUS_GOOD KEY="BL-1FGO-DG-1-1-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UNDG_CODE">
+                     <EMERGENCY_CONTACT_NAME>BASF SE /LUDW. 24 HOUR NUMBER</EMERGENCY_CONTACT_NAME>
+                     <EMERGENCY_CONTACT_NUMBER>00491802273112</EMERGENCY_CONTACT_NUMBER>
+                     <EMS_NUMBER>F-AS-F</EMS_NUMBER>
+                     <FLASH_POINT>101</FLASH_POINT>
+                     <FLASH_POINT_UNIT>C</FLASH_POINT_UNIT>
+                     <IMDG_CODE_PAGE>9</IMDG_CODE_PAGE>
+                     <IMO_CLASS>9</IMO_CLASS>
+                     <PACKING_GROUP>3</PACKING_GROUP>
+                     <PROPER_SHIPPING_NAME>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG I</PROPER_SHIPPING_NAME>
+                     <UNDG_CODE>3082</UNDG_CODE>
+                     <NET_WEIGHT>4200.000</NET_WEIGHT>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <SUBSIDIARY_HAZARD>6.1</SUBSIDIARY_HAZARD>
+                     <NUMBER_OF_PACKAGES>35</NUMBER_OF_PACKAGES>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                  </FMSDOM_DANGEROUS_GOOD>
+               </FMSDOM_DANGEROUS_GOODS>
+               <HS_CODE>39059100</HS_CODE>
+               <TECHNICAL_REFERENCE>3550879430-000010-1</TECHNICAL_REFERENCE>
+               <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+               <VOLUME_WEIGHT>8.736</VOLUME_WEIGHT>
+               <REFERENCE>3020963670</REFERENCE>
+               <REFERENCE_QUALIFIER>FLN</REFERENCE_QUALIFIER>
+               <GROSS_WEIGHT>4543.000</GROSS_WEIGHT>
+               <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+               <NET_WEIGHT>4200.000</NET_WEIGHT>
+               <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+               <NUMBER_OF_PACKAGES>35</NUMBER_OF_PACKAGES>
+               <PACKAGE_CODE>DR</PACKAGE_CODE>
+               <VOLUME>8.736</VOLUME>
+               <VOLUME_UNIT>CBM</VOLUME_UNIT>
+               <CARGO_DESCRIPTION>Plastic drums
+7 
+Pallet,wood,CP3,1140x1140x138mm,HT
+Luviquat? Hold AT 3 120KG Plastic 
+drums
+US Harmonized tariff code:390591
+P.O. NBR 4994886331
+3020963670
+IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate
+EMS: F-AS-F
+Flashpoint: 101 C</CARGO_DESCRIPTION>
+               <MARKS_AND_NUMBERS>BASF
+3020963670/000010</MARKS_AND_NUMBERS>
+               <BOOKING_REFERENCE>3550879430-000010</BOOKING_REFERENCE>
+            </FMSDOM_GOOD>
+            <FMSDOM_GOOD KEY="BL-1FGO-1-2-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TECHNICAL_REFERENCE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-1-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING1</UDF_CODE>
+                     <UDF_VALUE>CP3</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-2-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING2</UDF_CODE>
+                     <UDF_VALUE>1H1</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-3-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_BUYORDNR</UDF_CODE>
+                     <UDF_VALUE>P.O. NBR 4994886335</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-4-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_ARTNR</UDF_CODE>
+                     <UDF_VALUE>50403932</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-5-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_GTIN</UDF_CODE>
+                     <UDF_VALUE>4014439010826</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-6-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL1</UDF_CODE>
+                     <UDF_VALUE>Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-6-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-7-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAW</UDF_CODE>
+                     <UDF_VALUE>6253</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-8-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAA</UDF_CODE>
+                     <UDF_VALUE>Luviquat? Hold AT 3 120KG Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-9-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAS</UDF_CODE>
+                     <UDF_VALUE>US Harmonized tariff code:390591</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-10-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAC</UDF_CODE>
+                     <UDF_VALUE>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-11-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-ACB</UDF_CODE>
+                     <UDF_VALUE>Odor: faint specific odour</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-12-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI1</UDF_CODE>
+                     <UDF_VALUE>Properties of the product change irreversibly on exceeding the limit t emperature.</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-12-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-13-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAN</UDF_CODE>
+                     <UDF_VALUE>Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-14-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS1</UDF_CODE>
+                     <UDF_VALUE>10</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-15-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS2</UDF_CODE>
+                     <UDF_VALUE>50</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-16-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-17-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY1</UDF_CODE>
+                     <UDF_VALUE>Pallet,wood,CP3,1140x1140x138mm,HT</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-18-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY2</UDF_CODE>
+                     <UDF_VALUE>Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-19-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-20-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI</UDF_CODE>
+                     <UDF_VALUE>3550879730</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-21-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI2</UDF_CODE>
+                     <UDF_VALUE>000010</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-22-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-VN</UDF_CODE>
+                     <UDF_VALUE>3020963671</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-23-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-CO</UDF_CODE>
+                     <UDF_VALUE>4994886335</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-24-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-OP</UDF_CODE>
+                     <UDF_VALUE>4994886335</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-25-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-AQV</UDF_CODE>
+                     <UDF_VALUE>39059100</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-26-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-WT</UDF_CODE>
+                     <UDF_VALUE>210.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-2-1-27-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-AAE</UDF_CODE>
+                     <UDF_VALUE>6280.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_GOOD_ITEMS>
+                  <FMSDOM_GOOD_ITEM KEY="BL-1FGO-IT-1-2-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="ITEM_IDENTIFIER">
+                     <FMSDOM_GOOD_ITEM_GIETS>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-12"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-12"/>
+                     </FMSDOM_GOOD_ITEM_GIETS>
+                     <GROSS_WEIGHT>6490.000</GROSS_WEIGHT>
+                     <NET_WEIGHT>6000.000</NET_WEIGHT>
+                     <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+                     <ITEM_IDENTIFIER>3550879730-000010</ITEM_IDENTIFIER>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_ITEMS>50</NUMBER_OF_ITEMS>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                     <VOLUME>12.480</VOLUME>
+                     <VOLUME_UNIT>CBM</VOLUME_UNIT>
+                     <VOLUME_WEIGHT>12.480</VOLUME_WEIGHT>
+                     <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+                  </FMSDOM_GOOD_ITEM>
+               </FMSDOM_GOOD_ITEMS>
+               <FMSDOM_GOOD_GIETS>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-12"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-12"/>
+               </FMSDOM_GOOD_GIETS>
+               <FMSDOM_DANGEROUS_GOODS>
+                  <FMSDOM_DANGEROUS_GOOD KEY="BL-1FGO-DG-1-2-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UNDG_CODE">
+                     <EMERGENCY_CONTACT_NAME>BASF SE /LUDW. 24 HOUR NUMBER</EMERGENCY_CONTACT_NAME>
+                     <EMERGENCY_CONTACT_NUMBER>00491802273112</EMERGENCY_CONTACT_NUMBER>
+                     <EMS_NUMBER>F-AS-F</EMS_NUMBER>
+                     <FLASH_POINT>101</FLASH_POINT>
+                     <FLASH_POINT_UNIT>C</FLASH_POINT_UNIT>
+                     <IMDG_CODE_PAGE>9</IMDG_CODE_PAGE>
+                     <IMO_CLASS>9</IMO_CLASS>
+                     <PACKING_GROUP>3</PACKING_GROUP>
+                     <PROPER_SHIPPING_NAME>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG I</PROPER_SHIPPING_NAME>
+                     <UNDG_CODE>3082</UNDG_CODE>
+                     <NET_WEIGHT>6000.000</NET_WEIGHT>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_PACKAGES>50</NUMBER_OF_PACKAGES>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                  </FMSDOM_DANGEROUS_GOOD>
+               </FMSDOM_DANGEROUS_GOODS>
+               <HS_CODE>39059100</HS_CODE>
+               <TECHNICAL_REFERENCE>3550879730-000010-1</TECHNICAL_REFERENCE>
+               <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+               <VOLUME_WEIGHT>12.480</VOLUME_WEIGHT>
+               <REFERENCE>3020963671</REFERENCE>
+               <REFERENCE_QUALIFIER>FLN</REFERENCE_QUALIFIER>
+               <GROSS_WEIGHT>6490.000</GROSS_WEIGHT>
+               <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+               <NET_WEIGHT>6000.000</NET_WEIGHT>
+               <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+               <NUMBER_OF_PACKAGES>50</NUMBER_OF_PACKAGES>
+               <PACKAGE_CODE>DR</PACKAGE_CODE>
+               <VOLUME>12.480</VOLUME>
+               <VOLUME_UNIT>CBM</VOLUME_UNIT>
+               <CARGO_DESCRIPTION>Plastic drums
+10 
+Pallet,wood,CP3,1140x1140x138mm,HT
+Luviquat? Hold AT 3 120KG Plastic 
+drums
+US Harmonized tariff code:390591
+P.O. NBR 4994886335
+3020963671
+IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate
+EMS: F-AS-F
+Flashpoint: 101 C</CARGO_DESCRIPTION>
+               <MARKS_AND_NUMBERS>BASF
+3020963671/000010</MARKS_AND_NUMBERS>
+               <BOOKING_REFERENCE>3550879730-000010</BOOKING_REFERENCE>
+            </FMSDOM_GOOD>
+            <FMSDOM_GOOD KEY="BL-1FGO-1-3-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TECHNICAL_REFERENCE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-1-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING1</UDF_CODE>
+                     <UDF_VALUE>CP3</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-2-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING2</UDF_CODE>
+                     <UDF_VALUE>1H1</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-3-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_BUYORDNR</UDF_CODE>
+                     <UDF_VALUE>P.O. NBR 4995117414</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-4-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_ARTNR</UDF_CODE>
+                     <UDF_VALUE>50403932</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-5-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_GTIN</UDF_CODE>
+                     <UDF_VALUE>4014439010826</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-6-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL1</UDF_CODE>
+                     <UDF_VALUE>Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-6-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-7-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAW</UDF_CODE>
+                     <UDF_VALUE>6253</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-8-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAA</UDF_CODE>
+                     <UDF_VALUE>Luviquat? Hold AT 3 120KG Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-9-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAS</UDF_CODE>
+                     <UDF_VALUE>US Harmonized tariff code:390591</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-10-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAC</UDF_CODE>
+                     <UDF_VALUE>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-11-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-ACB</UDF_CODE>
+                     <UDF_VALUE>Odor: faint specific odour</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-12-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI1</UDF_CODE>
+                     <UDF_VALUE>Properties of the product change irreversibly on exceeding the limit t emperature.</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-12-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-13-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAN</UDF_CODE>
+                     <UDF_VALUE>Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-14-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS1</UDF_CODE>
+                     <UDF_VALUE>10</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-15-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS2</UDF_CODE>
+                     <UDF_VALUE>50</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-16-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-17-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY1</UDF_CODE>
+                     <UDF_VALUE>Pallet,wood,CP3,1140x1140x138mm,HT</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-18-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY2</UDF_CODE>
+                     <UDF_VALUE>Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-19-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-20-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI</UDF_CODE>
+                     <UDF_VALUE>3550879847</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-21-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI2</UDF_CODE>
+                     <UDF_VALUE>000010</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-22-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-VN</UDF_CODE>
+                     <UDF_VALUE>3020991631</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-23-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-CO</UDF_CODE>
+                     <UDF_VALUE>4995117414</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-24-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-OP</UDF_CODE>
+                     <UDF_VALUE>4995117414</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-25-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-AQV</UDF_CODE>
+                     <UDF_VALUE>39059100</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-26-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-WT</UDF_CODE>
+                     <UDF_VALUE>210.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-3-1-27-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-AAE</UDF_CODE>
+                     <UDF_VALUE>6280.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_GOOD_ITEMS>
+                  <FMSDOM_GOOD_ITEM KEY="BL-1FGO-IT-1-3-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="ITEM_IDENTIFIER">
+                     <FMSDOM_GOOD_ITEM_GIETS>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-13"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-13"/>
+                     </FMSDOM_GOOD_ITEM_GIETS>
+                     <GROSS_WEIGHT>6490.000</GROSS_WEIGHT>
+                     <NET_WEIGHT>6000.000</NET_WEIGHT>
+                     <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+                     <ITEM_IDENTIFIER>3550879847-000010</ITEM_IDENTIFIER>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_ITEMS>50</NUMBER_OF_ITEMS>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                     <VOLUME>12.480</VOLUME>
+                     <VOLUME_UNIT>CBM</VOLUME_UNIT>
+                     <VOLUME_WEIGHT>12.480</VOLUME_WEIGHT>
+                     <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+                  </FMSDOM_GOOD_ITEM>
+               </FMSDOM_GOOD_ITEMS>
+               <FMSDOM_GOOD_GIETS>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-13"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-13"/>
+               </FMSDOM_GOOD_GIETS>
+               <FMSDOM_DANGEROUS_GOODS>
+                  <FMSDOM_DANGEROUS_GOOD KEY="BL-1FGO-DG-1-3-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UNDG_CODE">
+                     <EMERGENCY_CONTACT_NAME>BASF SE /LUDW. 24 HOUR NUMBER</EMERGENCY_CONTACT_NAME>
+                     <EMERGENCY_CONTACT_NUMBER>00491802273112</EMERGENCY_CONTACT_NUMBER>
+                     <EMS_NUMBER>F-AS-F</EMS_NUMBER>
+                     <FLASH_POINT>101</FLASH_POINT>
+                     <FLASH_POINT_UNIT>C</FLASH_POINT_UNIT>
+                     <IMDG_CODE_PAGE>9</IMDG_CODE_PAGE>
+                     <IMO_CLASS>9</IMO_CLASS>
+                     <PACKING_GROUP>3</PACKING_GROUP>
+                     <PROPER_SHIPPING_NAME>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG I</PROPER_SHIPPING_NAME>
+                     <UNDG_CODE>3082</UNDG_CODE>
+                     <NET_WEIGHT>6000.000</NET_WEIGHT>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_PACKAGES>50</NUMBER_OF_PACKAGES>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                  </FMSDOM_DANGEROUS_GOOD>
+               </FMSDOM_DANGEROUS_GOODS>
+               <HS_CODE>39059100</HS_CODE>
+               <TECHNICAL_REFERENCE>3550879847-000010-1</TECHNICAL_REFERENCE>
+               <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+               <VOLUME_WEIGHT>12.480</VOLUME_WEIGHT>
+               <REFERENCE>3020991631</REFERENCE>
+               <REFERENCE_QUALIFIER>FLN</REFERENCE_QUALIFIER>
+               <GROSS_WEIGHT>6490.000</GROSS_WEIGHT>
+               <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+               <NET_WEIGHT>6000.000</NET_WEIGHT>
+               <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+               <NUMBER_OF_PACKAGES>50</NUMBER_OF_PACKAGES>
+               <PACKAGE_CODE>DR</PACKAGE_CODE>
+               <VOLUME>12.480</VOLUME>
+               <VOLUME_UNIT>CBM</VOLUME_UNIT>
+               <CARGO_DESCRIPTION>Plastic drums
+10 
+Pallet,wood,CP3,1140x1140x138mm,HT
+Luviquat? Hold AT 3 120KG Plastic 
+drums
+US Harmonized tariff code:390591
+P.O. NBR 4995117414
+3020991631
+IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate
+EMS: F-AS-F
+Flashpoint: 101 C</CARGO_DESCRIPTION>
+               <MARKS_AND_NUMBERS>BASF
+3020991631/000010</MARKS_AND_NUMBERS>
+               <BOOKING_REFERENCE>3550879847-000010</BOOKING_REFERENCE>
+            </FMSDOM_GOOD>
+            <FMSDOM_GOOD KEY="BL-1FGO-1-4-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TECHNICAL_REFERENCE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-1-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING1</UDF_CODE>
+                     <UDF_VALUE>CP3</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-2-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING2</UDF_CODE>
+                     <UDF_VALUE>1H1</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-3-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_BUYORDNR</UDF_CODE>
+                     <UDF_VALUE>P.O. NBR 4995488194</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-4-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_ARTNR</UDF_CODE>
+                     <UDF_VALUE>50403932</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-5-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_GTIN</UDF_CODE>
+                     <UDF_VALUE>4014439010826</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-6-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL1</UDF_CODE>
+                     <UDF_VALUE>Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-6-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-7-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAW</UDF_CODE>
+                     <UDF_VALUE>6253</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-8-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAA</UDF_CODE>
+                     <UDF_VALUE>Luviquat? Hold AT 3 120KG Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-9-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAS</UDF_CODE>
+                     <UDF_VALUE>US Harmonized tariff code:390591</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-10-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAC</UDF_CODE>
+                     <UDF_VALUE>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-11-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-ACB</UDF_CODE>
+                     <UDF_VALUE>Odor: faint specific odour</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-12-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI1</UDF_CODE>
+                     <UDF_VALUE>Properties of the product change irreversibly on exceeding the limit t emperature.</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-12-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-13-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAN</UDF_CODE>
+                     <UDF_VALUE>Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-14-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS1</UDF_CODE>
+                     <UDF_VALUE>30</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-15-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS2</UDF_CODE>
+                     <UDF_VALUE>150</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-16-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-17-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY1</UDF_CODE>
+                     <UDF_VALUE>Pallet,wood,CP3,1140x1140x138mm,HT</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-18-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY2</UDF_CODE>
+                     <UDF_VALUE>Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-19-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-20-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI</UDF_CODE>
+                     <UDF_VALUE>3550879994</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-21-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI2</UDF_CODE>
+                     <UDF_VALUE>000010</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-22-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-VN</UDF_CODE>
+                     <UDF_VALUE>3021036468</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-23-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-CO</UDF_CODE>
+                     <UDF_VALUE>4995488194</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-24-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-OP</UDF_CODE>
+                     <UDF_VALUE>4995488194</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-25-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-AQV</UDF_CODE>
+                     <UDF_VALUE>39059100</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-26-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-WT</UDF_CODE>
+                     <UDF_VALUE>630.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-4-1-27-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-AAE</UDF_CODE>
+                     <UDF_VALUE>18840.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_GOOD_ITEMS>
+                  <FMSDOM_GOOD_ITEM KEY="BL-1FGO-IT-1-4-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="ITEM_IDENTIFIER">
+                     <FMSDOM_GOOD_ITEM_GIETS>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-14"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-14"/>
+                     </FMSDOM_GOOD_ITEM_GIETS>
+                     <GROSS_WEIGHT>19470.000</GROSS_WEIGHT>
+                     <NET_WEIGHT>18000.000</NET_WEIGHT>
+                     <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+                     <ITEM_IDENTIFIER>3550879994-000010</ITEM_IDENTIFIER>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_ITEMS>150</NUMBER_OF_ITEMS>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                     <VOLUME>37.440</VOLUME>
+                     <VOLUME_UNIT>CBM</VOLUME_UNIT>
+                     <VOLUME_WEIGHT>37.440</VOLUME_WEIGHT>
+                     <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+                  </FMSDOM_GOOD_ITEM>
+               </FMSDOM_GOOD_ITEMS>
+               <FMSDOM_GOOD_GIETS>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-14"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-14"/>
+               </FMSDOM_GOOD_GIETS>
+               <FMSDOM_DANGEROUS_GOODS>
+                  <FMSDOM_DANGEROUS_GOOD KEY="BL-1FGO-DG-1-4-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UNDG_CODE">
+                     <EMERGENCY_CONTACT_NAME>BASF SE /LUDW. 24 HOUR NUMBER</EMERGENCY_CONTACT_NAME>
+                     <EMERGENCY_CONTACT_NUMBER>00491802273112</EMERGENCY_CONTACT_NUMBER>
+                     <EMS_NUMBER>F-AS-F</EMS_NUMBER>
+                     <FLASH_POINT>101</FLASH_POINT>
+                     <FLASH_POINT_UNIT>C</FLASH_POINT_UNIT>
+                     <IMDG_CODE_PAGE>9</IMDG_CODE_PAGE>
+                     <IMO_CLASS>9</IMO_CLASS>
+                     <PACKING_GROUP>3</PACKING_GROUP>
+                     <PROPER_SHIPPING_NAME>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG I</PROPER_SHIPPING_NAME>
+                     <UNDG_CODE>3082</UNDG_CODE>
+                     <NET_WEIGHT>18000.000</NET_WEIGHT>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_PACKAGES>150</NUMBER_OF_PACKAGES>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                  </FMSDOM_DANGEROUS_GOOD>
+               </FMSDOM_DANGEROUS_GOODS>
+               <HS_CODE>39059100</HS_CODE>
+               <TECHNICAL_REFERENCE>3550879994-000010-1</TECHNICAL_REFERENCE>
+               <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+               <VOLUME_WEIGHT>37.440</VOLUME_WEIGHT>
+               <REFERENCE>3021036468</REFERENCE>
+               <REFERENCE_QUALIFIER>FLN</REFERENCE_QUALIFIER>
+               <GROSS_WEIGHT>19470.000</GROSS_WEIGHT>
+               <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+               <NET_WEIGHT>18000.000</NET_WEIGHT>
+               <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+               <NUMBER_OF_PACKAGES>150</NUMBER_OF_PACKAGES>
+               <PACKAGE_CODE>DR</PACKAGE_CODE>
+               <VOLUME>37.440</VOLUME>
+               <VOLUME_UNIT>CBM</VOLUME_UNIT>
+               <CARGO_DESCRIPTION>Plastic drums
+30 
+Pallet,wood,CP3,1140x1140x138mm,HT
+Luviquat? Hold AT 3 120KG Plastic 
+drums
+US Harmonized tariff code:390591
+P.O. NBR 4995488194
+3021036468
+IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate
+EMS: F-AS-F
+Flashpoint: 101 C</CARGO_DESCRIPTION>
+               <MARKS_AND_NUMBERS>BASF
+3021036468/000010</MARKS_AND_NUMBERS>
+               <BOOKING_REFERENCE>3550879994-000010</BOOKING_REFERENCE>
+            </FMSDOM_GOOD>
+            <FMSDOM_GOOD KEY="BL-1FGO-1-5-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TECHNICAL_REFERENCE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-1-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING1</UDF_CODE>
+                     <UDF_VALUE>CP3</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-2-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_PACKING2</UDF_CODE>
+                     <UDF_VALUE>1H1</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-3-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_BUYORDNR</UDF_CODE>
+                     <UDF_VALUE>P.O. NBR 4995488195</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-4-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_ARTNR</UDF_CODE>
+                     <UDF_VALUE>50403932</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-5-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_GTIN</UDF_CODE>
+                     <UDF_VALUE>4014439010826</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-6-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL1</UDF_CODE>
+                     <UDF_VALUE>Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-6-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-DEL2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-7-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAW</UDF_CODE>
+                     <UDF_VALUE>6253</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-8-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAA</UDF_CODE>
+                     <UDF_VALUE>Luviquat? Hold AT 3 120KG Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-9-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAS</UDF_CODE>
+                     <UDF_VALUE>US Harmonized tariff code:390591</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-10-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAC</UDF_CODE>
+                     <UDF_VALUE>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-11-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-ACB</UDF_CODE>
+                     <UDF_VALUE>Odor: faint specific odour</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-12-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI1</UDF_CODE>
+                     <UDF_VALUE>Properties of the product change irreversibly on exceeding the limit t emperature.</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-12-1-2" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-LOI2</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-13-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_FTX-AAN</UDF_CODE>
+                     <UDF_VALUE>Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-14-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS1</UDF_CODE>
+                     <UDF_VALUE>30</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-15-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS2</UDF_CODE>
+                     <UDF_VALUE>150</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-16-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDNRPCKGS3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-17-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY1</UDF_CODE>
+                     <UDF_VALUE>Pallet,wood,CP3,1140x1140x138mm,HT</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-18-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY2</UDF_CODE>
+                     <UDF_VALUE>Plastic drums</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-19-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GIDRSPGNCY3</UDF_CODE>
+                     <UDF_VALUE></UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-20-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI</UDF_CODE>
+                     <UDF_VALUE>3550880113</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-21-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-LI2</UDF_CODE>
+                     <UDF_VALUE>000010</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-22-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-VN</UDF_CODE>
+                     <UDF_VALUE>3021036470</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-23-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-CO</UDF_CODE>
+                     <UDF_VALUE>4995488195</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-24-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-OP</UDF_CODE>
+                     <UDF_VALUE>4995488195</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-25-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_GO_RFF-AQV</UDF_CODE>
+                     <UDF_VALUE>39059100</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-26-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-WT</UDF_CODE>
+                     <UDF_VALUE>630.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1GUDF-1-5-1-27-1-3" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_MEA-WT-AAE</UDF_CODE>
+                     <UDF_VALUE>18840.000</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_GOOD_ITEMS>
+                  <FMSDOM_GOOD_ITEM KEY="BL-1FGO-IT-1-5-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="ITEM_IDENTIFIER">
+                     <FMSDOM_GOOD_ITEM_GIETS>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-15"/>
+                        <FMSDOM_GOOD_ITEM_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-15"/>
+                     </FMSDOM_GOOD_ITEM_GIETS>
+                     <GROSS_WEIGHT>19470.000</GROSS_WEIGHT>
+                     <NET_WEIGHT>18000.000</NET_WEIGHT>
+                     <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+                     <ITEM_IDENTIFIER>3550880113-000010</ITEM_IDENTIFIER>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_ITEMS>150</NUMBER_OF_ITEMS>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                     <VOLUME>37.440</VOLUME>
+                     <VOLUME_UNIT>CBM</VOLUME_UNIT>
+                     <VOLUME_WEIGHT>37.440</VOLUME_WEIGHT>
+                     <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+                  </FMSDOM_GOOD_ITEM>
+               </FMSDOM_GOOD_ITEMS>
+               <FMSDOM_GOOD_GIETS>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-15"/>
+                  <FMSDOM_GOOD_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-15"/>
+               </FMSDOM_GOOD_GIETS>
+               <FMSDOM_DANGEROUS_GOODS>
+                  <FMSDOM_DANGEROUS_GOOD KEY="BL-1FGO-DG-1-5-1-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UNDG_CODE">
+                     <EMERGENCY_CONTACT_NAME>BASF SE /LUDW. 24 HOUR NUMBER</EMERGENCY_CONTACT_NAME>
+                     <EMERGENCY_CONTACT_NUMBER>00491802273112</EMERGENCY_CONTACT_NUMBER>
+                     <EMS_NUMBER>F-AS-F</EMS_NUMBER>
+                     <FLASH_POINT>101</FLASH_POINT>
+                     <FLASH_POINT_UNIT>C</FLASH_POINT_UNIT>
+                     <IMDG_CODE_PAGE>9</IMDG_CODE_PAGE>
+                     <IMO_CLASS>9</IMO_CLASS>
+                     <PACKING_GROUP>3</PACKING_GROUP>
+                     <PROPER_SHIPPING_NAME>IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG I</PROPER_SHIPPING_NAME>
+                     <UNDG_CODE>3082</UNDG_CODE>
+                     <NET_WEIGHT>18000.000</NET_WEIGHT>
+                     <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+                     <NUMBER_OF_PACKAGES>150</NUMBER_OF_PACKAGES>
+                     <PACKAGE_CODE>DR</PACKAGE_CODE>
+                  </FMSDOM_DANGEROUS_GOOD>
+               </FMSDOM_DANGEROUS_GOODS>
+               <HS_CODE>39059100</HS_CODE>
+               <TECHNICAL_REFERENCE>3550880113-000010-1</TECHNICAL_REFERENCE>
+               <VOLUME_WEIGHT_UNIT>MT</VOLUME_WEIGHT_UNIT>
+               <VOLUME_WEIGHT>37.440</VOLUME_WEIGHT>
+               <REFERENCE>3021036470</REFERENCE>
+               <REFERENCE_QUALIFIER>FLN</REFERENCE_QUALIFIER>
+               <GROSS_WEIGHT>19470.000</GROSS_WEIGHT>
+               <GROSS_WEIGHT_UNIT>KG</GROSS_WEIGHT_UNIT>
+               <NET_WEIGHT>18000.000</NET_WEIGHT>
+               <NET_WEIGHT_UNIT>KG</NET_WEIGHT_UNIT>
+               <NUMBER_OF_PACKAGES>150</NUMBER_OF_PACKAGES>
+               <PACKAGE_CODE>DR</PACKAGE_CODE>
+               <VOLUME>37.440</VOLUME>
+               <VOLUME_UNIT>CBM</VOLUME_UNIT>
+               <CARGO_DESCRIPTION>Plastic drums
+30 
+Pallet,wood,CP3,1140x1140x138mm,HT
+Luviquat? Hold AT 3 120KG Plastic 
+drums
+US Harmonized tariff code:390591
+P.O. NBR 4995488195
+3021036470
+IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1 -VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega tion group - Not appropriate
+EMS: F-AS-F
+Flashpoint: 101 C</CARGO_DESCRIPTION>
+               <MARKS_AND_NUMBERS>BASF
+3021036470/000010</MARKS_AND_NUMBERS>
+               <BOOKING_REFERENCE>3550880113-000010</BOOKING_REFERENCE>
+            </FMSDOM_GOOD>
+         </FMSDOM_GOODS>
+         <FMSDOM_TRANSPORTS>
+            <FMSDOM_TRANSPORT KEY="BL-1FTR-MAIN-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="TRANSPORT_MODE">
+               <GEN_UDF_INSTANCES>
+                  <GEN_UDF_INSTANCE KEY="BL-1TUDF-REC-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>BASF_REC</UDF_CODE>
+                     <UDF_VALUE>BASFAG2</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1TUDF-VOYNBR-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_VOYNBR</UDF_CODE>
+                     <UDF_VALUE>Ocean Vessel</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1TUDF-VESSEL-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-VESSEL</UDF_CODE>
+                     <UDF_VALUE>COSCO HOPE</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1TUDF-TOD-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-TOD</UDF_CODE>
+                     <UDF_VALUE>Columbus Rail Ramp</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1TUDF-LOYDSN-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-LOYDSN</UDF_CODE>
+                     <UDF_VALUE>9472165</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1TUDF-ETD-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-ETD</UDF_CODE>
+                     <UDF_VALUE>20/04/2026</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1TUDF-ETA-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-ETA</UDF_CODE>
+                     <UDF_VALUE>//</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1TUDF-POL-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-POL</UDF_CODE>
+                     <UDF_VALUE>BEANR</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+                  <GEN_UDF_INSTANCE KEY="BL-1TUDF-POD-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="UDF_CODE">
+                     <UDF_CODE>POL_BASF_FIU-POD</UDF_CODE>
+                     <UDF_VALUE>USNYC</UDF_VALUE>
+                  </GEN_UDF_INSTANCE>
+               </GEN_UDF_INSTANCES>
+               <FMSDOM_TRANSPORT_STOPS>
+                  <FMSDOM_TRANSPORT_STOP KEY="BL-1FTRS-MAIN-1-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>LOAD</HANDLING_TYPE>
+                     <START_TIME>2026-04-20T00:00:00</START_TIME>
+                     <PLACE_QUALIFIER>9</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE>BEANR</LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+                  <FMSDOM_TRANSPORT_STOP KEY="BL-1FTRS-MAIN-2-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>UNLOAD</HANDLING_TYPE>
+                     <PLACE_QUALIFIER>11</PLACE_QUALIFIER>
+                     <LOCATION_OWNING_ENTITY>GEN_LOCODES</LOCATION_OWNING_ENTITY>
+                     <LOCATION_OWNING_CODE>USNYC</LOCATION_OWNING_CODE>
+                  </FMSDOM_TRANSPORT_STOP>
+                  <FMSDOM_TRANSPORT_STOP KEY="BL-1FTRS-MAIN-3-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="PLACE_QUALIFIER,HANDLING_TYPE">
+                     <HANDLING_TYPE>UNLOAD</HANDLING_TYPE>
+                     <LOCATION_NAME>Columbus Rail Ramp</LOCATION_NAME>
+                     <PLACE_QUALIFIER>7</PLACE_QUALIFIER>
+                  </FMSDOM_TRANSPORT_STOP>
+               </FMSDOM_TRANSPORT_STOPS>
+               <FMSDOM_TRANSPORT_GIETS>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-11"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-12"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-13"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-14"/>
+                  <FMSDOM_TRANSPORT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-15"/>
+               </FMSDOM_TRANSPORT_GIETS>
+               <FMS_TRANSPORT_CLAUSES>
+                  <FMS_TRANSPORT_CLAUSE KEY="BL-1FTRC-MAIN-0-1" ACTION="CREATE" SEARCH_FIELDS="TYPE">
+                     <TYPE>C</TYPE>
+                     <CONTENT>FREIGHT AND ON CARRIAGE PREPAID
+SHIPPED ON BOARD
+SHIPPER'S LOAD STOW AND COUNT</CONTENT>
+                  </FMS_TRANSPORT_CLAUSE>
+                  <FMS_TRANSPORT_CLAUSE KEY="BL-1FTRC-MAIN-1-1" ACTION="CREATE" SEARCH_FIELDS="TYPE">
+                     <TYPE>C</TYPE>
+                     <CONTENT>FOR CHEMICAL EMERGENCY (SPILL-LEAK-FIRE EXPOSURE OR ACCIDENT) CALL
+EMERGENCY RESPONSE CENTER BASF: +1 800 832 4357
+USA EMERGENCY CONTACT: CHEMTREC +1 800 424 9300 or +1 703 527 3887</CONTENT>
+                  </FMS_TRANSPORT_CLAUSE>
+                  <FMS_TRANSPORT_CLAUSE KEY="BL-1FTRC-MAIN-3-1" ACTION="CREATE" SEARCH_FIELDS="TYPE">
+                     <TYPE>NP</TYPE>
+                     <CONTENT>Name, address and phone number of the carriers agent at port of destination.
+
+For ICS2 filing: Fracht is not issuing a House BL - F10 (Straight BL) - Single ENS filing by the shipping line</CONTENT>
+                  </FMS_TRANSPORT_CLAUSE>
+                  <FMS_TRANSPORT_CLAUSE KEY="BL-1FTRC-MAIN-4-1-2" ACTION="CREATE" SEARCH_FIELDS="TYPE">
+                     <TYPE>C</TYPE>
+                     <CONTENT>Extra Notify information:
+Fax: 2155585751
+Email: BASFDocs@bdpint.com</CONTENT>
+                  </FMS_TRANSPORT_CLAUSE>
+                  <FMS_TRANSPORT_CLAUSE KEY="BL-1FTRC-MAIN-4-1-3" ACTION="CREATE" SEARCH_FIELDS="TYPE">
+                     <TYPE>C</TYPE>
+                     <CONTENT>Extra Consignee information:
+Fax: 9732456002
+Email: 
+Inquiries-Intercompany-MX-CAC@basf.
+com</CONTENT>
+                  </FMS_TRANSPORT_CLAUSE>
+               </FMS_TRANSPORT_CLAUSES>
+               <CARRIER_BOOKING_NBR></CARRIER_BOOKING_NBR>
+               <TRANSPORT_MODE>MAIN</TRANSPORT_MODE>
+               <TYPE>11</TYPE>
+               <TRANSPORT_IDENTIFIER>COSCO HOPE</TRANSPORT_IDENTIFIER>
+               <TECHNICAL_REFERENCE>2800209301</TECHNICAL_REFERENCE>
+               <SUPPLIER_PARTY_ID>1999912</SUPPLIER_PARTY_ID>
+               <TYPEBEHAVIOUR>VESSEL</TYPEBEHAVIOUR>
+            </FMSDOM_TRANSPORT>
+         </FMSDOM_TRANSPORTS>
+         <FMSDOM_EQUIPMENTS>
+            <FMSDOM_EQUIPMENT ACTION="CREATE_UPDATE" SEARCH_FIELDS="EQUIPMENT_IDENTIFIER,TECHNICAL_REFERENCE" KEY="BL-1FCO-1-11">
+               <FMSDOM_EQUIPMENT_GIETS>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-14"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-14"/>
+               </FMSDOM_EQUIPMENT_GIETS>
+               <EQUIPMENT_IDENTIFIER>1288724478</EQUIPMENT_IDENTIFIER>
+               <EQUIPMENT_SIZE>45</EQUIPMENT_SIZE>
+               <EQUIPMENT_TYPE>RT</EQUIPMENT_TYPE>
+               <EQUIPMENT_VARIATION>CO</EQUIPMENT_VARIATION>
+               <GROSS_WEIGHT></GROSS_WEIGHT>
+               <NET_WEIGHT></NET_WEIGHT>
+               <SEAL1></SEAL1>
+               <SEAL2></SEAL2>
+               <TECHNICAL_REFERENCE>3550879994</TECHNICAL_REFERENCE>
+            </FMSDOM_EQUIPMENT>
+            <FMSDOM_EQUIPMENT ACTION="CREATE_UPDATE" SEARCH_FIELDS="EQUIPMENT_IDENTIFIER,TECHNICAL_REFERENCE" KEY="BL-1FCO-1-12">
+               <FMSDOM_EQUIPMENT_GIETS>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-15"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-15"/>
+               </FMSDOM_EQUIPMENT_GIETS>
+               <EQUIPMENT_IDENTIFIER>1288724479</EQUIPMENT_IDENTIFIER>
+               <EQUIPMENT_SIZE>45</EQUIPMENT_SIZE>
+               <EQUIPMENT_TYPE>RT</EQUIPMENT_TYPE>
+               <EQUIPMENT_VARIATION>CO</EQUIPMENT_VARIATION>
+               <GROSS_WEIGHT></GROSS_WEIGHT>
+               <NET_WEIGHT></NET_WEIGHT>
+               <SEAL1></SEAL1>
+               <SEAL2></SEAL2>
+               <TECHNICAL_REFERENCE>3550880113</TECHNICAL_REFERENCE>
+            </FMSDOM_EQUIPMENT>
+            <FMSDOM_EQUIPMENT ACTION="CREATE_UPDATE" SEARCH_FIELDS="EQUIPMENT_IDENTIFIER,TECHNICAL_REFERENCE" KEY="BL-1FCO-1-13">
+               <FMSDOM_EQUIPMENT_GIETS>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-11"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-11"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-12"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-12"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-13"/>
+                  <FMSDOM_EQUIPMENT_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-13"/>
+               </FMSDOM_EQUIPMENT_GIETS>
+               <EQUIPMENT_IDENTIFIER>1288725860</EQUIPMENT_IDENTIFIER>
+               <EQUIPMENT_SIZE>45</EQUIPMENT_SIZE>
+               <EQUIPMENT_TYPE>RT</EQUIPMENT_TYPE>
+               <EQUIPMENT_VARIATION>CO</EQUIPMENT_VARIATION>
+               <GROSS_WEIGHT></GROSS_WEIGHT>
+               <NET_WEIGHT></NET_WEIGHT>
+               <SEAL1></SEAL1>
+               <SEAL2></SEAL2>
+               <TECHNICAL_REFERENCE>3550879430-3550879730-3550879847</TECHNICAL_REFERENCE>
+            </FMSDOM_EQUIPMENT>
+         </FMSDOM_EQUIPMENTS>
+         <FMS_BL KEY="BLFMS_BL-1" ACTION="CREATE_UPDATE" SEARCH_FIELDS="EXPORT_REFERENCE">
+            <FMS_BL_GIETS>
+               <FMS_BL_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-11"/>
+               <FMS_BL_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-12"/>
+               <FMS_BL_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-13"/>
+               <FMS_BL_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-14"/>
+               <FMS_BL_GIET RELATION_IDENTIFIER="BL-1FCO-GO-IT-MAIN-15"/>
+            </FMS_BL_GIETS>
+            <CARRIER_BOOKING_NBR></CARRIER_BOOKING_NBR>
+            <DATE_OF_ISSUE>2026-04-20</DATE_OF_ISSUE>
+            <DOCUMENT_TYPE>710</DOCUMENT_TYPE>
+            <EXPORT_REFERENCE>2800209301BL00</EXPORT_REFERENCE>
+            <FORWARDER_REFERENCE_NBR>#</FORWARDER_REFERENCE_NBR>
+            <FREIGHT_PAYABLE_AT>P</FREIGHT_PAYABLE_AT>
+            <FREIGHT_PAYABLE_AT_COUNTRY>BE</FREIGHT_PAYABLE_AT_COUNTRY>
+            <FREIGHT_PAYABLE_AT_LOCODE>ANR</FREIGHT_PAYABLE_AT_LOCODE>
+            <LETTER_OF_CREDIT></LETTER_OF_CREDIT>
+            <MOVE_TYPE>3</MOVE_TYPE>
+            <NUMBER_OF_COPIES>1</NUMBER_OF_COPIES>
+            <NUMBER_OF_ORIGINALS>0</NUMBER_OF_ORIGINALS>
+            <PLACE_OF_ISSUE_COUNTRY>BE</PLACE_OF_ISSUE_COUNTRY>
+            <PLACE_OF_ISSUE_LOCODE>ANR</PLACE_OF_ISSUE_LOCODE>
+            <SERVICE_TYPE>30</SERVICE_TYPE>
+            <SHIPPER_REFERENCE_NBR>2800209301BL00</SHIPPER_REFERENCE_NBR>
+         </FMS_BL>
+         <DELIVERY_TERM>CIP</DELIVERY_TERM>
+         <CUSTOMER_REFERENCE>2800209301BL00</CUSTOMER_REFERENCE>
+         <COMPANY_CODE>POLYTRA</COMPANY_CODE>
+         <DEPARTMENT_CODE>71</DEPARTMENT_CODE>
+         <GROUP_CODE>02</GROUP_CODE>
+         <PI_CATEGORY>FMS-BL</PI_CATEGORY>
+         <PI_OWNER>TRISESB</PI_OWNER>
+         <PI_STATUS>OP</PI_STATUS>
+         <PI_TYPE>EXP</PI_TYPE>
+         <VARIATION>B</VARIATION>
+         <SLA_CODE>BL</SLA_CODE>
+         <CUSTOMER_THIRDPARTY_CODE>00025000</CUSTOMER_THIRDPARTY_CODE>
+         <PI_SUBTYPE>BL</PI_SUBTYPE>
+      </FMSWFM_ORDER>
+   </ORDERS>
+</TRS_DATA>

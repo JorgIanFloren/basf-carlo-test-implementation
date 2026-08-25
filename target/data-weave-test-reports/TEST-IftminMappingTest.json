@@ -1,0 +1,925 @@
+{
+  "name": "BASF IFTMIN mapping",
+  "time": 461,
+  "status": "OK",
+  "tests": [
+    {
+      "name": "fcl/2013386790-iftmin-erstinfo-9.json (fcl, 1 message(s))",
+      "time": 38,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "fcl/2800209301-fcl-iftmin-erst-9.json (fcl, 1 message(s))",
+      "time": 36,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "fcl/2800209301-iftmbf-4.json (fcl, 1 message(s))",
+      "time": 28,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "fcl/2800209301-iftmin-erst-4-v2.json (fcl, 1 message(s))",
+      "time": 16,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "fcl/2800209301-iftmin-erst-9-v2.json (fcl, 1 message(s))",
+      "time": 14,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "fcl/2800209301-iftmin-erst-9.json (fcl, 1 message(s))",
+      "time": 19,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "fcl/ifcsum-2013354401.json (fcl, 1 message(s))",
+      "time": 15,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "fcl/ifcsum-2013354402.json (fcl, 1 message(s))",
+      "time": 12,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "fcl/ifcsum-2013354403.json (fcl, 1 message(s))",
+      "time": 17,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "lcl/2800226066-iftmin-absch-4.json (lcl, 1 message(s))",
+      "time": 11,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "lcl/2800226066-iftmin-absch-9.json (lcl, 1 message(s))",
+      "time": 18,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "lcl/2800226066-iftmin-erst-9.json (lcl, 1 message(s))",
+      "time": 18,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "ms/2800231445-ab-4-2.json (ms, 1 message(s))",
+      "time": 18,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "ms/2800231445-ab-4-3.json (ms, 1 message(s))",
+      "time": 15,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "ms/2800231445-ab-4-4.json (ms, 1 message(s))",
+      "time": 23,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "ms/2800231445-ab-4-5.json (ms, 1 message(s))",
+      "time": 14,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "ms/2800231445-ab-9.json (ms, 2 message(s))",
+      "time": 14,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "ms/2800231445-erst-4.json (ms, 1 message(s))",
+      "time": 12,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "ms/2800231445-erst-9.json (ms, 1 message(s))",
+      "time": 8,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "ms/2800231445-iftmbf-2.json (ms, 2 message(s))",
+      "time": 11,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "ms/trissquid-138083512.json (ms, 2 message(s))",
+      "time": 18,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "end": {
+          "index": 0,
+          "line": 0,
+          "column": 0
+        },
+        "locationString": "Unknown location",
+        "text": "",
+        "sourceIdentifier": "anonymous"
+      }
+    },
+    {
+      "name": "a master-sub interchange yields one shipment per BASF BL",
+      "time": 5,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 4037,
+          "line": 85,
+          "column": 11
+        },
+        "end": {
+          "index": 4095,
+          "line": 85,
+          "column": 69
+        },
+        "locationString": "\n85|     () -> \"a master-sub interchange yields one shipment per BASF BL\" in (\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a master-sub interchange yields one shipment per BASF BL\" in (",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "an ordinary interchange yields exactly one shipment",
+      "time": 3,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 4239,
+          "line": 89,
+          "column": 11
+        },
+        "end": {
+          "index": 4292,
+          "line": 89,
+          "column": 64
+        },
+        "locationString": "\n89|     () -> \"an ordinary interchange yields exactly one shipment\" in (\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"an ordinary interchange yields exactly one shipment\" in (",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "an LCL master-sub marks every block as a co-load",
+      "time": 3,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 4498,
+          "line": 93,
+          "column": 11
+        },
+        "end": {
+          "index": 4548,
+          "line": 93,
+          "column": 61
+        },
+        "locationString": "\n93|     () -> \"an LCL master-sub marks every block as a co-load\" in (\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"an LCL master-sub marks every block as a co-load\" in (",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "an FCL master-sub stays back-to-back",
+      "time": 3,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 4707,
+          "line": 97,
+          "column": 11
+        },
+        "end": {
+          "index": 4745,
+          "line": 97,
+          "column": 49
+        },
+        "locationString": "\n97|     () -> \"an FCL master-sub stays back-to-back\" in (\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"an FCL master-sub stays back-to-back\" in (",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "a single LCL shipment is not a co-load",
+      "time": 5,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 4908,
+          "line": 101,
+          "column": 11
+        },
+        "end": {
+          "index": 4948,
+          "line": 101,
+          "column": 51
+        },
+        "locationString": "\n101|     () -> \"a single LCL shipment is not a co-load\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a single LCL shipment is not a co-load\" in (",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "a cancel is recognised",
+      "time": 0,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 5198,
+          "line": 106,
+          "column": 11
+        },
+        "end": {
+          "index": 5222,
+          "line": 106,
+          "column": 35
+        },
+        "locationString": "\n106|     () -> \"a cancel is recognised\" in (isCancel(bgm(\"1\", \"2800244026\")) must equalTo(true)),\n               ^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a cancel is recognised\" in (isCancel(bgm(\"1\", \"2800244026\")) must equalTo(true)),",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "a create is not a cancel",
+      "time": 0,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 5291,
+          "line": 107,
+          "column": 11
+        },
+        "end": {
+          "index": 5317,
+          "line": 107,
+          "column": 37
+        },
+        "locationString": "\n107|     () -> \"a create is not a cancel\" in (isCancel(bgm(\"9\", \"2800244026\")) must equalTo(false)),\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a create is not a cancel\" in (isCancel(bgm(\"9\", \"2800244026\")) must equalTo(false)),",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "an update is not a cancel",
+      "time": 0,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 5387,
+          "line": 108,
+          "column": 11
+        },
+        "end": {
+          "index": 5414,
+          "line": 108,
+          "column": 38
+        },
+        "locationString": "\n108|     () -> \"an update is not a cancel\" in (isCancel(bgm(\"4\", \"2800244026\")) must equalTo(false)),\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"an update is not a cancel\" in (isCancel(bgm(\"4\", \"2800244026\")) must equalTo(false)),",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "a cancel maps to an identity-only delete",
+      "time": 1,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 5485,
+          "line": 110,
+          "column": 11
+        },
+        "end": {
+          "index": 5527,
+          "line": 110,
+          "column": 53
+        },
+        "locationString": "\n110|     () -> \"a cancel maps to an identity-only delete\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a cancel maps to an identity-only delete\" in (",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "a cancel carries no business fields that could overwrite the shipment",
+      "time": 0,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 5852,
+          "line": 119,
+          "column": 11
+        },
+        "end": {
+          "index": 5923,
+          "line": 119,
+          "column": 82
+        },
+        "locationString": "\n119|     () -> \"a cancel carries no business fields that could overwrite the shipment\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a cancel carries no business fields that could overwrite the shipment\" in (",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "a cancel without a CustomerReference is dropped - Carlo would have nothing to match",
+      "time": 1,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 6114,
+          "line": 123,
+          "column": 11
+        },
+        "end": {
+          "index": 6199,
+          "line": 123,
+          "column": 96
+        },
+        "locationString": "\n123|     () -> \"a cancel without a CustomerReference is dropped - Carlo would have nothing to match\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"a cancel without a CustomerReference is dropped - Carlo would have nothing to match\" in (",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "LoadType is FCL when equipment is present",
+      "time": 0,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 6432,
+          "line": 128,
+          "column": 11
+        },
+        "end": {
+          "index": 6475,
+          "line": 128,
+          "column": 54
+        },
+        "locationString": "\n128|     () -> \"LoadType is FCL when equipment is present\" in (loadType(withEquipment(bgm(\"9\", \"X\"))) must equalTo(\"FCL\")),\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"LoadType is FCL when equipment is present\" in (loadType(withEquipment(bgm(\"9\", \"X\"))) must equalTo(\"FCL\")),",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "LoadType is LCL when equipment is absent",
+      "time": 0,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 6551,
+          "line": 129,
+          "column": 11
+        },
+        "end": {
+          "index": 6593,
+          "line": 129,
+          "column": 53
+        },
+        "locationString": "\n129|     () -> \"LoadType is LCL when equipment is absent\" in (loadType(bgm(\"9\", \"X\")) must equalTo(\"LCL\")),\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"LoadType is LCL when equipment is absent\" in (loadType(bgm(\"9\", \"X\")) must equalTo(\"LCL\")),",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "HouseType is BackToBack for a stand-alone LCL",
+      "time": 1,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 6654,
+          "line": 130,
+          "column": 11
+        },
+        "end": {
+          "index": 6701,
+          "line": 130,
+          "column": 58
+        },
+        "locationString": "\n130|     () -> \"HouseType is BackToBack for a stand-alone LCL\" in (houseType(bgm(\"9\", \"X\"), false) must equalTo(\"BackToBack\")),\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"HouseType is BackToBack for a stand-alone LCL\" in (houseType(bgm(\"9\", \"X\"), false) must equalTo(\"BackToBack\")),",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "HouseType is Coloadin for an LCL block of a master-sub",
+      "time": 2,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 6777,
+          "line": 131,
+          "column": 11
+        },
+        "end": {
+          "index": 6833,
+          "line": 131,
+          "column": 67
+        },
+        "locationString": "\n131|     () -> \"HouseType is Coloadin for an LCL block of a master-sub\" in (houseType(bgm(\"9\", \"X\"), true) must equalTo(\"Coloadin\")),\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"HouseType is Coloadin for an LCL block of a master-sub\" in (houseType(bgm(\"9\", \"X\"), true) must equalTo(\"Coloadin\")),",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "HouseType stays BackToBack for an FCL block of a master-sub",
+      "time": 0,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 6906,
+          "line": 132,
+          "column": 11
+        },
+        "end": {
+          "index": 6967,
+          "line": 132,
+          "column": 72
+        },
+        "locationString": "\n132|     () -> \"HouseType stays BackToBack for an FCL block of a master-sub\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"HouseType stays BackToBack for an FCL block of a master-sub\" in (",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "BGM03 1 -> delete",
+      "time": 0,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 7066,
+          "line": 134,
+          "column": 11
+        },
+        "end": {
+          "index": 7085,
+          "line": 134,
+          "column": 30
+        },
+        "locationString": "\n134|     () -> \"BGM03 1 -> delete\" in (shipmentAction(bgm(\"1\", \"X\")) must equalTo(\"delete\")),\n               ^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"BGM03 1 -> delete\" in (shipmentAction(bgm(\"1\", \"X\")) must equalTo(\"delete\")),",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "BGM03 4 -> update",
+      "time": 2,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 7155,
+          "line": 135,
+          "column": 11
+        },
+        "end": {
+          "index": 7174,
+          "line": 135,
+          "column": 30
+        },
+        "locationString": "\n135|     () -> \"BGM03 4 -> update\" in (shipmentAction(bgm(\"4\", \"X\")) must equalTo(\"update\")),\n               ^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"BGM03 4 -> update\" in (shipmentAction(bgm(\"4\", \"X\")) must equalTo(\"update\")),",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "BGM03 5 -> update",
+      "time": 0,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 7244,
+          "line": 136,
+          "column": 11
+        },
+        "end": {
+          "index": 7263,
+          "line": 136,
+          "column": 30
+        },
+        "locationString": "\n136|     () -> \"BGM03 5 -> update\" in (shipmentAction(bgm(\"5\", \"X\")) must equalTo(\"update\")),\n               ^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"BGM03 5 -> update\" in (shipmentAction(bgm(\"5\", \"X\")) must equalTo(\"update\")),",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "BGM03 9 -> updateorcreate",
+      "time": 0,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 7333,
+          "line": 137,
+          "column": 11
+        },
+        "end": {
+          "index": 7360,
+          "line": 137,
+          "column": 38
+        },
+        "locationString": "\n137|     () -> \"BGM03 9 -> updateorcreate\" in (shipmentAction(bgm(\"9\", \"X\")) must equalTo(\"updateorcreate\")),\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"BGM03 9 -> updateorcreate\" in (shipmentAction(bgm(\"9\", \"X\")) must equalTo(\"updateorcreate\")),",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "the document is a camelCase seaHouseShipment array",
+      "time": 6,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 7534,
+          "line": 140,
+          "column": 11
+        },
+        "end": {
+          "index": 7586,
+          "line": 140,
+          "column": 63
+        },
+        "locationString": "\n140|     () -> \"the document is a camelCase seaHouseShipment array\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"the document is a camelCase seaHouseShipment array\" in (",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    },
+    {
+      "name": "an interchange with no IFTMIN message yields an empty array",
+      "time": 0,
+      "status": "OK",
+      "errorMessage": "",
+      "location": {
+        "start": {
+          "index": 7837,
+          "line": 145,
+          "column": 11
+        },
+        "end": {
+          "index": 7898,
+          "line": 145,
+          "column": 72
+        },
+        "locationString": "\n145|     () -> \"an interchange with no IFTMIN message yields an empty array\" in (\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "text": "() -> \"an interchange with no IFTMIN message yields an empty array\" in (",
+        "sourceIdentifier": "IftminMappingTest"
+      }
+    }
+  ],
+  "location": {
+    "start": {
+      "index": 3424,
+      "line": 74,
+      "column": 1
+    },
+    "end": {
+      "index": 3445,
+      "line": 74,
+      "column": 22
+    },
+    "locationString": "\n74| \"BASF IFTMIN mapping\" describedBy (\n    ^^^^^^^^^^^^^^^^^^^^^",
+    "text": "\"BASF IFTMIN mapping\" describedBy (",
+    "sourceIdentifier": "IftminMappingTest"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "seaHouseShipment": [
+    {
+      "actionAttribute": "updateorcreate",
+      "dUNSCustomer": "BASFAG2",
+      "customerReference": "2800209301",
+      "customer": {
+        "matchcode": "1000"
+      },
+      "estimatedDispatchDate": "2026-04-08T00:00:00",
+      "pickupLocation": {
+        "pickupLocation": {
+          "unLocationCode": {
+            "matchcode": "DELUH"
+          },
+          "address": {
+            "location1": "Ludwigshafen"
+          }
+        }
+      },
+      "objectOwner": {
+        "organisationalUnitId": 5
+      },
+      "scenario": {
+        "matchcode": "BASF FCL"
+      },
+      "haulageType": {
+        "matchcode": "CAR/CAR"
+      },
+      "deliveryTerms": "Prepaid",
+      "shipmentDate": "2026-04-20",
+      "master": {
+        "mainCarriageAsOcean": {
+          "customerETA": "2026-05-08",
+          "customerClosing": "2026-04-15"
+        }
+      }
+    }
+  ]
+}

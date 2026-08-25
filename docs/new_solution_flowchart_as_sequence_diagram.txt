@@ -1,0 +1,58 @@
+participant "Input JSON file" as J
+participant "DeleteFile" as D
+participant "Create output" as O
+participant "TargetFile" as T
+participant "TargetFile.Eta" as E
+participant "Carlo" as C
+
+J->C:HTTP GET(https://api-carlo-test.fracht.be:4712/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment/0?%24filter=700071%20eq%20%{CustomerReference}%27)
+activate C
+J<--C:Returns result?
+deactivate C
+alt case result == null
+J->O:Initialize new Output File
+activate O
+J<<--O:
+deactivate O
+else 
+activate J
+J->J: Set Output File = result
+deactivate J
+end
+alt case EDIFAC Operator = 1
+J->D: Delete existing file
+activate D
+note right of D: Delete file if it exists.
+D->C:HTTP DELETE(https://api-carlo-test.fracht.be:4712/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment/0?%24filter=700071%20eq%20%{CustomerReference}%27)
+activate C
+D<--C: 200 OK
+deactivate C
+J<<--D:
+deactivate D
+else 
+par if [Output File].eta==null
+J->E:
+activate E
+note right of E: Map ETA and ETD from input file
+J<<--E:
+deactivate E
+end
+end
+J->T:
+activate T
+note right of T: Map all the other properties
+J<<--T:
+deactivate T
+alt case result <> null
+J->C:HTTP PUT(https://api-carlo-test.fracht.be:4712/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment/0?%24filter=700071%20eq%20%{CustomerReference}%27)
+activate C
+note right of C: Put output file JSON in PUT Body
+J<--C:200 OK
+deactivate C
+else case result == null
+J->C:HTTP POST(https://api-carlo-test.fracht.be:4712/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment/)
+activate C
+note right of C: Put output file JSON in POST Body
+J<--C:200 OK
+deactivate C
+end

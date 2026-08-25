@@ -1,0 +1,1362 @@
+{
+  "EDI": {
+    "Errors": [],
+    "Delimiters": "+: '?",
+    "Messages": {
+      "D08A": {
+        "IFTMBF": [
+          {
+            "Interchange": {
+              "UNB0101": "UNOC",
+              "UNB0102": "3",
+              "UNB0201": "BASFAG2",
+              "UNB0301": "102500",
+              "UNB0303": "283155273",
+              "UNB0401": 260414,
+              "UNB0402": 1239,
+              "UNB05": "66665826458003",
+              "UNB07": "IFTMBF"
+            },
+            "Heading": {
+              "0020_BGM": {
+                "BGM0101": "335",
+                "BGM0201": "2800209301",
+                "BGM03": "4"
+              },
+              "0030_CTA": {
+                "CTA01": "MS",
+                "CTA0201": "GB/SG-ECI",
+                "CTA0202": "Mrs Ho"
+              },
+              "0040_COM": [
+                {
+                  "COM01": [
+                    {
+                      "C07601": "JESSEY.HO@BASF.COM",
+                      "C07602": "EM"
+                    }
+                  ]
+                }
+              ],
+              "0050_DTM": [
+                {
+                  "DTM0101": "137",
+                  "DTM0102": "202604141238",
+                  "DTM0103": "203"
+                }
+              ],
+              "0080_FTX": [
+                {
+                  "FTX01": "AAI",
+                  "FTX0401": "BOOKING MAINLEG SEA - YE36"
+                },
+                {
+                  "FTX01": "AAI",
+                  "FTX0401": "Please mention for further inquiries and accounting: 2800209301"
+                },
+                {
+                  "FTX01": "AAI",
+                  "FTX0401": "Adhere to specified date of presentation to customs Queries to phone number listed above please Without our agreement, deck- partial- and reloading is not permitted."
+                },
+                {
+                  "FTX01": "TRA",
+                  "FTX0401": "Reefer container, genset required, Temp. set to + 20Â°C, connect at loading site, terminal and barge CIP Columbus Rail Ramp ex Y130 U SA/CANADA"
+                },
+                {
+                  "FTX01": "DCL",
+                  "FTX0401": "It is hereby declared that the contents of this consignment are fully and accurately described above by the correct technical name(s (proper shipping name(s)), and are classified, packaged, marked and labelled/placarded, and are in all respects in proper condition for transport according to the applicable international and national government regulation.",
+                  "FTX0402": "GERHARD BRUSS, SR. MANAGER DISTRIBUTION SAFETY",
+                  "FTX05": "EN"
+                },
+                {
+                  "FTX01": "DCL",
+                  "FTX0401": "It is hereby declared that the contents of this consignment are fully and accurately described above by the correct technical name(s (proper shipping name(s)), and are classified, packaged, marked and labelled/placarded, and are in all respects in proper condition for transport according to the applicable international and national government regulation.",
+                  "FTX0402": "GERHARD BRUSS, SR. MANAGER DISTRIBUTION SAFETY",
+                  "FTX05": "EN"
+                },
+                {
+                  "FTX01": "DCL",
+                  "FTX0401": "It is declared that the packing of the freight container/ vehicle has",
+                  "FTX0402": "been carried out in accordance with the provisions of 5.4.2.1 IMDG-Code.",
+                  "FTX05": "EN"
+                },
+                {
+                  "FTX01": "DCL",
+                  "FTX0401": "It is declared that the packing of the freight container/ vehicle has",
+                  "FTX0402": "been carried out in accordance with the provisions of 5.4.2.1 IMDG-Code.",
+                  "FTX05": "EN"
+                },
+                {
+                  "FTX01": "DCL",
+                  "FTX0401": "Product of Chemical Industry"
+                },
+                {
+                  "FTX01": "ZZZ",
+                  "FTX0401": "CONTAINERDATA 3 x 45RT / 40Â´ Reefer 9Â´6\" operated high cube"
+                },
+                {
+                  "FTX01": "ACB",
+                  "FTX0401": "Planned Loading Date: 08.04.2026"
+                }
+              ],
+              "0090_CNT": [
+                {
+                  "CNT0101": "32",
+                  "CNT0102": 51920,
+                  "CNT0103": "KGM"
+                },
+                {
+                  "CNT0101": "15",
+                  "CNT0102": 99.84,
+                  "CNT0103": "MTQ"
+                },
+                {
+                  "CNT0101": "1",
+                  "CNT0102": 48000,
+                  "CNT0103": "KGM"
+                }
+              ],
+              "0170_Segment_group_3": [
+                {
+                  "0180_RFF": {
+                    "RFF0101": "SI",
+                    "RFF0102": "2800209301"
+                  }
+                },
+                {
+                  "0180_RFF": {
+                    "RFF0101": "CT",
+                    "RFF0102": "25-0554"
+                  }
+                }
+              ],
+              "0360_Segment_group_7": [
+                {
+                  "0370_TDT": {
+                    "TDT01": "10",
+                    "TDT0301": "60",
+                    "TDT0401": "11"
+                  },
+                  "0400_Segment_group_8": [
+                    {
+                      "0410_LOC": {
+                        "LOC01": "10",
+                        "LOC0201": "DELUH",
+                        "LOC0204": "Ludwigshafen",
+                        "LOC0304": "BASF SE"
+                      }
+                    },
+                    {
+                      "0410_LOC": {
+                        "LOC01": "88",
+                        "LOC0201": "DELUH",
+                        "LOC0204": "Ludwigshafen",
+                        "LOC0304": "DELUH"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0370_TDT": {
+                    "TDT01": "20",
+                    "TDT0301": "10",
+                    "TDT0401": "13",
+                    "TDT0801": "9472165",
+                    "TDT0804": "COSCO HOPE"
+                  },
+                  "0380_DTM": [
+                    {
+                      "DTM0101": "132",
+                      "DTM0102": "20260508",
+                      "DTM0103": "102"
+                    },
+                    {
+                      "DTM0101": "133",
+                      "DTM0102": "20260420",
+                      "DTM0103": "102"
+                    },
+                    {
+                      "DTM0101": "180",
+                      "DTM0102": "20260415",
+                      "DTM0103": "102"
+                    }
+                  ],
+                  "0390_TSR": [
+                    {
+                      "TSR0101": "30"
+                    }
+                  ],
+                  "0400_Segment_group_8": [
+                    {
+                      "0410_LOC": {
+                        "LOC01": "9",
+                        "LOC0201": "BEANR",
+                        "LOC0204": "Antwerpen"
+                      }
+                    },
+                    {
+                      "0410_LOC": {
+                        "LOC01": "12",
+                        "LOC0201": "USNYC",
+                        "LOC0204": "NEW YORK"
+                      }
+                    },
+                    {
+                      "0410_LOC": {
+                        "LOC01": "7",
+                        "LOC0201": "USNYC",
+                        "LOC0204": "NEW YORK"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0370_TDT": {
+                    "TDT01": "30"
+                  },
+                  "0380_DTM": [
+                    {
+                      "DTM0101": "132",
+                      "DTM0102": "20260512",
+                      "DTM0103": "102"
+                    }
+                  ],
+                  "0400_Segment_group_8": [
+                    {
+                      "0410_LOC": {
+                        "LOC01": "20",
+                        "LOC0201": "USCMH",
+                        "LOC0204": "Columbus (OH) - Terminal"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "0460_Segment_group_10": [
+                {
+                  "0470_NAD": {
+                    "NAD01": "AG",
+                    "NAD0201": "817630",
+                    "NAD0401": "POLYTRA N.V.",
+                    "NAD0501": "Desguinlei 92 box V 15 Verzicht geb",
+                    "NAD0502": "ouw",
+                    "NAD06": "ANTWERPEN",
+                    "NAD08": "2018",
+                    "NAD09": "BE"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "CZ",
+                    "NAD0201": "1000",
+                    "NAD0401": "BASF SE",
+                    "NAD0501": "Carl-Bosch-Strasse 38",
+                    "NAD06": "Ludwigshafen Friesenheim/Nord",
+                    "NAD0701": "07",
+                    "NAD08": "67063",
+                    "NAD09": "DE"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "BA",
+                    "NAD0201": "312930",
+                    "NAD0401": "CMA-CGM (Deutschland) GmbH",
+                    "NAD0402": "Shipping Agency",
+                    "NAD0501": "Schellackstr. 1",
+                    "NAD06": "Bremen",
+                    "NAD08": "28217",
+                    "NAD09": "DE"
+                  },
+                  "0490_Segment_group_11": [
+                    {
+                      "0500_CTA": {
+                        "CTA01": "MR"
+                      },
+                      "0510_COM": [
+                        {
+                          "COM01": [
+                            {
+                              "C07601": "0698008120",
+                              "C07602": "TE"
+                            }
+                          ]
+                        },
+                        {
+                          "COM01": [
+                            {
+                              "C07601": "0621606678416",
+                              "C07602": "FX"
+                            }
+                          ]
+                        },
+                        {
+                          "COM01": [
+                            {
+                              "C07601": "fra.basf@cma-cgm.com",
+                              "C07602": "EM"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "FW",
+                    "NAD0201": "817630",
+                    "NAD0401": "POLYTRA N.V.",
+                    "NAD0501": "Desguinlei 92 box V 15 Verzicht geb",
+                    "NAD0502": "ouw",
+                    "NAD06": "ANTWERPEN",
+                    "NAD08": "2018",
+                    "NAD09": "BE"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "CA",
+                    "NAD0201": "220343",
+                    "NAD0401": "CMA-CGM AGENCIES WORLDWIDE S.A.S.",
+                    "NAD0501": "4 quai d'Arenc BOULEVARD JACQUES SA",
+                    "NAD0502": "ADÃ",
+                    "NAD06": "Marseille",
+                    "NAD08": "13002",
+                    "NAD09": "FR"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "PW",
+                    "NAD0201": "DV00",
+                    "NAD0301": "DELUH",
+                    "NAD0401": "BASF SE",
+                    "NAD0501": "Carl-Bosch-Str. 38",
+                    "NAD06": "Ludwigshafen",
+                    "NAD08": "67056",
+                    "NAD09": "DE"
+                  }
+                }
+              ],
+              "0700_Segment_group_16": [
+                {
+                  "0710_GID": {
+                    "GID01": 1,
+                    "GID0201": 10,
+                    "GID0202": "CP3",
+                    "GID0203": "67",
+                    "GID0204": "91",
+                    "GID0205": "Pallet,wood,CP3,1140x1140x138mm,HT",
+                    "GID0301": 50,
+                    "GID0302": "1H1",
+                    "GID0305": "Plastic drums"
+                  },
+                  "0740_RNG": {
+                    "RNG01": "5",
+                    "RNG0201": "CEL",
+                    "RNG0202": 5,
+                    "RNG0203": 30
+                  },
+                  "0780_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "50403932",
+                      "PIA0202": "SA"
+                    }
+                  ],
+                  "0790_FTX": [
+                    {
+                      "FTX01": "PRD",
+                      "FTX0301": "2",
+                      "FTX0401": "water-endangering"
+                    },
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "LuviquatÂ® Hold AT 3",
+                      "FTX0402": "120KG Plastic drums"
+                    }
+                  ],
+                  "0850_Segment_group_18": [
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "6000.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAD",
+                        "MEA0301": "KGM",
+                        "MEA0302": "6280.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "WT",
+                        "MEA0301": "KGM",
+                        "MEA0302": "210.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "DEN",
+                        "MEA0201": "TC",
+                        "MEA0204": "Density 20(C)",
+                        "MEA0301": "23",
+                        "MEA0302": "1.05"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Flash Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "101.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Melting Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "-1.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Boiling Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "100.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "AAE",
+                        "MEA0201": "ZZZ",
+                        "MEA0204": "pH-value",
+                        "MEA0301": "ZZ",
+                        "MEA0302": "5.00"
+                      }
+                    }
+                  ],
+                  "0910_Segment_group_20": [
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "LI",
+                        "RFF0102": "3550879730",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "3020963671",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4994886335",
+                        "RFF0103": "10"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "AQV",
+                        "RFF0102": "39059100"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "CO",
+                        "RFF0102": "4994886335"
+                      }
+                    }
+                  ],
+                  "1070_Segment_group_25": [
+                    {
+                      "1080_SGP": {
+                        "SGP0101": "CGMU5666332"
+                      }
+                    }
+                  ],
+                  "1120_Segment_group_27": [
+                    {
+                      "1130_DGS": {
+                        "DGS01": "IMD",
+                        "DGS0201": "9",
+                        "DGS0301": 3082,
+                        "DGS0401": 101,
+                        "DGS0402": "CEL",
+                        "DGS05": "3",
+                        "DGS06": "F-AS-F",
+                        "DGS1001": "9",
+                        "DGS1002": "EHSM"
+                      },
+                      "1140_FTX": [
+                        {
+                          "FTX01": "AAC",
+                          "FTX0301": "P",
+                          "FTX0401": "Marine Pollutant"
+                        },
+                        {
+                          "FTX01": "AAD",
+                          "FTX0401": "IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate"
+                        },
+                        {
+                          "FTX01": "ACB",
+                          "FTX0401": "Odor: faint specific odour"
+                        },
+                        {
+                          "FTX01": "LOI",
+                          "FTX0401": "Properties of the product change irreversibly on exceeding the limit temperature."
+                        },
+                        {
+                          "FTX01": "AAN",
+                          "FTX0401": "Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)"
+                        },
+                        {
+                          "FTX01": "AEB",
+                          "FTX0401": "Characteristics of the product are irreversibly changed below the limit temperature."
+                        }
+                      ],
+                      "1150_Segment_group_28": [
+                        {
+                          "1160_CTA": {
+                            "CTA01": "HE"
+                          },
+                          "1170_COM": [
+                            {
+                              "COM01": [
+                                {
+                                  "C07601": "+49 180 2273 112",
+                                  "C07602": "TE"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "0710_GID": {
+                    "GID01": 2,
+                    "GID0201": 10,
+                    "GID0202": "CP3",
+                    "GID0203": "67",
+                    "GID0204": "91",
+                    "GID0205": "Pallet,wood,CP3,1140x1140x138mm,HT",
+                    "GID0301": 50,
+                    "GID0302": "1H1",
+                    "GID0305": "Plastic drums"
+                  },
+                  "0740_RNG": {
+                    "RNG01": "5",
+                    "RNG0201": "CEL",
+                    "RNG0202": 5,
+                    "RNG0203": 30
+                  },
+                  "0780_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "50403932",
+                      "PIA0202": "SA"
+                    }
+                  ],
+                  "0790_FTX": [
+                    {
+                      "FTX01": "PRD",
+                      "FTX0301": "2",
+                      "FTX0401": "water-endangering"
+                    },
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "LuviquatÂ® Hold AT 3",
+                      "FTX0402": "120KG Plastic drums"
+                    }
+                  ],
+                  "0850_Segment_group_18": [
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "6000.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAD",
+                        "MEA0301": "KGM",
+                        "MEA0302": "6280.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "WT",
+                        "MEA0301": "KGM",
+                        "MEA0302": "210.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "DEN",
+                        "MEA0201": "TC",
+                        "MEA0204": "Density 20(C)",
+                        "MEA0301": "23",
+                        "MEA0302": "1.05"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Flash Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "101.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Melting Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "-1.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Boiling Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "100.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "AAE",
+                        "MEA0201": "ZZZ",
+                        "MEA0204": "pH-value",
+                        "MEA0301": "ZZ",
+                        "MEA0302": "5.00"
+                      }
+                    }
+                  ],
+                  "0910_Segment_group_20": [
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "LI",
+                        "RFF0102": "3550879847",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "3020991631",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4995117414",
+                        "RFF0103": "10"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "AQV",
+                        "RFF0102": "39059100"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "CO",
+                        "RFF0102": "4995117414"
+                      }
+                    }
+                  ],
+                  "1070_Segment_group_25": [
+                    {
+                      "1080_SGP": {
+                        "SGP0101": "CGMU5666332"
+                      }
+                    }
+                  ],
+                  "1120_Segment_group_27": [
+                    {
+                      "1130_DGS": {
+                        "DGS01": "IMD",
+                        "DGS0201": "9",
+                        "DGS0301": 3082,
+                        "DGS0401": 101,
+                        "DGS0402": "CEL",
+                        "DGS05": "3",
+                        "DGS06": "F-AS-F",
+                        "DGS1001": "9",
+                        "DGS1002": "EHSM"
+                      },
+                      "1140_FTX": [
+                        {
+                          "FTX01": "AAC",
+                          "FTX0301": "P",
+                          "FTX0401": "Marine Pollutant"
+                        },
+                        {
+                          "FTX01": "AAD",
+                          "FTX0401": "IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate"
+                        },
+                        {
+                          "FTX01": "ACB",
+                          "FTX0401": "Odor: faint specific odour"
+                        },
+                        {
+                          "FTX01": "LOI",
+                          "FTX0401": "Properties of the product change irreversibly on exceeding the limit temperature."
+                        },
+                        {
+                          "FTX01": "AAN",
+                          "FTX0401": "Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)"
+                        },
+                        {
+                          "FTX01": "AEB",
+                          "FTX0401": "Characteristics of the product are irreversibly changed below the limit temperature."
+                        }
+                      ],
+                      "1150_Segment_group_28": [
+                        {
+                          "1160_CTA": {
+                            "CTA01": "HE"
+                          },
+                          "1170_COM": [
+                            {
+                              "COM01": [
+                                {
+                                  "C07601": "+49 180 2273 112",
+                                  "C07602": "TE"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "0710_GID": {
+                    "GID01": 3,
+                    "GID0201": 30,
+                    "GID0202": "CP3",
+                    "GID0203": "67",
+                    "GID0204": "91",
+                    "GID0205": "Pallet,wood,CP3,1140x1140x138mm,HT",
+                    "GID0301": 150,
+                    "GID0302": "1H1",
+                    "GID0305": "Plastic drums"
+                  },
+                  "0740_RNG": {
+                    "RNG01": "5",
+                    "RNG0201": "CEL",
+                    "RNG0202": 5,
+                    "RNG0203": 30
+                  },
+                  "0780_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "50403932",
+                      "PIA0202": "SA"
+                    }
+                  ],
+                  "0790_FTX": [
+                    {
+                      "FTX01": "PRD",
+                      "FTX0301": "2",
+                      "FTX0401": "water-endangering"
+                    },
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "LuviquatÂ® Hold AT 3",
+                      "FTX0402": "120KG Plastic drums"
+                    }
+                  ],
+                  "0850_Segment_group_18": [
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "18000.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAD",
+                        "MEA0301": "KGM",
+                        "MEA0302": "18840.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "WT",
+                        "MEA0301": "KGM",
+                        "MEA0302": "630.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "DEN",
+                        "MEA0201": "TC",
+                        "MEA0204": "Density 20(C)",
+                        "MEA0301": "23",
+                        "MEA0302": "1.05"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Flash Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "101.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Melting Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "-1.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Boiling Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "100.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "AAE",
+                        "MEA0201": "ZZZ",
+                        "MEA0204": "pH-value",
+                        "MEA0301": "ZZ",
+                        "MEA0302": "5.00"
+                      }
+                    }
+                  ],
+                  "0910_Segment_group_20": [
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "LI",
+                        "RFF0102": "3550879994",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "3021036468",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4995488194",
+                        "RFF0103": "10"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "AQV",
+                        "RFF0102": "39059100"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "CO",
+                        "RFF0102": "4995488194"
+                      }
+                    }
+                  ],
+                  "1070_Segment_group_25": [
+                    {
+                      "1080_SGP": {
+                        "SGP0101": "AMCU9361861"
+                      }
+                    }
+                  ],
+                  "1120_Segment_group_27": [
+                    {
+                      "1130_DGS": {
+                        "DGS01": "IMD",
+                        "DGS0201": "9",
+                        "DGS0301": 3082,
+                        "DGS0401": 101,
+                        "DGS0402": "CEL",
+                        "DGS05": "3",
+                        "DGS06": "F-AS-F",
+                        "DGS1001": "9",
+                        "DGS1002": "EHSM"
+                      },
+                      "1140_FTX": [
+                        {
+                          "FTX01": "AAC",
+                          "FTX0301": "P",
+                          "FTX0401": "Marine Pollutant"
+                        },
+                        {
+                          "FTX01": "AAD",
+                          "FTX0401": "IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate"
+                        },
+                        {
+                          "FTX01": "ACB",
+                          "FTX0401": "Odor: faint specific odour"
+                        },
+                        {
+                          "FTX01": "LOI",
+                          "FTX0401": "Properties of the product change irreversibly on exceeding the limit temperature."
+                        },
+                        {
+                          "FTX01": "AAN",
+                          "FTX0401": "Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)"
+                        },
+                        {
+                          "FTX01": "AEB",
+                          "FTX0401": "Characteristics of the product are irreversibly changed below the limit temperature."
+                        }
+                      ],
+                      "1150_Segment_group_28": [
+                        {
+                          "1160_CTA": {
+                            "CTA01": "HE"
+                          },
+                          "1170_COM": [
+                            {
+                              "COM01": [
+                                {
+                                  "C07601": "+49 180 2273 112",
+                                  "C07602": "TE"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "0710_GID": {
+                    "GID01": 4,
+                    "GID0201": 30,
+                    "GID0202": "CP3",
+                    "GID0203": "67",
+                    "GID0204": "91",
+                    "GID0205": "Pallet,wood,CP3,1140x1140x138mm,HT",
+                    "GID0301": 150,
+                    "GID0302": "1H1",
+                    "GID0305": "Plastic drums"
+                  },
+                  "0740_RNG": {
+                    "RNG01": "5",
+                    "RNG0201": "CEL",
+                    "RNG0202": 5,
+                    "RNG0203": 30
+                  },
+                  "0780_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "50403932",
+                      "PIA0202": "SA"
+                    }
+                  ],
+                  "0790_FTX": [
+                    {
+                      "FTX01": "PRD",
+                      "FTX0301": "2",
+                      "FTX0401": "water-endangering"
+                    },
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "LuviquatÂ® Hold AT 3",
+                      "FTX0402": "120KG Plastic drums"
+                    }
+                  ],
+                  "0850_Segment_group_18": [
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "18000.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAD",
+                        "MEA0301": "KGM",
+                        "MEA0302": "18840.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "WT",
+                        "MEA0301": "KGM",
+                        "MEA0302": "630.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "DEN",
+                        "MEA0201": "TC",
+                        "MEA0204": "Density 20(C)",
+                        "MEA0301": "23",
+                        "MEA0302": "1.05"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Flash Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "101.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Melting Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "-1.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Boiling Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "100.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "AAE",
+                        "MEA0201": "ZZZ",
+                        "MEA0204": "pH-value",
+                        "MEA0301": "ZZ",
+                        "MEA0302": "5.00"
+                      }
+                    }
+                  ],
+                  "0910_Segment_group_20": [
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "LI",
+                        "RFF0102": "3550880113",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "3021036470",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4995488195",
+                        "RFF0103": "10"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "AQV",
+                        "RFF0102": "39059100"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "CO",
+                        "RFF0102": "4995488195"
+                      }
+                    }
+                  ],
+                  "1070_Segment_group_25": [
+                    {
+                      "1080_SGP": {
+                        "SGP0101": "SEKU9141997"
+                      }
+                    }
+                  ],
+                  "1120_Segment_group_27": [
+                    {
+                      "1130_DGS": {
+                        "DGS01": "IMD",
+                        "DGS0201": "9",
+                        "DGS0301": 3082,
+                        "DGS0401": 101,
+                        "DGS0402": "CEL",
+                        "DGS05": "3",
+                        "DGS06": "F-AS-F",
+                        "DGS1001": "9",
+                        "DGS1002": "EHSM"
+                      },
+                      "1140_FTX": [
+                        {
+                          "FTX01": "AAC",
+                          "FTX0301": "P",
+                          "FTX0401": "Marine Pollutant"
+                        },
+                        {
+                          "FTX01": "AAD",
+                          "FTX0401": "IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate"
+                        },
+                        {
+                          "FTX01": "ACB",
+                          "FTX0401": "Odor: faint specific odour"
+                        },
+                        {
+                          "FTX01": "LOI",
+                          "FTX0401": "Properties of the product change irreversibly on exceeding the limit temperature."
+                        },
+                        {
+                          "FTX01": "AAN",
+                          "FTX0401": "Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE)"
+                        },
+                        {
+                          "FTX01": "AEB",
+                          "FTX0401": "Characteristics of the product are irreversibly changed below the limit temperature."
+                        }
+                      ],
+                      "1150_Segment_group_28": [
+                        {
+                          "1160_CTA": {
+                            "CTA01": "HE"
+                          },
+                          "1170_COM": [
+                            {
+                              "COM01": [
+                                {
+                                  "C07601": "+49 180 2273 112",
+                                  "C07602": "TE"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "1260_Segment_group_32": [
+                {
+                  "1270_EQD": {
+                    "EQD01": "CN",
+                    "EQD0201": "AMCU9361861",
+                    "EQD0301": "45RT",
+                    "EQD0304": "40Â´ Reefer 9Â´6\" operated high cube"
+                  },
+                  "1280_EQN": {
+                    "EQN0101": 1
+                  },
+                  "1290_TMD": {
+                    "TMD0101": "3",
+                    "TMD0102": "Carriers Haulage",
+                    "TMD03": "1"
+                  },
+                  "1350_FTX": [
+                    {
+                      "FTX01": "AAF",
+                      "FTX0301": "DEPOT",
+                      "FTX0401": "DELUH",
+                      "FTX0402": "Ludwigshafen"
+                    },
+                    {
+                      "FTX01": "ITR",
+                      "FTX0401": "08.04.2026"
+                    }
+                  ],
+                  "1370_Segment_group_33": [
+                    {
+                      "1380_NAD": {
+                        "NAD01": "DCP",
+                        "NAD0201": "312930",
+                        "NAD0401": "CMA-CGM (Deutschland) GmbH",
+                        "NAD0402": "Shipping Agency",
+                        "NAD0501": "Schellackstr. 1",
+                        "NAD06": "Bremen",
+                        "NAD08": "28217",
+                        "NAD09": "DE"
+                      }
+                    },
+                    {
+                      "1380_NAD": {
+                        "NAD01": "EP",
+                        "NAD0201": "303982",
+                        "NAD0401": "Contargo Rhein-Neckar GmbH",
+                        "NAD0501": "Shellstr. 5",
+                        "NAD06": "Ludwigshafen",
+                        "NAD08": "67065",
+                        "NAD09": "DE"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "1270_EQD": {
+                    "EQD01": "CN",
+                    "EQD0201": "SEKU9141997",
+                    "EQD0301": "45RT",
+                    "EQD0304": "40Â´ Reefer 9Â´6\" operated high cube"
+                  },
+                  "1280_EQN": {
+                    "EQN0101": 1
+                  },
+                  "1290_TMD": {
+                    "TMD0101": "3",
+                    "TMD0102": "Carriers Haulage",
+                    "TMD03": "1"
+                  },
+                  "1350_FTX": [
+                    {
+                      "FTX01": "AAF",
+                      "FTX0301": "DEPOT",
+                      "FTX0401": "DELUH",
+                      "FTX0402": "Ludwigshafen"
+                    },
+                    {
+                      "FTX01": "ITR",
+                      "FTX0401": "08.04.2026"
+                    }
+                  ],
+                  "1370_Segment_group_33": [
+                    {
+                      "1380_NAD": {
+                        "NAD01": "DCP",
+                        "NAD0201": "312930",
+                        "NAD0401": "CMA-CGM (Deutschland) GmbH",
+                        "NAD0402": "Shipping Agency",
+                        "NAD0501": "Schellackstr. 1",
+                        "NAD06": "Bremen",
+                        "NAD08": "28217",
+                        "NAD09": "DE"
+                      }
+                    },
+                    {
+                      "1380_NAD": {
+                        "NAD01": "EP",
+                        "NAD0201": "303982",
+                        "NAD0401": "Contargo Rhein-Neckar GmbH",
+                        "NAD0501": "Shellstr. 5",
+                        "NAD06": "Ludwigshafen",
+                        "NAD08": "67065",
+                        "NAD09": "DE"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "1270_EQD": {
+                    "EQD01": "CN",
+                    "EQD0201": "CGMU5666332",
+                    "EQD0301": "45RT",
+                    "EQD0304": "40Â´ Reefer 9Â´6\" operated high cube"
+                  },
+                  "1280_EQN": {
+                    "EQN0101": 1
+                  },
+                  "1290_TMD": {
+                    "TMD0101": "3",
+                    "TMD0102": "Carriers Haulage",
+                    "TMD03": "1"
+                  },
+                  "1350_FTX": [
+                    {
+                      "FTX01": "AAF",
+                      "FTX0301": "DEPOT",
+                      "FTX0401": "DELUH",
+                      "FTX0402": "Ludwigshafen"
+                    },
+                    {
+                      "FTX01": "ITR",
+                      "FTX0401": "08.04.2026"
+                    }
+                  ],
+                  "1370_Segment_group_33": [
+                    {
+                      "1380_NAD": {
+                        "NAD01": "DCP",
+                        "NAD0201": "312930",
+                        "NAD0401": "CMA-CGM (Deutschland) GmbH",
+                        "NAD0402": "Shipping Agency",
+                        "NAD0501": "Schellackstr. 1",
+                        "NAD06": "Bremen",
+                        "NAD08": "28217",
+                        "NAD09": "DE"
+                      }
+                    },
+                    {
+                      "1380_NAD": {
+                        "NAD01": "EP",
+                        "NAD0201": "303982",
+                        "NAD0401": "Contargo Rhein-Neckar GmbH",
+                        "NAD0501": "Shellstr. 5",
+                        "NAD06": "Ludwigshafen",
+                        "NAD08": "67065",
+                        "NAD09": "DE"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "Id": "IFTMBF",
+            "MessageHeader": {
+              "UNH01": "66665826458003",
+              "UNH0201": "IFTMBF",
+              "UNH0202": "D",
+              "UNH0203": "08A",
+              "UNH0204": "UN"
+            },
+            "Name": "Firm booking message"
+          }
+        ]
+      }
+    },
+    "FunctionalAcksReceived": [],
+    "FunctionalAcksGenerated": []
+  }
+}

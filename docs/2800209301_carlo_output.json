@@ -1,0 +1,439 @@
+{
+  "SeaHouseShipmentData": {
+    "Header": {
+      "SendDate": "2026-03-16T12:42:00",
+      "ExportItemReference": "2800209301"
+    },
+    "SeaHouseShipment": {
+      "actionAttribute": "updateorcreate",
+      "PreferredModeOfTransport": "Ocean",
+      "DUNSCustomer": "BASFAG2",
+      "BASFBL": "BL00",
+      "CustomerReference": "2800209301",
+      "CustomerTransportManagerName": "Mrs Ho",
+      "CustomerTransportManagerEmail": "JESSEY.HO@BASF.COM",
+      "SendersInstructions": "Reefer container, genset required, Temp. set to + 20°C, connect at loading site, terminal and bargeCIP Columbus Rail Rampex Y130U\r\nSA/CANADA\r\nMain leg: Billing without our UST-IDVAT must not be calculated with billing",
+      "DocDeliveryInstructions": "ECB has to be presented to addresses at latest 3 working days after departure of vessel. In case of any difficulties, new vessel booking ordelays, please inform the responsible Transport Manager. Please send documents depending on Notify to: BDP,,basfdocs@bdpint.com\r\nThe followings must be shown on B/L: IMDG-class, UN number and propper shipping name in case of dangerous goods cargo. PO# must appear on waybill. Waybill must include number of individual collis per pallet and the sum of individual collis.\r\nFor bulk-containers: - tare weight is to be mentioned on the B/L - stock-number must be included, if mentioned in the order.",
+      "BLRemarks": "Date Shipped On Board\r\nDepending on order: freight prepaid\" (CIP: Ocean Freight + On-carriage Freight + Destination Terminal Handling) or \"freight collect\"\r\nPlease show Container No. & Seal No\r\nName, address and phone number of the carrier's agent at port of destination\r\nIn case of dangerous goods: Emergency Response Center BASF: +1 800 832 4357 USA Emergency Contact: CHEMTREC +1 800 424 9300 or +1 703 527 3887 CHEMTREC CONTRACT ID: CCN2407",
+      "CustomerEDIType": {
+        "Matchcode": "YE22"
+      },
+      "MovementType": "D/D",
+      "LoadType": "FCL",
+      "HouseType": "BackToBack",
+      "Incoterms": "CIP",
+      "Incotermplace": "Columbus Rail Ramp",
+      "ShipmentDate": "2026-04-20",
+      "DeliveryTerms": "Prepaid",
+      "Scenario": {
+        "Matchcode": "BASF FCL"
+      },
+      "HaulageType": {
+        "Matchcode": "CAR/CAR"
+      },
+      "ObjectOwner": {
+        "OrganisationalUnitId": 5
+      },
+      "Customer": {
+        "Matchcode": "1000"
+      },
+      "Consignor": {
+        "Matchcode": "1000"
+      },
+      "FreightPayer": {
+        "Matchcode": "1000"
+      },
+      "Shipper": {
+        "Name1": "BASF SE",
+        "Address": {
+          "Street": "Carl-Bosch-Strasse 38",
+          "Location1": "67056 Ludwigshafen",
+          "Country": {
+            "CountryID": "DE"
+          }
+        }
+      },
+      "ForwarderName": "POLYTRA N.V.",
+      "ForwarderRoad": "Desguinlei 92 box V 15 Verzicht gebouw",
+      "ForwarderPcd": "2018",
+      "ForwarderCity1": "ANTWERPEN",
+      "ForwarderCountry": {
+        "CountryID": "BE"
+      },
+      "ForwarderPhone": "032050501",
+      "ForwarderEmail": "basf@polytra.be",
+      "Consignee": {
+        "Name1": "BASF CORPORATION",
+        "Name2": "MORRIS",
+        "Address": {
+          "Street": "100 Park Avenue/PO Box 685",
+          "Location1": "FLORHAM PARK",
+          "Location2": "New Jersey",
+          "ZipCode": "079321089",
+          "Country": {
+            "CountryID": "US"
+          }
+        },
+        "PhoneNumber": "9732456000",
+        "EmailAddress": "Inquiries-Intercompany-MX-CAC@basf.com"
+      },
+      "Notify1": {
+        "Name1": "BDP INTERNATIONAL",
+        "Name2": "BASF IMPORT OPERATIONS",
+        "Address": {
+          "Street": "510 WALNUT ST, FL 3",
+          "Location1": "PHILADELPHIA",
+          "Location2": "Pennsylvania",
+          "ZipCode": "191063690",
+          "Country": {
+            "CountryID": "US"
+          }
+        }
+      },
+      "PhoneNumberNotify1": "8564201182",
+      "EmailNotify1": "BASFDocs@bdpint.com",
+      "GoodsReceiverName": "BASF CORPORATION MIDWEST DISTRIBUTION CENTER",
+      "GoodsReceiverRoad": "9565 LOGISTICS CT",
+      "GoodsReceiverPcd": "432170000",
+      "GoodsReceiverCity1": "COLUMBUS",
+      "GoodsReceiverCity2": "OH - Ohio",
+      "GoodsReceiverCountry": {
+        "CountryID": "US"
+      },
+      "GoodsReceiverEmail": "IntercompanyNorthAmerica@basf.com",
+      "CustomerExportManagerName": "Mrs Juppi",
+      "CustomerExportManagerAddress": "Storkower Stra�e 146\r\n10407\r\nBerlin\r\nDE",
+      "CustomerExportManagerPhone": "+49 30 2005-5660",
+      "CustomerExportManagerEmail": "FABIENNE.JUPPI@BASF.COM",
+      "PlaceOfDelivery": {
+        "Matchcode": "USCMH",
+        "Designation": "Columbus (OH) - Terminal"
+      },
+      "PickupLocation": {
+        "ExportCarrier": {
+          "Matchcode": "312930"
+        }
+      },
+      "TransportSubcontractor": {
+        "Matchcode": "303982"
+      },
+      "BLRecipients": [
+        {
+          "RecipientNumber": "1",
+          "Name": "To Consignee",
+          "Country": {
+            "CountryID": "US"
+          },
+          "Email": "Consignee",
+          "BLType": {
+            "Matchcode": "EM"
+          },
+          "Copies": 1,
+          "Originals": 0
+        },
+        {
+          "RecipientNumber": "2",
+          "Name": "Notify",
+          "Email": "Notify",
+          "BLType": {
+            "Matchcode": "EM"
+          },
+          "Copies": 1,
+          "Originals": 0
+        }
+      ],
+      "Container": [
+        {
+          "SequenceNumber": 1,
+          "ContainerNumber": "1288724478",
+          "ContainerType": {
+            "Matchcode": "45RT"
+          },
+          "TareWeight": "4600.000",
+          "EDIID": "3550879994/000010",
+          "ContainerNumberType": "Known",
+          "TransportMode": "Container"
+        },
+        {
+          "SequenceNumber": 2,
+          "ContainerNumber": "1288724479",
+          "ContainerType": {
+            "Matchcode": "45RT"
+          },
+          "TareWeight": "4600.000",
+          "EDIID": "3550880113/000010",
+          "ContainerNumberType": "Known",
+          "TransportMode": "Container"
+        },
+        {
+          "SequenceNumber": 3,
+          "ContainerNumber": "1288725860",
+          "ContainerType": {
+            "Matchcode": "45RT"
+          },
+          "TareWeight": "4600.000",
+          "EDIID": "3550879430/000010-3550879730/000010-3550879847/000010",
+          "ContainerNumberType": "Known",
+          "TransportMode": "Container"
+        }
+      ],
+      "Cargo": [
+        {
+          "Container": {
+            "ContainerNumber": "1288725860"
+          },
+          "ItemNumber": 1,
+          "TotalNumberOfPackages": 35,
+          "Packaging": {
+            "Matchcode": "1H1"
+          },
+          "GoodsDesignation": "Plastic drums\r\n7 Pallet,wood,CP3,1140x1140x138mm,HT\r\nLuviquat® Hold AT 3\r\n120KG Plastic drums\r\nUS Harmonized tariff code:390591\r\nP.O. NBR 4994886331\r\n3020963670\r\nMarine Pollutant\r\nIMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate\r\nEMS: F-AS-F\r\nFlashpoint: 101.00 CEL",
+          "TemperatureRangeFrom": 5,
+          "TemperateRangeTo": 30,
+          "ArticleNumber": "50403932",
+          "GTIN": "4014439010826",
+          "DeliveryInfo": "Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data\r\nTemperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data",
+          "TotalGrossWeight": 4543,
+          "TotalNetWeight": "4200.000",
+          "PalletWeight": "147.000",
+          "TotalDimensionsVolume": "8.736",
+          "DeliveryNoteSAP": "3550879430",
+          "DeliveryPositionNumber": "000010",
+          "EDIID": "3550879430/000010",
+          "OrderNumberSAP": "3020963670",
+          "GoodsReceiverReference": "4994886331",
+          "CustomerPONumber": "4994886331",
+          "HSCode": "39059100",
+          "HandlingInfo": "BASF\r\n3020963670 / 000010",
+          "AdditionalDGInfo": "IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate",
+          "AdditionalInfo": "Odor: faint specific odour",
+          "LoadingInstructions": "Properties of the product change irreversibly on exceeding the limit t emperature.",
+          "HandlingRestrictions": "Suitable Materials For Packages: High density polyethylene (HDPE), Low  density polyethylene (LDPE)",
+          "TemperatureControlInstructions": "Characteristics of the product are irreversibly changed below the limi t temperature.",
+          "DangerousGoods": {
+            "UnNumber": 3082,
+            "PackagingGroup": "3",
+            "Flashpoint": 101,
+            "HazardousToWater": "MarinePollutant",
+            "ProperShippingName": "ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S.",
+            "TechnicalName": "1-VINYL-2-PYRROLIDONE",
+            "EmergencyContactName": "BASF SE /LUDW. 24 HOUR NUMBER",
+            "EmergencyContactPhoneNo": "+49 180 2273 112",
+            "DangerousGoods": {
+              "Class": "9",
+              "EmergencySchedules": "F-AS-F"
+            }
+          }
+        },
+        {
+          "Container": {
+            "ContainerNumber": "1288725860"
+          },
+          "ItemNumber": 2,
+          "TotalNumberOfPackages": 50,
+          "Packaging": {
+            "Matchcode": "1H1"
+          },
+          "GoodsDesignation": "Plastic drums\r\n10 Pallet,wood,CP3,1140x1140x138mm,HT\r\nLuviquat® Hold AT 3\r\n120KG Plastic drums\r\nUS Harmonized tariff code:390591\r\nP.O. NBR 4994886335\r\n3020963671\r\nMarine Pollutant\r\nIMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate\r\nEMS: F-AS-F\r\nFlashpoint: 101.00 CEL",
+          "TemperatureRangeFrom": 5,
+          "TemperateRangeTo": 30,
+          "ArticleNumber": "50403932",
+          "GTIN": "4014439010826",
+          "DeliveryInfo": "Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data\r\nTemperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data",
+          "TotalGrossWeight": 6490,
+          "TotalNetWeight": "6000.000",
+          "PalletWeight": "210.000",
+          "TotalDimensionsVolume": "12.480",
+          "DeliveryNoteSAP": "3550879730",
+          "DeliveryPositionNumber": "000010",
+          "EDIID": "3550879730/000010",
+          "OrderNumberSAP": "3020963671",
+          "GoodsReceiverReference": "4994886335",
+          "CustomerPONumber": "4994886335",
+          "HSCode": "39059100",
+          "HandlingInfo": "BASF\r\n3020963671 / 000010",
+          "AdditionalDGInfo": "IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate",
+          "AdditionalInfo": "Odor: faint specific odour",
+          "LoadingInstructions": "Properties of the product change irreversibly on exceeding the limit t emperature.",
+          "HandlingRestrictions": "Suitable Materials For Packages: High density polyethylene (HDPE), Low  density polyethylene (LDPE)",
+          "TemperatureControlInstructions": "Characteristics of the product are irreversibly changed below the limi t temperature.",
+          "DangerousGoods": {
+            "UnNumber": 3082,
+            "PackagingGroup": "3",
+            "Flashpoint": 101,
+            "HazardousToWater": "MarinePollutant",
+            "ProperShippingName": "ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S.",
+            "TechnicalName": "1-VINYL-2-PYRROLIDONE",
+            "EmergencyContactName": "BASF SE /LUDW. 24 HOUR NUMBER",
+            "EmergencyContactPhoneNo": "+49 180 2273 112",
+            "DangerousGoods": {
+              "Class": "9",
+              "EmergencySchedules": "F-AS-F"
+            }
+          }
+        },
+        {
+          "Container": {
+            "ContainerNumber": "1288725860"
+          },
+          "ItemNumber": 3,
+          "TotalNumberOfPackages": 50,
+          "Packaging": {
+            "Matchcode": "1H1"
+          },
+          "GoodsDesignation": "Plastic drums\r\n10 Pallet,wood,CP3,1140x1140x138mm,HT\r\nLuviquat® Hold AT 3\r\n120KG Plastic drums\r\nUS Harmonized tariff code:390591\r\nP.O. NBR 4995117414\r\n3020991631\r\nMarine Pollutant\r\nIMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate\r\nEMS: F-AS-F\r\nFlashpoint: 101.00 CEL",
+          "TemperatureRangeFrom": 5,
+          "TemperateRangeTo": 30,
+          "ArticleNumber": "50403932",
+          "GTIN": "4014439010826",
+          "DeliveryInfo": "Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data\r\nTemperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data",
+          "TotalGrossWeight": 6490,
+          "TotalNetWeight": "6000.000",
+          "PalletWeight": "210.000",
+          "TotalDimensionsVolume": "12.480",
+          "DeliveryNoteSAP": "3550879847",
+          "DeliveryPositionNumber": "000010",
+          "EDIID": "3550879847/000010",
+          "OrderNumberSAP": "3020991631",
+          "GoodsReceiverReference": "4995117414",
+          "CustomerPONumber": "4995117414",
+          "HSCode": "39059100",
+          "HandlingInfo": "BASF\r\n3020991631 / 000010",
+          "AdditionalDGInfo": "IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate",
+          "AdditionalInfo": "Odor: faint specific odour",
+          "LoadingInstructions": "Properties of the product change irreversibly on exceeding the limit t emperature.",
+          "HandlingRestrictions": "Suitable Materials For Packages: High density polyethylene (HDPE), Low  density polyethylene (LDPE)",
+          "TemperatureControlInstructions": "Characteristics of the product are irreversibly changed below the limi t temperature.",
+          "DangerousGoods": {
+            "UnNumber": 3082,
+            "PackagingGroup": "3",
+            "Flashpoint": 101,
+            "HazardousToWater": "MarinePollutant",
+            "ProperShippingName": "ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S.",
+            "TechnicalName": "1-VINYL-2-PYRROLIDONE",
+            "EmergencyContactName": "BASF SE /LUDW. 24 HOUR NUMBER",
+            "EmergencyContactPhoneNo": "+49 180 2273 112",
+            "DangerousGoods": {
+              "Class": "9",
+              "EmergencySchedules": "F-AS-F"
+            }
+          }
+        },
+        {
+          "Container": {
+            "ContainerNumber": "1288724478"
+          },
+          "ItemNumber": 4,
+          "TotalNumberOfPackages": 150,
+          "Packaging": {
+            "Matchcode": "1H1"
+          },
+          "GoodsDesignation": "Plastic drums\r\n30 Pallet,wood,CP3,1140x1140x138mm,HT\r\nLuviquat® Hold AT 3\r\n120KG Plastic drums\r\nUS Harmonized tariff code:390591\r\nP.O. NBR 4995488194\r\n3021036468\r\nMarine Pollutant\r\nIMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate\r\nEMS: F-AS-F\r\nFlashpoint: 101.00 CEL",
+          "TemperatureRangeFrom": 5,
+          "TemperateRangeTo": 30,
+          "ArticleNumber": "50403932",
+          "GTIN": "4014439010826",
+          "DeliveryInfo": "Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data\r\nTemperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data",
+          "TotalGrossWeight": 19470,
+          "TotalNetWeight": "18000.000",
+          "PalletWeight": "630.000",
+          "TotalDimensionsVolume": "37.440",
+          "DeliveryNoteSAP": "3550879994",
+          "DeliveryPositionNumber": "000010",
+          "EDIID": "3550879994/000010",
+          "OrderNumberSAP": "3021036468",
+          "GoodsReceiverReference": "4995488194",
+          "CustomerPONumber": "4995488194",
+          "HSCode": "39059100",
+          "HandlingInfo": "BASF\r\n3021036468 / 000010",
+          "AdditionalDGInfo": "IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate",
+          "AdditionalInfo": "Odor: faint specific odour",
+          "LoadingInstructions": "Properties of the product change irreversibly on exceeding the limit t emperature.",
+          "HandlingRestrictions": "Suitable Materials For Packages: High density polyethylene (HDPE), Low  density polyethylene (LDPE)",
+          "TemperatureControlInstructions": "Characteristics of the product are irreversibly changed below the limi t temperature.",
+          "DangerousGoods": {
+            "UnNumber": 3082,
+            "PackagingGroup": "3",
+            "Flashpoint": 101,
+            "HazardousToWater": "MarinePollutant",
+            "ProperShippingName": "ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S.",
+            "TechnicalName": "1-VINYL-2-PYRROLIDONE",
+            "EmergencyContactName": "BASF SE /LUDW. 24 HOUR NUMBER",
+            "EmergencyContactPhoneNo": "+49 180 2273 112",
+            "DangerousGoods": {
+              "Class": "9",
+              "EmergencySchedules": "F-AS-F"
+            }
+          }
+        },
+        {
+          "Container": {
+            "ContainerNumber": "1288724479"
+          },
+          "ItemNumber": 5,
+          "TotalNumberOfPackages": 150,
+          "Packaging": {
+            "Matchcode": "1H1"
+          },
+          "GoodsDesignation": "Plastic drums\r\n30 Pallet,wood,CP3,1140x1140x138mm,HT\r\nLuviquat® Hold AT 3\r\n120KG Plastic drums\r\nUS Harmonized tariff code:390591\r\nP.O. NBR 4995488195\r\n3021036470\r\nMarine Pollutant\r\nIMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate\r\nEMS: F-AS-F\r\nFlashpoint: 101.00 CEL",
+          "TemperatureRangeFrom": 5,
+          "TemperateRangeTo": 30,
+          "ArticleNumber": "50403932",
+          "GTIN": "4014439010826",
+          "DeliveryInfo": "Temperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data\r\nTemperature sensitive product. Refeer container needed. Irreversible damage. For temperature range please see Master Data",
+          "TotalGrossWeight": 19470,
+          "TotalNetWeight": "18000.000",
+          "PalletWeight": "630.000",
+          "TotalDimensionsVolume": "37.440",
+          "DeliveryNoteSAP": "3550880113",
+          "DeliveryPositionNumber": "000010",
+          "EDIID": "3550880113/000010",
+          "OrderNumberSAP": "3021036470",
+          "GoodsReceiverReference": "4995488195",
+          "CustomerPONumber": "4995488195",
+          "HSCode": "39059100",
+          "HandlingInfo": "BASF\r\n3021036470 / 000010",
+          "AdditionalDGInfo": "IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segregation group - Not appropriate",
+          "AdditionalInfo": "Odor: faint specific odour",
+          "LoadingInstructions": "Properties of the product change irreversibly on exceeding the limit t emperature.",
+          "HandlingRestrictions": "Suitable Materials For Packages: High density polyethylene (HDPE), Low  density polyethylene (LDPE)",
+          "TemperatureControlInstructions": "Characteristics of the product are irreversibly changed below the limi t temperature.",
+          "DangerousGoods": {
+            "UnNumber": 3082,
+            "PackagingGroup": "3",
+            "Flashpoint": 101,
+            "HazardousToWater": "MarinePollutant",
+            "ProperShippingName": "ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S.",
+            "TechnicalName": "1-VINYL-2-PYRROLIDONE",
+            "EmergencyContactName": "BASF SE /LUDW. 24 HOUR NUMBER",
+            "EmergencyContactPhoneNo": "+49 180 2273 112",
+            "DangerousGoods": {
+              "Class": "9",
+              "EmergencySchedules": "F-AS-F"
+            }
+          }
+        }
+      ],
+      "Master": {
+        "PreferredModeOfTransport": "Ocean",
+        "MainCarriageAsOcean": {
+          "CustomerVessel": {
+            "VesselNumber": "9472165",
+            "VesselName": "COSCO HOPE"
+          },
+          "CustomerVoyage": "Ocean Vessel",
+          "PortOfLoading": {
+            "Matchcode": "BEANR"
+          },
+          "PortOfDischarge": {
+            "Matchcode": "USNYC"
+          },
+          "CustomerETD": "2026-04-20",
+          "Carrier": {
+            "Matchcode": "220343"
+          }
+        }
+      }
+    }
+  }
+}

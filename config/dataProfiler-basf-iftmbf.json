@@ -1,0 +1,56 @@
+{
+  "id": "51028866-5dcb-4c62-827d-92031cf414eb",
+  "name": "basf-carlo-iftmbf-profile",
+  "description": "BASF IFTMBF (firm booking) -> Carlo v3 SeaHouseShipment. Updates the shipment IFTMIN created; Carlo matches on DUNSCustomer + CustomerReference and actionAttribute updateorcreate makes the call an upsert. A code 1 booking is dropped by the mapping and delivers an empty array.",
+  "active": true,
+  "configuration": [
+    {
+      "type": "dataProfiler",
+      "sequence": 1,
+      "sender": "BASF",
+      "receiver": "CARLO",
+      "subject": "IFTMBF",
+      "inputMimeType": "application/edifact",
+      "nextResource": {
+        "host": "data-pipeline-host.us-e2.cloudhub.io",
+        "port": "443",
+        "path": "/api/v1/data-pipeline/pass-thru",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "dataPipeline",
+      "sequence": 2,
+      "inputMimeType": "application/edifact",
+      "nextResource": {
+        "host": "data-transformer-host.us-e2.cloudhub.io",
+        "port": "443",
+        "path": "/api/v1/data-transformer/transform",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "dataTransformer",
+      "sequence": 3,
+      "dwlPath": "basf/BasfIftmbf.dwl",
+      "inputMimeType": "application/edifact",
+      "reportingContacts": "integration.support@fracht.com",
+      "nextResource": {
+        "host": "data-delivery-host.us-e2.cloudhub.io",
+        "port": "443",
+        "path": "/api/v1/data-delivery/https",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "dataDelivery",
+      "sequence": 4,
+      "host": "api-carlo-test.fracht.be",
+      "port": "4712",
+      "path": "/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment",
+      "method": "POST",
+      "mimeType": "application/json",
+      "validResponseCodes": "200..299"
+    }
+  ]
+}

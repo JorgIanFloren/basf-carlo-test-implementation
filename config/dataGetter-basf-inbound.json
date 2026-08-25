@@ -1,0 +1,73 @@
+{
+  "id": "f3e0ae13-344e-43f6-8c67-3b26cff002f5",
+  "name": "basf-sftp-getter",
+  "description": "PLACEHOLDER TRANSPORT - see config/README.md. Picks BASF EDIFACT interchanges off SFTP and posts them to the FrachtConnect inbound API, which routes each one through the matching dataProfiler. One dataGetter entry per message type, because the subject is what selects the profile. Connection details must be confirmed with BASF before this is loaded.",
+  "active": false,
+  "configuration": [
+    {
+      "type": "dataGetter",
+      "dataGetter": [
+        {
+          "sender": "BASF",
+          "receiver": "CARLO",
+          "subject": "IFTMIN",
+          "protocol": "sftp",
+          "host": "sftp.example-basf.com",
+          "port": "22",
+          "username": "CONFIRM_WITH_BASF",
+          "identityFile": "/keys/basf-rsa.txt",
+          "preferredAuthenticationMethod": "IDENTITY_FILE",
+          "directoryPath": "/outbound/iftmin/",
+          "filenamePattern": "*.txt",
+          "recurrence": {
+            "frequency": "Hour",
+            "schedule": {
+              "hours": ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],
+              "weekDays": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+            }
+          }
+        },
+        {
+          "sender": "BASF",
+          "receiver": "CARLO",
+          "subject": "IFTMBF",
+          "protocol": "sftp",
+          "host": "sftp.example-basf.com",
+          "port": "22",
+          "username": "CONFIRM_WITH_BASF",
+          "identityFile": "/keys/basf-rsa.txt",
+          "preferredAuthenticationMethod": "IDENTITY_FILE",
+          "directoryPath": "/outbound/iftmbf/",
+          "filenamePattern": "*.txt",
+          "recurrence": {
+            "frequency": "Hour",
+            "schedule": {
+              "hours": ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],
+              "weekDays": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+            }
+          }
+        },
+        {
+          "sender": "BASF",
+          "receiver": "CARLO",
+          "subject": "IFCSUM",
+          "protocol": "sftp",
+          "host": "sftp.example-basf.com",
+          "port": "22",
+          "username": "CONFIRM_WITH_BASF",
+          "identityFile": "/keys/basf-rsa.txt",
+          "preferredAuthenticationMethod": "IDENTITY_FILE",
+          "directoryPath": "/outbound/ifcsum/",
+          "filenamePattern": "*.txt",
+          "recurrence": {
+            "frequency": "Hour",
+            "schedule": {
+              "hours": ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],
+              "weekDays": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "e1946007-460e-44ea-8de0-02c006b0fbca",
+  "name": "basf-carlo-ifcsum-profile",
+  "description": "BASF IFCSUM (consolidation summary) -> Carlo v3 ShipmentCargo. Updates existing cargo lines matched on the delivery note in RFF+LI, delivering the customs MRN and, for an FCL consolidation, the container VGM / seal / signatory. Note this is the only one of the three that does NOT target SeaHouseShipment.",
+  "active": true,
+  "configuration": [
+    {
+      "type": "dataProfiler",
+      "sequence": 1,
+      "sender": "BASF",
+      "receiver": "CARLO",
+      "subject": "IFCSUM",
+      "inputMimeType": "application/edifact",
+      "nextResource": {
+        "host": "data-pipeline-host.us-e2.cloudhub.io",
+        "port": "443",
+        "path": "/api/v1/data-pipeline/pass-thru",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "dataPipeline",
+      "sequence": 2,
+      "inputMimeType": "application/edifact",
+      "nextResource": {
+        "host": "data-transformer-host.us-e2.cloudhub.io",
+        "port": "443",
+        "path": "/api/v1/data-transformer/transform",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "dataTransformer",
+      "sequence": 3,
+      "dwlPath": "basf/BasfIfcsum.dwl",
+      "inputMimeType": "application/edifact",
+      "reportingContacts": "integration.support@fracht.com",
+      "nextResource": {
+        "host": "data-delivery-host.us-e2.cloudhub.io",
+        "port": "443",
+        "path": "/api/v1/data-delivery/https",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "dataDelivery",
+      "sequence": 4,
+      "host": "api-carlo-test.fracht.be",
+      "port": "4712",
+      "path": "/api/PolytraSeafreightHouseShipment_BASF/v3/ShipmentCargo",
+      "method": "POST",
+      "mimeType": "application/json",
+      "validResponseCodes": "200..299"
+    }
+  ]
+}

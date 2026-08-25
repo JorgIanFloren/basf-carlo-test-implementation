@@ -1,0 +1,215 @@
+{
+  "EDI": {
+    "Errors": [],
+    "Delimiters": "+: '?",
+    "Messages": {
+      "D08A": {
+        "IFCSUM": [
+          {
+            "Interchange": {
+              "UNB0101": "UNOC",
+              "UNB0102": "3",
+              "UNB0201": "BASFAG2",
+              "UNB0203": "283155273",
+              "UNB0301": "102500",
+              "UNB0303": "283155273",
+              "UNB0401": 260408,
+              "UNB0402": 1202,
+              "UNB05": "34853987666822"
+            },
+            "Heading": {
+              "0020_BGM": {
+                "BGM0101": "340",
+                "BGM0201": "2013354402",
+                "BGM03": "9"
+              },
+              "0030_DTM": [
+                {
+                  "DTM0101": "137",
+                  "DTM0102": "20260408120149",
+                  "DTM0103": "204"
+                }
+              ],
+              "0050_FTX": [
+                {
+                  "FTX01": "ACB",
+                  "FTX0401": "USA/CANADA"
+                },
+                {
+                  "FTX01": "ACB",
+                  "FTX0401": "Seal number: 0024453"
+                }
+              ],
+              "0090_Segment_group_1": [
+                {
+                  "0100_RFF": {
+                    "RFF0101": "AIW",
+                    "RFF0102": "2013354402"
+                  }
+                },
+                {
+                  "0100_RFF": {
+                    "RFF0101": "ACE",
+                    "RFF0102": "YE45"
+                  }
+                }
+              ],
+              "0210_Segment_group_4": [
+                {
+                  "0220_NAD": {
+                    "NAD01": "CA",
+                    "NAD0201": "312930",
+                    "NAD0401": "CMA-CGM (Deutschland) GmbH",
+                    "NAD0402": "Shipping Agency",
+                    "NAD0501": "Schellackstr. 1",
+                    "NAD06": "Bremen",
+                    "NAD0701": "04",
+                    "NAD0703": "91",
+                    "NAD0704": "Bremen",
+                    "NAD08": "28217",
+                    "NAD09": "DE"
+                  }
+                }
+              ],
+              "0420_Segment_group_9": [
+                {
+                  "0430_TDT": {
+                    "TDT01": "20",
+                    "TDT0301": "10",
+                    "TDT0401": "13",
+                    "TDT0504": "CMA-CGM AGENCIES WORLDWIDE S.A.S. /",
+                    "TDT0801": "9472165",
+                    "TDT0802": "146",
+                    "TDT0803": "11",
+                    "TDT0804": "COSCO HOPE"
+                  },
+                  "0680_Segment_group_16": [
+                    {
+                      "0690_RFF": {
+                        "RFF0101": "SI",
+                        "RFF0102": "2800209301"
+                      }
+                    }
+                  ],
+                  "0710_Segment_group_17": [
+                    {
+                      "0720_NAD": {
+                        "NAD01": "CZ",
+                        "NAD0201": "1000",
+                        "NAD0401": "BASF SE",
+                        "NAD0501": "Carl-Bosch-Strasse 38",
+                        "NAD06": "Ludwigshafen",
+                        "NAD0701": "07",
+                        "NAD0703": "91",
+                        "NAD0704": "Rhineland Palatinate",
+                        "NAD08": "67063",
+                        "NAD09": "DE"
+                      },
+                      "0740_Segment_group_18": [
+                        {
+                          "0750_CTA": {
+                            "CTA01": "SD",
+                            "CTA0201": "GB/SG-ECI",
+                            "CTA0202": "Frau Ho"
+                          },
+                          "0760_COM": [
+                            {
+                              "COM01": [
+                                {
+                                  "C07601": "JESSEY.HO@BASF.COM",
+                                  "C07602": "EM"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "0910_Segment_group_22": [
+                {
+                  "0920_EQD": {
+                    "EQD01": "CN",
+                    "EQD0201": "SEKU9141997",
+                    "EQD0301": "45RT",
+                    "EQD0302": "102",
+                    "EQD0303": "20",
+                    "EQD0304": "40Â´ Reefer 9Â´6\" operated high cube"
+                  },
+                  "0930_EQN": {
+                    "EQN0101": 1
+                  },
+                  "0960_MEA": [
+                    {
+                      "MEA01": "WT",
+                      "MEA0201": "AAB",
+                      "MEA0204": "VGM",
+                      "MEA0301": "KGM",
+                      "MEA0302": "24220.000"
+                    }
+                  ],
+                  "0980_SEL": [
+                    {
+                      "SEL01": "0024453",
+                      "SEL0201": "SH"
+                    }
+                  ],
+                  "0990_NAD": [
+                    {
+                      "NAD01": "AM",
+                      "NAD0401": "MR UNGER JOCHEN, HEAD OF WH"
+                    }
+                  ],
+                  "1030_FTX": [
+                    {
+                      "FTX01": "ABL",
+                      "FTX0301": "VGM",
+                      "FTX0401": "The container gross weights (CGW) represent the Verified Gross Mass (VGM) in conformity with the International Convention for the Safety  of Life at Sea (SOLAS) Chapter VI, Part A, Regulation 2."
+                    }
+                  ]
+                }
+              ],
+              "1150_Segment_group_26": [
+                {
+                  "1160_CNI": {
+                    "CNI01": 1,
+                    "CNI0201": "3550880113"
+                  },
+                  "2260_Segment_group_51": [
+                    {
+                      "2270_GID": {
+                        "GID01": 1
+                      },
+                      "2470_Segment_group_55": [
+                        {
+                          "2480_RFF": {
+                            "RFF0101": "LI",
+                            "RFF0102": "3550880113",
+                            "RFF0103": "000010"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "Id": "IFCSUM",
+            "MessageHeader": {
+              "UNH01": "34853987666822",
+              "UNH0201": "IFCSUM",
+              "UNH0202": "D",
+              "UNH0203": "08A",
+              "UNH0204": "UN"
+            },
+            "Name": "Forwarding and consolidation summary message"
+          }
+        ]
+      }
+    },
+    "FunctionalAcksReceived": [],
+    "FunctionalAcksGenerated": []
+  }
+}

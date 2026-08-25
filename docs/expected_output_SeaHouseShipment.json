@@ -1,0 +1,4813 @@
+{
+  "seaHouseShipment": [
+    {
+      "preferredModeOfTransport": "Ocean",
+      "number": 706,
+      "frachtShipmentRef": "76000019",
+      "customerReference": "2800209301",
+      "aMSHouseBillOfLadingNumber": "",
+      "houseBillOfLadingNumber": "123",
+      "movementType": "P/P",
+      "houseType": "BackToBack",
+      "loadType": "FCL",
+      "incoterms": "CIP",
+      "insuranceCurrency": {},
+      "shipmentNumberSAP": null,
+      "deliveryTerms": "Prepaid",
+      "lockStatus": "Consolidated",
+      "shipmentCostNumberSAP": null,
+      "shipmentDate": "2026-06-19",
+      "financialReportingDate": "2026-04-20",
+      "scenario": {
+        "matchcode": "71BASFFCL",
+        "designation": "BASF FCL"
+      },
+      "deliveryNoteSAP": null,
+      "customerTransportManagerName": "Mrs Ho",
+      "customerTransportManagerEmail": "JESSEY.HO@BASF.COM",
+      "customerTransportManagerPhone": null,
+      "customerExportManagerName": "Mr Export Manager",
+      "customerExportManagerEmail": "export@manager.com",
+      "customerExportManagerPhone": null,
+      "precedingCustomsDocumentDate": null,
+      "internalComment": "",
+      "externalComment": null,
+      "customsComment": null,
+      "customsOfficeOfExit": null,
+      "goodsLocationCustoms": {},
+      "customsDocumentType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "aTREUR1Required": false,
+      "cOOInvoiceRequired": {
+        "matchcode": null,
+        "designation": null
+      },
+      "transportOrderComment": null,
+      "containerSummary": "1 CNT - 2 TEU",
+      "haulageType": {
+        "matchcode": "MER/MER",
+        "designation": "Merchant/Merchant"
+      },
+      "goodsValue": 0,
+      "goodsValueCurrency": {},
+      "aTRNumber": null,
+      "customsInvoiceNumber": null,
+      "customerSalesOffice": {
+        "matchcode": null,
+        "designation": null
+      },
+      "countryOfOrigin": {
+        "countryName": null
+      },
+      "countryOfDestination": {
+        "countryID": "US",
+        "countryName": "United States of America"
+      },
+      "phoneNumberNotify1": null,
+      "phoneNumberNotify2": null,
+      "phoneNumberNotify3": null,
+      "emailNotify1": null,
+      "emailNotify2": null,
+      "emailNotify3": null,
+      "showOnBLShipperPhoneEmail": {
+        "matchcode": null,
+        "designation": null
+      },
+      "commodity": {},
+      "preCarriageLoadingRef": null,
+      "onCarriageDeliveryRef": null,
+      "endCustomerRef": null,
+      "createDocuments": false,
+      "readyForInvoicing": {
+        "matchcode": null,
+        "designation": null
+      },
+      "eDIID": null,
+      "shipmentBaseTasks": [
+        {
+          "completedByUser": {
+            "fullName": "Admin 2",
+            "logOnName": "ADMIN2",
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": "2026-06-19T12:25:50",
+          "designation": "Fill in Booking Reference",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 1,
+          "taskTemplate": {
+            "designation": "Fill in Booking Reference",
+            "isActive": true,
+            "matchcode": "FILL_BKNRF",
+            "number": 51
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create transport",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create transport",
+            "isActive": true,
+            "matchcode": "TRANSPORT",
+            "number": 62
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create DGD",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create DGD",
+            "isActive": true,
+            "matchcode": "DGD",
+            "number": 21
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send DGN to Harbor Master",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send DGN to Harbor Master",
+            "isActive": true,
+            "matchcode": "DGN",
+            "number": 22
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send VGM EDI (automatic)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send VGM EDI (automatic)",
+            "isActive": true,
+            "matchcode": "VGM EDI",
+            "number": 64
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send VGM non EDI (check)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send VGM non EDI (check)",
+            "isActive": true,
+            "matchcode": "VGM NONEDI",
+            "number": 65
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "IFTSTA - ISF America",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "IFTSTA - ISF America",
+            "isActive": true,
+            "matchcode": "ISF",
+            "number": 20
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send MRN to Ebalie",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send MRN to Ebalie",
+            "isActive": true,
+            "matchcode": "MRN",
+            "number": 19
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send T2L to Ebalie",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send T2L to Ebalie",
+            "isActive": true,
+            "matchcode": "T2L",
+            "number": 43
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Check if there is no EDI connections with third party",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Check if there is no EDI connections with third party",
+            "isActive": true,
+            "matchcode": "CUSTOMSEDI",
+            "number": 66
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Z-Number Hamburg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Z-Number Hamburg",
+            "isActive": true,
+            "matchcode": "Z_NUMBER",
+            "number": 46
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "DE Change of transport - Notification",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "DE Change of transport - Notification",
+            "isActive": true,
+            "matchcode": "DECHNGTRP",
+            "number": 44
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create BL instructions",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create BL instructions",
+            "isActive": true,
+            "matchcode": "CREATEBLI",
+            "number": 67
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Waiver Africa - Start",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Waiver Africa - Start",
+            "isActive": true,
+            "matchcode": "WAIVER_STR",
+            "number": 37
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Waiver Africa - Finish",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Waiver Africa - Finish",
+            "isActive": true,
+            "matchcode": "WAIVER_FIN",
+            "number": 38
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Collect BL",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Collect BL",
+            "isActive": true,
+            "matchcode": "BLCOLLECT",
+            "number": 68
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create cover sheet OBL",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create cover sheet OBL",
+            "isActive": true,
+            "matchcode": "OBL",
+            "number": 69
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Automatic Invoicing Mainleg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Automatic Invoicing Mainleg",
+            "isActive": true,
+            "matchcode": "AUTO_INVMN",
+            "number": 53
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Automatic Invoicing Mainleg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Automatic Invoicing Mainleg",
+            "isActive": true,
+            "matchcode": "AUTO_INVMN",
+            "number": 53
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "SEM Check",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "SEM Check",
+            "isActive": true,
+            "matchcode": "SEM_CHK",
+            "number": 40
+          }
+        }
+      ],
+      "dUNSCustomer": "BASFAG2",
+      "bASFBL": "BL00",
+      "objectOwner": {
+        "organisationalUnitId": 5,
+        "organisationalUnitName": "POL_BASF"
+      },
+      "customer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "shipper": {
+        "businessPartner": {},
+        "externalDesignation": "",
+        "name1": "BASF SE",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "location1": "Ludwigshafen",
+          "zipCode": "67056",
+          "street": "Carl-Bosch-Strasse 38",
+          "country": {
+            "countryID": "DE",
+            "countryName": "Germany"
+          },
+          "state": null
+        }
+      },
+      "consignee": {
+        "businessPartner": {},
+        "externalDesignation": "",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "state": null
+        }
+      },
+      "notify1": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify2": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify3": {
+        "address": {
+          "state": null
+        }
+      },
+      "placeOfDelivery": {
+        "matchcode": "USCMH",
+        "designation": "Columbus",
+        "cityCode": "CMH"
+      },
+      "billOfLading": {
+        "shipperAddressString": "BASF SE\r\nD 67056 Ludwigshafen Carl-Bosch-Strasse 38",
+        "portOfLoading": "Antwerpen",
+        "portOfDischarge": "New York",
+        "placeOfDelivery": "USCMH - Columbus",
+        "vessel": "COSCO HOPE",
+        "goodsAreInsured": false,
+        "number": 0,
+        "numberOfGoods": 35,
+        "stomachString": ""
+      },
+      "container": [
+        {
+          "sequenceNumber": 1,
+          "containerType": {
+            "number": 16,
+            "matchcode": "40RE",
+            "designation": "Forty FOOT REEFER",
+            "isoCode": "45R1",
+            "content": "Thermal Container Refrigerated and Heated, Mechanically refrigerated and heated",
+            "isTemperatureControlled": true,
+            "tareWeight": 4350.0,
+            "payload": 23300.0,
+            "lengthInMeters": 1219.0,
+            "widthInMeters": 244.0,
+            "heightInMeters": 259.0,
+            "tEU": 2.0
+          },
+          "containerNumberType": "Unknown",
+          "tareWeight": 4350.0,
+          "verifiedGrossMass": 4350.0,
+          "vgmWeightDeterminationMethod": "SM2",
+          "vgmVerificationSignature": "",
+          "vgmState": "NotSent",
+          "humidificationNecessary": false,
+          "ventSetting": "None",
+          "drainage": "None",
+          "transportMode": "Container",
+          "containerGoodsInfo": null
+        }
+      ],
+      "cargo": [
+        {
+          "itemNumber": 1,
+          "deliveryNoteSAP": null,
+          "totalNumberOfPackages": 35.0,
+          "packaging": {
+            "number": 257,
+            "matchcode": "QF",
+            "shortDesignation": "QF"
+          },
+          "goodsDesignation": "Plastic drums\r\n7\r\nPallet,wood,CP3,1140x1140x138mm,HT",
+          "totalNetWeight": 0,
+          "mRN": null
+        }
+      ],
+      "master": {
+        "preferredModeOfTransport": "Ocean",
+        "number": 705,
+        "mainCarriageAsOcean": {
+          "vessel": {
+            "vesselName": "COSCO HOPE",
+            "vesselNumber": "9472165"
+          },
+          "voyageNumber": "",
+          "bookingAgent": {},
+          "portOfLoading": {
+            "matchcode": "BEANR",
+            "designation": "Antwerpen",
+            "cityCode": "ANR"
+          },
+          "portOfDischarge": {
+            "matchcode": "USNYC",
+            "designation": "New York",
+            "cityCode": "NYC"
+          },
+          "estimatedTimeOfDeparture": "2026-04-20T00:00:00",
+          "estimatedTimeOfArrival": "2026-05-16T00:00:00",
+          "actualTimeOfDeparture": "2026-04-20T00:00:00",
+          "actualTimeOfArrival": null,
+          "cutoffDates": {
+            "exportTerminalDeliveryTimeFrame": {},
+            "reeferDelClosing": null,
+            "vGMClosing": null,
+            "dGDelClosing": null,
+            "sIClosing": null
+          },
+          "masterBillOfLadingNumber": "BLNUMBER123",
+          "carrier": {
+            "businessPartnerId": 12830,
+            "externalNumber": "34036",
+            "matchcode": "CMA",
+            "name1": "CMA CGM BELGIUM NV",
+            "finAccAccountCreditor": "34036",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN 5.",
+                "zipCode": "2030",
+                "street": "KLIPPERSTRAAT",
+                "country": {
+                  "countryID": "Be",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": false,
+            "freightBusinessPartner": false,
+            "valueAddedTaxNumber": "0427388730",
+            "vATIsoTwoCharacterCountryCode": "Be"
+          },
+          "customerClosing": null,
+          "customerETD": "2026-04-20",
+          "customerETA": null
+        },
+        "docClosingTransp": null,
+        "contingentContract": {
+          "contractID": null,
+          "contractName": null
+        },
+        "automatedManifestSystemFilingDocument": {
+          "billOfLadingNumber": ""
+        },
+        "exportTerminalLocation": {
+          "businessPartner": {},
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "importTerminalLocation": {
+          "businessPartner": {},
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "placeOfReceipt": {},
+        "deliveryTerms": "Prepaid",
+        "placeOfDelivery": {},
+        "releaseTimeFrame": {},
+        "importAgent": {},
+        "exportAgent": {},
+        "remarks": "",
+        "externalReferences": [
+          {
+            "referenceType": 9,
+            "value": "Test"
+          }
+        ],
+        "shippingInstructions": {
+          "billOfLadingKind": 1,
+          "forwardingAgent": "BASF\r\n.",
+          "goodsAreInsured": false,
+          "number": 0,
+          "numberOfOriginals": 0,
+          "oceanCarrier": "CMA CGM BELGIUM NV\r\n.",
+          "dischargePortName": "New York",
+          "loadingPortName": "Antwerpen",
+          "vessel": "COSCO HOPE"
+        }
+      },
+      "id": 1000155,
+      "documentData": []
+    },
+    {
+      "preferredModeOfTransport": "Ocean",
+      "number": 681,
+      "frachtShipmentRef": "76000015",
+      "customerReference": "2800209301",
+      "aMSHouseBillOfLadingNumber": "",
+      "movementType": "P/P",
+      "houseType": "BackToBack",
+      "loadType": "FCL",
+      "incoterms": "CIP",
+      "insuranceCurrency": {},
+      "shipmentNumberSAP": null,
+      "deliveryTerms": "Prepaid",
+      "lockStatus": "Consolidated",
+      "shipmentCostNumberSAP": null,
+      "shipmentDate": "2026-06-16",
+      "financialReportingDate": "2026-04-20",
+      "scenario": {
+        "matchcode": "71BASFFCL",
+        "designation": "BASF FCL"
+      },
+      "deliveryNoteSAP": null,
+      "customerTransportManagerName": "Mrs Ho",
+      "customerTransportManagerEmail": "JESSEY.HO@BASF.COM",
+      "customerTransportManagerPhone": null,
+      "customerExportManagerName": "Mrs Jupp",
+      "customerExportManagerEmail": "FABIENNE.JUPPI@BASF.COM",
+      "customerExportManagerPhone": "+49 30 2005-5660",
+      "precedingCustomsDocumentDate": null,
+      "internalComment": "",
+      "externalComment": null,
+      "customsComment": null,
+      "customsOfficeOfExit": null,
+      "goodsLocationCustoms": {},
+      "customsDocumentType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "aTREUR1Required": false,
+      "cOOInvoiceRequired": {
+        "matchcode": null,
+        "designation": null
+      },
+      "transportOrderComment": null,
+      "containerSummary": "1 CNT - 2 TEU",
+      "haulageType": {
+        "matchcode": "MER/MER",
+        "designation": "Merchant/Merchant"
+      },
+      "goodsValue": 0,
+      "goodsValueCurrency": {},
+      "aTRNumber": null,
+      "customsInvoiceNumber": null,
+      "customerSalesOffice": {
+        "matchcode": null,
+        "designation": null
+      },
+      "countryOfOrigin": {
+        "countryName": null
+      },
+      "countryOfDestination": {
+        "countryID": "US",
+        "countryName": "United States of America"
+      },
+      "phoneNumberNotify1": null,
+      "phoneNumberNotify2": null,
+      "phoneNumberNotify3": null,
+      "emailNotify1": null,
+      "emailNotify2": null,
+      "emailNotify3": null,
+      "showOnBLShipperPhoneEmail": {
+        "matchcode": null,
+        "designation": null
+      },
+      "commodity": {},
+      "preCarriageLoadingRef": null,
+      "onCarriageDeliveryRef": null,
+      "endCustomerRef": null,
+      "createDocuments": false,
+      "readyForInvoicing": {
+        "matchcode": null,
+        "designation": null
+      },
+      "eDIID": "2800209301BL00",
+      "shipmentBaseTasks": [
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create operational file after BASF send EDI 'Erst info  '",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create operational file after BASF send EDI 'Erst info  '",
+            "isActive": true,
+            "matchcode": "BASF FILE",
+            "number": 61
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": "Admin 2",
+            "logOnName": "ADMIN2",
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": "2026-06-19T11:29:02",
+          "designation": "Fill in Booking Reference",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 1,
+          "taskTemplate": {
+            "designation": "Fill in Booking Reference",
+            "isActive": true,
+            "matchcode": "FILL_BKNRF",
+            "number": 51
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create transport",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create transport",
+            "isActive": true,
+            "matchcode": "TRANSPORT",
+            "number": 62
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create DGD",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create DGD",
+            "isActive": true,
+            "matchcode": "DGD",
+            "number": 21
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send DGN to Harbor Master",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send DGN to Harbor Master",
+            "isActive": false,
+            "matchcode": "SENDDGN",
+            "number": 63
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send VGM EDI (automatic)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send VGM EDI (automatic)",
+            "isActive": true,
+            "matchcode": "VGM EDI",
+            "number": 64
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send VGM non EDI (check)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send VGM non EDI (check)",
+            "isActive": true,
+            "matchcode": "VGM NONEDI",
+            "number": 65
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "IFTSTA - ISF America",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "IFTSTA - ISF America",
+            "isActive": true,
+            "matchcode": "ISF",
+            "number": 20
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send MRN to Ebalie",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send MRN to Ebalie",
+            "isActive": true,
+            "matchcode": "MRN",
+            "number": 19
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send T2L to Ebalie",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send T2L to Ebalie",
+            "isActive": true,
+            "matchcode": "T2L",
+            "number": 43
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Check if there is no EDI connections with third party",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Check if there is no EDI connections with third party",
+            "isActive": true,
+            "matchcode": "CUSTOMSEDI",
+            "number": 66
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Z-Number Hamburg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Z-Number Hamburg",
+            "isActive": true,
+            "matchcode": "Z_NUMBER",
+            "number": 46
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "DE Change of transport - Notification",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "DE Change of transport - Notification",
+            "isActive": true,
+            "matchcode": "DECHNGTRP",
+            "number": 44
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create BL instructions",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create BL instructions",
+            "isActive": true,
+            "matchcode": "CREATEBLI",
+            "number": 67
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Waiver Africa - Start",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Waiver Africa - Start",
+            "isActive": true,
+            "matchcode": "WAIVER_STR",
+            "number": 37
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Waiver Africa - Finish",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Waiver Africa - Finish",
+            "isActive": true,
+            "matchcode": "WAIVER_FIN",
+            "number": 38
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Collect BL",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Collect BL",
+            "isActive": true,
+            "matchcode": "BLCOLLECT",
+            "number": 68
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create cover sheet OBL",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create cover sheet OBL",
+            "isActive": true,
+            "matchcode": "OBL",
+            "number": 69
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Automatic Invoicing Mainleg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Automatic Invoicing Mainleg",
+            "isActive": true,
+            "matchcode": "AUTO_INVMN",
+            "number": 53
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Automatic Invoicing Mainleg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Automatic Invoicing Mainleg",
+            "isActive": true,
+            "matchcode": "AUTO_INVMN",
+            "number": 53
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "SEM Check",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "SEM Check",
+            "isActive": true,
+            "matchcode": "SEM_CHK",
+            "number": 40
+          }
+        }
+      ],
+      "dUNSCustomer": "BASFAG2",
+      "bASFBL": "BL00",
+      "objectOwner": {
+        "organisationalUnitId": 5,
+        "organisationalUnitName": "POL_BASF"
+      },
+      "customer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "shipper": {
+        "businessPartner": {},
+        "externalNumber": "3",
+        "externalDesignation": "2",
+        "name1": "BASF SE",
+        "name2": "4",
+        "name3": "5",
+        "name4": "6",
+        "contact": "7",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "location1": "Ludwigshafen",
+          "location2": "2800209301BL00",
+          "zipCode": "67056",
+          "street": "Carl-Bosch-Strasse 38",
+          "country": {
+            "countryID": "DE",
+            "countryName": "Germany"
+          },
+          "state": null
+        }
+      },
+      "consignee": {
+        "businessPartner": {},
+        "externalDesignation": "",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "state": null
+        }
+      },
+      "notify1": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify2": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify3": {
+        "address": {
+          "state": null
+        }
+      },
+      "placeOfDelivery": {
+        "matchcode": "USCMH",
+        "designation": "Columbus",
+        "cityCode": "CMH"
+      },
+      "billOfLading": {
+        "shipperAddressString": "BASF SE\r\nD 67056 Ludwigshafen 2800209301BL00 Carl-Bosch-Strasse 38",
+        "portOfLoading": "Antwerpen",
+        "portOfDischarge": "New York",
+        "placeOfDelivery": "USCMH - Columbus",
+        "vessel": "COSCO HOPE",
+        "goodsAreInsured": false,
+        "number": 0,
+        "numberOfGoods": 36,
+        "stomachString": "blabla"
+      },
+      "container": [
+        {
+          "sequenceNumber": 1,
+          "containerType": {
+            "number": 16,
+            "matchcode": "40RE",
+            "designation": "Forty FOOT REEFER",
+            "isoCode": "45R1",
+            "content": "Thermal Container Refrigerated and Heated, Mechanically refrigerated and heated",
+            "isTemperatureControlled": true,
+            "tareWeight": 4350.0,
+            "payload": 23300.0,
+            "lengthInMeters": 1219.0,
+            "widthInMeters": 244.0,
+            "heightInMeters": 259.0,
+            "tEU": 2.0
+          },
+          "containerNumberType": "Unknown",
+          "tareWeight": 4350.0,
+          "verifiedGrossMass": 4350.0,
+          "vgmWeightDeterminationMethod": "SM2",
+          "vgmVerificationSignature": "",
+          "vgmState": "NotSent",
+          "humidificationNecessary": false,
+          "ventSetting": "None",
+          "drainage": "None",
+          "transportMode": "Container",
+          "containerGoodsInfo": null
+        }
+      ],
+      "cargo": [
+        {
+          "itemNumber": 1,
+          "deliveryNoteSAP": null,
+          "totalNumberOfPackages": 35.0,
+          "packaging": {
+            "number": 257,
+            "matchcode": "QF",
+            "shortDesignation": "QF"
+          },
+          "goodsDesignation": "Plastic drums\r\n7\r\nPallet,wood,CP3,1140x1140x138mm,HT",
+          "totalNetWeight": 0,
+          "mRN": null
+        }
+      ],
+      "master": {
+        "preferredModeOfTransport": "Ocean",
+        "number": 682,
+        "mainCarriageAsOcean": {
+          "vessel": {
+            "vesselName": "COSCO HOPE",
+            "vesselNumber": "9472165"
+          },
+          "voyageNumber": "",
+          "bookingAgent": {},
+          "portOfLoading": {
+            "matchcode": "BEANR",
+            "designation": "Antwerpen",
+            "cityCode": "ANR"
+          },
+          "portOfDischarge": {
+            "matchcode": "USNYC",
+            "designation": "New York",
+            "cityCode": "NYC"
+          },
+          "estimatedTimeOfDeparture": "2026-04-20T00:00:00",
+          "estimatedTimeOfArrival": null,
+          "actualTimeOfDeparture": null,
+          "actualTimeOfArrival": null,
+          "cutoffDates": {
+            "exportTerminalDeliveryTimeFrame": {},
+            "reeferDelClosing": null,
+            "vGMClosing": null,
+            "dGDelClosing": null,
+            "sIClosing": null
+          },
+          "masterBillOfLadingNumber": "",
+          "carrier": {
+            "businessPartnerId": 12830,
+            "externalNumber": "34036",
+            "matchcode": "CMA",
+            "name1": "CMA CGM BELGIUM NV",
+            "finAccAccountCreditor": "34036",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN 5.",
+                "zipCode": "2030",
+                "street": "KLIPPERSTRAAT",
+                "country": {
+                  "countryID": "Be",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": false,
+            "freightBusinessPartner": false,
+            "valueAddedTaxNumber": "0427388730",
+            "vATIsoTwoCharacterCountryCode": "Be"
+          },
+          "customerClosing": null,
+          "customerETD": "2026-04-20",
+          "customerETA": null
+        },
+        "docClosingTransp": null,
+        "contingentContract": {
+          "contractID": null,
+          "contractName": null
+        },
+        "automatedManifestSystemFilingDocument": {
+          "billOfLadingNumber": ""
+        },
+        "exportTerminalLocation": {
+          "businessPartner": {},
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "importTerminalLocation": {
+          "businessPartner": {},
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "placeOfReceipt": {},
+        "deliveryTerms": "Prepaid",
+        "placeOfDelivery": {},
+        "releaseTimeFrame": {},
+        "importAgent": {},
+        "exportAgent": {},
+        "remarks": "",
+        "externalReferences": [
+          {
+            "referenceType": 9,
+            "value": "Test1"
+          }
+        ],
+        "shippingInstructions": {
+          "billOfLadingKind": 1,
+          "forwardingAgent": "BASF\r\n.",
+          "goodsAreInsured": false,
+          "number": 0,
+          "numberOfOriginals": 0,
+          "oceanCarrier": "CMA CGM BELGIUM NV\r\n.",
+          "dischargePortName": "New York",
+          "loadingPortName": "Antwerpen",
+          "vessel": "COSCO HOPE"
+        }
+      },
+      "id": 981231,
+      "documentData": []
+    },
+    {
+      "preferredModeOfTransport": "Ocean",
+      "number": 701,
+      "frachtShipmentRef": "76000017",
+      "customerReference": "2800209301",
+      "aMSHouseBillOfLadingNumber": "",
+      "houseBillOfLadingNumber": "123",
+      "movementType": "P/P",
+      "houseType": "BackToBack",
+      "loadType": "FCL",
+      "incoterms": "CIP",
+      "insuranceCurrency": {},
+      "shipmentNumberSAP": null,
+      "deliveryTerms": "Prepaid",
+      "lockStatus": "Consolidated",
+      "shipmentCostNumberSAP": null,
+      "shipmentDate": "2026-06-19",
+      "financialReportingDate": "2026-04-20",
+      "scenario": {
+        "matchcode": "71BASFFCL",
+        "designation": "BASF FCL"
+      },
+      "deliveryNoteSAP": null,
+      "customerTransportManagerName": "Mrs Ho",
+      "customerTransportManagerEmail": "JESSEY.HO@BASF.COM",
+      "customerTransportManagerPhone": null,
+      "customerExportManagerName": "Mr Export Manager",
+      "customerExportManagerEmail": "export@manager.com",
+      "customerExportManagerPhone": null,
+      "precedingCustomsDocumentDate": null,
+      "internalComment": "",
+      "externalComment": null,
+      "customsComment": null,
+      "customsOfficeOfExit": null,
+      "goodsLocationCustoms": {},
+      "customsDocumentType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "aTREUR1Required": false,
+      "cOOInvoiceRequired": {
+        "matchcode": null,
+        "designation": null
+      },
+      "transportOrderComment": null,
+      "containerSummary": "1 CNT - 2 TEU",
+      "haulageType": {
+        "matchcode": "MER/MER",
+        "designation": "Merchant/Merchant"
+      },
+      "goodsValue": 0,
+      "goodsValueCurrency": {},
+      "aTRNumber": null,
+      "customsInvoiceNumber": null,
+      "customerSalesOffice": {
+        "matchcode": null,
+        "designation": null
+      },
+      "countryOfOrigin": {
+        "countryName": null
+      },
+      "countryOfDestination": {
+        "countryID": "US",
+        "countryName": "United States of America"
+      },
+      "phoneNumberNotify1": null,
+      "phoneNumberNotify2": null,
+      "phoneNumberNotify3": null,
+      "emailNotify1": null,
+      "emailNotify2": null,
+      "emailNotify3": null,
+      "showOnBLShipperPhoneEmail": {
+        "matchcode": null,
+        "designation": null
+      },
+      "commodity": {},
+      "preCarriageLoadingRef": null,
+      "onCarriageDeliveryRef": null,
+      "endCustomerRef": null,
+      "createDocuments": false,
+      "readyForInvoicing": {
+        "matchcode": null,
+        "designation": null
+      },
+      "eDIID": null,
+      "shipmentBaseTasks": [
+        {
+          "completedByUser": {
+            "fullName": "Admin 2",
+            "logOnName": "ADMIN2",
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": "2026-06-19T11:58:54",
+          "designation": "Fill in Booking Reference",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 1,
+          "taskTemplate": {
+            "designation": "Fill in Booking Reference",
+            "isActive": true,
+            "matchcode": "FILL_BKNRF",
+            "number": 51
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": "Admin 2",
+            "logOnName": "ADMIN2",
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": "2026-06-19T12:06:08",
+          "designation": "Fill in Booking Reference",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 1,
+          "taskTemplate": {
+            "designation": "Fill in Booking Reference",
+            "isActive": true,
+            "matchcode": "FILL_BKNRF",
+            "number": 51
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create transport",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create transport",
+            "isActive": true,
+            "matchcode": "TRANSPORT",
+            "number": 62
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create DGD",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create DGD",
+            "isActive": true,
+            "matchcode": "DGD",
+            "number": 21
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send DGN to Harbor Master",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send DGN to Harbor Master",
+            "isActive": true,
+            "matchcode": "DGN",
+            "number": 22
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send VGM EDI (automatic)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send VGM EDI (automatic)",
+            "isActive": true,
+            "matchcode": "VGM EDI",
+            "number": 64
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send VGM non EDI (check)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send VGM non EDI (check)",
+            "isActive": true,
+            "matchcode": "VGM NONEDI",
+            "number": 65
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "IFTSTA - ISF America",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "IFTSTA - ISF America",
+            "isActive": true,
+            "matchcode": "ISF",
+            "number": 20
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send MRN to Ebalie",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send MRN to Ebalie",
+            "isActive": true,
+            "matchcode": "MRN",
+            "number": 19
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send T2L to Ebalie",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send T2L to Ebalie",
+            "isActive": true,
+            "matchcode": "T2L",
+            "number": 43
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Check if there is no EDI connections with third party",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Check if there is no EDI connections with third party",
+            "isActive": true,
+            "matchcode": "CUSTOMSEDI",
+            "number": 66
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Z-Number Hamburg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Z-Number Hamburg",
+            "isActive": true,
+            "matchcode": "Z_NUMBER",
+            "number": 46
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "DE Change of transport - Notification",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "DE Change of transport - Notification",
+            "isActive": true,
+            "matchcode": "DECHNGTRP",
+            "number": 44
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create BL instructions",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create BL instructions",
+            "isActive": true,
+            "matchcode": "CREATEBLI",
+            "number": 67
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Waiver Africa - Start",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Waiver Africa - Start",
+            "isActive": true,
+            "matchcode": "WAIVER_STR",
+            "number": 37
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Waiver Africa - Finish",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Waiver Africa - Finish",
+            "isActive": true,
+            "matchcode": "WAIVER_FIN",
+            "number": 38
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Collect BL",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Collect BL",
+            "isActive": true,
+            "matchcode": "BLCOLLECT",
+            "number": 68
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create cover sheet OBL",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create cover sheet OBL",
+            "isActive": true,
+            "matchcode": "OBL",
+            "number": 69
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Automatic Invoicing Mainleg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Automatic Invoicing Mainleg",
+            "isActive": true,
+            "matchcode": "AUTO_INVMN",
+            "number": 53
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Automatic Invoicing Mainleg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Automatic Invoicing Mainleg",
+            "isActive": true,
+            "matchcode": "AUTO_INVMN",
+            "number": 53
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "SEM Check",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "SEM Check",
+            "isActive": true,
+            "matchcode": "SEM_CHK",
+            "number": 40
+          }
+        }
+      ],
+      "dUNSCustomer": "BASFAG2",
+      "bASFBL": "BL00",
+      "objectOwner": {
+        "organisationalUnitId": 5,
+        "organisationalUnitName": "POL_BASF"
+      },
+      "customer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "shipper": {
+        "businessPartner": {},
+        "externalDesignation": "",
+        "name1": "BASF SE",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "location1": "Ludwigshafen",
+          "zipCode": "67056",
+          "street": "Carl-Bosch-Strasse 38",
+          "country": {
+            "countryID": "DE",
+            "countryName": "Germany"
+          },
+          "state": null
+        }
+      },
+      "consignee": {
+        "businessPartner": {},
+        "externalDesignation": "",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "state": null
+        }
+      },
+      "notify1": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify2": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify3": {
+        "address": {
+          "state": null
+        }
+      },
+      "placeOfDelivery": {
+        "matchcode": "USCMH",
+        "designation": "Columbus",
+        "cityCode": "CMH"
+      },
+      "billOfLading": {
+        "shipperAddressString": "BASF SE\r\nD 67056 Ludwigshafen Carl-Bosch-Strasse 38",
+        "portOfLoading": "Antwerpen",
+        "portOfDischarge": "New York",
+        "placeOfDelivery": "USCMH - Columbus",
+        "vessel": "COSCO HOPE",
+        "goodsAreInsured": false,
+        "number": 0,
+        "numberOfGoods": 35,
+        "stomachString": ""
+      },
+      "container": [
+        {
+          "sequenceNumber": 1,
+          "containerType": {
+            "number": 16,
+            "matchcode": "40RE",
+            "designation": "Forty FOOT REEFER",
+            "isoCode": "45R1",
+            "content": "Thermal Container Refrigerated and Heated, Mechanically refrigerated and heated",
+            "isTemperatureControlled": true,
+            "tareWeight": 4350.0,
+            "payload": 23300.0,
+            "lengthInMeters": 1219.0,
+            "widthInMeters": 244.0,
+            "heightInMeters": 259.0,
+            "tEU": 2.0
+          },
+          "containerNumberType": "Unknown",
+          "tareWeight": 4350.0,
+          "verifiedGrossMass": 4350.0,
+          "vgmWeightDeterminationMethod": "SM2",
+          "vgmVerificationSignature": "",
+          "vgmState": "NotSent",
+          "humidificationNecessary": false,
+          "ventSetting": "None",
+          "drainage": "None",
+          "transportMode": "Container",
+          "containerGoodsInfo": null
+        }
+      ],
+      "cargo": [
+        {
+          "itemNumber": 1,
+          "deliveryNoteSAP": null,
+          "totalNumberOfPackages": 35.0,
+          "packaging": {
+            "number": 257,
+            "matchcode": "QF",
+            "shortDesignation": "QF"
+          },
+          "goodsDesignation": "Plastic drums\r\n7\r\nPallet,wood,CP3,1140x1140x138mm,HT",
+          "totalNetWeight": 0,
+          "mRN": null
+        }
+      ],
+      "master": {
+        "preferredModeOfTransport": "Ocean",
+        "number": 702,
+        "mainCarriageAsOcean": {
+          "vessel": {
+            "vesselName": "COSCO HOPE",
+            "vesselNumber": "9472165"
+          },
+          "voyageNumber": "",
+          "bookingAgent": {},
+          "portOfLoading": {
+            "matchcode": "BEANR",
+            "designation": "Antwerpen",
+            "cityCode": "ANR"
+          },
+          "portOfDischarge": {
+            "matchcode": "USNYC",
+            "designation": "New York",
+            "cityCode": "NYC"
+          },
+          "estimatedTimeOfDeparture": "2026-04-20T00:00:00",
+          "estimatedTimeOfArrival": "2026-05-16T00:00:00",
+          "actualTimeOfDeparture": "2026-04-20T00:00:00",
+          "actualTimeOfArrival": null,
+          "cutoffDates": {
+            "exportTerminalDeliveryTimeFrame": {},
+            "reeferDelClosing": null,
+            "vGMClosing": null,
+            "dGDelClosing": null,
+            "sIClosing": null
+          },
+          "masterBillOfLadingNumber": "BLNUMBER123",
+          "carrier": {
+            "businessPartnerId": 12830,
+            "externalNumber": "34036",
+            "matchcode": "CMA",
+            "name1": "CMA CGM BELGIUM NV",
+            "finAccAccountCreditor": "34036",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN 5.",
+                "zipCode": "2030",
+                "street": "KLIPPERSTRAAT",
+                "country": {
+                  "countryID": "Be",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": false,
+            "freightBusinessPartner": false,
+            "valueAddedTaxNumber": "0427388730",
+            "vATIsoTwoCharacterCountryCode": "Be"
+          },
+          "customerClosing": null,
+          "customerETD": "2026-04-20",
+          "customerETA": null
+        },
+        "docClosingTransp": null,
+        "contingentContract": {
+          "contractID": null,
+          "contractName": null
+        },
+        "automatedManifestSystemFilingDocument": {
+          "billOfLadingNumber": ""
+        },
+        "exportTerminalLocation": {
+          "businessPartner": {},
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "importTerminalLocation": {
+          "businessPartner": {},
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "placeOfReceipt": {},
+        "deliveryTerms": "Prepaid",
+        "placeOfDelivery": {},
+        "releaseTimeFrame": {},
+        "importAgent": {},
+        "exportAgent": {},
+        "remarks": "",
+        "externalReferences": [
+          {
+            "referenceType": 9,
+            "value": "Test123"
+          }
+        ],
+        "shippingInstructions": {
+          "billOfLadingKind": 1,
+          "forwardingAgent": "BASF\r\n.",
+          "goodsAreInsured": false,
+          "number": 0,
+          "numberOfOriginals": 0,
+          "oceanCarrier": "CMA CGM BELGIUM NV\r\n.",
+          "dischargePortName": "New York",
+          "loadingPortName": "Antwerpen",
+          "vessel": "COSCO HOPE"
+        }
+      },
+      "id": 999761,
+      "documentData": []
+    },
+    {
+      "preferredModeOfTransport": "Ocean",
+      "number": 683,
+      "frachtShipmentRef": "76000016",
+      "customerReference": "2800209301",
+      "aMSHouseBillOfLadingNumber": "",
+      "houseBillOfLadingNumber": "123",
+      "movementType": "P/P",
+      "houseType": "BackToBack",
+      "loadType": "FCL",
+      "incoterms": "CIP",
+      "insuranceCurrency": {},
+      "shipmentNumberSAP": null,
+      "deliveryTerms": "Prepaid",
+      "lockStatus": "Consolidated",
+      "shipmentCostNumberSAP": null,
+      "shipmentDate": "2026-06-17",
+      "financialReportingDate": "2026-04-20",
+      "scenario": {
+        "matchcode": "71BASFFCL",
+        "designation": "BASF FCL"
+      },
+      "deliveryNoteSAP": null,
+      "customerTransportManagerName": "Mrs Ho",
+      "customerTransportManagerEmail": "JESSEY.HO@BASF.COM",
+      "customerTransportManagerPhone": null,
+      "customerExportManagerName": "Mr Export Manager",
+      "customerExportManagerEmail": "export@manager.com",
+      "customerExportManagerPhone": null,
+      "precedingCustomsDocumentDate": null,
+      "internalComment": "",
+      "externalComment": null,
+      "customsComment": null,
+      "customsOfficeOfExit": null,
+      "goodsLocationCustoms": {},
+      "customsDocumentType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "aTREUR1Required": false,
+      "cOOInvoiceRequired": {
+        "matchcode": null,
+        "designation": null
+      },
+      "transportOrderComment": null,
+      "containerSummary": "1 CNT - 2 TEU",
+      "haulageType": {
+        "matchcode": "MER/MER",
+        "designation": "Merchant/Merchant"
+      },
+      "goodsValue": 0,
+      "goodsValueCurrency": {},
+      "aTRNumber": null,
+      "customsInvoiceNumber": null,
+      "customerSalesOffice": {
+        "matchcode": null,
+        "designation": null
+      },
+      "countryOfOrigin": {
+        "countryName": null
+      },
+      "countryOfDestination": {
+        "countryID": "US",
+        "countryName": "United States of America"
+      },
+      "phoneNumberNotify1": null,
+      "phoneNumberNotify2": null,
+      "phoneNumberNotify3": null,
+      "emailNotify1": null,
+      "emailNotify2": null,
+      "emailNotify3": null,
+      "showOnBLShipperPhoneEmail": {
+        "matchcode": null,
+        "designation": null
+      },
+      "commodity": {},
+      "preCarriageLoadingRef": null,
+      "onCarriageDeliveryRef": null,
+      "endCustomerRef": null,
+      "createDocuments": false,
+      "readyForInvoicing": {
+        "matchcode": null,
+        "designation": null
+      },
+      "eDIID": null,
+      "shipmentBaseTasks": [
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create operational file after BASF send EDI 'Erst info  '",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create operational file after BASF send EDI 'Erst info  '",
+            "isActive": true,
+            "matchcode": "BASF FILE",
+            "number": 61
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": "Admin 2",
+            "logOnName": "ADMIN2",
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": "2026-06-19T11:31:37",
+          "designation": "Fill in Booking Reference",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 1,
+          "taskTemplate": {
+            "designation": "Fill in Booking Reference",
+            "isActive": true,
+            "matchcode": "FILL_BKNRF",
+            "number": 51
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create transport",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create transport",
+            "isActive": true,
+            "matchcode": "TRANSPORT",
+            "number": 62
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create DGD",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create DGD",
+            "isActive": true,
+            "matchcode": "DGD",
+            "number": 21
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send DGN to Harbor Master",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send DGN to Harbor Master",
+            "isActive": false,
+            "matchcode": "SENDDGN",
+            "number": 63
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send VGM EDI (automatic)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send VGM EDI (automatic)",
+            "isActive": true,
+            "matchcode": "VGM EDI",
+            "number": 64
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send VGM non EDI (check)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send VGM non EDI (check)",
+            "isActive": true,
+            "matchcode": "VGM NONEDI",
+            "number": 65
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "IFTSTA - ISF America",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "IFTSTA - ISF America",
+            "isActive": true,
+            "matchcode": "ISF",
+            "number": 20
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send MRN to Ebalie",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send MRN to Ebalie",
+            "isActive": true,
+            "matchcode": "MRN",
+            "number": 19
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send T2L to Ebalie",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send T2L to Ebalie",
+            "isActive": true,
+            "matchcode": "T2L",
+            "number": 43
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Check if there is no EDI connections with third party",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Check if there is no EDI connections with third party",
+            "isActive": true,
+            "matchcode": "CUSTOMSEDI",
+            "number": 66
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Z-Number Hamburg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Z-Number Hamburg",
+            "isActive": true,
+            "matchcode": "Z_NUMBER",
+            "number": 46
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "DE Change of transport - Notification",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "DE Change of transport - Notification",
+            "isActive": true,
+            "matchcode": "DECHNGTRP",
+            "number": 44
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create BL instructions",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create BL instructions",
+            "isActive": true,
+            "matchcode": "CREATEBLI",
+            "number": 67
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Waiver Africa - Start",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Waiver Africa - Start",
+            "isActive": true,
+            "matchcode": "WAIVER_STR",
+            "number": 37
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Waiver Africa - Finish",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Waiver Africa - Finish",
+            "isActive": true,
+            "matchcode": "WAIVER_FIN",
+            "number": 38
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Collect BL",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Collect BL",
+            "isActive": true,
+            "matchcode": "BLCOLLECT",
+            "number": 68
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create cover sheet OBL",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create cover sheet OBL",
+            "isActive": true,
+            "matchcode": "OBL",
+            "number": 69
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Automatic Invoicing Mainleg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Automatic Invoicing Mainleg",
+            "isActive": true,
+            "matchcode": "AUTO_INVMN",
+            "number": 53
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Automatic Invoicing Mainleg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Automatic Invoicing Mainleg",
+            "isActive": true,
+            "matchcode": "AUTO_INVMN",
+            "number": 53
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "SEM Check",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "SEM Check",
+            "isActive": true,
+            "matchcode": "SEM_CHK",
+            "number": 40
+          }
+        }
+      ],
+      "dUNSCustomer": "BASFAG2",
+      "bASFBL": "BL00",
+      "objectOwner": {
+        "organisationalUnitId": 5,
+        "organisationalUnitName": "POL_BASF"
+      },
+      "customer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "shipper": {
+        "businessPartner": {},
+        "externalDesignation": "",
+        "name1": "BASF SE",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "location1": "Ludwigshafen",
+          "zipCode": "67056",
+          "street": "Carl-Bosch-Strasse 38",
+          "country": {
+            "countryID": "DE",
+            "countryName": "Germany"
+          },
+          "state": null
+        }
+      },
+      "consignee": {
+        "businessPartner": {},
+        "externalDesignation": "",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "state": null
+        }
+      },
+      "notify1": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify2": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify3": {
+        "address": {
+          "state": null
+        }
+      },
+      "placeOfDelivery": {
+        "matchcode": "USCMH",
+        "designation": "Columbus",
+        "cityCode": "CMH"
+      },
+      "billOfLading": {
+        "shipperAddressString": "BASF SE\r\nD 67056 Ludwigshafen Carl-Bosch-Strasse 38",
+        "portOfLoading": "Antwerpen",
+        "portOfDischarge": "New York",
+        "placeOfDelivery": "USCMH - Columbus",
+        "vessel": "COSCO HOPE",
+        "goodsAreInsured": false,
+        "number": 0,
+        "numberOfGoods": 35,
+        "stomachString": ""
+      },
+      "container": [
+        {
+          "sequenceNumber": 1,
+          "containerType": {
+            "number": 16,
+            "matchcode": "40RE",
+            "designation": "Forty FOOT REEFER",
+            "isoCode": "45R1",
+            "content": "Thermal Container Refrigerated and Heated, Mechanically refrigerated and heated",
+            "isTemperatureControlled": true,
+            "tareWeight": 4350.0,
+            "payload": 23300.0,
+            "lengthInMeters": 1219.0,
+            "widthInMeters": 244.0,
+            "heightInMeters": 259.0,
+            "tEU": 2.0
+          },
+          "containerNumberType": "Unknown",
+          "tareWeight": 4350.0,
+          "verifiedGrossMass": 4350.0,
+          "vgmWeightDeterminationMethod": "SM2",
+          "vgmVerificationSignature": "",
+          "vgmState": "NotSent",
+          "humidificationNecessary": false,
+          "ventSetting": "None",
+          "drainage": "None",
+          "transportMode": "Container",
+          "containerGoodsInfo": null
+        }
+      ],
+      "cargo": [
+        {
+          "itemNumber": 1,
+          "deliveryNoteSAP": null,
+          "totalNumberOfPackages": 35.0,
+          "packaging": {
+            "number": 257,
+            "matchcode": "QF",
+            "shortDesignation": "QF"
+          },
+          "goodsDesignation": "Plastic drums\r\n7\r\nPallet,wood,CP3,1140x1140x138mm,HT",
+          "totalNetWeight": 0,
+          "mRN": null
+        }
+      ],
+      "master": {
+        "preferredModeOfTransport": "Ocean",
+        "number": 684,
+        "mainCarriageAsOcean": {
+          "vessel": {
+            "vesselName": "COSCO HOPE",
+            "vesselNumber": "9472165"
+          },
+          "voyageNumber": "",
+          "bookingAgent": {},
+          "portOfLoading": {
+            "matchcode": "BEANR",
+            "designation": "Antwerpen",
+            "cityCode": "ANR"
+          },
+          "portOfDischarge": {
+            "matchcode": "USNYC",
+            "designation": "New York",
+            "cityCode": "NYC"
+          },
+          "estimatedTimeOfDeparture": "2026-04-20T00:00:00",
+          "estimatedTimeOfArrival": "2026-05-16T00:00:00",
+          "actualTimeOfDeparture": "2026-04-20T00:00:00",
+          "actualTimeOfArrival": null,
+          "cutoffDates": {
+            "exportTerminalDeliveryTimeFrame": {},
+            "reeferDelClosing": null,
+            "vGMClosing": null,
+            "dGDelClosing": null,
+            "sIClosing": null
+          },
+          "masterBillOfLadingNumber": "BLNUMBER123",
+          "carrier": {
+            "businessPartnerId": 12830,
+            "externalNumber": "34036",
+            "matchcode": "CMA",
+            "name1": "CMA CGM BELGIUM NV",
+            "finAccAccountCreditor": "34036",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN 5.",
+                "zipCode": "2030",
+                "street": "KLIPPERSTRAAT",
+                "country": {
+                  "countryID": "Be",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": false,
+            "freightBusinessPartner": false,
+            "valueAddedTaxNumber": "0427388730",
+            "vATIsoTwoCharacterCountryCode": "Be"
+          },
+          "customerClosing": null,
+          "customerETD": "2026-04-20",
+          "customerETA": null
+        },
+        "docClosingTransp": null,
+        "contingentContract": {
+          "contractID": null,
+          "contractName": null
+        },
+        "automatedManifestSystemFilingDocument": {
+          "billOfLadingNumber": ""
+        },
+        "exportTerminalLocation": {
+          "businessPartner": {},
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "importTerminalLocation": {
+          "businessPartner": {},
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "placeOfReceipt": {},
+        "deliveryTerms": "Prepaid",
+        "placeOfDelivery": {},
+        "releaseTimeFrame": {},
+        "importAgent": {},
+        "exportAgent": {},
+        "remarks": "",
+        "externalReferences": [
+          {
+            "referenceType": 9,
+            "value": "Test"
+          }
+        ],
+        "shippingInstructions": {
+          "billOfLadingKind": 1,
+          "forwardingAgent": "BASF\r\n.",
+          "goodsAreInsured": false,
+          "number": 0,
+          "numberOfOriginals": 0,
+          "oceanCarrier": "CMA CGM BELGIUM NV\r\n.",
+          "dischargePortName": "New York",
+          "loadingPortName": "Antwerpen",
+          "vessel": "COSCO HOPE"
+        }
+      },
+      "id": 986826,
+      "documentData": []
+    },
+    {
+      "preferredModeOfTransport": "Ocean",
+      "number": 704,
+      "frachtShipmentRef": "76000018",
+      "customerReference": "2800209301",
+      "aMSHouseBillOfLadingNumber": "",
+      "houseBillOfLadingNumber": "123",
+      "movementType": "P/P",
+      "houseType": "BackToBack",
+      "loadType": "FCL",
+      "incoterms": "CIP",
+      "insuranceCurrency": {},
+      "shipmentNumberSAP": null,
+      "deliveryTerms": "Prepaid",
+      "lockStatus": "Consolidated",
+      "shipmentCostNumberSAP": null,
+      "shipmentDate": "2026-06-19",
+      "financialReportingDate": "2026-04-20",
+      "scenario": {
+        "matchcode": "71BASFFCL",
+        "designation": "BASF FCL"
+      },
+      "deliveryNoteSAP": null,
+      "customerTransportManagerName": "Mrs Ho",
+      "customerTransportManagerEmail": "JESSEY.HO@BASF.COM",
+      "customerTransportManagerPhone": null,
+      "customerExportManagerName": "Mr Export Manager",
+      "customerExportManagerEmail": "export@manager.com",
+      "customerExportManagerPhone": null,
+      "precedingCustomsDocumentDate": null,
+      "internalComment": "",
+      "externalComment": null,
+      "customsComment": null,
+      "customsOfficeOfExit": null,
+      "goodsLocationCustoms": {},
+      "customsDocumentType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "aTREUR1Required": false,
+      "cOOInvoiceRequired": {
+        "matchcode": null,
+        "designation": null
+      },
+      "transportOrderComment": null,
+      "containerSummary": "1 CNT - 2 TEU",
+      "haulageType": {
+        "matchcode": "MER/MER",
+        "designation": "Merchant/Merchant"
+      },
+      "goodsValue": 0,
+      "goodsValueCurrency": {},
+      "aTRNumber": null,
+      "customsInvoiceNumber": null,
+      "customerSalesOffice": {
+        "matchcode": null,
+        "designation": null
+      },
+      "countryOfOrigin": {
+        "countryName": null
+      },
+      "countryOfDestination": {
+        "countryID": "US",
+        "countryName": "United States of America"
+      },
+      "phoneNumberNotify1": null,
+      "phoneNumberNotify2": null,
+      "phoneNumberNotify3": null,
+      "emailNotify1": null,
+      "emailNotify2": null,
+      "emailNotify3": null,
+      "showOnBLShipperPhoneEmail": {
+        "matchcode": null,
+        "designation": null
+      },
+      "commodity": {},
+      "preCarriageLoadingRef": null,
+      "onCarriageDeliveryRef": null,
+      "endCustomerRef": null,
+      "createDocuments": false,
+      "readyForInvoicing": {
+        "matchcode": null,
+        "designation": null
+      },
+      "eDIID": null,
+      "shipmentBaseTasks": [
+        {
+          "completedByUser": {
+            "fullName": "Admin 2",
+            "logOnName": "ADMIN2",
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": "2026-06-19T12:20:43",
+          "designation": "Fill in Booking Reference",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 1,
+          "taskTemplate": {
+            "designation": "Fill in Booking Reference",
+            "isActive": true,
+            "matchcode": "FILL_BKNRF",
+            "number": 51
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create transport",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create transport",
+            "isActive": true,
+            "matchcode": "TRANSPORT",
+            "number": 62
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create DGD",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create DGD",
+            "isActive": true,
+            "matchcode": "DGD",
+            "number": 21
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send DGN to Harbor Master",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send DGN to Harbor Master",
+            "isActive": true,
+            "matchcode": "DGN",
+            "number": 22
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send VGM EDI (automatic)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send VGM EDI (automatic)",
+            "isActive": true,
+            "matchcode": "VGM EDI",
+            "number": 64
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send VGM non EDI (check)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send VGM non EDI (check)",
+            "isActive": true,
+            "matchcode": "VGM NONEDI",
+            "number": 65
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "IFTSTA - ISF America",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "IFTSTA - ISF America",
+            "isActive": true,
+            "matchcode": "ISF",
+            "number": 20
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send MRN to Ebalie",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send MRN to Ebalie",
+            "isActive": true,
+            "matchcode": "MRN",
+            "number": 19
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send T2L to Ebalie",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send T2L to Ebalie",
+            "isActive": true,
+            "matchcode": "T2L",
+            "number": 43
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Check if there is no EDI connections with third party",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Check if there is no EDI connections with third party",
+            "isActive": true,
+            "matchcode": "CUSTOMSEDI",
+            "number": 66
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Z-Number Hamburg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Z-Number Hamburg",
+            "isActive": true,
+            "matchcode": "Z_NUMBER",
+            "number": 46
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "DE Change of transport - Notification",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "DE Change of transport - Notification",
+            "isActive": true,
+            "matchcode": "DECHNGTRP",
+            "number": 44
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create BL instructions",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create BL instructions",
+            "isActive": true,
+            "matchcode": "CREATEBLI",
+            "number": 67
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Waiver Africa - Start",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Waiver Africa - Start",
+            "isActive": true,
+            "matchcode": "WAIVER_STR",
+            "number": 37
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Issue Waiver Africa - Finish",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Issue Waiver Africa - Finish",
+            "isActive": true,
+            "matchcode": "WAIVER_FIN",
+            "number": 38
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Collect BL",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Collect BL",
+            "isActive": true,
+            "matchcode": "BLCOLLECT",
+            "number": 68
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create cover sheet OBL",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create cover sheet OBL",
+            "isActive": true,
+            "matchcode": "OBL",
+            "number": 69
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Automatic Invoicing Mainleg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Automatic Invoicing Mainleg",
+            "isActive": true,
+            "matchcode": "AUTO_INVMN",
+            "number": 53
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Automatic Invoicing Mainleg",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Automatic Invoicing Mainleg",
+            "isActive": true,
+            "matchcode": "AUTO_INVMN",
+            "number": 53
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "SEM Check",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "SEM Check",
+            "isActive": true,
+            "matchcode": "SEM_CHK",
+            "number": 40
+          }
+        }
+      ],
+      "dUNSCustomer": "BASFAG2",
+      "bASFBL": "BL00",
+      "objectOwner": {
+        "organisationalUnitId": 5,
+        "organisationalUnitName": "POL_BASF"
+      },
+      "customer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "shipper": {
+        "businessPartner": {},
+        "externalDesignation": "",
+        "name1": "BASF SE",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "location1": "Ludwigshafen",
+          "zipCode": "67056",
+          "street": "Carl-Bosch-Strasse 38",
+          "country": {
+            "countryID": "DE",
+            "countryName": "Germany"
+          },
+          "state": null
+        }
+      },
+      "consignee": {
+        "businessPartner": {},
+        "externalDesignation": "",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "state": null
+        }
+      },
+      "notify1": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify2": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify3": {
+        "address": {
+          "state": null
+        }
+      },
+      "placeOfDelivery": {
+        "matchcode": "USCMH",
+        "designation": "Columbus",
+        "cityCode": "CMH"
+      },
+      "billOfLading": {
+        "shipperAddressString": "BASF SE\r\nD 67056 Ludwigshafen Carl-Bosch-Strasse 38",
+        "portOfLoading": "Antwerpen",
+        "portOfDischarge": "New York",
+        "placeOfDelivery": "USCMH - Columbus",
+        "vessel": "COSCO HOPE",
+        "goodsAreInsured": false,
+        "number": 0,
+        "numberOfGoods": 35,
+        "stomachString": ""
+      },
+      "container": [
+        {
+          "sequenceNumber": 1,
+          "containerType": {
+            "number": 16,
+            "matchcode": "40RE",
+            "designation": "Forty FOOT REEFER",
+            "isoCode": "45R1",
+            "content": "Thermal Container Refrigerated and Heated, Mechanically refrigerated and heated",
+            "isTemperatureControlled": true,
+            "tareWeight": 4350.0,
+            "payload": 23300.0,
+            "lengthInMeters": 1219.0,
+            "widthInMeters": 244.0,
+            "heightInMeters": 259.0,
+            "tEU": 2.0
+          },
+          "containerNumberType": "Unknown",
+          "tareWeight": 4350.0,
+          "verifiedGrossMass": 4350.0,
+          "vgmWeightDeterminationMethod": "SM2",
+          "vgmVerificationSignature": "",
+          "vgmState": "NotSent",
+          "humidificationNecessary": false,
+          "ventSetting": "None",
+          "drainage": "None",
+          "transportMode": "Container",
+          "containerGoodsInfo": null
+        }
+      ],
+      "cargo": [
+        {
+          "itemNumber": 1,
+          "deliveryNoteSAP": null,
+          "totalNumberOfPackages": 35.0,
+          "packaging": {
+            "number": 257,
+            "matchcode": "QF",
+            "shortDesignation": "QF"
+          },
+          "goodsDesignation": "Plastic drums\r\n7\r\nPallet,wood,CP3,1140x1140x138mm,HT",
+          "totalNetWeight": 0,
+          "mRN": null
+        }
+      ],
+      "master": {
+        "preferredModeOfTransport": "Ocean",
+        "number": 703,
+        "mainCarriageAsOcean": {
+          "vessel": {
+            "vesselName": "COSCO HOPE",
+            "vesselNumber": "9472165"
+          },
+          "voyageNumber": "",
+          "bookingAgent": {},
+          "portOfLoading": {
+            "matchcode": "BEANR",
+            "designation": "Antwerpen",
+            "cityCode": "ANR"
+          },
+          "portOfDischarge": {
+            "matchcode": "USNYC",
+            "designation": "New York",
+            "cityCode": "NYC"
+          },
+          "estimatedTimeOfDeparture": "2026-04-20T00:00:00",
+          "estimatedTimeOfArrival": "2026-05-16T00:00:00",
+          "actualTimeOfDeparture": "2026-04-20T00:00:00",
+          "actualTimeOfArrival": null,
+          "cutoffDates": {
+            "exportTerminalDeliveryTimeFrame": {},
+            "reeferDelClosing": null,
+            "vGMClosing": null,
+            "dGDelClosing": null,
+            "sIClosing": null
+          },
+          "masterBillOfLadingNumber": "BLNUMBER123",
+          "carrier": {
+            "businessPartnerId": 12830,
+            "externalNumber": "34036",
+            "matchcode": "CMA",
+            "name1": "CMA CGM BELGIUM NV",
+            "finAccAccountCreditor": "34036",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN 5.",
+                "zipCode": "2030",
+                "street": "KLIPPERSTRAAT",
+                "country": {
+                  "countryID": "Be",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": false,
+            "freightBusinessPartner": false,
+            "valueAddedTaxNumber": "0427388730",
+            "vATIsoTwoCharacterCountryCode": "Be"
+          },
+          "customerClosing": null,
+          "customerETD": "2026-04-20",
+          "customerETA": null
+        },
+        "docClosingTransp": null,
+        "contingentContract": {
+          "contractID": null,
+          "contractName": null
+        },
+        "automatedManifestSystemFilingDocument": {
+          "billOfLadingNumber": ""
+        },
+        "exportTerminalLocation": {
+          "businessPartner": {},
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "importTerminalLocation": {
+          "businessPartner": {},
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "placeOfReceipt": {},
+        "deliveryTerms": "Prepaid",
+        "placeOfDelivery": {},
+        "releaseTimeFrame": {},
+        "importAgent": {},
+        "exportAgent": {},
+        "remarks": "",
+        "externalReferences": [
+          {
+            "referenceType": 9,
+            "value": "Test1"
+          }
+        ],
+        "shippingInstructions": {
+          "billOfLadingKind": 1,
+          "forwardingAgent": "BASF\r\n.",
+          "goodsAreInsured": false,
+          "number": 0,
+          "numberOfOriginals": 0,
+          "oceanCarrier": "CMA CGM BELGIUM NV\r\n.",
+          "dischargePortName": "New York",
+          "loadingPortName": "Antwerpen",
+          "vessel": "COSCO HOPE"
+        }
+      },
+      "id": 1000032,
+      "documentData": []
+    }
+  ]
+}

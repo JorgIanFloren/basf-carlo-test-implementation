@@ -1,0 +1,196 @@
+{
+  "EDI": {
+    "Errors": [
+      {
+        "interchangeId": 1,
+        "interchangeControlReference": "55916948468581",
+        "errorType": "ELEMENT_SYNTAX",
+        "errorCode": "39",
+        "messageId": "102500",
+        "groupControlReference": "",
+        "fatal": false,
+        "errorLevel": "MESSAGE_LEVEL",
+        "messageControlReference": "55916948468581",
+        "segmentNumber": 44,
+        "errorText": "Data element too long",
+        "segmentTag": "NAD",
+        "errorDetails": "Data element too long for component NAD05: STREET at segment 45, at element 5: 4 quai d\r\nArenc BOULEVARD JACQUES SA (effective length 36 is greater than 35) in message 55916948468581 of interchange 55916948468581"
+      },
+      {
+        "interchangeId": 1,
+        "interchangeControlReference": "55916948468581",
+        "errorType": "ELEMENT_SYNTAX",
+        "errorCode": "21",
+        "messageId": "102500",
+        "groupControlReference": "",
+        "fatal": true,
+        "errorLevel": "MESSAGE_LEVEL",
+        "messageControlReference": "55916948468581",
+        "segmentNumber": 44,
+        "errorText": "Invalid character(s) for specified syntax level",
+        "segmentTag": "NAD",
+        "errorDetails": "Invalid character(s) for specified syntax level for component NAD05: STREET at segment 45, at element 5: 4 quai d\r\nArenc BOULEVARD JACQUES SA (character '\r' not allowed) in message 55916948468581 of interchange 55916948468581"
+      },
+      {
+        "interchangeId": 1,
+        "interchangeControlReference": "55916948468581",
+        "errorType": "ELEMENT_SYNTAX",
+        "errorCode": "21",
+        "messageId": "102500",
+        "groupControlReference": "",
+        "fatal": true,
+        "errorLevel": "MESSAGE_LEVEL",
+        "messageControlReference": "55916948468581",
+        "segmentNumber": 44,
+        "errorText": "Invalid character(s) for specified syntax level",
+        "segmentTag": "NAD",
+        "errorDetails": "Invalid character(s) for specified syntax level for component NAD05: STREET at segment 45, at element 5: 4 quai d\r\nArenc BOULEVARD JACQUES SA (character '\n' not allowed) in message 55916948468581 of interchange 55916948468581"
+      },
+      {
+        "interchangeId": 1,
+        "interchangeControlReference": "55916948468581",
+        "errorType": "ELEMENT_SYNTAX",
+        "errorCode": "39",
+        "messageId": "102500",
+        "groupControlReference": "",
+        "fatal": false,
+        "errorLevel": "MESSAGE_LEVEL",
+        "messageControlReference": "55916948468581",
+        "segmentNumber": 186,
+        "errorText": "Data element too long",
+        "segmentTag": "EQD",
+        "errorDetails": "Data element too long for component EQD03: EQUIPMENT SIZE AND TYPE at segment 187, at component 4 of element 3: 40Â´ Reefer 9Â´6\" operated high cube (effective length 36 is greater than 35) in message 55916948468581 of interchange 55916948468581"
+      },
+      {
+        "interchangeId": 1,
+        "interchangeControlReference": "55916948468581",
+        "errorType": "ELEMENT_SYNTAX",
+        "errorCode": "39",
+        "messageId": "102500",
+        "groupControlReference": "",
+        "fatal": false,
+        "errorLevel": "MESSAGE_LEVEL",
+        "messageControlReference": "55916948468581",
+        "segmentNumber": 193,
+        "errorText": "Data element too long",
+        "segmentTag": "EQD",
+        "errorDetails": "Data element too long for component EQD03: EQUIPMENT SIZE AND TYPE at segment 194, at component 4 of element 3: 40Â´ Reefer 9Â´6\" operated high cube (effective length 36 is greater than 35) in message 55916948468581 of interchange 55916948468581"
+      },
+      {
+        "interchangeId": 1,
+        "interchangeControlReference": "55916948468581",
+        "errorType": "ELEMENT_SYNTAX",
+        "errorCode": "39",
+        "messageId": "102500",
+        "groupControlReference": "",
+        "fatal": false,
+        "errorLevel": "MESSAGE_LEVEL",
+        "messageControlReference": "55916948468581",
+        "segmentNumber": 200,
+        "errorText": "Data element too long",
+        "segmentTag": "EQD",
+        "errorDetails": "Data element too long for component EQD03: EQUIPMENT SIZE AND TYPE at segment 201, at component 4 of element 3: 40Â´ Reefer 9Â´6\" operated high cube (effective length 36 is greater than 35) in message 55916948468581 of interchange 55916948468581"
+      }
+    ],
+    "Delimiters": "+: \r?",
+    "Messages": {
+      
+    },
+    "FunctionalAcksReceived": [
+      
+    ],
+    "FunctionalAcksGenerated": [
+      {
+        "Interchange": {
+          "UNB07": "CONTRL",
+          "UNB0102": "3",
+          "UNB0201": "102500",
+          "UNB0301": "BASFAG2",
+          "UNB0401": 260811,
+          "UNB0303": "283155273",
+          "UNB0402": 1943,
+          "UNB05": "55916948468581",
+          "UNB0101": "UNOC"
+        },
+        "Heading": {
+          "0020_UCI": {
+            "UCI0303": "283155273",
+            "UCI01": "55916948468581",
+            "UCI04": "7",
+            "UCI0301": "102500",
+            "UCI0201": "BASFAG2"
+          },
+          "0040_Segment_group_1": [
+            {
+              "0060_Segment_group_2": [
+                {
+                  "0060_UCS": {
+                    "UCS01": 44
+                  },
+                  "0070_UCD": [
+                    {
+                      "UCD0202": 1,
+                      "UCD0201": 6,
+                      "UCD01": "39"
+                    },
+                    {
+                      "UCD0202": 1,
+                      "UCD0201": 6,
+                      "UCD01": "21"
+                    }
+                  ]
+                },
+                {
+                  "0060_UCS": {
+                    "UCS01": 186
+                  },
+                  "0070_UCD": [
+                    {
+                      "UCD0202": 4,
+                      "UCD0201": 4,
+                      "UCD01": "39"
+                    }
+                  ]
+                },
+                {
+                  "0060_UCS": {
+                    "UCS01": 193
+                  },
+                  "0070_UCD": [
+                    {
+                      "UCD0202": 4,
+                      "UCD0201": 4,
+                      "UCD01": "39"
+                    }
+                  ]
+                },
+                {
+                  "0060_UCS": {
+                    "UCS01": 200
+                  },
+                  "0070_UCD": [
+                    {
+                      "UCD0202": 4,
+                      "UCD0201": 4,
+                      "UCD01": "39"
+                    }
+                  ]
+                }
+              ],
+              "0040_UCM": {
+                "UCM0201": "IFTMBF",
+                "UCM0202": "D",
+                "UCM01": "55916948468581",
+                "UCM0203": "08A",
+                "UCM0204": "UN",
+                "UCM03": "4"
+              }
+            }
+          ]
+        },
+        "Id": "CONTRL",
+        "Name": "Application error and acknowledgement message"
+      }
+    ]
+  }
+}

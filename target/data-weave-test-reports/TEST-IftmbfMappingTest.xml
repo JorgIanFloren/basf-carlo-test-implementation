@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<testsuites tests="51" time="195" name="BASF IFTMBF mapping" failures="0" errors="0">
+  <testsuite tests="51" time="195" name="BASF IFTMBF mapping" failures="0" skipped="0" errors="0">
+    <testcase name="fcl/2013386790-iftmin-abschlussinfo-9.json (fcl)" time="17" status="OK"/>
+    <testcase name="fcl/2800209301-iftmin-absch-4.json (fcl)" time="6" status="OK"/>
+    <testcase name="fcl/2800209301-iftmin-absch-9.json (fcl)" time="5" status="OK"/>
+    <testcase name="fcl/2800209301-iftmin-erst-4.json (fcl)" time="7" status="OK"/>
+    <testcase name="lcl/2800226066-iftmbf-9.json (lcl)" time="9" status="OK"/>
+    <testcase name="ms/2800231445-iftmbf.json (ms)" time="9" status="OK"/>
+    <testcase name="ms/messages.json (ms)" time="7" status="OK"/>
+    <testcase name="ms/trissquid-138083510.json (ms)" time="4" status="OK"/>
+    <testcase name="ms/trissquid-138207661.json (ms)" time="7" status="OK"/>
+    <testcase name="DUNSCustomer comes from UNB0201" time="6" status="OK"/>
+    <testcase name="CustomerReference comes from BGM0201" time="5" status="OK"/>
+    <testcase name="Customer matchcode comes from NAD+CZ" time="4" status="OK"/>
+    <testcase name="the pickup place comes from LOC+10" time="7" status="OK"/>
+    <testcase name="CustomerETA comes from DTM+132 of the main carriage, not the on-carriage" time="4" status="OK"/>
+    <testcase name="CustomerClosing comes from DTM+180" time="3" status="OK"/>
+    <testcase name="an LCL booking omits HaulageType and EstimatedDispatchDate rather than guessing" time="6" status="OK"/>
+    <testcase name="an LCL booking is scenario BASF LCL" time="3" status="OK"/>
+    <testcase name="a cancel is recognised" time="0" status="OK"/>
+    <testcase name="a cancelled booking produces no call at all" time="1" status="OK"/>
+    <testcase name="a non-cancelled booking does produce a call" time="1" status="OK"/>
+    <testcase name="no shipment from a null message" time="0" status="OK"/>
+    <testcase name="no shipment from an empty message" time="1" status="OK"/>
+    <testcase name="no shipment when BGM0201 is missing" time="0" status="OK"/>
+    <testcase name="no shipment when BGM0201 is blank" time="2" status="OK"/>
+    <testcase name="no blank carriage node when the main stage has no dates" time="1" status="OK"/>
+    <testcase name="MainCarriageAsOcean carries whichever date is present" time="1" status="OK"/>
+    <testcase name="dot date" time="0" status="OK"/>
+    <testcase name="slash date" time="0" status="OK"/>
+    <testcase name="dash date" time="1" status="OK"/>
+    <testcase name="space date" time="0" status="OK"/>
+    <testcase name="no date" time="0" status="OK"/>
+    <testcase name="null date" time="1" status="OK"/>
+    <testcase name="impossible month rejected" time="1" status="OK"/>
+    <testcase name="impossible day rejected" time="0" status="OK"/>
+    <testcase name="a longer number does not yield a tail match" time="0" status="OK"/>
+    <testcase name="Scenario FCL when EQD present" time="0" status="OK"/>
+    <testcase name="Scenario LCL when EQD absent" time="0" status="OK"/>
+    <testcase name="Haulage CAR/CAR (TMD 1 + LOC+20)" time="1" status="OK"/>
+    <testcase name="Haulage CAR/MER (TMD 1, no LOC+20)" time="1" status="OK"/>
+    <testcase name="Haulage MER/MER (TMD 2, no LOC+20)" time="0" status="OK"/>
+    <testcase name="Haulage MER/CAR (TMD 2 + LOC+20)" time="0" status="OK"/>
+    <testcase name="Haulage falls back to the C219 description" time="1" status="OK"/>
+    <testcase name="Haulage defaults to MER on an unknown code" time="2" status="OK"/>
+    <testcase name="Haulage omitted when there is no TMD (LCL)" time="1" status="OK"/>
+    <testcase name="dispatch date null without FTX+ITR" time="1" status="OK"/>
+    <testcase name="BGM03 1 -> delete" time="0" status="OK"/>
+    <testcase name="BGM03 4 -> update" time="0" status="OK"/>
+    <testcase name="BGM03 5 -> update" time="0" status="OK"/>
+    <testcase name="BGM03 9 -> updateorcreate" time="0" status="OK"/>
+    <testcase name="the document is a camelCase seaHouseShipment array" time="3" status="OK"/>
+    <testcase name="an interchange with no IFTMBF message yields an empty array" time="1" status="OK"/>
+  </testsuite>
+</testsuites>
