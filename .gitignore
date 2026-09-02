@@ -1,0 +1,33 @@
+# Maven / DataWeave build output
+target/
+.mule/
+*.jar
+*.war
+*.zip
+pom.xml.versionsBackup
+release.properties
+
+# Python tooling (tools/)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# IDE / editor
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.factorypath
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs & local env
+*.log
+.env
+.env.local
