@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.25.4.xsd">	
+
+	<routeContext id="tris.basf.import.get.extra.info" xmlns="http://camel.apache.org/schema/spring">		
+		<route id="tris.basf.get.extra.info.sync.route">
+			<description>Processing incoming messages</description>			
+			<from uri="direct://tris.{{workenvm}}.basf.get.extra.info.entry" />	
+			<log message="start of route (${date:property.CamelCreatedTimestamp:yyyy-MM-dd-HH:mm:ss.SSS})" />
+			<log message="Getting extra info for Polytra.."/>
+
+			<!--Company / Group-->
+			<choice>
+				<when>
+					<xpath>//MESSAGE/UNB/E-S002/C-0008/text() = '466331926'</xpath>
+					<setHeader headerName="Company">
+						<constant>FPLES</constant>
+					</setHeader>
+					<setHeader headerName="Group">
+						<constant>BASFES</constant>
+					</setHeader>
+				</when>
+				<when>
+					<xpath>//MESSAGE/UNB/E-S002/C-0008/text() = '857137223'</xpath>
+					<setHeader headerName="Company">
+						<constant>FRACHTITA</constant>
+					</setHeader>
+					<setHeader headerName="Group">
+						<constant>01</constant>
+					</setHeader>
+				</when>
+				<when>
+					<xpath>//Group8/Group9/LOC[E-3227 = 5]/E-C517/C-3225 = 'DEHAM' or Group8/Group9/LOC[E-3227 = 5]/E-C517/C-3225 = 'DEBRV'</xpath>
+					<setHeader headerName="Company">
+						<constant>POLYTRA</constant>
+					</setHeader>
+					<setHeader headerName="Group">
+						<constant>BASFHA</constant>
+					</setHeader>
+				</when>
+				<otherwise>
+					<setHeader headerName="Company">
+						<constant>POLYTRA</constant>
+					</setHeader>
+					<setHeader headerName="Group">
+						<constant>BASF</constant>
+					</setHeader>
+				</otherwise>
+			</choice>
+			
+			<!--Scenario / FileStatus-->
+			<choice>
+				<when>
+					<simple>${header.AccessRef} != 'BL00'</simple><!--=Partload-->
+					<choice>
+						<when>
+							<xpath saxon="true">FTX[E-4451='SIC']/E-C108/C-4440[contains(lower-case(.), 'house')] or FTX[E-4451='SIC']/E-C108/C-4440[contains(lower-case(.), 'haus')] or FTX[E-4451='SIC']/E-C108/C-4440[contains(lower-case(.), 'hause')] or FTX[E-4451='AAS']/E-C108/C-4440[contains(lower-case(.), 'house')] or FTX[E-4451='AAS']/E-C108/C-4440[contains(lower-case(.), 'haus')] or FTX[E-4451='AAS']/E-C108/C-4440[contains(lower-case(.), 'hause')]</xpath>
+							<setHeader headerName="Scenario">
+								<constant>71BASF HBL</constant>
+							</setHeader>
+							<setHeader headerName="FileStatus">
+								<constant>MB</constant>
+							</setHeader>
+						</when>
+						<when>
+							<xpath>//NAD[E-3035='FW']/E-C082/C-3039 = '2683269'</xpath>
+							<setHeader headerName="Scenario">
+								<constant>72BASF FCL</constant>
+							</setHeader>
+							<setHeader headerName="FileStatus">
+								<constant>RB</constant>
+							</setHeader>
+						</when>
+						<otherwise>
+							<setHeader headerName="Scenario">
+								<constant>71BASF RBL</constant>
+							</setHeader>
+							<setHeader headerName="FileStatus">
+								<constant>RB</constant>
+							</setHeader>
+						</otherwise>
+					</choice>	
+				</when>
+				<otherwise>
+					<choice>
+						<when>
+							<xpath>//Group18[1]/LOC[E-3227 = 1]/E-C517/C-3225 = 'FOB' or //Group18[1]/LOC[E-3227 = 1]/E-C517/C-3225 = 'FCA'</xpath>
+							<choice>
+								<when>
+									<xpath>//NAD[E-3035='FW']/E-C082/C-3039 = '2683269'</xpath>
+									<setHeader headerName="Scenario">
+										<constant>72BASF FOB</constant>
+									</setHeader>
+								</when>
+								<when>
+									<xpath>//Group8/Group9/LOC[E-3227 = 5]/E-C517/C-3225 = 'DEHAM'</xpath>
+									<setHeader headerName="Scenario">
+										<constant>70BASF FOB</constant>
+									</setHeader>
+								</when>
+								<otherwise>
+									<setHeader headerName="Scenario">
+										<constant>71BASF FOB</constant>
+									</setHeader>
+								</otherwise>
+							</choice>
+						</when>
+						<otherwise>
+							<choice>
+								<when>
+									<xpath>//Group37</xpath>
+									<choice>
+										<when>
+											<xpath>//NAD[E-3035='FW']/E-C082/C-3039 = '2683269'</xpath>
+											<setHeader headerName="Scenario">
+												<constant>72BASF FCL</constant>
+											</setHeader>
+											<setHeader headerName="FileStatus">
+												<constant>OP</constant>
+											</setHeader>
+										</when>
+										<otherwise>
+											<setHeader headerName="Scenario">
+												<constant>71BASF FCL</constant>
+											</setHeader>
+											<setHeader headerName="FileStatus">
+												<constant>OP</constant>
+											</setHeader>
+										</otherwise>
+									</choice>
+								</when>
+								<when>
+									<xpath>not(//Group37)</xpath>
+									<choice>
+										<when>
+											<xpath>//NAD[E-3035='FW']/E-C082/C-3039 = '2683269'</xpath>
+											<setHeader headerName="Scenario">
+												<constant>72BASF LCL</constant>
+											</setHeader>
+											<setHeader headerName="FileStatus">
+												<constant>OP</constant>
+											</setHeader>
+										</when>
+										<when>
+											<xpath>//Group8/Group9/LOC[E-3227 = 5]/E-C517/C-3225 = 'DEHAM' or Group8/Group9/LOC[E-3227 = 5]/E-C517/C-3225 = 'DEBRV'</xpath>
+											<setHeader headerName="Scenario">
+												<constant>70BASF LCL</constant>
+											</setHeader>
+											<setHeader headerName="FileStatus">
+												<constant>TP</constant>
+											</setHeader>
+										</when>
+										<otherwise>
+											<setHeader headerName="Scenario">
+												<constant>71BASF LCL</constant>
+											</setHeader>
+											<setHeader headerName="FileStatus">
+												<constant>TP</constant>
+											</setHeader>
+										</otherwise>
+									</choice>
+								</when>
+								<otherwise>
+									<setHeader headerName="Scenario">
+										<constant>71BASF LCL</constant>
+									</setHeader>
+									<setHeader headerName="FileStatus">
+										<constant>OP</constant>
+									</setHeader>
+								</otherwise>
+							</choice>
+						</otherwise>
+					</choice>
+				</otherwise>
+			</choice>
+			<log message="end of route (${date:property.CamelCreatedTimestamp:yyyy-MM-dd-HH:mm:ss.SSS})" />
+		</route>
+	</routeContext>
+</beans>
