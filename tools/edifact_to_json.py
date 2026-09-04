@@ -700,7 +700,7 @@ def describe(doc: dict, fixture: str, source: str, scenario: str) -> dict:
 def ifcsum_cargo(msg: dict) -> list:
     """The cargo lines an IFCSUM message should produce, read straight off the parsed tree.
 
-    Deliberately independent of IfcsumModule.dwl: this walks the structure by explicit key
+    Deliberately independent of BasfIfcsum.dwl: this walks the structure by explicit key
     lookup where the mapping walks it by segment-name suffix, so the manifest is a genuine
     cross-check of the mapping rather than a restatement of it.
     """

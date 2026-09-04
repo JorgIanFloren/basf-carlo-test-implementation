@@ -2,9 +2,16 @@
 * BASF IFCSUM mapping, exercised against every IFCSUM interchange in docs/example-orders
 * (4 fixtures: 3 FCL, 1 LCL).
 *
+* The mapping is run the way the data-transformer runs it: `evalPath` executes
+* src/main/dw/BasfIfcsum.dwl - the whole self-contained script, output header and document
+* body included - against a `payload` context and returns the parsed JSON Carlo would
+* receive. Nothing is imported from the mapping, so no part of it is restated here and there
+* is nothing to keep in sync; every assertion below is made on the camelCase document that
+* actually leaves the transformer.
+*
 * Every cargo line is checked against example-orders/manifest.json, whose `cargo` rows are
 * produced by `ifcsum_cargo()` in tools/edifact_to_json.py. That function walks the parsed
-* tree by explicit key lookup where IfcsumModule walks it by segment-name suffix, so the
+* tree by explicit key lookup where BasfIfcsum.dwl walks it by segment-name suffix, so the
 * two arrive at the same answer by different routes - the manifest is a cross-check, not a
 * restatement of the mapping.
 *
@@ -15,28 +22,42 @@
 %dw 2.0
 import * from dw::test::Tests
 import * from dw::test::Asserts
-import camelKeys from CommonModule
-import toCarloCargoUpdates, toCarloCargoUpdate, soleContainer, isCancel from IfcsumModule
+
+var MAPPING = "BasfIfcsum.dwl"
 
 var manifest = readUrl("classpath://example-orders/manifest.json", "application/json")
 var ifcsum = manifest filter ((e) -> e.messageType == "IFCSUM")
 
+/**
+* Run the mapping script over a whole parsed interchange and return the Carlo document.
+* This is the only route the suite has into the mapping - the same call the data-transformer
+* makes - so a break in the output header, the document body or any helper surfaces here.
+*/
+fun document(payload) = evalPath(MAPPING, { payload: payload }, "application/json")
+
+/** The same, over an interchange built from one synthetic message. */
+fun documentOf(msg) = document({ EDI: { Messages: { D08A: { IFCSUM: [ msg ] } } } })
+
 fun load(fixture) = readUrl("classpath://example-orders/" ++ fixture, "application/json")
+fun cargoOf(fixture) = document(load(fixture)).shipmentCargo
 
-/** The document expression of BasfIfcsum.dwl, mirrored so the wrapper shape is pinned. */
-fun document(payload) = { shipmentCargo: toCarloCargoUpdates(payload) map ((c) -> camelKeys(c)) }
+// Evaluated once each and reused: `var` is cached, so a fixture the assertions below return
+// to repeatedly costs one run of the mapping rather than one per assertion.
+var fclVgm = cargoOf("fcl/20260625-142940-681-v2.json")
+var fclSingle = cargoOf("fcl/20260625-093948-681.json")
+var lclMrn = cargoOf("lcl/ifcsum-136579804.json")
 
-fun actual(fixture) = toCarloCargoUpdates(load(fixture)) map ((c) -> {
-    itemNumber: c.ItemNumber,
-    deliveryNote: c.DeliveryNoteSAP,
-    position: c.DeliveryPositionNumber,
-    mrn: c.MRN,
-    container: if (c.Container == null) null else {
-        containerNumber: c.Container.ContainerNumber,
-        containerType: c.Container.ContainerType.Matchcode,
-        verifiedGrossMass: c.Container.VerifiedGrossMass,
-        sealNumber: c.Container.SealNumber,
-        vgmPerson: c.Container.VGMPersonInChanrge
+fun actual(fixture) = cargoOf(fixture) map ((c) -> {
+    itemNumber: c.itemNumber,
+    deliveryNote: c.deliveryNoteSAP,
+    position: c.deliveryPositionNumber,
+    mrn: c.mRN,
+    container: if (c.container == null) null else {
+        containerNumber: c.container.containerNumber,
+        containerType: c.container.containerType.matchcode,
+        verifiedGrossMass: c.container.verifiedGrossMass,
+        sealNumber: c.container.sealNumber,
+        vgmPerson: c.container.vGMPersonInChanrge
     }
 })
 
@@ -52,6 +73,13 @@ fun message(code) = {
     MessageHeader: { UNH01: "1" },
     Heading: { "0020_BGM": { BGM0101: "340", BGM0201: "2013449715", BGM03: code } }
 }
+
+/** The same, carrying one real consignment - so the BGM code is the only thing that varies. */
+fun summary(code) = message(code) update {
+    case h at .Heading -> h ++ { "1150_Segment_group_26": [{
+        "1160_CNI": { CNI01: 1, CNI0201: "3550984178" },
+        "2260_Segment_group_51": [{ "2270_GID": { GID01: 1 } }] }] }
+}
 ---
 "BASF IFCSUM mapping" describedBy (
 
@@ -63,87 +91,86 @@ fun message(code) = {
     [
     // === identity ===========================================================================
     // RFF+LI is the key docs/00-basf.md names ("Fetch Shipment Cargo Line by RFF-LI id"), and
-    // EDIID is the same "<note>/<position>" string IftminModule writes onto the cargo line.
+    // eDIID is the same "<note>/<position>" string BasfIftmin.dwl writes onto the cargo line.
     () -> "a cargo line is keyed by delivery note, position and the IFTMIN join key" in (
-        (toCarloCargoUpdates(load("fcl/20260625-093948-681.json"))[0]) must [
-            $.DeliveryNoteSAP must equalTo("3550880113"),
-            $.DeliveryPositionNumber must equalTo("000010"),
-            $.EDIID must equalTo("3550880113/000010")
+        fclSingle[0] must [
+            $.deliveryNoteSAP must equalTo("3550880113"),
+            $.deliveryPositionNumber must equalTo("000010"),
+            $.eDIID must equalTo("3550880113/000010")
         ]),
 
     // The flow has no create path, and an upsert would add a duplicate line whenever the
     // delivery-note match failed.
     () -> "every cargo line is an update, never an upsert" in (
-        ((ifcsum flatMap ((e) -> toCarloCargoUpdates(load(e.fixture))) map ((c) -> c.actionAttribute))
+        ((ifcsum flatMap ((e) -> cargoOf(e.fixture)) map ((c) -> c.actionAttribute))
             distinctBy ((a) -> a)) must equalTo(["update"])),
 
     // === FCL: the container and its VGM =====================================================
     () -> "an FCL summary carries the container VGM, seal and signatory" in (
-        (toCarloCargoUpdates(load("fcl/20260625-142940-681-v2.json"))[0].Container) must [
-            $.ContainerNumber must equalTo("CGMU5666332"),
-            $.ContainerType.Matchcode must equalTo("45RT"),
-            $.VerifiedGrossMass must equalTo(22273),
-            $.SealNumber must equalTo("0024456"),
-            $.VGMPersonInChanrge must equalTo("MR UNGER JOCHEN, HEAD OF WH")
+        fclVgm[0].container must [
+            $.containerNumber must equalTo("CGMU5666332"),
+            $.containerType.matchcode must equalTo("45RT"),
+            $.verifiedGrossMass must equalTo(22273),
+            $.sealNumber must equalTo("0024456"),
+            $.vGMPersonInChanrge must equalTo("MR UNGER JOCHEN, HEAD OF WH")
         ]),
 
     () -> "every consignment of an FCL summary lands on the same container" in (
-        (toCarloCargoUpdates(load("fcl/20260625-142940-681-v2.json")) map ((c) -> c.Container.ContainerNumber))
+        (fclVgm map ((c) -> c.container.containerNumber))
             must equalTo(["CGMU5666332", "CGMU5666332", "CGMU5666332"])),
 
     () -> "an FCL summary has no MRN to report" in (
-        (toCarloCargoUpdates(load("fcl/20260625-142940-681-v2.json")) map ((c) -> c.MRN))
-            must equalTo([null, null, null])),
+        (fclVgm map ((c) -> c.mRN)) must equalTo([null, null, null])),
 
     // === LCL: the MRN, and the truck that must not leak through =============================
     () -> "an LCL summary carries a customs MRN per consignment" in (
-        (toCarloCargoUpdates(load("lcl/ifcsum-136579804.json")) map ((c) -> c.MRN))
+        (lclMrn map ((c) -> c.mRN))
             must equalTo(["26DE590487611538B5", "26DE590487611538B5", "26DE590487611538B5",
                           "26DE590487611535B8", "26DE590487611537B6", "26DE590487611536B7"])),
 
     // The equipment in an LCL summary is the truck that ran the goods to the terminal
     // ("Truck with removable tarp", no ISO type code) - pre-carriage equipment, not the
     // container the cargo line sits in. Writing it onto the cargo line would be wrong.
+    // `soleContainer` used to be asserted directly; this is the same rule stated as the
+    // consequence Carlo actually sees.
     () -> "the pre-carriage truck of an LCL summary is not written onto the cargo line" in (
-        (toCarloCargoUpdates(load("lcl/ifcsum-136579804.json")) map ((c) -> c.Container))
-            must equalTo([null, null, null, null, null, null])),
+        (lclMrn map ((c) -> c.container)) must equalTo([null, null, null, null, null, null])),
 
-    () -> "a truck is not a container" in (soleContainer(load("lcl/ifcsum-136579804.json")
-        .EDI.Messages.D08A.IFCSUM[0]) must equalTo(null)),
+    () -> "a container with an ISO type code is written onto the cargo line" in (
+        fclSingle[0].container must notBeNull()),
 
-    () -> "a container with an ISO type code is" in (soleContainer(load("fcl/20260625-093948-681.json")
-        .EDI.Messages.D08A.IFCSUM[0]) must notBeNull()),
-
-    () -> "six consignments yield six cargo lines" in (
-        sizeOf(toCarloCargoUpdates(load("lcl/ifcsum-136579804.json"))) must equalTo(6)),
+    () -> "six consignments yield six cargo lines" in (sizeOf(lclMrn) must equalTo(6)),
 
     // === cancel: the flow stops =============================================================
-    () -> "a cancel is recognised" in (isCancel(message("1")) must equalTo(true)),
-    () -> "a create is not a cancel" in (isCancel(message("9")) must equalTo(false)),
-    () -> "a cancelled summary produces no cargo update at all" in (
-        toCarloCargoUpdates({ EDI: { Messages: { D08A: { IFCSUM: [ message("1") ] } } } })
-            must equalTo([])),
+    // Cancelling a consolidation summary does not cancel the underlying cargo, so a code 1
+    // message must contribute nothing at all. The pair below differs only in the BGM code,
+    // so it isolates the cancel decision from every other reason a line might not appear.
+    () -> "a cancelled summary drops a consignment it would otherwise have mapped" in (
+        documentOf(summary("1")) must equalTo({ shipmentCargo: [] })),
+
+    () -> "a code 9 summary is mapped rather than filtered out" in (
+        sizeOf(documentOf(summary("9")).shipmentCargo) must equalTo(1)),
 
     // === guards =============================================================================
     () -> "a message with no consignments yields no cargo lines" in (
-        toCarloCargoUpdate(message("9")) must equalTo([])),
+        documentOf(message("9")).shipmentCargo must equalTo([])),
 
     () -> "a consignment with no delivery note is dropped" in (
-        toCarloCargoUpdate({ Heading: { "1150_Segment_group_26": [{
+        documentOf({ Heading: { "1150_Segment_group_26": [{
             "1160_CNI": { CNI01: 1 },
-            "2260_Segment_group_51": [{ "2270_GID": { GID01: 1 } }] }] } })
+            "2260_Segment_group_51": [{ "2270_GID": { GID01: 1 } }] }] } }).shipmentCargo
             must equalTo([])),
 
-    // CNI02 repeats the delivery note; it is the fallback when the GID has no RFF+LI.
+    // CNI02 repeats the delivery note; it is the fallback when the goods item has no RFF+LI.
     () -> "the delivery note falls back to CNI02 when the goods item has no RFF+LI" in (
-        toCarloCargoUpdate({ Heading: { "1150_Segment_group_26": [{
+        documentOf({ Heading: { "1150_Segment_group_26": [{
             "1160_CNI": { CNI01: 1, CNI0201: "3550984178" },
-            "2260_Segment_group_51": [{ "2270_GID": { GID01: 1 } }] }] } })
-            must equalTo([{ actionAttribute: "update", ItemNumber: 1, DeliveryNoteSAP: "3550984178" }])),
+            "2260_Segment_group_51": [{ "2270_GID": { GID01: 1 } }] }] } }).shipmentCargo
+            must equalTo([{ actionAttribute: "update", itemNumber: 1, deliveryNoteSAP: "3550984178" }])),
 
     // === wrapper shape ======================================================================
     () -> "the document is a camelCase shipmentCargo array" in (
-        document(load("lcl/ifcsum-136579804.json")).shipmentCargo[0] must equalTo({
+        lclMrn[0] must equalTo({
             actionAttribute: "update",
             itemNumber: 1,
             deliveryNoteSAP: "3550984178",

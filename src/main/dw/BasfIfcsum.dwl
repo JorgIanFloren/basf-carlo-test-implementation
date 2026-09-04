@@ -3,7 +3,14 @@ output application/json encoding="UTF-8"
 
 /**
 * BASF IFCSUM (forwarding & consolidation summary, parsed JSON) -> Carlo / Soloplan v3
-* `shipmentCargo` mapping library.
+* `shipmentCargo` - self-contained mapping.
+*
+* Deployed as `basf/BasfIfcsum.dwl` in the `transforms` container, which is the name
+* `dwlPath` carries in config/dataProfiler-basf-ifcsum.json. The data-transformer evaluates
+* this file on its own and resolves no imports off Blob Storage, so it carries everything it
+* needs: the shared helpers are inlined below rather than imported, and the document body at
+* the foot of the file renders the result. Keep it that way - an `import` added here fails at
+* runtime, not at build time. See config/README.md check 2.
 *
 * Third of the three BASF inbound mappings, and the only one that does not target
 * `seaHouseShipment`. IFTMIN creates the shipment and its cargo lines; IFTMBF updates the
@@ -14,11 +21,15 @@ output application/json encoding="UTF-8"
 *             Update fields according to mapping
 *             Send to Server
 *
-* Input  : one parsed IFCSUM message object, i.e. an element of
-*          `payload.EDI.Messages.D08A.IFCSUM`.
-* Output : entries of the Carlo `shipmentCargo` array (contract:
-*          docs/expected_output_ShipmentCargo.json), authored in PascalCase; the mapping
-*          entry point (src/test/dw/BasfIfcsum.dwl) renders them with `camelKeys`.
+* Input  : `payload` = the whole parsed interchange,
+*          `{ EDI: { Messages: { D08A: { IFCSUM: [...] } } } }`.
+* Output : `{ "shipmentCargo": [ ... ] }` in camelCase (contract:
+*          docs/expected_output_ShipmentCargo.json). The mapping is authored in PascalCase to
+*          match the mapping sheet's XPaths, and `camelKeys` renders that as the camelCase
+*          Carlo's case-sensitive JSON deserializer expects.
+*
+* Every entry carries `actionAttribute: "update"` - the flow has no create path, and an
+* upsert would add a duplicate cargo line whenever the delivery-note match failed.
 *
 * --- What the message actually carries -----------------------------------------------------
 * Across the four captured examples IFCSUM delivers two things against existing cargo lines:
@@ -35,26 +46,30 @@ output application/json encoding="UTF-8"
 *
 * --- Identity ------------------------------------------------------------------------------
 * The cargo line is identified by RFF+LI = <delivery note>:<position>, which is exactly what
-* IftminModule wrote into the cargo line's `DeliveryNoteSAP`, `DeliveryPositionNumber` and
+* BasfIftmin.dwl wrote into the cargo line's `DeliveryNoteSAP`, `DeliveryPositionNumber` and
 * `EDIID` ("<note>/<position>"). All three are emitted so Carlo can match on whichever it
 * indexes.
 *
-* Navigation is by `_<SEGMENT>` suffix (CommonModule), not by position key - see
-* IftmbfModule.dwl for why that matters in the D08A directory.
+* Navigation is by `_<SEGMENT>` suffix (see "Suffix navigation" below), not by position
+* key - BasfIftmbf.dwl explains why that matters in the D08A directory.
 */
 
-//import * from CommonModule
 
 /**
 * Helpers shared by the three BASF inbound mappings (IFTMIN, IFTMBF, IFCSUM).
 *
+* This block is inlined verbatim into BasfIftmin.dwl, BasfIftmbf.dwl and BasfIfcsum.dwl
+* rather than imported: each file is uploaded to Blob Storage on its own and the
+* data-transformer resolves no imports there, so a shared module cannot be reached at
+* runtime. Change one copy and change all three.
+*
 * Two navigation styles live here and both are needed:
 *
-*   - Positional selectors ("0020_BGM") are what IftminModule uses. They are exact for a
+*   - Positional selectors ("0020_BGM") are what BasfIftmin.dwl uses. They are exact for a
 *     known directory and read naturally, but the position numbers are directory-specific.
 *   - Suffix navigation (`segs`/`seg1`/`groupsWith`) matches a segment by its "_<TAG>" key
-*     suffix and walks groups structurally, so it survives a directory change. IftmbfModule
-*     and IfcsumModule use it, because D08A renumbers almost every group relative to D99A
+*     suffix and walks groups structurally, so it survives a directory change. BasfIftmbf.dwl
+*     and BasfIfcsum.dwl use it, because D08A renumbers almost every group relative to D99A
 *     and two group numbers collide with a *different* meaning across the two directories.
 *
 * DataWeave 2.9 notes that this file depends on: `input` is a reserved word; the strict
@@ -300,7 +315,7 @@ fun cargoLine(doc, consignment, item) = do {
         (ItemNumber: seg1(item, "GID").GID01) if (seg1(item, "GID").GID01 != null),
         DeliveryNoteSAP: note,
         (DeliveryPositionNumber: position) if present(position),
-        // Same join key IftminModule writes onto the cargo line it creates.
+        // Same join key BasfIftmin.dwl writes onto the cargo line it creates.
         (EDIID: (note as String) ++ "/" ++ ((position default "") as String)) if present(position),
         (MRN: mrn) if present(mrn),
         (Container: container) if (container != null and !isEmpty(container))
