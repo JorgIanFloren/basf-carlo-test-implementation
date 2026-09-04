@@ -1,0 +1,1137 @@
+{
+  "seaHouseShipment": [
+    {
+      "preferredModeOfTransport": "Ocean",
+      "number": 1187,
+      "frachtShipmentRef": "76000191",
+      "customerReference": "2800209301",
+      "aMSHouseBillOfLadingNumber": "",
+      "movementType": "D/D",
+      "houseType": "BackToBack",
+      "loadType": "FCL",
+      "incoterms": "CIP",
+      "incotermplace": "Columbus Rail Ramp",
+      "insuranceCurrency": {},
+      "shipmentNumberSAP": null,
+      "deliveryTerms": "Prepaid",
+      "lockStatus": "Consolidated",
+      "shipmentCostNumberSAP": null,
+      "shipmentDate": "2026-04-20",
+      "financialReportingDate": "2026-04-20",
+      "scenario": {
+        "matchcode": null,
+        "designation": null
+      },
+      "deliveryNoteSAP": null,
+      "customerTransportManagerName": "Mrs Ho",
+      "customerTransportManagerEmail": "JESSEY.HO@BASF.COM",
+      "customerTransportManagerPhone": null,
+      "customerExportManagerName": "Mrs Juppi",
+      "customerExportManagerEmail": "FABIENNE.JUPPI@BASF.COM",
+      "customerExportManagerPhone": "+49 30 2005-5660",
+      "customerExportManagerAddress": "Storkower StraÃe 146\r\n10407\r\nBerlin\r\nDE",
+      "precedingCustomsDocumentDate": null,
+      "internalComment": "",
+      "externalComment": null,
+      "customsComment": null,
+      "customsOfficeOfExit": null,
+      "goodsLocationCustoms": {},
+      "customsDocumentType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "aTREUR1Required": false,
+      "cOOInvoiceRequired": {
+        "matchcode": null,
+        "designation": null
+      },
+      "transportOrderComment": null,
+      "containerSummary": "3 CNT - 6 TEU",
+      "haulageType": {
+        "matchcode": "CAR/CAR",
+        "designation": "Carrier/Carrier"
+      },
+      "goodsValue": 0,
+      "goodsValueCurrency": {},
+      "aTRNumber": null,
+      "customsInvoiceNumber": null,
+      "customerSalesOffice": {
+        "matchcode": null,
+        "designation": null
+      },
+      "countryOfOrigin": {
+        "countryName": null
+      },
+      "countryOfDestination": {
+        "countryID": "US",
+        "countryName": "United States of America"
+      },
+      "phoneNumberNotify1": "8564201182",
+      "phoneNumberNotify2": null,
+      "phoneNumberNotify3": null,
+      "emailNotify1": "BASFDocs@bdpint.com",
+      "emailNotify2": null,
+      "emailNotify3": null,
+      "showOnBLShipperPhoneEmail": {
+        "matchcode": null,
+        "designation": null
+      },
+      "commodity": {},
+      "preCarriageLoadingRef": null,
+      "onCarriageDeliveryRef": null,
+      "endCustomerRef": null,
+      "createDocuments": false,
+      "readyForInvoicing": {
+        "matchcode": null,
+        "designation": null
+      },
+      "eDIID": "2800209301BL00",
+      "shipmentBaseTasks": [
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Vessel Changed - Check Customs for Germany",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Vessel Changed - Check Customs for Germany",
+            "isActive": true,
+            "matchcode": "DECHNGTRP",
+            "number": 44
+          }
+        }
+      ],
+      "dUNSCustomer": "BASFAG2",
+      "bASFBL": "BL00",
+      "sendersInstructions": "Reefer container, genset required, Temp. set to + 20Â°C, connect at loading site, terminal and bargeCIP Columbus Rail Rampex Y130U\r\nSA/CANADA\r\nMain leg: Billing without our UST-IDVAT must not be calculated with billing",
+      "docDeliveryInstructions": "ECB has to be presented to addresses at latest 3 working days after departure of vessel. In case of any difficulties, new vessel booking ordelays, please inform the responsible Transport Manager. Please send documents depending on Notify to: BDP,,basfdocs@bdpint.com\r\nThe followings must be shown on B/L: IMDG-class, UN number and propper shipping name in case of dangerous goods cargo. PO# must appear on waybill. Waybill must include number of individual collis per pallet and the sum of individual collis.\r\nFor bulk-containers: - tare weight is to be mentioned on the B/L - stock-number must be included, if mentioned in the order.",
+      "customerEDIType": {
+        "matchcode": "YE22",
+        "designation": "First Info (YE22)"
+      },
+      "bLRemarks": "Date Shipped On Board\r\nDepending on order: freight prepaid\" (CIP: Ocean Freight + On-carriage Freight + Destination Terminal Handling) or \"freight collect\"\r\nPlease show Container No. & Seal No\r\nName, address and phone number of the carrier's agent at port of destination\r\nIn case of dangerous goods: Emergency Response Center BASF: +1 800 832 4357 USA Emergency Contact: CHEMTREC +1 800 424 9300 or +1 703 527 3887 CHEMTREC CONTRACT ID: CCN2407",
+      "forwarderName": "POLYTRA N.V.",
+      "forwarderRoad": "Desguinlei 92 box V 15 Verzicht gebouw",
+      "forwarderNumber": null,
+      "forwarderPcd": "2018",
+      "forwarderCity1": "ANTWERPEN",
+      "forwarderCity2": null,
+      "forwarderCountry": {
+        "countryID": "BE",
+        "countryName": "Belgium"
+      },
+      "forwarderPhone": "032050501",
+      "forwarderEmail": "basf@polytra.be",
+      "freightPayer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "bLRecipients": [
+        {
+          "recipientNumber": 1,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryID": "US",
+            "countryName": "United States of America"
+          },
+          "email": "Consignee",
+          "name": "To Consignee",
+          "originals": 0
+        },
+        {
+          "recipientNumber": 2,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryName": null
+          },
+          "email": "Notify",
+          "name": "Notify",
+          "originals": 0
+        }
+      ],
+      "goodsReceiverName": "BASF CORPORATION MIDWEST DISTRIBUTION CENTER",
+      "goodsReceiverRoad": "9565 LOGISTICS CT",
+      "goodsReceiverNumber": null,
+      "goodsReceiverPcd": "432170000",
+      "goodsReceiverCity1": "COLUMBUS",
+      "goodsReceiverCity2": "OH - Ohio",
+      "goodsReceiverCountry": {
+        "countryID": "US",
+        "countryName": "United States of America"
+      },
+      "goodsReceiverPhone": null,
+      "goodsReceiverEmail": "IntercompanyNorthAmerica@basf.com",
+      "consignor": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "customsAgent": {},
+      "isInRecycleBin": false,
+      "objectOwner": {
+        "organisationalUnitId": 5,
+        "organisationalUnitName": "POL_BASF",
+        "client": {
+          "matchcode": "POLYTRA",
+          "name1": "POLYTRA NV",
+          "externalNumber": "283155273"
+        }
+      },
+      "customer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "globalLocationNumber": "",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "name3": "",
+        "name4": "",
+        "phoneNumberHeadOffice": "",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefNumber": "",
+        "inttraRefType": 0,
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "shipper": {
+        "externalDesignation": "",
+        "name1": "BASF SE",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "location1": "67056 Ludwigshafen",
+          "street": "Carl-Bosch-Strasse 38",
+          "country": {
+            "countryID": "DE",
+            "countryName": "Germany"
+          },
+          "state": null
+        }
+      },
+      "consignee": {
+        "externalDesignation": "",
+        "name1": "BASF CORPORATION",
+        "name2": "MORRIS",
+        "contact": "",
+        "emailAddress": "Inquiries-Intercompany-MX-CAC@basf.com",
+        "phoneNumber": "9732456000",
+        "address": {
+          "location1": "FLORHAM PARK",
+          "location2": "New Jersey",
+          "zipCode": "079321089",
+          "street": "100 Park Avenue/PO Box 685",
+          "country": {
+            "countryID": "US",
+            "countryName": "United States of America"
+          },
+          "state": null
+        }
+      },
+      "notify1": {
+        "name1": "BDP INTERNATIONAL",
+        "name2": "BASF IMPORT OPERATIONS",
+        "address": {
+          "location1": "PHILADELPHIA",
+          "location2": "Pennsylvania",
+          "zipCode": "191063690",
+          "street": "510 WALNUT ST, FL 3",
+          "country": {
+            "countryID": "US",
+            "countryName": "United States of America"
+          },
+          "state": null
+        }
+      },
+      "notify2": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify3": {
+        "address": {
+          "state": null
+        }
+      },
+      "pickupLocation": {
+        "emptyContainerPickupDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerPickupTimeFrame": {},
+        "exportCarrier": {
+          "businessPartnerId": 12296,
+          "externalNumber": "300618",
+          "matchcode": "CMACGMANR1",
+          "name1": "CMA - CGM C/O CMA CGM & ANL SECURITIES B",
+          "finAccAccountCreditor": "300618",
+          "inttraRefType": "InttraCompanyId",
+          "addresses": [
+            {
+              "businessPartnerAddressType": "Default",
+              "location1": "ANTWERPEN 5",
+              "zipCode": "2030",
+              "street": "KLIPPERSTRAAT 15",
+              "country": {
+                "countryID": "BE",
+                "countryName": "Belgium"
+              }
+            }
+          ],
+          "senderReceiver": false,
+          "freightBusinessPartner": false,
+          "valueAddedTaxNumber": "72562024422",
+          "vATIsoTwoCharacterCountryCode": "FR"
+        },
+        "exportTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "exportTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "pickupLocation": {
+          "externalDesignation": "",
+          "name1": "BASF SE",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "location1": "67056 Ludwigshafen",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            },
+            "state": null
+          }
+        }
+      },
+      "transportSubcontractor": {
+        "businessPartnerId": 1002697,
+        "matchcode": "CONTALUDWI",
+        "name1": "CONTARGO RHEIN-NECKAR GMBH",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "Ludwigshafen am Rhein",
+            "zipCode": "67065",
+            "street": "SHELLSTR.5",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": false,
+        "freightBusinessPartner": false,
+        "valueAddedTaxNumber": "813983342",
+        "vATIsoTwoCharacterCountryCode": "DE"
+      },
+      "deliveryLocation": {
+        "emptyContainerReturnDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerReturnTimeFrame": {},
+        "importCarrier": {},
+        "importTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "importTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "deliveryLocation": {
+          "externalDesignation": "",
+          "name1": "BASF CORPORATION",
+          "name2": "MORRIS",
+          "contact": "",
+          "emailAddress": "Inquiries-Intercompany-MX-CAC@basf.com",
+          "phoneNumber": "9732456000",
+          "address": {
+            "location1": "FLORHAM PARK",
+            "location2": "New Jersey",
+            "zipCode": "079321089",
+            "street": "100 Park Avenue/PO Box 685",
+            "country": {
+              "countryID": "US",
+              "countryName": "United States of America"
+            },
+            "state": null
+          }
+        }
+      },
+      "placeOfDelivery": {
+        "matchcode": "USCMH",
+        "designation": "Columbus",
+        "cityCode": "CMH"
+      },
+      "billOfLading": {
+        "shipperAddressString": "BASF SE\r\nD 67056 Ludwigshafen Carl-Bosch-Strasse 38",
+        "consigneeAddressString": "BASF CORPORATION\r\nUS 079321089 FLORHAM PARK New Jersey 100 Park Avenue/PO Box 685",
+        "notify1AddressString": "BDP INTERNATIONAL\r\nUS 191063690 PHILADELPHIA Pennsylvania 510 WALNUT ST, FL 3",
+        "portOfLoading": "Antwerpen",
+        "portOfDischarge": "New York",
+        "placeOfDelivery": "USCMH - Columbus",
+        "goodsAreInsured": false,
+        "number": 0,
+        "numberOfGoods": 0,
+        "stomachString": ""
+      },
+      "container": [
+        {
+          "sequenceNumber": 1,
+          "containerType": {
+            "number": 27,
+            "matchcode": "45RT",
+            "designation": "Forty FOOT HIGH CUBE REEFER",
+            "isoCode": "45R1",
+            "content": "Thermal Container Refrigerated and Heated, Mechanically refrigerated and heated",
+            "isTemperatureControlled": true,
+            "tareWeight": 4420.0,
+            "payload": 26060.0,
+            "lengthInMeters": 1219.0,
+            "widthInMeters": 244.0,
+            "heightInMeters": 29.0,
+            "tEU": 2.0
+          },
+          "containerNumber": "1288724478",
+          "containerNumberType": "Known",
+          "sealnumber2": null,
+          "tareWeight": 4600.0,
+          "verifiedGrossMass": 4600.0,
+          "vgmWeightDeterminationMethod": "SM2",
+          "vgmVerificationSignature": "",
+          "vgmState": "NotSent",
+          "humidificationNecessary": false,
+          "ventSetting": "None",
+          "drainage": "None",
+          "transportMode": "Container",
+          "containerGoodsInfo": null,
+          "eDIID": "3550879994/000010"
+        },
+        {
+          "sequenceNumber": 2,
+          "containerType": {
+            "number": 27,
+            "matchcode": "45RT",
+            "designation": "Forty FOOT HIGH CUBE REEFER",
+            "isoCode": "45R1",
+            "content": "Thermal Container Refrigerated and Heated, Mechanically refrigerated and heated",
+            "isTemperatureControlled": true,
+            "tareWeight": 4420.0,
+            "payload": 26060.0,
+            "lengthInMeters": 1219.0,
+            "widthInMeters": 244.0,
+            "heightInMeters": 29.0,
+            "tEU": 2.0
+          },
+          "containerNumber": "1288724479",
+          "containerNumberType": "Known",
+          "sealnumber2": null,
+          "tareWeight": 4600.0,
+          "verifiedGrossMass": 4600.0,
+          "vgmWeightDeterminationMethod": "SM2",
+          "vgmVerificationSignature": "",
+          "vgmState": "NotSent",
+          "humidificationNecessary": false,
+          "ventSetting": "None",
+          "drainage": "None",
+          "transportMode": "Container",
+          "containerGoodsInfo": null,
+          "eDIID": "3550880113/000010"
+        },
+        {
+          "sequenceNumber": 3,
+          "containerType": {
+            "number": 27,
+            "matchcode": "45RT",
+            "designation": "Forty FOOT HIGH CUBE REEFER",
+            "isoCode": "45R1",
+            "content": "Thermal Container Refrigerated and Heated, Mechanically refrigerated and heated",
+            "isTemperatureControlled": true,
+            "tareWeight": 4420.0,
+            "payload": 26060.0,
+            "lengthInMeters": 1219.0,
+            "widthInMeters": 244.0,
+            "heightInMeters": 29.0,
+            "tEU": 2.0
+          },
+          "containerNumber": "1288725860",
+          "containerNumberType": "Known",
+          "sealnumber2": null,
+          "tareWeight": 4600.0,
+          "verifiedGrossMass": 4600.0,
+          "vgmWeightDeterminationMethod": "SM2",
+          "vgmVerificationSignature": "",
+          "vgmState": "NotSent",
+          "humidificationNecessary": false,
+          "ventSetting": "None",
+          "drainage": "None",
+          "transportMode": "Container",
+          "containerGoodsInfo": null,
+          "eDIID": "3550879430/000010-3550879730/000010-3550879847/000010"
+        }
+      ],
+      "master": {
+        "preferredModeOfTransport": "Ocean",
+        "number": 1188,
+        "mainCarriageAsOcean": {
+          "vessel": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageNumber": "",
+          "bookingAgent": {},
+          "portOfLoading": {
+            "matchcode": "BEANR",
+            "designation": "Antwerpen",
+            "cityCode": "ANR"
+          },
+          "portOfDischarge": {
+            "matchcode": "USNYC",
+            "designation": "New York",
+            "cityCode": "NYC"
+          },
+          "estimatedTimeOfDeparture": "2026-04-20T00:00:00",
+          "estimatedTimeOfArrival": null,
+          "actualTimeOfDeparture": null,
+          "actualTimeOfArrival": null,
+          "cutoffDates": {
+            "exportTerminalDeliveryTimeFrame": {},
+            "reeferDelClosing": null,
+            "vGMClosing": null,
+            "dGDelClosing": null,
+            "sIClosing": null
+          },
+          "masterBillOfLadingNumber": "",
+          "carrier": {
+            "businessPartnerId": 12296,
+            "externalNumber": "300618",
+            "matchcode": "CMACGMANR1",
+            "name1": "CMA - CGM C/O CMA CGM & ANL SECURITIES B",
+            "finAccAccountCreditor": "300618",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN 5",
+                "zipCode": "2030",
+                "street": "KLIPPERSTRAAT 15",
+                "country": {
+                  "countryID": "BE",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": false,
+            "freightBusinessPartner": false,
+            "valueAddedTaxNumber": "72562024422",
+            "vATIsoTwoCharacterCountryCode": "FR"
+          },
+          "customerClosing": null,
+          "customerETD": "2026-04-20",
+          "customerETA": null,
+          "customerVessel": {
+            "vesselName": "COSCO HOPE",
+            "vesselNumber": "9472165"
+          },
+          "customerVoyage": "Ocean Vessel",
+          "pOLConfirmedByCarrier": {},
+          "pODConfirmedByCarrier": {},
+          "vesselConfirmedByCarrier": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageConfirmedByCarrier": null,
+          "eTDConfirmedByCarrier": null,
+          "eTAConfirmedByCarrier": null,
+          "eTAInlandDestination": null,
+          "aTAInlandDestination": null
+        },
+        "docClosingTransp": null,
+        "contingentContract": {
+          "contractID": null,
+          "contractName": null
+        },
+        "automatedManifestSystemFilingDocument": {
+          "billOfLadingNumber": ""
+        },
+        "exportTerminalLocation": {
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "importTerminalLocation": {
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "placeOfReceipt": {},
+        "deliveryTerms": "Prepaid",
+        "placeOfDelivery": {},
+        "releaseTimeFrame": {},
+        "remarks": "",
+        "shippingInstructions": {
+          "billOfLadingKind": 1,
+          "forwardingAgent": "POLYTRA NV\r\n.",
+          "goodsAreInsured": false,
+          "number": 0,
+          "numberOfOriginals": 0,
+          "oceanCarrier": "CMA - CGM C/O CMA CGM & ANL SECURITIES B\r\n.",
+          "dischargePortName": "New York",
+          "loadingPortName": "Antwerpen"
+        },
+        "lCLContainerNumber": null
+      },
+      "carriage": [
+        {
+          "transportMode": "Road",
+          "number": 2523,
+          "objectOwner": {
+            "organisationalUnitId": 1,
+            "organisationalUnitName": "POLYTRA",
+            "client": {
+              "matchcode": "POLYTRA",
+              "name1": "POLYTRA NV",
+              "externalNumber": "283155273"
+            }
+          },
+          "purpose": "PickUpContainerForExportTerminal",
+          "section": "PreCarriage",
+          "plannedWaypoint": [
+            {
+              "sequence": 1,
+              "number": 10709,
+              "process": "Container transport: 1288724478 - 2522 → Pre-/on-carriage: 2523",
+              "transportSector": 1,
+              "transportWaypoint": {
+                "number": 5065,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "name1": "BASF SE",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "location1": "67056 Ludwigshafen",
+                    "street": "Carl-Bosch-Strasse 38",
+                    "country": {
+                      "countryID": "DE",
+                      "countryName": "Germany"
+                    },
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 2,
+              "number": 10721,
+              "process": "Container transport: 1288724479 - 2525 → Pre-/on-carriage: 2523",
+              "transportSector": 1,
+              "transportWaypoint": {
+                "number": 5071,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "name1": "BASF SE",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "location1": "67056 Ludwigshafen",
+                    "street": "Carl-Bosch-Strasse 38",
+                    "country": {
+                      "countryID": "DE",
+                      "countryName": "Germany"
+                    },
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 3,
+              "number": 10733,
+              "process": "Container transport: 1288725860 - 2526 → Pre-/on-carriage: 2523",
+              "transportSector": 1,
+              "transportWaypoint": {
+                "number": 5077,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "name1": "BASF SE",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "location1": "67056 Ludwigshafen",
+                    "street": "Carl-Bosch-Strasse 38",
+                    "country": {
+                      "countryID": "DE",
+                      "countryName": "Germany"
+                    },
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 4,
+              "number": 10710,
+              "process": "Container transport: 1288724478 - 2522 ← Pre-/on-carriage: 2523",
+              "transportSector": 1,
+              "transportWaypoint": {
+                "number": 5066,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 5,
+              "number": 10722,
+              "process": "Container transport: 1288724479 - 2525 ← Pre-/on-carriage: 2523",
+              "transportSector": 1,
+              "transportWaypoint": {
+                "number": 5072,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 6,
+              "number": 10734,
+              "process": "Container transport: 1288725860 - 2526 ← Pre-/on-carriage: 2523",
+              "transportSector": 1,
+              "transportWaypoint": {
+                "number": 5078,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            }
+          ],
+          "transportType": {
+            "number": null,
+            "matchcode": null,
+            "description": null
+          }
+        },
+        {
+          "transportMode": "Road",
+          "number": 2524,
+          "objectOwner": {
+            "organisationalUnitId": 1,
+            "organisationalUnitName": "POLYTRA",
+            "client": {
+              "matchcode": "POLYTRA",
+              "name1": "POLYTRA NV",
+              "externalNumber": "283155273"
+            }
+          },
+          "purpose": "DeliveryFromImportTerminal",
+          "section": "OnCarriage",
+          "plannedWaypoint": [
+            {
+              "sequence": 1,
+              "number": 10713,
+              "process": "Container transport: 1288724478 - 2522 → Pre-/on-carriage: 2524",
+              "transportSector": 3,
+              "transportWaypoint": {
+                "number": 5067,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 2,
+              "number": 10725,
+              "process": "Container transport: 1288724479 - 2525 → Pre-/on-carriage: 2524",
+              "transportSector": 3,
+              "transportWaypoint": {
+                "number": 5073,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 3,
+              "number": 10737,
+              "process": "Container transport: 1288725860 - 2526 → Pre-/on-carriage: 2524",
+              "transportSector": 3,
+              "transportWaypoint": {
+                "number": 5079,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 4,
+              "number": 10738,
+              "process": "Container transport: 1288725860 - 2526 ← Pre-/on-carriage: 2524",
+              "transportSector": 3,
+              "transportWaypoint": {
+                "number": 5080,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "name1": "BASF CORPORATION",
+                  "name2": "MORRIS",
+                  "contact": "",
+                  "emailAddress": "Inquiries-Intercompany-MX-CAC@basf.com",
+                  "phoneNumber": "9732456000",
+                  "address": {
+                    "location1": "FLORHAM PARK",
+                    "location2": "New Jersey",
+                    "zipCode": "079321089",
+                    "street": "100 Park Avenue/PO Box 685",
+                    "country": {
+                      "countryID": "US",
+                      "countryName": "United States of America"
+                    },
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 5,
+              "number": 10726,
+              "process": "Container transport: 1288724479 - 2525 ← Pre-/on-carriage: 2524",
+              "transportSector": 3,
+              "transportWaypoint": {
+                "number": 5074,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "name1": "BASF CORPORATION",
+                  "name2": "MORRIS",
+                  "contact": "",
+                  "emailAddress": "Inquiries-Intercompany-MX-CAC@basf.com",
+                  "phoneNumber": "9732456000",
+                  "address": {
+                    "location1": "FLORHAM PARK",
+                    "location2": "New Jersey",
+                    "zipCode": "079321089",
+                    "street": "100 Park Avenue/PO Box 685",
+                    "country": {
+                      "countryID": "US",
+                      "countryName": "United States of America"
+                    },
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 6,
+              "number": 10714,
+              "process": "Container transport: 1288724478 - 2522 ← Pre-/on-carriage: 2524",
+              "transportSector": 3,
+              "transportWaypoint": {
+                "number": 5068,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "name1": "BASF CORPORATION",
+                  "name2": "MORRIS",
+                  "contact": "",
+                  "emailAddress": "Inquiries-Intercompany-MX-CAC@basf.com",
+                  "phoneNumber": "9732456000",
+                  "address": {
+                    "location1": "FLORHAM PARK",
+                    "location2": "New Jersey",
+                    "zipCode": "079321089",
+                    "street": "100 Park Avenue/PO Box 685",
+                    "country": {
+                      "countryID": "US",
+                      "countryName": "United States of America"
+                    },
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            }
+          ],
+          "transportType": {
+            "number": null,
+            "matchcode": null,
+            "description": null
+          }
+        }
+      ],
+      "id": 1623824,
+      "differentFreightPayer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "documentData": []
+    }
+  ]
+}

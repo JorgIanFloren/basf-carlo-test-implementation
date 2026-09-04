@@ -4,14 +4,19 @@ Three DataWeave mappings that turn BASF's inbound EDIFACT messages into calls on
 (Soloplan) v3. Deployed on Fracht Connect, where the EDI parser hands each mapping the **parsed
 JSON** representation of an interchange — the mappings never see EDIFACT.
 
-| Message | Mapping | Transform library | Target contract | Spec |
+| Message | Mapping | Deployed as | Target contract | Spec |
 |---|---|---|---|---|
-| IFTMIN (instruction) | `src/test/dw/BasfIftmin.dwl` | `src/main/dw/IftminModule.dwl` | `docs/expected_output_SeaHouseShipment.json` | `docs/iftmin/01-IFTMIN_mapping_spec.md` |
-| IFTMBF (firm booking) | `src/test/dw/BasfIftmbf.dwl` | `src/main/dw/IftmbfModule.dwl` | ″ | `docs/iftmbf/01-IFTMBF_mapping_spec.md` |
-| IFCSUM (consolidation summary) | `src/test/dw/BasfIfcsum.dwl` | `src/main/dw/IfcsumModule.dwl` | `docs/expected_output_ShipmentCargo.json` | `docs/ifcsum/01-IFCSUM_mapping_spec.md` |
+| IFTMIN (instruction) | `src/main/dw/BasfIftmin.dwl` | `basf/BasfIftmin.dwl` | `docs/expected_output_SeaHouseShipment.json` | `docs/iftmin/01-IFTMIN_mapping_spec.md` |
+| IFTMBF (firm booking) | `src/main/dw/BasfIftmbf.dwl` | `basf/BasfIftmbf.dwl` | ″ | `docs/iftmbf/01-IFTMBF_mapping_spec.md` |
+| IFCSUM (consolidation summary) | `src/main/dw/BasfIfcsum.dwl` | `basf/BasfIfcsum.dwl` | `docs/expected_output_ShipmentCargo.json` | `docs/ifcsum/01-IFCSUM_mapping_spec.md` |
 
-`src/main/dw/CommonModule.dwl` holds what all three share: date conversion, `camelKeys`, the
-position-agnostic segment navigation, and `messagesOfType`.
+**Each mapping is a single self-contained script.** The data-transformer evaluates the uploaded
+file on its own and resolves no imports off Blob Storage, so nothing may be imported from a
+shared module — the helpers all three need (date conversion, `camelKeys`, the position-agnostic
+segment navigation, `messagesOfType`) are inlined verbatim into each file. That is three copies
+on purpose: **change one and change all three.** The repo filename, the blob name and the
+`dwlPath` in `config/dataProfiler-basf-*.json` are deliberately identical, so they cannot drift
+apart.
 
 Each mapping takes the **whole interchange** and returns an array, because one interchange can
 legitimately carry several messages — that is exactly what a BASF master-sub is.
@@ -19,11 +24,17 @@ legitimately carry several messages — that is exactly what a BASF master-sub i
 ## Deploying
 
 `config/` holds the Cosmos DB documents that add these three integrations to Fracht Connect —
-one `dataProfiler` per message type wiring profiler → pipeline → transformer → delivery, plus a
-placeholder `dataGetter` for the inbound transport. **Read `config/README.md` before loading
-them**: five things in there are inferred rather than documented, including how the interchange
-gets parsed to JSON and the fact that the DWL files import modules and so are not self-contained
-uploads.
+one `dataProfiler` per message type wiring getter → transformer → delivery, plus a placeholder
+`dataGetter` for the inbound transport. **Read `config/README.md` before loading them**: several
+things in there are inferred rather than documented, including how the interchange gets parsed
+to JSON.
+
+Upload each mapping to the `transforms` container under the name its `dwlPath` already carries:
+
+```
+az storage blob upload --account-name saeus2integrationdev001 --container-name transforms \
+  --name "basf/BasfIftmin.dwl" --file ./src/main/dw/BasfIftmin.dwl
+```
 
 ## Running the tests
 
@@ -32,8 +43,19 @@ cd basf
 mvn -o test
 ```
 
-116 tests. Every EDIFACT interchange in `docs/example-orders` is exercised by the mapping for
+145 tests. Every EDIFACT interchange in `docs/example-orders` is exercised by the mapping for
 its message type: 21 IFTMIN, 9 IFTMBF, 4 IFCSUM.
+
+The suites run each mapping the way the data-transformer does — `evalPath` evaluates the
+uploaded script itself against a `payload` context and asserts on the JSON Carlo would receive.
+Nothing is imported from a mapping, so the tests stay honest about the self-contained files.
+
+The IFTMIN and IFTMBF suites also read each interchange **together with a lookup response**, so
+the dossier-addressing rules are exercised against real data. `docs/get-responses/*.json` are
+captures of the "GET dossier by CustomerRef" call — one per scenario, plus a not-found response —
+and `src/test/resources/get-responses/` is the classpath copy the suites load. Because they are
+real server responses rather than hand-written expectations, the dossier ids and reference fields
+asserted in the tests are the records the integration actually created.
 
 ## Fixtures
 
@@ -110,30 +132,43 @@ Nearly every file in `docs/example-orders` is mislabelled. Classify by content, 
 |---|---|---|---|
 | 9 (original) | `updateorcreate` | `updateorcreate` | `update` |
 | 4 (change) | `update` | `update` | `update` |
-| 1 (cancel) | identity-only delete | flow stops, nothing sent | flow stops, nothing sent |
+| 1 (cancel) | identity-only recycle, one per dossier | flow stops, nothing sent | flow stops, nothing sent |
 
-The asymmetry is deliberate and follows `docs/00-basf.md`: a cancelled *instruction* removes the
+The asymmetry is deliberate and follows `docs/00-basf.md`: a cancelled *instruction* withdraws the
 shipment, but a cancelled *booking* or *consolidation summary* does not — see each spec's cancel
 section.
+
+A cancelled IFTMIN sets `isInRecycleBin: true` and upserts rather than deleting, per
+`00-basf.md` *"IFTMIN / Canceling"*, so the dossier stays in Carlo and simply drops out of every
+later lookup. Because a cancel names an order and a master-sub order is several dossiers, one
+message recycles each of them.
 
 ## Open items
 
 Collected from the three specs; each is written up where it belongs.
 
-1. **The IFTMIN cancel shape is unconfirmed** — no example message exists, and `00-basf.md`
-   marks step 1b as to be confirmed by Robin/Niels.
-2. **24 fields the IFTMIN mapping emits are not attested in any contract sample.** They come
+1. **No pipeline step performs the "GET dossier by CustomerRef" lookup.** Both
+   `seaHouseShipment` mappings now consume its result off `payload.lookup`, and without it they
+   fall back to a single unaddressed upsert — which is exactly the master-sub behaviour the
+   three issues in `00-basf.md` describe. This is the one piece of wiring still missing; see
+   `config/README.md` check 6 for the contract it has to satisfy.
+2. **The IFTMIN cancel shape is still unattested by an example message** — `00-basf.md` now
+   specifies the mechanism (recycle and upsert, keyed on `customerrefSet`), but no code 1
+   EDIFACT message exists anywhere in the example set, so the branch is covered only by
+   synthetic interchanges. `00-basf.md` also still marks step 1b "HOW TO BE CONFIRMED by
+   Robin/Niels".
+3. **24 fields the IFTMIN mapping emits are not attested in any contract sample.** They come
    from the Create sheet's XPaths but appear in neither `expected_output_SeaHouseShipment.json`
    nor the v3 XML sample — both of which are export dumps rather than schemas. Carlo ignores
    unknown fields silently. Check them against Carlo's Swagger.
    (`expected_output_ShipmentCargo.json` *is* a schema, so IFCSUM is fully verified against it.)
-3. **Multi-container IFCSUM** would lose its VGM data — see `docs/ifcsum` §7.1.
-4. **LCL bookings lose `HaulageType` and `EstimatedDispatchDate`** — the sheet's rules need an
+4. **Multi-container IFCSUM** would lose its VGM data — see `docs/ifcsum` §7.1.
+5. **LCL bookings lose `HaulageType` and `EstimatedDispatchDate`** — the sheet's rules need an
    `EQD`, and an LCL booking has none. See `docs/iftmbf` §7.6.
-5. **`PickupLocation/PickupLocation/UnLocationCode`** is taken verbatim from the IFTMBF sheet
+6. **`PickupLocation/PickupLocation/UnLocationCode`** is taken verbatim from the IFTMBF sheet
    and is not attested in the v3 sample — see `docs/iftmbf` §7.1.
-6. **The upstream `?'` escaping defect is still live in production.** The converter handles it,
+7. **The upstream `?'` escaping defect is still live in production.** The converter handles it,
    so real IFTMBF captures are usable as fixtures here, but the production parser still rejects
    those messages. See `docs/iftmbf` §10 — it belongs with BASF.
-7. **There is no IFCSUM mapping sheet**; that mapping is derived from `00-basf.md`, the
+8. **There is no IFCSUM mapping sheet**; that mapping is derived from `00-basf.md`, the
    contract and the captures.

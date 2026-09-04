@@ -1,0 +1,393 @@
+{
+  "seaHouseShipment": [
+    {
+      "preferredModeOfTransport": "Ocean",
+      "number": 1171,
+      "frachtShipmentRef": "76000184",
+      "customerReference": "2800209301",
+      "aMSHouseBillOfLadingNumber": "",
+      "movementType": "P/P",
+      "houseType": "House",
+      "loadType": "GC",
+      "incoterms": null,
+      "insuranceCurrency": {},
+      "shipmentNumberSAP": null,
+      "deliveryTerms": "Prepaid",
+      "lockStatus": "Free",
+      "shipmentCostNumberSAP": null,
+      "shipmentDate": "2026-04-20",
+      "financialReportingDate": "2026-09-04",
+      "scenario": {
+        "matchcode": null,
+        "designation": null
+      },
+      "deliveryNoteSAP": null,
+      "customerTransportManagerName": null,
+      "customerTransportManagerEmail": null,
+      "customerTransportManagerPhone": null,
+      "customerExportManagerName": null,
+      "customerExportManagerEmail": null,
+      "customerExportManagerPhone": null,
+      "customerExportManagerAddress": null,
+      "precedingCustomsDocumentDate": null,
+      "estimatedDispatchDate": "2026-04-08T00:00:00",
+      "internalComment": "",
+      "externalComment": null,
+      "customsComment": null,
+      "customsOfficeOfExit": null,
+      "goodsLocationCustoms": {},
+      "customsDocumentType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "aTREUR1Required": false,
+      "cOOInvoiceRequired": {
+        "matchcode": null,
+        "designation": null
+      },
+      "transportOrderComment": null,
+      "containerSummary": "0 CNT - 0 TEU",
+      "haulageType": {
+        "matchcode": "CAR/CAR",
+        "designation": "Carrier/Carrier"
+      },
+      "goodsValue": 0,
+      "goodsValueCurrency": {},
+      "aTRNumber": null,
+      "customsInvoiceNumber": null,
+      "customerSalesOffice": {
+        "matchcode": null,
+        "designation": null
+      },
+      "countryOfOrigin": {
+        "countryName": null
+      },
+      "countryOfDestination": {
+        "countryName": null
+      },
+      "phoneNumberNotify1": null,
+      "phoneNumberNotify2": null,
+      "phoneNumberNotify3": null,
+      "emailNotify1": null,
+      "emailNotify2": null,
+      "emailNotify3": null,
+      "showOnBLShipperPhoneEmail": {
+        "matchcode": null,
+        "designation": null
+      },
+      "commodity": {},
+      "preCarriageLoadingRef": null,
+      "onCarriageDeliveryRef": null,
+      "endCustomerRef": null,
+      "createDocuments": false,
+      "readyForInvoicing": {
+        "matchcode": null,
+        "designation": null
+      },
+      "eDIID": "2800209301",
+      "dUNSCustomer": "BASFAG2",
+      "bASFBL": null,
+      "sendersInstructions": null,
+      "docDeliveryInstructions": null,
+      "customerEDIType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "bLRemarks": null,
+      "forwarderName": null,
+      "forwarderRoad": null,
+      "forwarderNumber": null,
+      "forwarderPcd": null,
+      "forwarderCity1": null,
+      "forwarderCity2": null,
+      "forwarderCountry": {
+        "countryName": null
+      },
+      "forwarderPhone": null,
+      "forwarderEmail": null,
+      "freightPayer": {},
+      "goodsReceiverName": null,
+      "goodsReceiverRoad": null,
+      "goodsReceiverNumber": null,
+      "goodsReceiverPcd": null,
+      "goodsReceiverCity1": null,
+      "goodsReceiverCity2": null,
+      "goodsReceiverCountry": {
+        "countryName": null
+      },
+      "goodsReceiverPhone": null,
+      "goodsReceiverEmail": null,
+      "consignor": {},
+      "customsAgent": {},
+      "isInRecycleBin": false,
+      "objectOwner": {
+        "organisationalUnitId": 5,
+        "organisationalUnitName": "POL_BASF",
+        "client": {
+          "matchcode": "POLYTRA",
+          "name1": "POLYTRA NV",
+          "externalNumber": "283155273"
+        }
+      },
+      "customer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "globalLocationNumber": "",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "name3": "",
+        "name4": "",
+        "phoneNumberHeadOffice": "",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefNumber": "",
+        "inttraRefType": 0,
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "shipper": {
+        "externalDesignation": "",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "location1": "Ludwigshafen",
+          "state": null
+        },
+        "unLocationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "consignee": {
+        "externalDesignation": "",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "state": null
+        }
+      },
+      "notify1": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify2": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify3": {
+        "address": {
+          "state": null
+        }
+      },
+      "pickupLocation": {
+        "emptyContainerPickupDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerPickupTimeFrame": {},
+        "exportCarrier": {},
+        "exportTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "exportTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "pickupLocation": {
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "location1": "Ludwigshafen",
+            "state": null
+          },
+          "unLocationCode": {
+            "matchcode": "DELUH",
+            "designation": "Ludwigshafen",
+            "cityCode": "LUH"
+          }
+        }
+      },
+      "transportSubcontractor": {},
+      "deliveryLocation": {
+        "emptyContainerReturnDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerReturnTimeFrame": {},
+        "importCarrier": {},
+        "importTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "importTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "deliveryLocation": {
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        }
+      },
+      "billOfLading": {
+        "shipperAddressString": "Ludwigshafen",
+        "goodsAreInsured": false,
+        "number": 0,
+        "numberOfGoods": 0,
+        "stomachString": ""
+      },
+      "master": {
+        "preferredModeOfTransport": "Ocean",
+        "number": 1172,
+        "mainCarriageAsOcean": {
+          "vessel": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageNumber": "",
+          "bookingAgent": {},
+          "portOfLoading": {},
+          "portOfDischarge": {},
+          "estimatedTimeOfDeparture": null,
+          "estimatedTimeOfArrival": "2026-05-08T00:00:00",
+          "actualTimeOfDeparture": null,
+          "actualTimeOfArrival": null,
+          "cutoffDates": {
+            "exportTerminalDeliveryTimeFrame": {
+              "cYClosingActual": "2026-04-15T00:00:00"
+            },
+            "reeferDelClosing": null,
+            "vGMClosing": null,
+            "dGDelClosing": null,
+            "sIClosing": null
+          },
+          "masterBillOfLadingNumber": "",
+          "carrier": {},
+          "customerClosing": "2026-04-15",
+          "customerETD": null,
+          "customerETA": "2026-05-08",
+          "customerVessel": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "customerVoyage": null,
+          "pOLConfirmedByCarrier": {},
+          "pODConfirmedByCarrier": {},
+          "vesselConfirmedByCarrier": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageConfirmedByCarrier": null,
+          "eTDConfirmedByCarrier": null,
+          "eTAConfirmedByCarrier": null,
+          "eTAInlandDestination": null,
+          "aTAInlandDestination": null
+        },
+        "docClosingTransp": null,
+        "contingentContract": {
+          "contractID": null,
+          "contractName": null
+        },
+        "automatedManifestSystemFilingDocument": {
+          "billOfLadingNumber": ""
+        },
+        "exportTerminalLocation": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "importTerminalLocation": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "placeOfReceipt": {},
+        "deliveryTerms": "Prepaid",
+        "placeOfDelivery": {},
+        "releaseTimeFrame": {},
+        "remarks": "",
+        "shippingInstructions": {
+          "billOfLadingKind": 1,
+          "forwardingAgent": "POLYTRA NV\r\n.",
+          "goodsAreInsured": false,
+          "number": 0,
+          "numberOfOriginals": 0
+        },
+        "lCLContainerNumber": null
+      },
+      "id": 1621631,
+      "differentFreightPayer": {},
+      "documentData": []
+    }
+  ]
+}

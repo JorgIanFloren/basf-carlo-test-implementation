@@ -1,0 +1,1529 @@
+{
+  "seaHouseShipment": [
+    {
+      "preferredModeOfTransport": "Ocean",
+      "number": 1170,
+      "frachtShipmentRef": "76000183",
+      "customerReference": "2800237044",
+      "aMSHouseBillOfLadingNumber": "",
+      "movementType": "D/P",
+      "houseType": "House",
+      "loadType": "LCL",
+      "incoterms": "CIF",
+      "incotermplace": "Melbourne",
+      "insuranceCurrency": {},
+      "shipmentNumberSAP": null,
+      "deliveryTerms": "Prepaid",
+      "lockStatus": "Free",
+      "shipmentCostNumberSAP": null,
+      "shipmentDate": "2026-08-11",
+      "financialReportingDate": "2026-08-11",
+      "scenario": {
+        "matchcode": null,
+        "designation": null
+      },
+      "deliveryNoteSAP": null,
+      "customerTransportManagerName": "Ms Bal Raj Singh",
+      "customerTransportManagerEmail": "JASWEN.BAL-RAJ-SINGH@BASF.COM",
+      "customerTransportManagerPhone": null,
+      "customerExportManagerName": "Mr Haak",
+      "customerExportManagerEmail": "MEYK.HAAK@BASF.COM",
+      "customerExportManagerPhone": "+49 30 2005",
+      "customerExportManagerAddress": "Storkower StraÃe 146\r\n10407\r\nBerlin\r\nDE",
+      "precedingCustomsDocumentDate": null,
+      "internalComment": "",
+      "externalComment": null,
+      "customsComment": null,
+      "customsOfficeOfExit": null,
+      "goodsLocationCustoms": {},
+      "customsDocumentType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "aTREUR1Required": false,
+      "cOOInvoiceRequired": {
+        "matchcode": null,
+        "designation": null
+      },
+      "transportOrderComment": null,
+      "containerSummary": "0 CNT - 0 TEU",
+      "haulageType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "goodsValue": 0,
+      "goodsValueCurrency": {},
+      "aTRNumber": null,
+      "customsInvoiceNumber": null,
+      "customerSalesOffice": {
+        "matchcode": null,
+        "designation": null
+      },
+      "countryOfOrigin": {
+        "countryName": null
+      },
+      "countryOfDestination": {
+        "countryID": "AU",
+        "countryName": "Australia"
+      },
+      "phoneNumberNotify1": "3393306222",
+      "phoneNumberNotify2": null,
+      "phoneNumberNotify3": null,
+      "emailNotify1": "basf@au.dsv.com",
+      "emailNotify2": null,
+      "emailNotify3": null,
+      "showOnBLShipperPhoneEmail": {
+        "matchcode": null,
+        "designation": null
+      },
+      "commodity": {},
+      "preCarriageLoadingRef": null,
+      "onCarriageDeliveryRef": null,
+      "endCustomerRef": null,
+      "createDocuments": false,
+      "readyForInvoicing": {
+        "matchcode": null,
+        "designation": null
+      },
+      "eDIID": "2800237044BL02",
+      "shipmentBaseTasks": [
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Booking Request (EDI)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Booking Request (EDI)",
+            "isActive": true,
+            "matchcode": "BR_EDI",
+            "number": 5
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Transport Order",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Transport Order",
+            "isActive": true,
+            "matchcode": "TRANSPORT",
+            "number": 7
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send MRN to NVOCC",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send MRN to NVOCC",
+            "isActive": true,
+            "matchcode": "MRNNVOCC",
+            "number": 82
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create BL instructions",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create BL instructions",
+            "isActive": true,
+            "matchcode": "CREATEBLI",
+            "number": 67
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "IFTSTA - Departure Confirmation",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "IFTSTA - Departure Confirmation",
+            "isActive": true,
+            "matchcode": "DPT_CONF",
+            "number": 57
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "IFTSTA - Arrival at destination",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "IFTSTA - Arrival at destination",
+            "isActive": true,
+            "matchcode": "ARV_DEST",
+            "number": 59
+          }
+        }
+      ],
+      "dUNSCustomer": "BASFAG2",
+      "bASFBL": "BL02",
+      "sendersInstructions": "Main leg: Billing without our UST-IDVAT must not be calculated with billing",
+      "docDeliveryInstructions": "ECB has to be presented to addresses at latest 3 working days after departure of vessel. In case of any difficulties, new vessel booking ordelays, please inform the responsible Transport Manager.\r\nThe followings must be shown on B/L: IMDG-class and UN number in caseof dangerous goods cargo.",
+      "customerEDIType": {
+        "matchcode": "YE22",
+        "designation": "First Info (YE22)"
+      },
+      "bLRemarks": "Date Shipped On Board\r\nDepending on order: \"freight prepaid\" or \"freight collect\"\r\nPlease show Container No. & Seal No\r\nName, address and phone number of the carrier's agent at port of destination\r\nIn case of Dangerous goods please add on DGD: IXOM emergency services(3rd party emergency response service on behalf of BASF Australia):  1800 803 440 \\ 1800 033 111",
+      "forwarderName": "POLYTRA N.V.",
+      "forwarderRoad": "Desguinlei 92 box V 15 Verzicht gebouw",
+      "forwarderNumber": null,
+      "forwarderPcd": "2018",
+      "forwarderCity1": "ANTWERPEN",
+      "forwarderCity2": null,
+      "forwarderCountry": {
+        "countryID": "BE",
+        "countryName": "Belgium"
+      },
+      "forwarderPhone": "032050501",
+      "forwarderEmail": "basf@polytra.be",
+      "freightPayer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "bLRecipients": [
+        {
+          "recipientNumber": 1,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryName": null
+          },
+          "email": "Order Manager",
+          "name": "BASF SE",
+          "originals": 0
+        },
+        {
+          "recipientNumber": 2,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryName": null
+          },
+          "email": "basf@au.dsv.com",
+          "name": "BASF Australia Ltd.",
+          "originals": 0
+        },
+        {
+          "recipientNumber": 3,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryName": null
+          },
+          "email": "shippingdocs-anz@basf.com",
+          "name": "BASF Australia Ltd.",
+          "originals": 0
+        }
+      ],
+      "goodsReceiverName": "Toll Chemicals ",
+      "goodsReceiverRoad": "180 Fitzgerald Rd",
+      "goodsReceiverNumber": null,
+      "goodsReceiverPcd": "3026",
+      "goodsReceiverCity1": "LAVERTON NORTH",
+      "goodsReceiverCity2": "VIC - Victoria",
+      "goodsReceiverCountry": {
+        "countryID": "AU",
+        "countryName": "Australia"
+      },
+      "goodsReceiverPhone": null,
+      "goodsReceiverEmail": "tcllavwhs@tollgroup.com",
+      "consignor": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "customsAgent": {},
+      "isInRecycleBin": false,
+      "objectOwner": {
+        "organisationalUnitId": 5,
+        "organisationalUnitName": "POL_BASF",
+        "client": {
+          "matchcode": "POLYTRA",
+          "name1": "POLYTRA NV",
+          "externalNumber": "283155273"
+        }
+      },
+      "customer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "globalLocationNumber": "",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "name3": "",
+        "name4": "",
+        "phoneNumberHeadOffice": "",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefNumber": "",
+        "inttraRefType": 0,
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "shipper": {
+        "externalDesignation": "",
+        "name1": "BASF SE",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "location1": "67056 Ludwigshafen",
+          "street": "Carl-Bosch-Strasse 38",
+          "country": {
+            "countryID": "DE",
+            "countryName": "Germany"
+          },
+          "state": null
+        }
+      },
+      "consignee": {
+        "externalDesignation": "",
+        "name1": "BASF AUSTRALIA LTD.",
+        "contact": "",
+        "emailAddress": "receivables-au@basf.com",
+        "phoneNumber": "0388556600",
+        "address": {
+          "location1": "SOUTHBANK",
+          "location2": "Victoria",
+          "zipCode": "3006",
+          "street": "LEVEL 23, 40 CITY RD",
+          "country": {
+            "countryID": "AU",
+            "countryName": "Australia"
+          },
+          "state": null
+        }
+      },
+      "notify1": {
+        "name1": "DSV Air & Sea Pty Ltd",
+        "address": {
+          "location1": "Melbourne Airport",
+          "location2": "Victoria",
+          "zipCode": "3045",
+          "street": "47 Watson Drive",
+          "country": {
+            "countryID": "AU",
+            "countryName": "Australia"
+          },
+          "state": null
+        }
+      },
+      "notify2": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify3": {
+        "address": {
+          "state": null
+        }
+      },
+      "pickupLocation": {
+        "emptyContainerPickupDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerPickupTimeFrame": {},
+        "exportCarrier": {},
+        "exportTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "exportTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "pickupLocation": {
+          "externalDesignation": "",
+          "name1": "BASF SE",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "location1": "67056 Ludwigshafen",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            },
+            "state": null
+          }
+        }
+      },
+      "transportSubcontractor": {},
+      "deliveryLocation": {
+        "emptyContainerReturnDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerReturnTimeFrame": {},
+        "importCarrier": {},
+        "importTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "importTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "deliveryLocation": {
+          "externalDesignation": "",
+          "name1": "BASF AUSTRALIA LTD.",
+          "contact": "",
+          "emailAddress": "receivables-au@basf.com",
+          "phoneNumber": "0388556600",
+          "address": {
+            "location1": "SOUTHBANK",
+            "location2": "Victoria",
+            "zipCode": "3006",
+            "street": "LEVEL 23, 40 CITY RD",
+            "country": {
+              "countryID": "AU",
+              "countryName": "Australia"
+            },
+            "state": null
+          }
+        }
+      },
+      "billOfLading": {
+        "shipperAddressString": "BASF SE\r\nD 67056 Ludwigshafen Carl-Bosch-Strasse 38",
+        "consigneeAddressString": "BASF AUSTRALIA LTD.\r\nAU 3006 SOUTHBANK Victoria LEVEL 23, 40 CITY RD",
+        "notify1AddressString": "DSV Air & Sea Pty Ltd\r\nAU 3045 Melbourne Airport Victoria 47 Watson Drive",
+        "portOfLoading": "Antwerpen",
+        "portOfDischarge": "Melbourne",
+        "goodsAreInsured": false,
+        "number": 0,
+        "numberOfGoods": 0,
+        "stomachString": ""
+      },
+      "master": {
+        "preferredModeOfTransport": "Ocean",
+        "number": 1169,
+        "mainCarriageAsOcean": {
+          "vessel": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageNumber": "",
+          "bookingAgent": {},
+          "portOfLoading": {
+            "matchcode": "BEANR",
+            "designation": "Antwerpen",
+            "cityCode": "ANR"
+          },
+          "portOfDischarge": {
+            "matchcode": "AUMEL",
+            "designation": "Melbourne",
+            "cityCode": "MEL"
+          },
+          "estimatedTimeOfDeparture": "2026-08-11T00:00:00",
+          "estimatedTimeOfArrival": null,
+          "actualTimeOfDeparture": null,
+          "actualTimeOfArrival": null,
+          "cutoffDates": {
+            "exportTerminalDeliveryTimeFrame": {},
+            "reeferDelClosing": null,
+            "vGMClosing": null,
+            "dGDelClosing": null,
+            "sIClosing": null
+          },
+          "masterBillOfLadingNumber": "",
+          "carrier": {
+            "businessPartnerId": 12201,
+            "externalNumber": "50034",
+            "matchcode": "ECUWOR_BE",
+            "name1": "ECU WORLDWIDE (BELGIUM) N",
+            "finAccAccountDebtor": "50034",
+            "finAccAccountCreditor": "50034",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN",
+                "zipCode": "2030",
+                "street": "SCHOMHOEVEWEG 15",
+                "country": {
+                  "countryID": "BE",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": true,
+            "freightBusinessPartner": true,
+            "valueAddedTaxNumber": "0432713931",
+            "vATIsoTwoCharacterCountryCode": "BE"
+          },
+          "customerClosing": null,
+          "customerETD": "2026-08-11",
+          "customerETA": null,
+          "customerVessel": {
+            "vesselName": "CMA CGM RIVOLI",
+            "vesselNumber": "9839193"
+          },
+          "customerVoyage": "Ocean Vessel",
+          "pOLConfirmedByCarrier": {},
+          "pODConfirmedByCarrier": {},
+          "vesselConfirmedByCarrier": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageConfirmedByCarrier": null,
+          "eTDConfirmedByCarrier": null,
+          "eTAConfirmedByCarrier": null,
+          "eTAInlandDestination": null,
+          "aTAInlandDestination": null
+        },
+        "docClosingTransp": null,
+        "contingentContract": {
+          "contractID": null,
+          "contractName": null
+        },
+        "automatedManifestSystemFilingDocument": {
+          "billOfLadingNumber": ""
+        },
+        "exportTerminalLocation": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "importTerminalLocation": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "placeOfReceipt": {},
+        "deliveryTerms": "Prepaid",
+        "placeOfDelivery": {},
+        "releaseTimeFrame": {},
+        "remarks": "",
+        "shippingInstructions": {
+          "billOfLadingKind": 1,
+          "forwardingAgent": "POLYTRA NV\r\n.",
+          "goodsAreInsured": false,
+          "number": 0,
+          "numberOfOriginals": 0,
+          "oceanCarrier": "ECU WORLDWIDE (BELGIUM) N\r\n.",
+          "dischargePortName": "Melbourne",
+          "loadingPortName": "Antwerpen"
+        },
+        "lCLContainerNumber": null
+      },
+      "id": 1621596,
+      "differentFreightPayer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "documentData": []
+    },
+    {
+      "preferredModeOfTransport": "Ocean",
+      "number": 1167,
+      "frachtShipmentRef": "76000182",
+      "customerReference": "2800237044",
+      "aMSHouseBillOfLadingNumber": "",
+      "movementType": "D/P",
+      "houseType": "House",
+      "loadType": "LCL",
+      "incoterms": "CIF",
+      "incotermplace": "Melbourne",
+      "insuranceCurrency": {},
+      "shipmentNumberSAP": null,
+      "deliveryTerms": "Prepaid",
+      "lockStatus": "Free",
+      "shipmentCostNumberSAP": null,
+      "shipmentDate": "2026-08-11",
+      "financialReportingDate": "2026-08-11",
+      "scenario": {
+        "matchcode": null,
+        "designation": null
+      },
+      "deliveryNoteSAP": null,
+      "customerTransportManagerName": "Ms Bal Raj Singh",
+      "customerTransportManagerEmail": "JASWEN.BAL-RAJ-SINGH@BASF.COM",
+      "customerTransportManagerPhone": null,
+      "customerExportManagerName": "Mr Haak",
+      "customerExportManagerEmail": "MEYK.HAAK@BASF.COM",
+      "customerExportManagerPhone": "+49 30 2005",
+      "customerExportManagerAddress": "Storkower StraÃe 146\r\n10407\r\nBerlin\r\nDE",
+      "precedingCustomsDocumentDate": null,
+      "internalComment": "",
+      "externalComment": null,
+      "customsComment": null,
+      "customsOfficeOfExit": null,
+      "goodsLocationCustoms": {},
+      "customsDocumentType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "aTREUR1Required": false,
+      "cOOInvoiceRequired": {
+        "matchcode": null,
+        "designation": null
+      },
+      "transportOrderComment": null,
+      "containerSummary": "0 CNT - 0 TEU",
+      "haulageType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "goodsValue": 0,
+      "goodsValueCurrency": {},
+      "aTRNumber": null,
+      "customsInvoiceNumber": null,
+      "customerSalesOffice": {
+        "matchcode": null,
+        "designation": null
+      },
+      "countryOfOrigin": {
+        "countryName": null
+      },
+      "countryOfDestination": {
+        "countryID": "AU",
+        "countryName": "Australia"
+      },
+      "phoneNumberNotify1": "3393306222",
+      "phoneNumberNotify2": null,
+      "phoneNumberNotify3": null,
+      "emailNotify1": "basf@au.dsv.com",
+      "emailNotify2": null,
+      "emailNotify3": null,
+      "showOnBLShipperPhoneEmail": {
+        "matchcode": null,
+        "designation": null
+      },
+      "commodity": {},
+      "preCarriageLoadingRef": null,
+      "onCarriageDeliveryRef": null,
+      "endCustomerRef": null,
+      "createDocuments": false,
+      "readyForInvoicing": {
+        "matchcode": null,
+        "designation": null
+      },
+      "eDIID": "2800237044BL01",
+      "shipmentBaseTasks": [
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Booking Request (EDI)",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Booking Request (EDI)",
+            "isActive": true,
+            "matchcode": "BR_EDI",
+            "number": 5
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Transport Order",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Transport Order",
+            "isActive": true,
+            "matchcode": "TRANSPORT",
+            "number": 7
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Send MRN to NVOCC",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Send MRN to NVOCC",
+            "isActive": true,
+            "matchcode": "MRNNVOCC",
+            "number": 82
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Create BL instructions",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Create BL instructions",
+            "isActive": true,
+            "matchcode": "CREATEBLI",
+            "number": 67
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "IFTSTA - Departure Confirmation",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "IFTSTA - Departure Confirmation",
+            "isActive": true,
+            "matchcode": "DPT_CONF",
+            "number": 57
+          }
+        },
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "IFTSTA - Arrival at destination",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "IFTSTA - Arrival at destination",
+            "isActive": true,
+            "matchcode": "ARV_DEST",
+            "number": 59
+          }
+        }
+      ],
+      "dUNSCustomer": "BASFAG2",
+      "bASFBL": "BL01",
+      "sendersInstructions": "Main leg: Billing without our UST-IDVAT must not be calculated with billing",
+      "docDeliveryInstructions": "ECB has to be presented to addresses at latest 3 working days after departure of vessel. In case of any difficulties, new vessel booking ordelays, please inform the responsible Transport Manager.\r\n\"Reefercontainer\" in case of booking a reefercontainer.",
+      "customerEDIType": {
+        "matchcode": "YE22",
+        "designation": "First Info (YE22)"
+      },
+      "bLRemarks": "Date Shipped On Board\r\nDepending on order: \"freight prepaid\" or \"freight collect\"\r\nPlease show Container No. & Seal No\r\nName, address and phone number of the carrier's agent at port of destination\r\nThe followings must be shown on B/L: IMDG-class and UN number in caseof dangerous goods cargo. In case of Dangerous goods please add on DGD: IXOM emergency services(3rd party emergency response service on behalf of BASF Australia):  1800 803 440 \\ 1800 033 111",
+      "forwarderName": "POLYTRA N.V.",
+      "forwarderRoad": "Desguinlei 92 box V 15 Verzicht gebouw",
+      "forwarderNumber": null,
+      "forwarderPcd": "2018",
+      "forwarderCity1": "ANTWERPEN",
+      "forwarderCity2": null,
+      "forwarderCountry": {
+        "countryID": "BE",
+        "countryName": "Belgium"
+      },
+      "forwarderPhone": "032050501",
+      "forwarderEmail": "basf@polytra.be",
+      "freightPayer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "bLRecipients": [
+        {
+          "recipientNumber": 1,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryID": "MY",
+            "countryName": "Malaysia"
+          },
+          "email": "APTC_KL_Document@basf.com",
+          "name": "BASF Asia Pacific Service Centre",
+          "originals": 0
+        }
+      ],
+      "goodsReceiverName": "Toll Chemicals ",
+      "goodsReceiverRoad": "180 Fitzgerald Rd",
+      "goodsReceiverNumber": null,
+      "goodsReceiverPcd": "3026",
+      "goodsReceiverCity1": "LAVERTON NORTH",
+      "goodsReceiverCity2": "VIC - Victoria",
+      "goodsReceiverCountry": {
+        "countryID": "AU",
+        "countryName": "Australia"
+      },
+      "goodsReceiverPhone": null,
+      "goodsReceiverEmail": "tcllavwhs@tollgroup.com",
+      "consignor": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "customsAgent": {},
+      "isInRecycleBin": false,
+      "objectOwner": {
+        "organisationalUnitId": 5,
+        "organisationalUnitName": "POL_BASF",
+        "client": {
+          "matchcode": "POLYTRA",
+          "name1": "POLYTRA NV",
+          "externalNumber": "283155273"
+        }
+      },
+      "customer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "globalLocationNumber": "",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "name3": "",
+        "name4": "",
+        "phoneNumberHeadOffice": "",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefNumber": "",
+        "inttraRefType": 0,
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "shipper": {
+        "externalDesignation": "",
+        "name1": "BASF Hong Kong Ltd.",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "location1": "979 King's Rd.,Quarry Bay,Hong Kong",
+          "street": "36/F Two Taikoo Place,Taikoo Place",
+          "country": {
+            "countryID": "HK",
+            "countryName": "Hong Kong"
+          },
+          "state": null
+        }
+      },
+      "consignee": {
+        "externalDesignation": "",
+        "name1": "BASF AUSTRALIA LTD.",
+        "contact": "",
+        "emailAddress": "receivables-au@basf.com",
+        "phoneNumber": "0388556600",
+        "address": {
+          "location1": "SOUTHBANK",
+          "location2": "Victoria",
+          "zipCode": "3006",
+          "street": "LEVEL 23, 40 CITY RD",
+          "country": {
+            "countryID": "AU",
+            "countryName": "Australia"
+          },
+          "state": null
+        }
+      },
+      "notify1": {
+        "name1": "DSV Air & Sea Pty Ltd",
+        "address": {
+          "location1": "Melbourne Airport",
+          "location2": "Victoria",
+          "zipCode": "3045",
+          "street": "47 Watson Drive",
+          "country": {
+            "countryID": "AU",
+            "countryName": "Australia"
+          },
+          "state": null
+        }
+      },
+      "notify2": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify3": {
+        "address": {
+          "state": null
+        }
+      },
+      "pickupLocation": {
+        "emptyContainerPickupDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerPickupTimeFrame": {},
+        "exportCarrier": {},
+        "exportTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "exportTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "pickupLocation": {
+          "externalDesignation": "",
+          "name1": "BASF Hong Kong Ltd.",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "location1": "979 King's Rd.,Quarry Bay,Hong Kong",
+            "street": "36/F Two Taikoo Place,Taikoo Place",
+            "country": {
+              "countryID": "HK",
+              "countryName": "Hong Kong"
+            },
+            "state": null
+          }
+        }
+      },
+      "transportSubcontractor": {},
+      "deliveryLocation": {
+        "emptyContainerReturnDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerReturnTimeFrame": {},
+        "importCarrier": {},
+        "importTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "importTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "deliveryLocation": {
+          "externalDesignation": "",
+          "name1": "BASF AUSTRALIA LTD.",
+          "contact": "",
+          "emailAddress": "receivables-au@basf.com",
+          "phoneNumber": "0388556600",
+          "address": {
+            "location1": "SOUTHBANK",
+            "location2": "Victoria",
+            "zipCode": "3006",
+            "street": "LEVEL 23, 40 CITY RD",
+            "country": {
+              "countryID": "AU",
+              "countryName": "Australia"
+            },
+            "state": null
+          }
+        }
+      },
+      "billOfLading": {
+        "shipperAddressString": "BASF Hong Kong Ltd.\r\nHK 979 King's Rd.,Quarry Bay,Hong Kong 36/F Two Taikoo Place,Taikoo Place",
+        "consigneeAddressString": "BASF AUSTRALIA LTD.\r\nAU 3006 SOUTHBANK Victoria LEVEL 23, 40 CITY RD",
+        "notify1AddressString": "DSV Air & Sea Pty Ltd\r\nAU 3045 Melbourne Airport Victoria 47 Watson Drive",
+        "portOfLoading": "Antwerpen",
+        "portOfDischarge": "Melbourne",
+        "goodsAreInsured": false,
+        "number": 0,
+        "numberOfGoods": 0,
+        "stomachString": ""
+      },
+      "master": {
+        "preferredModeOfTransport": "Ocean",
+        "number": 1168,
+        "mainCarriageAsOcean": {
+          "vessel": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageNumber": "",
+          "bookingAgent": {},
+          "portOfLoading": {
+            "matchcode": "BEANR",
+            "designation": "Antwerpen",
+            "cityCode": "ANR"
+          },
+          "portOfDischarge": {
+            "matchcode": "AUMEL",
+            "designation": "Melbourne",
+            "cityCode": "MEL"
+          },
+          "estimatedTimeOfDeparture": "2026-08-11T00:00:00",
+          "estimatedTimeOfArrival": null,
+          "actualTimeOfDeparture": null,
+          "actualTimeOfArrival": null,
+          "cutoffDates": {
+            "exportTerminalDeliveryTimeFrame": {},
+            "reeferDelClosing": null,
+            "vGMClosing": null,
+            "dGDelClosing": null,
+            "sIClosing": null
+          },
+          "masterBillOfLadingNumber": "",
+          "carrier": {
+            "businessPartnerId": 12201,
+            "externalNumber": "50034",
+            "matchcode": "ECUWOR_BE",
+            "name1": "ECU WORLDWIDE (BELGIUM) N",
+            "finAccAccountDebtor": "50034",
+            "finAccAccountCreditor": "50034",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN",
+                "zipCode": "2030",
+                "street": "SCHOMHOEVEWEG 15",
+                "country": {
+                  "countryID": "BE",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": true,
+            "freightBusinessPartner": true,
+            "valueAddedTaxNumber": "0432713931",
+            "vATIsoTwoCharacterCountryCode": "BE"
+          },
+          "customerClosing": null,
+          "customerETD": "2026-08-11",
+          "customerETA": null,
+          "customerVessel": {
+            "vesselName": "CMA CGM RIVOLI",
+            "vesselNumber": "9839193"
+          },
+          "customerVoyage": "Ocean Vessel",
+          "pOLConfirmedByCarrier": {},
+          "pODConfirmedByCarrier": {},
+          "vesselConfirmedByCarrier": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageConfirmedByCarrier": null,
+          "eTDConfirmedByCarrier": null,
+          "eTAConfirmedByCarrier": null,
+          "eTAInlandDestination": null,
+          "aTAInlandDestination": null
+        },
+        "docClosingTransp": null,
+        "contingentContract": {
+          "contractID": null,
+          "contractName": null
+        },
+        "automatedManifestSystemFilingDocument": {
+          "billOfLadingNumber": ""
+        },
+        "exportTerminalLocation": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "importTerminalLocation": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "placeOfReceipt": {},
+        "deliveryTerms": "Prepaid",
+        "placeOfDelivery": {},
+        "releaseTimeFrame": {},
+        "remarks": "",
+        "shippingInstructions": {
+          "billOfLadingKind": 1,
+          "forwardingAgent": "POLYTRA NV\r\n.",
+          "goodsAreInsured": false,
+          "number": 0,
+          "numberOfOriginals": 0,
+          "oceanCarrier": "ECU WORLDWIDE (BELGIUM) N\r\n.",
+          "dischargePortName": "Melbourne",
+          "loadingPortName": "Antwerpen"
+        },
+        "lCLContainerNumber": null
+      },
+      "id": 1621576,
+      "differentFreightPayer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "documentData": []
+    }
+  ]
+}

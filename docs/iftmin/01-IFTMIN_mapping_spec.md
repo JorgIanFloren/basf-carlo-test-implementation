@@ -3,25 +3,25 @@
 | | |
 |---|---|
 | Authority | `docs/iftmin/IFTMIN_mapping_v1.xlsx` (sheets Create / Feedback round 1 / Goods switch); `docs/iftmin/02-IFTMIN-additional-rules.md`; `docs/00-basf.md` |
-| Transform library | `src/main/dw/IftminModule.dwl` |
-| Entry point | `src/test/dw/BasfIftmin.dwl` |
+| Mapping | `src/main/dw/BasfIftmin.dwl` — one self-contained script, deployed as `basf/BasfIftmin.dwl` |
 | Fixtures | every IFTMIN interchange in `docs/example-orders` (9 FCL, 3 LCL, 9 master-sub) |
 | Tests | `src/test/dw/IftminMappingTest.dwl` — `cd basf && mvn -o test` |
 
 This document covers **the flow** — the create/cancel/FCL/LCL/master-sub routing of
-`docs/00-basf.md`. The field-by-field mapping is the spreadsheet's; the module's doc comments
+`docs/00-basf.md`. The field-by-field mapping is the spreadsheet's; the mapping's doc comments
 carry the per-field notes.
 
 ## 1. The flow
 
 `docs/00-basf.md` line 50 settles where it lives: *"we should be able to process all three
 kinds of basf iftmin messages in one big dwl mapping file"*. So the routing is in
-`IftminModule.toCarloShipments`, not in the pipeline.
+``BasfIftmin.dwl`'s `toCarloShipments``, not in the pipeline.
 
 ```
-Step 0   BGM03 = 1  ->  cancelShipment          identity-only delete
+Step 0   BGM03 = 1  ->  recycleShipments        one identity-only recycle per dossier
          BGM03 = 4/9 -> Step 1
-Step 1   one entry per IFTMIN message in the interchange
+Step 1   one entry per IFTMIN message in the interchange, each addressed at the dossier
+         the CustomerRef lookup resolved for its own BL
 Step 2   master-sub = several messages (BL01, BL02, ...) -> the same per-message treatment
 Step 3/4 FCL / LCL per message, from the presence of EQD
 ```
@@ -55,6 +55,63 @@ as `"Co-load in"` and `"Coloadin"`; the wire value is the enum member `Coloadin`
 `masterSub` is a property of the interchange, not of the message, so `toCarloShipment` takes it
 as a parameter — a single message cannot tell whether it has siblings.
 
+### Which dossier an entry updates
+
+Every entry is addressed at a specific record, resolved from the "GET dossier by CustomerRef"
+response the pipeline puts on `payload.lookup` (see `config/README.md` check 6). This is what
+fixes the three master-sub defects in `00-basf.md` §Issues.
+
+**`CustomerReference` identifies the order, never the dossier.** Both subs of a master-sub carry
+the same one — `2800231445` for BL01 and BL02 alike — so matching on it alone resolves the
+second sub onto the first sub's record and BL02 silently overwrites BL01. That was issue 1. The
+BL comes from `UNH03`, and the composite is emitted as `EDIID`:
+
+```
+EDIID = CustomerReference ++ BASFBL      "2800231445BL01"
+```
+
+That form is not invented here: it is how the field reads on every real record in
+`docs/get-responses/`, without exception — `2800226066BL00` for a plain order, `2800231445BL01`
+and `2800231445BL02` for the subs of a master-sub, and the bare reference on a dossier an IFTMBF
+created alone.
+
+`targetDossier` resolves in two steps:
+
+1. **Exact `CustomerReference` + `bASFBL` match** — the normal case, and proposed solution 1.
+2. Failing that, **the lone BL-less dossier of the order.** Only an IFTMBF that arrived before
+   any IFTMIN can have created such a record, since IFTMBF carries no BL at all. The IFTMIN
+   re-purposes it rather than leaving it orphaned beside a fresh one — the flow document's
+   preferred option, *"Idealy we would repurpose the existing dossier"*, which also means
+   nothing has to be moved to the recycle bin. For a master-sub interchange only the **first**
+   BL may claim it; every later sub is created.
+
+A resolved dossier contributes its `Id` and forces `actionAttribute: "update"` whatever BGM03
+says — the record demonstrably exists, so leaving `updateorcreate` in place would let a
+mis-addressed call create a duplicate instead of failing. Two BL-less dossiers for one order is
+deliberately treated as no match: the flow has no rule for it, and creating fresh records is
+safer than picking one arbitrarily.
+
+### Carrying an earlier IFTMBF forward
+
+The second half of proposed solution 3, and the rest of issue 3. When a booking ran first, its
+values sit on that one BL-less dossier; the arriving IFTMIN re-purposes it for the first sub, but
+every *other* sub is a brand-new record that would carry no booking data at all.
+
+`bookingCarryForward` reads those values once — the lookup is a single response, so there is
+nothing to re-fetch per message — and `mergeUnder` lays them under every sub. The set is exactly
+the fields `BasfIftmbf.dwl` maps that this mapping does not, verified against the captures rather
+than assumed: `estimatedDispatchDate`, the pickup UN/LOCODE and place name, `haulageType`, and
+the carrier's `customerETA` / `customerClosing`. All are present on every
+`iftmbf-before-iftmin-*.json` and absent from every `iftmin-before-iftmbf-*.json`.
+
+`mergeUnder` is a deep merge in which **the message always wins**, so the cache can only fill
+gaps and can never push booking-stage values over what the order says. It has to be a deep merge
+rather than `++`: IFTMBF writes `pickupLocation.pickupLocation` while this mapping writes
+`pickupLocation.exportCarrier`, and both write inside `master.mainCarriageAsOcean` — the booking
+contributing the carrier's ETA, the message the vessel, ports and ETD. Replacing either node
+wholesale would drop half of it. It runs *after* `camelKeys`, because the cached fragment comes
+back from Carlo already camelCase.
+
 ### LoadType and Scenario
 
 `LoadType` = `FCL` when the message carries equipment (`EQD`), else `LCL`. `Scenario/Matchcode`
@@ -65,13 +122,25 @@ follows it: `BASF FCL` / `BASF LCL`.
 
 ### Cancel
 
-`cancelShipment` emits identity only — `actionAttribute: "delete"`, `DUNSCustomer`, `BASFBL`,
-`CustomerReference` — per `00-basf.md` step 1b, *"Send cancel: using CustomerRef"*.
+`recycleShipments` emits identity plus `IsInRecycleBin: true`, and nothing else, per
+`00-basf.md` *"IFTMIN / Canceling"*: **"Get the dossier(s) by `customerrefSet`, then for each
+result set the property isInRecycleBin to true and upsert the record."**
 
-Nothing else may go with it. Sending mapped business fields alongside a delete would push
-values onto a shipment that is about to be removed, and would overwrite live data if the delete
-were rejected. A cancel with no `CustomerReference` is dropped: Carlo would have nothing to
-match on.
+So a cancel is a *recycle*, not a delete: the dossier stays in Carlo and simply drops out of
+every later lookup, which `liveDossiers` enforces by filtering `isInRecycleBin` on the way in.
+Because a cancel names an *order* and a master-sub order is several dossiers, one message yields
+one recycle per dossier the lookup returned — each addressed by its own `Id` and BL, so the subs
+do not recycle one another. With no lookup at all it yields a single upsert keyed on
+`CustomerReference` + `BASFBL`; with a lookup that found nothing it yields nothing, since there
+is no dossier to recycle and an upsert would create the very record being cancelled.
+
+Nothing else may go with it. Sending mapped business fields alongside a cancel would push order
+values onto a dossier that is being withdrawn, and would leave them there if the upsert were
+rejected. A cancel with no `CustomerReference` is dropped: Carlo would have nothing to match on.
+
+> **Changed.** Earlier versions emitted `actionAttribute: "delete"` and relied on Carlo removing
+> the record. `00-basf.md` no longer describes a delete anywhere, and the recycle-bin flag is now
+> the specified mechanism.
 
 **No code 1 message exists anywhere in the example set** — the file named
 `2800244026 IFTMIN Cancel.txt` is legacy TRS XML, not EDIFACT. The branch is covered by
@@ -136,13 +205,21 @@ The flow decisions are additionally called out one by one — the master-sub spl
 co-load, the FCL master-sub staying back-to-back — plus the cancel branch and the derivation
 units.
 
-**`BasfIftmin.dwl` itself is covered only by compilation.** A mapping is not importable, so the
-test mirrors its document expression to pin the wrapper shape; keep the two in sync.
+**`BasfIftmin.dwl` is covered end to end, script included.** The suite runs it through
+`evalPath`, exactly as the data-transformer evaluates the uploaded file, and asserts on the JSON
+Carlo would receive — so the output header, the document body and every inlined helper are all
+under test. Nothing is imported from the mapping and nothing about it is mirrored in the test,
+so there is no wrapper shape to keep in sync.
 
 ### Scenario directories
 
 `src/test/resources/BasfIftmin/<Scenario>/inputs/payload.json` — how the IDE preview binds
-`payload`. Four are provided: `FclCreate`, `LclCreate`, `MasterSubFcl`, `MasterSubLcl`.
+`payload`, and what `inputsFrom()` / `outputFrom()` read if a whole-document golden test is added
+(drop a reviewed `out.json` beside `inputs/`). Four are provided: `FclCreate`, `LclCreate`,
+`MasterSubFcl`, `MasterSubLcl`.
+
+The directory name must equal the mapping **filename**, so these live under `BasfIftmin/`. A
+directory named after a file that no longer exists silently binds nothing.
 
 ## 6. Open items
 

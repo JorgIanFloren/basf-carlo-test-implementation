@@ -2,6 +2,18 @@
 * BASF IFTMIN mapping, exercised against every IFTMIN interchange in
 * docs/example-orders (21 fixtures: 9 FCL, 3 LCL, 9 master-sub/ms).
 *
+* The mapping is run the way the data-transformer runs it: `evalPath` executes
+* src/main/dw/BasfIftmin.dwl - the whole self-contained script, output header and document
+* body included - against a `payload` context and returns the parsed JSON Carlo would
+* receive. Nothing is imported from the mapping, so no part of it is restated here and there
+* is nothing to keep in sync.
+*
+* One consequence is worth knowing when reading the derivation tests at the bottom: the old
+* suite called `loadType` / `houseType` / `shipmentAction` directly, and this one reaches
+* those branches by feeding a synthetic *interchange* through the whole mapping and reading
+* the field they produce. `masterSub` in particular is a property of the interchange (more
+* than one IFTMIN message), not of a message, so it can only be exercised this way.
+*
 * The bulk of the suite is data-driven from example-orders/manifest.json, which
 * tools/edifact_to_json.py writes when it converts the examples. Each manifest row records
 * what the *message* says - its BASF BL, its BGM message-function code, its
@@ -11,35 +23,42 @@
 * here rather than being restated.
 *
 * No code 1 (cancel) message exists anywhere in the example set, so the cancel branch is
-* covered by synthetic messages at the end.
+* covered by synthetic interchanges at the end.
 */
 %dw 2.0
 import * from dw::test::Tests
 import * from dw::test::Asserts
-import camelKeys from CommonModule
-import toCarloShipments, toCarloShipment, cancelShipment, houseType, loadType, isCancel, shipmentAction from IftminModule
+
+var MAPPING = "BasfIftmin.dwl"
 
 var manifest = readUrl("classpath://example-orders/manifest.json", "application/json")
 var iftmin = manifest filter ((e) -> e.messageType == "IFTMIN")
 
-fun load(fixture) = readUrl("classpath://example-orders/" ++ fixture, "application/json")
+/**
+* Run the mapping script over a whole parsed interchange and return the Carlo document.
+* This is the only route the suite has into the mapping - the same call the data-transformer
+* makes - so a break in the output header, the document body or any helper surfaces here.
+*/
+fun document(payload) = evalPath(MAPPING, { payload: payload }, "application/json")
 
-/** The document expression of BasfIftmin.dwl, mirrored so the wrapper shape is pinned too
- *  (a mapping file cannot be imported, so the entry point itself is covered by compilation). */
-fun document(payload) = { seaHouseShipment: toCarloShipments(payload) map ((s) -> camelKeys(s)) }
+/** The document for an interchange built from the given synthetic messages. */
+fun documentOf(msgs) = document({ EDI: { Messages: { D99A: { IFTMIN: msgs } } } })
+
+fun load(fixture) = readUrl("classpath://example-orders/" ++ fixture, "application/json")
+fun shipmentsOf(fixture) = document(load(fixture)).seaHouseShipment
 
 // --- what the mapping produced ------------------------------------------------------------
-fun actual(fixture) = toCarloShipments(load(fixture)) map ((s) -> {
-    bl: s.BASFBL,
-    ref: s.CustomerReference,
-    load: s.LoadType,
-    house: s.HouseType,
-    scenario: s.Scenario.Matchcode,
+fun actual(fixture) = shipmentsOf(fixture) map ((s) -> {
+    bl: s.bASFBL,
+    ref: s.customerReference,
+    load: s.loadType,
+    house: s.houseType,
+    scenario: s.scenario.matchcode,
     action: s.actionAttribute,
-    // The Carlo contract's required top-level set. `Customer` and `Master` are objects, so
+    // The Carlo contract's required top-level set. `customer` and `master` are objects, so
     // presence is what matters here; their contents are covered by the field tests below.
-    complete: s.CustomerReference != null and s.DeliveryTerms != null and s.ShipmentDate != null
-        and s.ObjectOwner.OrganisationalUnitId != null and s.Customer != null and s.Master != null
+    complete: s.customerReference != null and s.deliveryTerms != null and s.shipmentDate != null
+        and s.objectOwner.organisationalUnitId != null and s.customer != null and s.master != null
 })
 
 // --- what the message says it should be ----------------------------------------------------
@@ -62,14 +81,72 @@ fun expected(e) = e.messages map ((m) -> {
 })
 
 // --- synthetic messages for the branches the examples never reach ---------------------------
-fun bgm(code, ref) = {
+fun bgm(code, ref) = bgm(code, ref, "BL00")
+fun bgm(code, ref, bl) = {
     Interchange: { UNB0201: "BASFAG2" },
-    MessageHeader: { UNH03: "BL00" },
+    MessageHeader: { UNH03: bl },
     Heading: { "0020_BGM": { BGM0101: "705", BGM0201: ref, BGM03: code } }
 }
 fun withEquipment(msg) = msg update {
     case h at .Heading -> h ++ { "1640_Segment_group_37": [{ "1650_EQD": { EQD01: "CN", EQD0201: "ABCU1234567" } }] }
 }
+
+/** The single shipment a one-message synthetic interchange maps to. */
+fun only(msg) = documentOf([ msg ]).seaHouseShipment[0]
+
+/** The shipments a two-message (i.e. master-sub) synthetic interchange maps to. */
+fun bothOf(msgA, msgB) = documentOf([ msgA, msgB ]).seaHouseShipment
+
+// --- the "GET dossier by CustomerRef" lookup ----------------------------------------------
+/**
+* A captured lookup response from docs/get-responses, by file stem.
+*
+* These are real server responses rather than hand-written expectations, which is the whole
+* point of using them: the field names and shape the mapping navigates - `customerReference`,
+* `bASFBL`, `eDIID`, `id`, `isInRecycleBin` - are the ones Carlo actually returns, and the
+* dossier ids asserted below are the records the integration really created.
+* `docs/get-responses` is the source of truth; `src/test/resources/get-responses` is the
+* classpath copy the suite reads.
+*
+* The mapping reads the response off `payload.lookup`, so a test supplies it by merging it
+* into the payload exactly as the pipeline does after step 1 of the flow.
+*/
+fun lookup(name) = readUrl("classpath://get-responses/" ++ name ++ ".json", "application/json")
+
+/** The shipments a fixture interchange maps to when evaluated together with a lookup. */
+fun shipmentsWith(fixture, name) =
+    document(load(fixture) ++ { lookup: lookup(name) }).seaHouseShipment
+
+/** The shipments synthetic messages map to when evaluated with an explicit lookup value. */
+fun shipmentsWithLookup(msgs, lk) =
+    document({ EDI: { Messages: { D99A: { IFTMIN: msgs } } }, lookup: lk }).seaHouseShipment
+
+/** A lookup response carrying the given dossiers. */
+fun found(dossiers) = { seaHouseShipment: dossiers }
+
+/**
+* The address a shipment carries: which record it updates and how.
+* `id` reads 0 rather than null when absent - i.e. no record was resolved, so this is a
+* create - which keeps these comparisons free of nulls.
+*/
+fun addressOf(s) = { bl: s.bASFBL, ediid: s.eDIID, id: s.id default 0, action: s.actionAttribute }
+
+/** The key names of an object, in order. */
+fun keysOf(o) = o pluck ((v, k) -> k as String)
+
+/**
+* True when no key appears twice.
+* Worth asserting because DataWeave objects tolerate duplicate keys and the JSON writer
+* emits both, so a merge that produced one would not fail here - it would ship two copies of
+* a field and leave Carlo reading whichever it saw last.
+*/
+fun hasNoDuplicateKeys(o) = sizeOf(keysOf(o)) == sizeOf(keysOf(o) distinctBy ((k) -> k))
+
+// Evaluated once and reused. The same master-sub order (BL01 + BL02 of 2800231445) read
+// against the two states it can meet: its own dossiers, already created by an earlier
+// IFTMIN, and the single BL-less dossier an IFTMBF that arrived first left behind.
+var msAfterIftmin = shipmentsWith("ms/2800231445-ab-9.json", "iftmin-before-iftmbf-mastersub-fcl")
+var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before-iftmin-mastersub-fcl")
 ---
 "BASF IFTMIN mapping" describedBy (
 
@@ -83,66 +160,273 @@ fun withEquipment(msg) = msg update {
     [
     // === the flow decisions, called out explicitly ========================================
     () -> "a master-sub interchange yields one shipment per BASF BL" in (
-        (toCarloShipments(load("ms/2800231445-ab-9.json")) map ((s) -> s.BASFBL))
+        (shipmentsOf("ms/2800231445-ab-9.json") map ((s) -> s.bASFBL))
             must equalTo(["BL01", "BL02"])),
 
     () -> "an ordinary interchange yields exactly one shipment" in (
-        sizeOf(toCarloShipments(load("fcl/2800209301-fcl-iftmin-erst-9.json"))) must equalTo(1)),
+        sizeOf(shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")) must equalTo(1)),
 
     // The whole point of the co-load rule: same split, but the blocks carry no equipment.
     () -> "an LCL master-sub marks every block as a co-load" in (
-        (toCarloShipments(load("ms/trissquid-138083512.json")) map ((s) -> s.HouseType))
+        (shipmentsOf("ms/trissquid-138083512.json") map ((s) -> s.houseType))
             must equalTo(["Coloadin", "Coloadin"])),
 
     () -> "an FCL master-sub stays back-to-back" in (
-        (toCarloShipments(load("ms/2800231445-iftmbf-2.json")) map ((s) -> s.HouseType))
+        (shipmentsOf("ms/2800231445-iftmbf-2.json") map ((s) -> s.houseType))
             must equalTo(["BackToBack", "BackToBack"])),
 
     () -> "a single LCL shipment is not a co-load" in (
-        (toCarloShipments(load("lcl/2800226066-iftmin-erst-9.json")) map ((s) -> s.HouseType))
+        (shipmentsOf("lcl/2800226066-iftmin-erst-9.json") map ((s) -> s.houseType))
             must equalTo(["BackToBack"])),
 
     // === cancel (BGM03 = 1) - no example message exists ====================================
-    () -> "a cancel is recognised" in (isCancel(bgm("1", "2800244026")) must equalTo(true)),
-    () -> "a create is not a cancel" in (isCancel(bgm("9", "2800244026")) must equalTo(false)),
-    () -> "an update is not a cancel" in (isCancel(bgm("4", "2800244026")) must equalTo(false)),
+    // docs/00-basf.md, "IFTMIN / Canceling": a cancel recycles the dossier rather than
+    // deleting it - "set the property isInRecycleBin to true and upsert the record". With no
+    // lookup there is nothing to enumerate, so the message maps to one identity-addressed
+    // upsert.
+    () -> "a cancel maps to an identity-only recycle" in (
+        documentOf([ bgm("1", "2800244026") ]) must equalTo({ seaHouseShipment: [{
+            actionAttribute: "updateorcreate",
+            dUNSCustomer: "BASFAG2",
+            bASFBL: "BL00",
+            customerReference: "2800244026",
+            eDIID: "2800244026BL00",
+            isInRecycleBin: true
+        }] })),
 
-    () -> "a cancel maps to an identity-only delete" in (
-        toCarloShipments({ EDI: { Messages: { D99A: { IFTMIN: [ bgm("1", "2800244026") ] } } } })
-            must equalTo([{
-                actionAttribute: "delete",
-                DUNSCustomer: "BASFAG2",
-                BASFBL: "BL00",
-                CustomerReference: "2800244026"
-            }])),
-
+    // Stated separately from the value assertion above: a cancel must carry no business
+    // field at all, because every one of them would overwrite the live shipment.
     () -> "a cancel carries no business fields that could overwrite the shipment" in (
-        (cancelShipment(bgm("1", "2800244026")) pluck ((v, k) -> k as String))
-            must equalTo(["actionAttribute", "DUNSCustomer", "BASFBL", "CustomerReference"])),
+        (only(bgm("1", "2800244026")) pluck ((v, k) -> k as String))
+            must equalTo(["actionAttribute", "dUNSCustomer", "bASFBL",
+                          "customerReference", "eDIID", "isInRecycleBin"])),
 
-    () -> "a cancel without a CustomerReference is dropped - Carlo would have nothing to match" in (
-        toCarloShipments({ EDI: { Messages: { D99A: { IFTMIN: [ bgm("1", null) ] } } } })
+    // A master-sub cancel names an order, which is several dossiers, so it recycles each on
+    // its own record - the same per-BL addressing the update path needs.
+    () -> "a master-sub cancel recycles every dossier of the order" in (
+        (shipmentsWithLookup([ bgm("1", "2800231445", "BL01") ],
+            lookup("iftmin-before-iftmbf-mastersub-fcl")) map ((s) -> addressOf(s)))
+            must equalTo([
+                { bl: "BL01", ediid: "2800231445BL01", id: 1607396, action: "update" },
+                { bl: "BL02", ediid: "2800231445BL02", id: 1607444, action: "update" }
+            ])),
+
+    // A lookup that ran and found nothing is not the same as no lookup: there is no dossier
+    // to recycle, and an upsert would create the very record being cancelled.
+    () -> "a cancel whose lookup found nothing emits no call at all" in (
+        shipmentsWithLookup([ bgm("1", "2800244026") ], lookup("dossier-not-found"))
             must equalTo([])),
 
-    // === derivation units ==================================================================
-    () -> "LoadType is FCL when equipment is present" in (loadType(withEquipment(bgm("9", "X"))) must equalTo("FCL")),
-    () -> "LoadType is LCL when equipment is absent" in (loadType(bgm("9", "X")) must equalTo("LCL")),
-    () -> "HouseType is BackToBack for a stand-alone LCL" in (houseType(bgm("9", "X"), false) must equalTo("BackToBack")),
-    () -> "HouseType is Coloadin for an LCL block of a master-sub" in (houseType(bgm("9", "X"), true) must equalTo("Coloadin")),
+    () -> "a cancel skips a dossier that is already recycled" in (
+        shipmentsWithLookup([ bgm("1", "X") ],
+            found([{ customerReference: "X", bASFBL: "BL00", id: 1, isInRecycleBin: true }]))
+            must equalTo([])),
+
+    () -> "a create is not treated as a cancel" in (
+        only(bgm("9", "2800244026")).actionAttribute must equalTo("updateorcreate")),
+
+    () -> "an update is not treated as a cancel" in (
+        only(bgm("4", "2800244026")).actionAttribute must equalTo("update")),
+
+    () -> "a cancel without a CustomerReference is dropped - Carlo would have nothing to match" in (
+        documentOf([ bgm("1", null) ]) must equalTo({ seaHouseShipment: [] })),
+
+    // === derivation branches, reached through a synthetic interchange ======================
+    () -> "LoadType is FCL when equipment is present" in (
+        only(withEquipment(bgm("9", "X"))).loadType must equalTo("FCL")),
+    () -> "LoadType is LCL when equipment is absent" in (
+        only(bgm("9", "X")).loadType must equalTo("LCL")),
+
+    () -> "HouseType is BackToBack for a stand-alone LCL" in (
+        only(bgm("9", "X")).houseType must equalTo("BackToBack")),
+    // masterSub is `more than one IFTMIN message in the interchange`, so this branch needs
+    // a two-message interchange - it cannot be reached with a single message.
+    () -> "HouseType is Coloadin for an LCL block of a master-sub" in (
+        (bothOf(bgm("9", "X", "BL01"), bgm("9", "Y", "BL02")) map ((s) -> s.houseType))
+            must equalTo(["Coloadin", "Coloadin"])),
     () -> "HouseType stays BackToBack for an FCL block of a master-sub" in (
-        houseType(withEquipment(bgm("9", "X")), true) must equalTo("BackToBack")),
-    () -> "BGM03 1 -> delete" in (shipmentAction(bgm("1", "X")) must equalTo("delete")),
-    () -> "BGM03 4 -> update" in (shipmentAction(bgm("4", "X")) must equalTo("update")),
-    () -> "BGM03 5 -> update" in (shipmentAction(bgm("5", "X")) must equalTo("update")),
-    () -> "BGM03 9 -> updateorcreate" in (shipmentAction(bgm("9", "X")) must equalTo("updateorcreate")),
+        (bothOf(withEquipment(bgm("9", "X", "BL01")), withEquipment(bgm("9", "Y", "BL02")))
+            map ((s) -> s.houseType)) must equalTo(["BackToBack", "BackToBack"])),
+
+    () -> "BGM03 1 -> a recycle, not a business update" in (
+        only(bgm("1", "X")).isInRecycleBin must equalTo(true)),
+    () -> "BGM03 4 -> update" in (only(bgm("4", "X")).actionAttribute must equalTo("update")),
+    () -> "BGM03 5 -> update" in (only(bgm("5", "X")).actionAttribute must equalTo("update")),
+    () -> "BGM03 9 -> updateorcreate" in (only(bgm("9", "X")).actionAttribute must equalTo("updateorcreate")),
 
     // === wrapper shape =====================================================================
     () -> "the document is a camelCase seaHouseShipment array" in (
-        (document(load("lcl/2800226066-iftmin-erst-9.json")).seaHouseShipment[0]
-            pluck ((v, k) -> k as String))[0 to 3]
+        (shipmentsOf("lcl/2800226066-iftmin-erst-9.json")[0] pluck ((v, k) -> k as String))[0 to 3]
             must equalTo(["actionAttribute", "preferredModeOfTransport", "dUNSCustomer", "bASFBL"])),
 
     () -> "an interchange with no IFTMIN message yields an empty array" in (
-        document({ EDI: { Messages: {} } }) must equalTo({ seaHouseShipment: [] }))
+        document({ EDI: { Messages: {} } }) must equalTo({ seaHouseShipment: [] })),
+
+    // === issue 1: a master-sub update must address each BL's own dossier ===================
+    // Both subs of this interchange carry CustomerReference 2800231445 and differ only in
+    // their BL, and the lookup returns the two dossiers an earlier IFTMIN created for them.
+    // On CustomerReference alone BL02 resolves onto BL01's record - the reported "only
+    // updating the first shipment".
+    () -> "a master-sub update addresses each BL's own dossier" in (
+        (msAfterIftmin map ((s) -> addressOf(s))) must equalTo([
+            { bl: "BL01", ediid: "2800231445BL01", id: 1607396, action: "update" },
+            { bl: "BL02", ediid: "2800231445BL02", id: 1607444, action: "update" }
+        ])),
+
+    // Stated on its own because it is the defect itself: one id for two subs meant the
+    // second PUT overwrote the first.
+    () -> "the two subs of a master-sub never share a dossier id" in (
+        sizeOf((msAfterIftmin map ((s) -> s.id)) distinctBy ((i) -> i)) must equalTo(2)),
+
+    // The GET returns dossiers in no particular order - this LCL capture comes back BL02
+    // first - so the match has to be by BL value. Indexing the result would swap the two.
+    () -> "a master-sub matches by BL value, not by the order the lookup returned" in (
+        (shipmentsWith("ms/trissquid-138083512.json", "iftmin-before-iftmbf-mastersub-lcl")
+            map ((s) -> { bl: s.bASFBL, id: s.id default 0 }))
+            must equalTo([{ bl: "BL01", id: 1621576 }, { bl: "BL02", id: 1621596 }])),
+
+    // EDIID is what makes the composite identity explicit on the wire, and it is the field
+    // the real records carry ("2800231445BL01"). A plain order is CustomerReference + BL00.
+    () -> "EDIID is CustomerReference ++ BASFBL" in (
+        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json") map ((s) -> s.eDIID))
+            must equalTo(["2800209301BL00"])),
+
+    // === issue 3: an IFTMBF arrived before the IFTMIN ======================================
+    // The lookup holds one BL-less dossier - only a booking can have created that, since
+    // IFTMBF carries no BL. The first sub re-purposes it ("Idealy we would repurpose the
+    // existing dossier"), so no record is orphaned and none has to be recycled; every later
+    // sub is a new record.
+    () -> "the first sub re-purposes the booking's dossier and the rest are created" in (
+        (msAfterBooking map ((s) -> addressOf(s))) must equalTo([
+            { bl: "BL01", ediid: "2800231445BL01", id: 1621690, action: "update" },
+            { bl: "BL02", ediid: "2800231445BL02", id: 0, action: "updateorcreate" }
+        ])),
+
+    // The second half of proposed solution 3. Without this the booking's data survives only
+    // on the re-purposed dossier and BL02 is created without it.
+    () -> "every sub carries the booking's cached IFTMBF values" in (
+        (msAfterBooking map ((s) -> {
+            dispatch: s.estimatedDispatchDate,
+            eta: s.master.mainCarriageAsOcean.customerETA,
+            closing: s.master.mainCarriageAsOcean.customerClosing,
+            pickup: s.pickupLocation.pickupLocation.unLocationCode.matchcode
+        })) must equalTo([
+            { dispatch: "2026-07-06T00:00:00", eta: "2026-08-04", closing: "2026-07-08", pickup: "DEDUS" },
+            { dispatch: "2026-07-06T00:00:00", eta: "2026-08-04", closing: "2026-07-08", pickup: "DEDUS" }
+        ])),
+
+    // `mergeUnder`, not `++`: the cached fragment and the message both write inside
+    // master/mainCarriageAsOcean - the booking contributes the carrier's ETA, the message the
+    // ports and ETD. Replacing the node either way would drop half the carriage.
+    () -> "cached booking values merge into the carriage node rather than replacing it" in (
+        { fromBooking: msAfterBooking[0].master.mainCarriageAsOcean.customerETA,
+          fromMessage: msAfterBooking[0].master.mainCarriageAsOcean.portOfLoading.matchcode }
+            must equalTo({ fromBooking: "2026-08-04", fromMessage: "BEANR" })),
+
+    // Two structural properties of the merge, top level and inside the nodes it reaches into.
+    () -> "merging cached values never duplicates a key" in (
+        (msAfterBooking map ((s) ->
+            hasNoDuplicateKeys(s)
+                and hasNoDuplicateKeys(s.master)
+                and hasNoDuplicateKeys(s.master.mainCarriageAsOcean)
+                and hasNoDuplicateKeys(s.pickupLocation)))
+            must equalTo([true, true])),
+
+    // The cache adds and never removes: every field the message mapped on its own has to
+    // survive the merge untouched, on the re-purposed sub and the newly created one alike.
+    () -> "merging cached values keeps every field the message mapped" in (
+        (shipmentsOf("ms/2800231445-iftmbf-2.json") map ((plain, i) ->
+            keysOf(plain) filter ((k) -> !(keysOf(msAfterBooking[i]) contains k))))
+            must equalTo([[], []])),
+
+    // The message always wins where both sides populate a field, so the cache can only fill
+    // gaps and can never push booking-stage values over what the order actually says.
+    () -> "the message's own value wins over a cached one" in (
+        (msAfterBooking map ((s) -> { load: s.loadType, house: s.houseType, terms: s.deliveryTerms }))
+            must equalTo([
+                { load: "FCL", house: "BackToBack", terms: "Prepaid" },
+                { load: "FCL", house: "BackToBack", terms: "Prepaid" }
+            ])),
+
+    // A plain (non-master-sub) order takes the same route: one booking dossier, one IFTMIN,
+    // so the single shipment re-purposes it instead of creating a second record for the
+    // order. This is the "IFTMBF comes first / Fcl - Lcl" scenario.
+    () -> "a plain FCL re-purposes the booking's dossier" in (
+        (shipmentsWith("fcl/2800209301-fcl-iftmin-erst-9.json", "iftmbf-before-iftmin-fcl")
+            map ((s) -> addressOf(s)))
+            must equalTo([{ bl: "BL00", ediid: "2800209301BL00", id: 1621631, action: "update" }])),
+
+    // The ordinary case, and the other capture of the same order: an instruction re-sent after
+    // an earlier IFTMIN already created the dossier addresses that dossier by BL, not the
+    // BL-less one of the booking path above.
+    () -> "a re-sent FCL addresses the dossier its own earlier run created" in (
+        (shipmentsWith("fcl/2800209301-fcl-iftmin-erst-9.json", "iftmin-before-iftmbf-fcl")
+            map ((s) -> addressOf(s)))
+            must equalTo([{ bl: "BL00", ediid: "2800209301BL00", id: 1623824, action: "update" }])),
+
+    // The LCL equivalent. Note what is NOT inherited: this booking dossier really does carry
+    // `estimatedDispatchDate: null`, because an LCL booking has no EQD and so no equipment
+    // FTX+ITR to read a loading date from - the gap BasfIftmbf.dwl documents, confirmed here
+    // against the real record. The cache only carries fields that exist; it invents nothing.
+    () -> "a plain LCL re-purposes the booking's dossier and inherits the values it has" in (
+        (shipmentsWith("lcl/2800226066-iftmin-erst-9.json", "iftmbf-before-iftmin-lcl")
+            map ((s) -> {
+                id: s.id default 0,
+                pickup: s.pickupLocation.pickupLocation.unLocationCode.matchcode,
+                eta: s.master.mainCarriageAsOcean.customerETA,
+                closing: s.master.mainCarriageAsOcean.customerClosing,
+                dispatch: s.estimatedDispatchDate
+            }))
+            must equalTo([{ id: 1621666, pickup: "DELUH", eta: "2026-07-15",
+                            closing: "2026-06-08", dispatch: null }])),
+
+    // === what the lookup must NOT do =======================================================
+    // The create path: nothing found, so nothing is addressed and the call stays an upsert.
+    () -> "a lookup that found nothing leaves the shipment a create" in (
+        (shipmentsWith("fcl/2800209301-fcl-iftmin-erst-9.json", "dossier-not-found")
+            map ((s) -> addressOf(s)))
+            must equalTo([{ bl: "BL00", ediid: "2800209301BL00", id: 0, action: "updateorcreate" }])),
+
+    // Recycled dossiers stay out of every lookup, or a cancelled order would be resurrected
+    // by the next message that mentions it.
+    () -> "a recycled dossier is never addressed" in (
+        (shipmentsWithLookup([ bgm("9", "X") ], found([
+            { customerReference: "X", bASFBL: "BL00", eDIID: "XBL00", id: 99, isInRecycleBin: true }
+        ])) map ((s) -> s.id default 0)) must equalTo([0])),
+
+    // The reference has to match exactly: a dossier belonging to a *different* order that
+    // merely shares a prefix must never be addressed, or the wrong record gets updated.
+    // Driven synthetically because no capture exercises it - every reference in
+    // docs/get-responses matches its order exactly.
+    () -> "a dossier whose reference only resembles the message's is not addressed" in (
+        (shipmentsWithLookup([ bgm("9", "2800209301") ], found([
+            { customerReference: "2800209301X", bASFBL: "BL00", eDIID: "2800209301XBL00", id: 77 }
+        ])) map ((s) -> s.id default 0)) must equalTo([0])),
+
+    // The BL has to match too, and for the same reason - a dossier of the right order but the
+    // wrong BL is still the wrong record. This is issue 1 stated as a guard.
+    () -> "a dossier of the right order but the wrong BL is not addressed" in (
+        (shipmentsWithLookup([ bgm("9", "X", "BL01") ], found([
+            { customerReference: "X", bASFBL: "BL02", eDIID: "XBL02", id: 78 }
+        ])) map ((s) -> s.id default 0)) must equalTo([0])),
+
+    // Two BL-less dossiers for one order is a state the flow has no rule for; creating fresh
+    // records is safer than picking one of them arbitrarily.
+    () -> "an ambiguous pair of BL-less dossiers is left alone" in (
+        (shipmentsWithLookup([ bgm("9", "X") ], found([
+            { customerReference: "X", id: 1 }, { customerReference: "X", id: 2 }
+        ])) map ((s) -> s.id default 0)) must equalTo([0])),
+
+    // The pre-lookup contract: with no GET at all the mapping behaves exactly as before -
+    // no dossier is addressed and BGM03 alone decides the action. This is what lets the
+    // mapping deploy before the GET step is wired up.
+    () -> "without a lookup nothing is addressed and the action comes from BGM03" in (
+        (shipmentsOf("ms/2800231445-iftmbf-2.json") map ((s) ->
+            { id: s.id default 0, action: s.actionAttribute }))
+            must equalTo([{ id: 0, action: "updateorcreate" }, { id: 0, action: "updateorcreate" }])),
+
+    () -> "without a lookup no cached booking values are invented" in (
+        (shipmentsOf("ms/2800231445-iftmbf-2.json") map ((s) -> s.estimatedDispatchDate))
+            must equalTo([null, null]))
     ]
 )

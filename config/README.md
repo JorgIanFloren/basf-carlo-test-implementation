@@ -19,11 +19,18 @@ Each profile wires the same four steps, differing only in subject, DWL and targe
 
 ```
 BASF EDIFACT interchange
-  -> dataProfiler   seq 1   sender BASF / receiver CARLO / subject IFTMIN|IFTMBF|IFCSUM
-  -> dataPipeline   seq 2   pass-thru
-  -> dataTransformer seq 3  basf/Basf{Iftmin,Iftmbf,Ifcsum}.dwl
-  -> dataDelivery   seq 4   HTTPS POST to Carlo
+  -> dataGetter      seq 1  sender BASF / receiver CARLO / subject IFTMIN|IFTMBF|IFCSUM
+  -> dataTransformer seq 2  basf/Basf{Iftmin,Iftmbf,Ifcsum}.dwl
+  -> dataDelivery    seq 3  HTTPS POST to Carlo
 ```
+
+The `dataPipeline` pass-thru step that used to sit at seq 2 is gone; the three steps are
+resequenced accordingly.
+
+**This chain is now one step short of what the IFTMIN and IFTMBF mappings need.** Both flows in
+`docs/00-basf.md` begin with "GET DOSSIER by CustomerRef", and both mappings consume its result;
+there is no step here that performs it. See check 6 — it is the one outstanding piece of wiring,
+and until it is added those two mappings run in their pre-lookup fallback mode.
 
 Targets: `…/v3/SeaHouseShipment` for IFTMIN and IFTMBF, `…/v3/ShipmentCargo` for IFCSUM.
 
@@ -33,8 +40,9 @@ JSON. What matters here is that the input blob is **read** as EDIFACT — see ch
 
 ## Before you load these
 
-Five things are inferred rather than documented. Each is a one-line fix if it turns out wrong,
-but the integration will not work until they are confirmed.
+Six things are inferred rather than documented. Checks 1–5 are each a one-line fix if they turn
+out wrong; check 6 is a missing step rather than a wrong value. The integration will not work
+until they are confirmed.
 
 **1. `inputMimeType: "application/edifact"` is what parses the interchange.**
 The mappings expect the parsed structure `payload.EDI.Messages.<DIRECTORY>.<TYPE>[]`, which is
@@ -43,22 +51,27 @@ pipeline and transformer steps is the mechanism this repo assumes produces it. *
 exact mime-type string the platform uses for inbound EDIFACT** — if the transformer receives raw
 text instead, every mapping returns an empty array rather than failing loudly.
 
-**2. The DWL files import modules, so they are not self-contained.**
-`BasfIftmin.dwl` does `import * from CommonModule` / `IftminModule`. `ee:dynamic-evaluate`
-resolves imports off the application classpath, not off Blob Storage, so uploading the three
-mapping files alone is **not** enough. Either:
+**2. ~~The DWL files import modules, so they are not self-contained.~~ Resolved — keep it that way.**
+`ee:dynamic-evaluate` resolves imports off the application classpath, not off Blob Storage, so a
+mapping that imports anything cannot run from an upload. The second of the two routes was taken:
+the shared helpers are **inlined into each mapping**, and `src/main/dw/BasfIftmin.dwl`,
+`BasfIftmbf.dwl` and `BasfIfcsum.dwl` are now three self-contained scripts with no `import` of a
+project module. `CommonModule.dwl` and the old thin wrappers under `src/test/dw/` are deleted.
 
-- publish this project (it is a `dw-library`) to Anypoint Exchange and add it as a dependency of
-  `data-transformer` — uncomment `distributionManagement` in `pom.xml`; or
-- inline the module sources into each mapping before upload, producing three self-contained
-  scripts.
+The cost is three copies of the helper block. Change one, change all three — the test suites run
+each file as a whole script, so a copy that drifts fails rather than passing quietly.
 
-Whichever route, upload to the `transforms` container under `basf/`:
+Upload each to the `transforms` container under `basf/`, using the same name its `dwlPath`
+carries:
 
 ```
 az storage blob upload --account-name saeus2integrationdev001 --container-name transforms \
-  --name "basf/BasfIftmin.dwl" --file ./src/test/dw/BasfIftmin.dwl
+  --name "basf/BasfIftmin.dwl" --file ./src/main/dw/BasfIftmin.dwl
 ```
+
+Repo filename, blob name and `dwlPath` are deliberately identical so they cannot drift apart.
+Do not add an `import` to these files: it compiles and tests green locally (where the classpath
+resolves it) and fails only at runtime in the transformer.
 
 **3. The routing keys are a choice, not a given.**
 `sender: "BASF"`, `receiver: "CARLO"`, `subject: "IFTMIN"|"IFTMBF"|"IFCSUM"`. Matching is exact
@@ -92,13 +105,54 @@ is needed.
 Note the SFTP path deletes each file from the partner server after successful pickup. Do not
 enable it until BASF expects that.
 
+**6. Nothing here performs the "GET dossier by CustomerRef" step, and both `seaHouseShipment`
+mappings now consume its result.**
+`BasfIftmin.dwl` and `BasfIftmbf.dwl` read the lookup response off **`payload.lookup`**, as the
+server returned it:
+
+```json
+{ "EDI": { "Messages": { "…": { "IFTMIN": [ … ] } } },
+  "lookup": { "seaHouseShipment": [ … ] } }
+```
+
+So a step is needed between seq 1 and the transformer that GETs
+`…/v3/SeaHouseShipment?customerReference=<BGM0201>` and merges the response under `lookup`
+without disturbing `EDI`. `payload.lookup` was chosen over a second context variable because the
+transformer evaluates a mapping against `payload` and nothing else (check 2's constraint applies
+here too), so there is nowhere else for it to arrive.
+
+Three things this decides, none of which work without the step:
+
+| Scenario | With the lookup | Without it |
+|---|---|---|
+| Master-sub IFTMIN update | each BL updates its own dossier | every BL upserts on `CustomerReference`, so the last one wins |
+| IFTMBF for a master-sub order | one update per dossier of the order | one update, landing on one dossier |
+| IFTMIN cancel | each dossier of the order is recycled | one upsert keyed on `CustomerReference` + BL |
+
+**An absent `payload.lookup` is not an error.** Both mappings fall back to exactly the single-
+upsert behaviour they had before the lookup existed, which is what lets them deploy now and
+gain the addressing when the step lands. What is *not* safe is a step that runs the GET and
+returns something other than `{ seaHouseShipment: [...] }` — `{ seaHouseShipment: [] }` must mean
+"found nothing", because the cancel path reads it as "no dossier to recycle" and emits no call at
+all. Real captures of every scenario's response are in `docs/get-responses/`, and the test suites
+run against them.
+
+The query must match `customerReference` **exactly**, and the mappings treat a near-miss as no
+match rather than update the wrong record. Do not let the step "helpfully" widen the search to a
+prefix or a `contains`: BASF references are close enough to one another that a loose query would
+return a neighbouring order's dossier, which the mapping would then have no way to tell apart
+from the right one.
+
 ## No cancel path is configured separately
 
 All three mappings express cancellation inside the payload rather than through a different call:
-IFTMIN code 1 emits `actionAttribute: "delete"` on the same POST, and IFTMBF / IFCSUM code 1
-produce an empty array. So one delivery step per profile covers create, update and cancel. The
-`HTTP DELETE` branch drawn in `new_solution_flowchart_as_sequence_diagram.txt` is not used — see
-`docs/iftmin/01-IFTMIN_mapping_spec.md` §1.
+IFTMIN code 1 emits `isInRecycleBin: true` on the same POST — one per dossier the lookup found —
+and IFTMBF / IFCSUM code 1 produce an empty array. So one delivery step per profile still covers
+create, update and cancel. The `HTTP DELETE` branch drawn in
+`new_solution_flowchart_as_sequence_diagram.txt` is not used, and neither is
+`actionAttribute: "delete"` any more: `docs/00-basf.md` ("IFTMIN / Canceling") now specifies a
+recycle-and-upsert instead, which is what keeps a cancelled dossier out of later lookups rather
+than removing it. See `docs/iftmin/01-IFTMIN_mapping_spec.md` §1.
 
 ## Cache lag
 

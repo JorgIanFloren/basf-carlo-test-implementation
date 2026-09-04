@@ -1,0 +1,1600 @@
+{
+  "seaHouseShipment": [
+    {
+      "preferredModeOfTransport": "Ocean",
+      "number": 1153,
+      "frachtShipmentRef": "76000175",
+      "customerReference": "2800231445",
+      "aMSHouseBillOfLadingNumber": "",
+      "movementType": "D/P",
+      "houseType": "BackToBack",
+      "loadType": "FCL",
+      "incoterms": "CIF",
+      "incotermplace": "VERACRUZ",
+      "insuranceCurrency": {},
+      "shipmentNumberSAP": null,
+      "deliveryTerms": "Prepaid",
+      "lockStatus": "Consolidated",
+      "shipmentCostNumberSAP": null,
+      "shipmentDate": "2026-07-13",
+      "financialReportingDate": "2026-07-13",
+      "scenario": {
+        "matchcode": null,
+        "designation": null
+      },
+      "deliveryNoteSAP": null,
+      "customerTransportManagerName": "Mr Durmus",
+      "customerTransportManagerEmail": "+49 30 2005",
+      "customerTransportManagerPhone": null,
+      "customerExportManagerName": "Mr Konrad",
+      "customerExportManagerEmail": "MATHIAS.KONRAD@BASF.COM",
+      "customerExportManagerPhone": "+49 30 2005",
+      "customerExportManagerAddress": "Storkower StraÃe 146\r\n10407\r\nBerlin\r\nDE",
+      "precedingCustomsDocumentDate": null,
+      "internalComment": "",
+      "externalComment": null,
+      "customsComment": null,
+      "customsOfficeOfExit": null,
+      "goodsLocationCustoms": {},
+      "customsDocumentType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "aTREUR1Required": false,
+      "cOOInvoiceRequired": {
+        "matchcode": null,
+        "designation": null
+      },
+      "transportOrderComment": null,
+      "containerSummary": "1 CNT - 2 TEU",
+      "haulageType": {
+        "matchcode": "MER/MER",
+        "designation": "Merchant/Merchant"
+      },
+      "goodsValue": 0,
+      "goodsValueCurrency": {},
+      "aTRNumber": null,
+      "customsInvoiceNumber": null,
+      "customerSalesOffice": {
+        "matchcode": null,
+        "designation": null
+      },
+      "countryOfOrigin": {
+        "countryName": null
+      },
+      "countryOfDestination": {
+        "countryID": "MX",
+        "countryName": "Mexico"
+      },
+      "phoneNumberNotify1": "2292783256",
+      "phoneNumberNotify2": null,
+      "phoneNumberNotify3": null,
+      "emailNotify1": "david.lara@kromaduanal.com",
+      "emailNotify2": null,
+      "emailNotify3": null,
+      "showOnBLShipperPhoneEmail": {
+        "matchcode": null,
+        "designation": null
+      },
+      "commodity": {},
+      "preCarriageLoadingRef": null,
+      "onCarriageDeliveryRef": null,
+      "endCustomerRef": null,
+      "createDocuments": false,
+      "readyForInvoicing": {
+        "matchcode": null,
+        "designation": null
+      },
+      "eDIID": "2800231445BL01",
+      "shipmentBaseTasks": [
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Vessel Changed - Check Customs for Germany",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Vessel Changed - Check Customs for Germany",
+            "isActive": true,
+            "matchcode": "DECHNGTRP",
+            "number": 44
+          }
+        }
+      ],
+      "dUNSCustomer": "BASFAG2",
+      "bASFBL": "BL01",
+      "sendersInstructions": "Empty EQ ex Neuss, Erkrath, Duisburg or Dusseldorf.\r\nMain leg: Billing without our UST-IDVAT must not be calculated with billing",
+      "docDeliveryInstructions": "Draft BL has to be presented to EM. ECB has to be presented to addresses at latest 3 working days after departure of vessel. In case of anydifficulties, new vessel booking or delays, please inform the responsible Transport Manager.\r\nThe followings must be shown on B/L: IMDG-class and UN number in caseof dangerous goods cargo.",
+      "customerEDIType": {
+        "matchcode": "YE22",
+        "designation": "First Info (YE22)"
+      },
+      "bLRemarks": "Date Shipped On Board\r\nDepending on order: \"freight prepaid\" or \"freight collect\"\r\nPlease show Container No. & Seal No\r\nName, address and phone number of the carrier's agent at port of destination",
+      "forwarderName": "POLYTRA N.V.",
+      "forwarderRoad": "Desguinlei 92 box V 15 Verzicht gebouw",
+      "forwarderNumber": null,
+      "forwarderPcd": "2018",
+      "forwarderCity1": "ANTWERPEN",
+      "forwarderCity2": null,
+      "forwarderCountry": {
+        "countryID": "BE",
+        "countryName": "Belgium"
+      },
+      "forwarderPhone": "032050501",
+      "forwarderEmail": "basf@polytra.be",
+      "freightPayer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "bLRecipients": [
+        {
+          "recipientNumber": 1,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryID": "MX",
+            "countryName": "Mexico"
+          },
+          "email": "Consginee",
+          "name": "To Consignee",
+          "originals": 0
+        },
+        {
+          "recipientNumber": 2,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryName": null
+          },
+          "email": "Order Manager",
+          "name": "BASF SE",
+          "originals": 0
+        },
+        {
+          "recipientNumber": 3,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryName": null
+          },
+          "email": "bill_of_lading@basf.com",
+          "name": "BASF Mexicana",
+          "originals": 0
+        }
+      ],
+      "goodsReceiverName": "PLANTA VIRTUAL VERACRUZ ",
+      "goodsReceiverRoad": "CONSTITUCION 353",
+      "goodsReceiverNumber": null,
+      "goodsReceiverPcd": "91700",
+      "goodsReceiverCity1": "Col. Centro",
+      "goodsReceiverCity2": "VER - Veracruz",
+      "goodsReceiverCountry": {
+        "countryID": "MX",
+        "countryName": "Mexico"
+      },
+      "goodsReceiverPhone": null,
+      "goodsReceiverEmail": null,
+      "consignor": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "customsAgent": {},
+      "isInRecycleBin": false,
+      "objectOwner": {
+        "organisationalUnitId": 5,
+        "organisationalUnitName": "POL_BASF",
+        "client": {
+          "matchcode": "POLYTRA",
+          "name1": "POLYTRA NV",
+          "externalNumber": "283155273"
+        }
+      },
+      "customer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "globalLocationNumber": "",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "name3": "",
+        "name4": "",
+        "phoneNumberHeadOffice": "",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefNumber": "",
+        "inttraRefType": 0,
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "shipper": {
+        "externalDesignation": "",
+        "name1": "BASF SE",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "location1": "67056 Ludwigshafen",
+          "street": "Carl-Bosch-Strasse 38",
+          "country": {
+            "countryID": "DE",
+            "countryName": "Germany"
+          },
+          "state": null
+        }
+      },
+      "consignee": {
+        "externalDesignation": "",
+        "name1": "BASF MEXICANA",
+        "name2": "CIUDAD DE LOS DEPORTES",
+        "contact": "",
+        "emailAddress": "Basf-coatings-MX@basf.com",
+        "phoneNumber": "55-57233082",
+        "address": {
+          "location1": "ALCALDIA BENITO JUAREZ",
+          "location2": "Ciudad de MÃ©xico",
+          "zipCode": "03710",
+          "street": "INSURGENTES SUR 975",
+          "country": {
+            "countryID": "MX",
+            "countryName": "Mexico"
+          },
+          "state": null
+        }
+      },
+      "notify1": {
+        "name1": "KROM SEA PORTS SC",
+        "address": {
+          "location1": "MANZANILLO",
+          "location2": "Colima",
+          "zipCode": "28239",
+          "street": "LOTE 2 MANZANA 120/LIBRAMIENTO A TA",
+          "country": {
+            "countryID": "MX",
+            "countryName": "Mexico"
+          },
+          "state": null
+        }
+      },
+      "notify2": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify3": {
+        "address": {
+          "state": null
+        }
+      },
+      "pickupLocation": {
+        "emptyContainerPickupDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerPickupTimeFrame": {},
+        "exportCarrier": {},
+        "exportTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "exportTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "pickupLocation": {
+          "externalDesignation": "",
+          "name1": "BASF SE",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "location1": "67056 Ludwigshafen",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            },
+            "state": null
+          }
+        }
+      },
+      "transportSubcontractor": {
+        "businessPartnerId": 1002701,
+        "matchcode": "LEXZABREME",
+        "name1": "LEXZAU, SCHARBAU GMBH & CO",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "Bremen 1",
+            "zipCode": "2803",
+            "street": "POSTFACH 10 36 47",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": false,
+        "freightBusinessPartner": false,
+        "valueAddedTaxNumber": "114624125",
+        "vATIsoTwoCharacterCountryCode": "DE"
+      },
+      "deliveryLocation": {
+        "emptyContainerReturnDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerReturnTimeFrame": {},
+        "importCarrier": {},
+        "importTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "importTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "deliveryLocation": {
+          "externalDesignation": "",
+          "name1": "BASF MEXICANA",
+          "name2": "CIUDAD DE LOS DEPORTES",
+          "contact": "",
+          "emailAddress": "Basf-coatings-MX@basf.com",
+          "phoneNumber": "55-57233082",
+          "address": {
+            "location1": "ALCALDIA BENITO JUAREZ",
+            "location2": "Ciudad de MÃ©xico",
+            "zipCode": "03710",
+            "street": "INSURGENTES SUR 975",
+            "country": {
+              "countryID": "MX",
+              "countryName": "Mexico"
+            },
+            "state": null
+          }
+        }
+      },
+      "billOfLading": {
+        "shipperAddressString": "BASF SE\r\nD 67056 Ludwigshafen Carl-Bosch-Strasse 38",
+        "consigneeAddressString": "BASF MEXICANA\r\nMX 03710 ALCALDIA BENITO JUAREZ Ciudad de MÃ©xico INSURGENTES SUR 975",
+        "notify1AddressString": "KROM SEA PORTS SC\r\nMX 28239 MANZANILLO Colima LOTE 2 MANZANA 120/LIBRAMIENTO A TA",
+        "portOfLoading": "Antwerpen",
+        "portOfDischarge": "Veracruz",
+        "goodsAreInsured": false,
+        "number": 0,
+        "numberOfGoods": 0,
+        "stomachString": ""
+      },
+      "container": [
+        {
+          "sequenceNumber": 1,
+          "containerType": {
+            "number": 28,
+            "matchcode": "45GP",
+            "designation": "45 General Purpose Container Without Ventilat",
+            "isoCode": "L5G1",
+            "content": "General Purpose Container Without Ventilation, Passive vents at upper part of cargo space",
+            "isTemperatureControlled": false,
+            "tareWeight": 0.0,
+            "lengthInMeters": 1372.0,
+            "widthInMeters": 244.0,
+            "heightInMeters": 29.0,
+            "tEU": 2.0
+          },
+          "containerNumber": "1300847300",
+          "containerNumberType": "Known",
+          "sealnumber2": null,
+          "tareWeight": 3900.0,
+          "verifiedGrossMass": 3900.0,
+          "vgmWeightDeterminationMethod": "SM2",
+          "vgmVerificationSignature": "",
+          "vgmState": "NotSent",
+          "humidificationNecessary": false,
+          "ventSetting": "None",
+          "drainage": "None",
+          "transportMode": "Container",
+          "containerGoodsInfo": null,
+          "eDIID": "3551116615/000010-3551116615/000010"
+        }
+      ],
+      "master": {
+        "preferredModeOfTransport": "Ocean",
+        "number": 1154,
+        "mainCarriageAsOcean": {
+          "vessel": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageNumber": "",
+          "bookingAgent": {
+            "businessPartnerId": 12240,
+            "externalNumber": "132088",
+            "matchcode": "MAERSKCPH2",
+            "name1": "MAERSK LINE A/S C/O MLB NV",
+            "contactPerson": [
+              {
+                "number": 1,
+                "lastName": "DGD MAERSK",
+                "emailAddress": "nvanloenhout@polytra.be"
+              }
+            ],
+            "finAccAccountDebtor": "132088",
+            "finAccAccountCreditor": "132088",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN 1",
+                "zipCode": "2000",
+                "street": "SCHALIËNSTRAAT 3",
+                "country": {
+                  "countryID": "BE",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": true,
+            "freightBusinessPartner": true,
+            "valueAddedTaxNumber": "53139655",
+            "vATIsoTwoCharacterCountryCode": "DK"
+          },
+          "portOfLoading": {
+            "matchcode": "BEANR",
+            "designation": "Antwerpen",
+            "cityCode": "ANR"
+          },
+          "portOfDischarge": {
+            "matchcode": "MXVER",
+            "designation": "Veracruz",
+            "cityCode": "VER"
+          },
+          "estimatedTimeOfDeparture": "2026-07-13T00:00:00",
+          "estimatedTimeOfArrival": null,
+          "actualTimeOfDeparture": null,
+          "actualTimeOfArrival": null,
+          "cutoffDates": {
+            "exportTerminalDeliveryTimeFrame": {},
+            "reeferDelClosing": null,
+            "vGMClosing": null,
+            "dGDelClosing": null,
+            "sIClosing": null
+          },
+          "masterBillOfLadingNumber": "",
+          "carrier": {
+            "businessPartnerId": 12240,
+            "externalNumber": "132088",
+            "matchcode": "MAERSKCPH2",
+            "name1": "MAERSK LINE A/S C/O MLB NV",
+            "contactPerson": [
+              {
+                "number": 1,
+                "lastName": "DGD MAERSK",
+                "emailAddress": "nvanloenhout@polytra.be"
+              }
+            ],
+            "finAccAccountDebtor": "132088",
+            "finAccAccountCreditor": "132088",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN 1",
+                "zipCode": "2000",
+                "street": "SCHALIËNSTRAAT 3",
+                "country": {
+                  "countryID": "BE",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": true,
+            "freightBusinessPartner": true,
+            "valueAddedTaxNumber": "53139655",
+            "vATIsoTwoCharacterCountryCode": "DK"
+          },
+          "customerClosing": null,
+          "customerETD": "2026-07-13",
+          "customerETA": null,
+          "customerVessel": {
+            "vesselName": "GSL MARIA",
+            "vesselNumber": "9231236"
+          },
+          "customerVoyage": "Ocean Vessel",
+          "pOLConfirmedByCarrier": {},
+          "pODConfirmedByCarrier": {},
+          "vesselConfirmedByCarrier": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageConfirmedByCarrier": null,
+          "eTDConfirmedByCarrier": null,
+          "eTAConfirmedByCarrier": null,
+          "eTAInlandDestination": null,
+          "aTAInlandDestination": null
+        },
+        "docClosingTransp": null,
+        "contingentContract": {
+          "contractID": null,
+          "contractName": null
+        },
+        "automatedManifestSystemFilingDocument": {
+          "billOfLadingNumber": ""
+        },
+        "exportTerminalLocation": {
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "importTerminalLocation": {
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "placeOfReceipt": {},
+        "deliveryTerms": "Prepaid",
+        "placeOfDelivery": {},
+        "releaseTimeFrame": {},
+        "remarks": "",
+        "shippingInstructions": {
+          "billOfLadingKind": 1,
+          "forwardingAgent": "POLYTRA NV\r\n.",
+          "goodsAreInsured": false,
+          "number": 0,
+          "numberOfOriginals": 0,
+          "oceanCarrier": "MAERSK LINE A/S C/O MLB NV\r\n.",
+          "dischargePortName": "Veracruz",
+          "loadingPortName": "Antwerpen"
+        },
+        "lCLContainerNumber": null
+      },
+      "carriage": [
+        {
+          "transportMode": "Road",
+          "number": 2459,
+          "objectOwner": {
+            "organisationalUnitId": 1,
+            "organisationalUnitName": "POLYTRA",
+            "client": {
+              "matchcode": "POLYTRA",
+              "name1": "POLYTRA NV",
+              "externalNumber": "283155273"
+            }
+          },
+          "purpose": "PickUpContainerForExportTerminal",
+          "section": "PreCarriage",
+          "plannedWaypoint": [
+            {
+              "sequence": 1,
+              "number": 10472,
+              "process": "Container transport: 1300847300 - 2458 → Pre-/on-carriage: 2459",
+              "transportSector": 1,
+              "transportWaypoint": {
+                "number": 4953,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "name1": "BASF SE",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "location1": "67056 Ludwigshafen",
+                    "street": "Carl-Bosch-Strasse 38",
+                    "country": {
+                      "countryID": "DE",
+                      "countryName": "Germany"
+                    },
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 2,
+              "number": 10473,
+              "process": "Container transport: 1300847300 - 2458 ← Pre-/on-carriage: 2459",
+              "transportSector": 1,
+              "transportWaypoint": {
+                "number": 4954,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            }
+          ],
+          "transportType": {
+            "number": null,
+            "matchcode": null,
+            "description": null
+          }
+        }
+      ],
+      "id": 1607396,
+      "differentFreightPayer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "documentData": []
+    },
+    {
+      "preferredModeOfTransport": "Ocean",
+      "number": 1156,
+      "frachtShipmentRef": "76000176",
+      "customerReference": "2800231445",
+      "aMSHouseBillOfLadingNumber": "",
+      "movementType": "D/P",
+      "houseType": "BackToBack",
+      "loadType": "FCL",
+      "incoterms": "CIF",
+      "incotermplace": "VERACRUZ",
+      "insuranceCurrency": {},
+      "shipmentNumberSAP": null,
+      "deliveryTerms": "Prepaid",
+      "lockStatus": "Consolidated",
+      "shipmentCostNumberSAP": null,
+      "shipmentDate": "2026-07-13",
+      "financialReportingDate": "2026-07-13",
+      "scenario": {
+        "matchcode": null,
+        "designation": null
+      },
+      "deliveryNoteSAP": null,
+      "customerTransportManagerName": "Mr Durmus",
+      "customerTransportManagerEmail": "+49 30 2005",
+      "customerTransportManagerPhone": null,
+      "customerExportManagerName": "Mr Konrad",
+      "customerExportManagerEmail": "MATHIAS.KONRAD@BASF.COM",
+      "customerExportManagerPhone": "+49 30 2005",
+      "customerExportManagerAddress": "Storkower StraÃe 146\r\n10407\r\nBerlin\r\nDE",
+      "precedingCustomsDocumentDate": null,
+      "internalComment": "",
+      "externalComment": null,
+      "customsComment": null,
+      "customsOfficeOfExit": null,
+      "goodsLocationCustoms": {},
+      "customsDocumentType": {
+        "matchcode": null,
+        "designation": null
+      },
+      "aTREUR1Required": false,
+      "cOOInvoiceRequired": {
+        "matchcode": null,
+        "designation": null
+      },
+      "transportOrderComment": null,
+      "containerSummary": "1 CNT - 2 TEU",
+      "haulageType": {
+        "matchcode": "MER/MER",
+        "designation": "Merchant/Merchant"
+      },
+      "goodsValue": 0,
+      "goodsValueCurrency": {},
+      "aTRNumber": null,
+      "customsInvoiceNumber": null,
+      "customerSalesOffice": {
+        "matchcode": null,
+        "designation": null
+      },
+      "countryOfOrigin": {
+        "countryName": null
+      },
+      "countryOfDestination": {
+        "countryID": "MX",
+        "countryName": "Mexico"
+      },
+      "phoneNumberNotify1": "2292783256",
+      "phoneNumberNotify2": null,
+      "phoneNumberNotify3": null,
+      "emailNotify1": "david.lara@kromaduanal.com",
+      "emailNotify2": null,
+      "emailNotify3": null,
+      "showOnBLShipperPhoneEmail": {
+        "matchcode": null,
+        "designation": null
+      },
+      "commodity": {},
+      "preCarriageLoadingRef": null,
+      "onCarriageDeliveryRef": null,
+      "endCustomerRef": null,
+      "createDocuments": false,
+      "readyForInvoicing": {
+        "matchcode": null,
+        "designation": null
+      },
+      "eDIID": "2800231445BL02",
+      "shipmentBaseTasks": [
+        {
+          "completedByUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "completedTimestamp": null,
+          "designation": "Vessel Changed - Check Customs for Germany",
+          "dueDate": null,
+          "responsibleUser": {
+            "fullName": null,
+            "logOnName": null,
+            "person": {
+              "businessEmailAddress": null,
+              "businessTelephone": null,
+              "businessCellular": null
+            }
+          },
+          "state": 0,
+          "taskTemplate": {
+            "designation": "Vessel Changed - Check Customs for Germany",
+            "isActive": true,
+            "matchcode": "DECHNGTRP",
+            "number": 44
+          }
+        }
+      ],
+      "dUNSCustomer": "BASFAG2",
+      "bASFBL": "BL02",
+      "sendersInstructions": "Empty EQ ex Neuss, Erkrath, Duisburg or Dusseldorf.\r\nMain leg: Billing without our UST-IDVAT must not be calculated with billing",
+      "docDeliveryInstructions": "Draft BL has to be presented to EM. ECB has to be presented to addresses at latest 3 working days after departure of vessel. In case of anydifficulties, new vessel booking or delays, please inform the responsible Transport Manager.\r\nThe followings must be shown on B/L: IMDG-class and UN number in caseof dangerous goods cargo.",
+      "customerEDIType": {
+        "matchcode": "YE22",
+        "designation": "First Info (YE22)"
+      },
+      "bLRemarks": "Date Shipped On Board\r\nDepending on order: \"freight prepaid\" or \"freight collect\"\r\nPlease show Container No. & Seal No\r\nName, address and phone number of the carrier's agent at port of destination",
+      "forwarderName": "POLYTRA N.V.",
+      "forwarderRoad": "Desguinlei 92 box V 15 Verzicht gebouw",
+      "forwarderNumber": null,
+      "forwarderPcd": "2018",
+      "forwarderCity1": "ANTWERPEN",
+      "forwarderCity2": null,
+      "forwarderCountry": {
+        "countryID": "BE",
+        "countryName": "Belgium"
+      },
+      "forwarderPhone": "032050501",
+      "forwarderEmail": "basf@polytra.be",
+      "freightPayer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "bLRecipients": [
+        {
+          "recipientNumber": 1,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryID": "MX",
+            "countryName": "Mexico"
+          },
+          "email": "Consginee",
+          "name": "To Consignee",
+          "originals": 0
+        },
+        {
+          "recipientNumber": 2,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryName": null
+          },
+          "email": "Order Manager",
+          "name": "BASF SE",
+          "originals": 0
+        },
+        {
+          "recipientNumber": 3,
+          "bLType": {
+            "matchcode": "EM",
+            "designation": "EM - Email"
+          },
+          "company": null,
+          "copies": 1,
+          "country": {
+            "countryName": null
+          },
+          "email": "bill_of_lading@basf.com",
+          "name": "BASF Mexicana",
+          "originals": 0
+        }
+      ],
+      "goodsReceiverName": "PLANTA VIRTUAL VERACRUZ ",
+      "goodsReceiverRoad": "CONSTITUCION 353",
+      "goodsReceiverNumber": null,
+      "goodsReceiverPcd": "91700",
+      "goodsReceiverCity1": "Col. Centro",
+      "goodsReceiverCity2": "VER - Veracruz",
+      "goodsReceiverCountry": {
+        "countryID": "MX",
+        "countryName": "Mexico"
+      },
+      "goodsReceiverPhone": null,
+      "goodsReceiverEmail": null,
+      "consignor": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "customsAgent": {},
+      "isInRecycleBin": false,
+      "objectOwner": {
+        "organisationalUnitId": 5,
+        "organisationalUnitName": "POL_BASF",
+        "client": {
+          "matchcode": "POLYTRA",
+          "name1": "POLYTRA NV",
+          "externalNumber": "283155273"
+        }
+      },
+      "customer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "globalLocationNumber": "",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "name3": "",
+        "name4": "",
+        "phoneNumberHeadOffice": "",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefNumber": "",
+        "inttraRefType": 0,
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "shipper": {
+        "externalDesignation": "",
+        "name1": "BASF SE",
+        "contact": "",
+        "emailAddress": "",
+        "phoneNumber": "",
+        "address": {
+          "location1": "67056 Ludwigshafen",
+          "street": "Carl-Bosch-Strasse 38",
+          "country": {
+            "countryID": "DE",
+            "countryName": "Germany"
+          },
+          "state": null
+        }
+      },
+      "consignee": {
+        "externalDesignation": "",
+        "name1": "BASF MEXICANA S.A. DE C.V.",
+        "name2": "COL. CIUDAD DE LOS DEPORTES",
+        "contact": "",
+        "emailAddress": "Inquiries-Intercompany-MX-CAC@basf.com",
+        "phoneNumber": "55 5325 2600",
+        "address": {
+          "location1": "ALCALDIA. BENITO JUAREZ",
+          "location2": "Ciudad de MÃ©xico",
+          "zipCode": "03710",
+          "street": "AV. INSURGENTES SUR 975",
+          "country": {
+            "countryID": "MX",
+            "countryName": "Mexico"
+          },
+          "state": null
+        }
+      },
+      "notify1": {
+        "name1": "KROM SEA PORTS SC",
+        "address": {
+          "location1": "MANZANILLO",
+          "location2": "Colima",
+          "zipCode": "28239",
+          "street": "LOTE 2 MANZANA 120/LIBRAMIENTO A TA",
+          "country": {
+            "countryID": "MX",
+            "countryName": "Mexico"
+          },
+          "state": null
+        }
+      },
+      "notify2": {
+        "address": {
+          "state": null
+        }
+      },
+      "notify3": {
+        "address": {
+          "state": null
+        }
+      },
+      "pickupLocation": {
+        "emptyContainerPickupDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerPickupTimeFrame": {},
+        "exportCarrier": {},
+        "exportTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "exportTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "pickupLocation": {
+          "externalDesignation": "",
+          "name1": "BASF SE",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "location1": "67056 Ludwigshafen",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            },
+            "state": null
+          }
+        }
+      },
+      "transportSubcontractor": {
+        "businessPartnerId": 1002701,
+        "matchcode": "LEXZABREME",
+        "name1": "LEXZAU, SCHARBAU GMBH & CO",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "Bremen 1",
+            "zipCode": "2803",
+            "street": "POSTFACH 10 36 47",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": false,
+        "freightBusinessPartner": false,
+        "valueAddedTaxNumber": "114624125",
+        "vATIsoTwoCharacterCountryCode": "DE"
+      },
+      "deliveryLocation": {
+        "emptyContainerReturnDepot": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "emptyContainerReturnTimeFrame": {},
+        "importCarrier": {},
+        "importTransshipmentLocation1": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "importTransshipmentLocation2": {
+          "externalDesignation": null,
+          "contact": null,
+          "emailAddress": null,
+          "phoneNumber": null,
+          "address": {
+            "state": null
+          }
+        },
+        "deliveryLocation": {
+          "externalDesignation": "",
+          "name1": "BASF MEXICANA S.A. DE C.V.",
+          "name2": "COL. CIUDAD DE LOS DEPORTES",
+          "contact": "",
+          "emailAddress": "Inquiries-Intercompany-MX-CAC@basf.com",
+          "phoneNumber": "55 5325 2600",
+          "address": {
+            "location1": "ALCALDIA. BENITO JUAREZ",
+            "location2": "Ciudad de MÃ©xico",
+            "zipCode": "03710",
+            "street": "AV. INSURGENTES SUR 975",
+            "country": {
+              "countryID": "MX",
+              "countryName": "Mexico"
+            },
+            "state": null
+          }
+        }
+      },
+      "billOfLading": {
+        "shipperAddressString": "BASF SE\r\nD 67056 Ludwigshafen Carl-Bosch-Strasse 38",
+        "consigneeAddressString": "BASF MEXICANA S.A. DE C.V.\r\nMX 03710 ALCALDIA. BENITO JUAREZ Ciudad de MÃ©xico AV. INSURGENTES SUR 975",
+        "notify1AddressString": "KROM SEA PORTS SC\r\nMX 28239 MANZANILLO Colima LOTE 2 MANZANA 120/LIBRAMIENTO A TA",
+        "portOfLoading": "Antwerpen",
+        "portOfDischarge": "Veracruz",
+        "goodsAreInsured": false,
+        "number": 0,
+        "numberOfGoods": 0,
+        "stomachString": ""
+      },
+      "container": [
+        {
+          "sequenceNumber": 1,
+          "containerType": {
+            "number": 28,
+            "matchcode": "45GP",
+            "designation": "45 General Purpose Container Without Ventilat",
+            "isoCode": "L5G1",
+            "content": "General Purpose Container Without Ventilation, Passive vents at upper part of cargo space",
+            "isTemperatureControlled": false,
+            "tareWeight": 0.0,
+            "lengthInMeters": 1372.0,
+            "widthInMeters": 244.0,
+            "heightInMeters": 29.0,
+            "tEU": 2.0
+          },
+          "containerNumber": "1300847300",
+          "containerNumberType": "Known",
+          "sealnumber2": null,
+          "tareWeight": 3900.0,
+          "verifiedGrossMass": 3900.0,
+          "vgmWeightDeterminationMethod": "SM2",
+          "vgmVerificationSignature": "",
+          "vgmState": "NotSent",
+          "humidificationNecessary": false,
+          "ventSetting": "None",
+          "drainage": "None",
+          "transportMode": "Container",
+          "containerGoodsInfo": null,
+          "eDIID": "3551119055/000010"
+        }
+      ],
+      "master": {
+        "preferredModeOfTransport": "Ocean",
+        "number": 1155,
+        "mainCarriageAsOcean": {
+          "vessel": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageNumber": "",
+          "bookingAgent": {
+            "businessPartnerId": 12240,
+            "externalNumber": "132088",
+            "matchcode": "MAERSKCPH2",
+            "name1": "MAERSK LINE A/S C/O MLB NV",
+            "contactPerson": [
+              {
+                "number": 1,
+                "lastName": "DGD MAERSK",
+                "emailAddress": "nvanloenhout@polytra.be"
+              }
+            ],
+            "finAccAccountDebtor": "132088",
+            "finAccAccountCreditor": "132088",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN 1",
+                "zipCode": "2000",
+                "street": "SCHALIËNSTRAAT 3",
+                "country": {
+                  "countryID": "BE",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": true,
+            "freightBusinessPartner": true,
+            "valueAddedTaxNumber": "53139655",
+            "vATIsoTwoCharacterCountryCode": "DK"
+          },
+          "portOfLoading": {
+            "matchcode": "BEANR",
+            "designation": "Antwerpen",
+            "cityCode": "ANR"
+          },
+          "portOfDischarge": {
+            "matchcode": "MXVER",
+            "designation": "Veracruz",
+            "cityCode": "VER"
+          },
+          "estimatedTimeOfDeparture": "2026-07-13T00:00:00",
+          "estimatedTimeOfArrival": null,
+          "actualTimeOfDeparture": null,
+          "actualTimeOfArrival": null,
+          "cutoffDates": {
+            "exportTerminalDeliveryTimeFrame": {},
+            "reeferDelClosing": null,
+            "vGMClosing": null,
+            "dGDelClosing": null,
+            "sIClosing": null
+          },
+          "masterBillOfLadingNumber": "",
+          "carrier": {
+            "businessPartnerId": 12240,
+            "externalNumber": "132088",
+            "matchcode": "MAERSKCPH2",
+            "name1": "MAERSK LINE A/S C/O MLB NV",
+            "contactPerson": [
+              {
+                "number": 1,
+                "lastName": "DGD MAERSK",
+                "emailAddress": "nvanloenhout@polytra.be"
+              }
+            ],
+            "finAccAccountDebtor": "132088",
+            "finAccAccountCreditor": "132088",
+            "inttraRefType": "InttraCompanyId",
+            "addresses": [
+              {
+                "businessPartnerAddressType": "Default",
+                "location1": "ANTWERPEN 1",
+                "zipCode": "2000",
+                "street": "SCHALIËNSTRAAT 3",
+                "country": {
+                  "countryID": "BE",
+                  "countryName": "Belgium"
+                }
+              }
+            ],
+            "senderReceiver": true,
+            "freightBusinessPartner": true,
+            "valueAddedTaxNumber": "53139655",
+            "vATIsoTwoCharacterCountryCode": "DK"
+          },
+          "customerClosing": null,
+          "customerETD": "2026-07-13",
+          "customerETA": null,
+          "customerVessel": {
+            "vesselName": "GSL MARIA",
+            "vesselNumber": "9231236"
+          },
+          "customerVoyage": "Ocean Vessel",
+          "pOLConfirmedByCarrier": {},
+          "pODConfirmedByCarrier": {},
+          "vesselConfirmedByCarrier": {
+            "vesselName": null,
+            "vesselNumber": null
+          },
+          "voyageConfirmedByCarrier": null,
+          "eTDConfirmedByCarrier": null,
+          "eTAConfirmedByCarrier": null,
+          "eTAInlandDestination": null,
+          "aTAInlandDestination": null
+        },
+        "docClosingTransp": null,
+        "contingentContract": {
+          "contractID": null,
+          "contractName": null
+        },
+        "automatedManifestSystemFilingDocument": {
+          "billOfLadingNumber": ""
+        },
+        "exportTerminalLocation": {
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "importTerminalLocation": {
+          "externalDesignation": "",
+          "contact": "",
+          "emailAddress": "",
+          "phoneNumber": "",
+          "address": {
+            "state": null
+          }
+        },
+        "placeOfReceipt": {},
+        "deliveryTerms": "Prepaid",
+        "placeOfDelivery": {},
+        "releaseTimeFrame": {},
+        "remarks": "",
+        "shippingInstructions": {
+          "billOfLadingKind": 1,
+          "forwardingAgent": "POLYTRA NV\r\n.",
+          "goodsAreInsured": false,
+          "number": 0,
+          "numberOfOriginals": 0,
+          "oceanCarrier": "MAERSK LINE A/S C/O MLB NV\r\n.",
+          "dischargePortName": "Veracruz",
+          "loadingPortName": "Antwerpen"
+        },
+        "lCLContainerNumber": null
+      },
+      "carriage": [
+        {
+          "transportMode": "Road",
+          "number": 2460,
+          "objectOwner": {
+            "organisationalUnitId": 1,
+            "organisationalUnitName": "POLYTRA",
+            "client": {
+              "matchcode": "POLYTRA",
+              "name1": "POLYTRA NV",
+              "externalNumber": "283155273"
+            }
+          },
+          "purpose": "PickUpContainerForExportTerminal",
+          "section": "PreCarriage",
+          "plannedWaypoint": [
+            {
+              "sequence": 1,
+              "number": 10483,
+              "process": "Container transport: 1300847300 - 2461 → Pre-/on-carriage: 2460",
+              "transportSector": 1,
+              "transportWaypoint": {
+                "number": 4960,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "name1": "BASF SE",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "location1": "67056 Ludwigshafen",
+                    "street": "Carl-Bosch-Strasse 38",
+                    "country": {
+                      "countryID": "DE",
+                      "countryName": "Germany"
+                    },
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            },
+            {
+              "sequence": 2,
+              "number": 10482,
+              "process": "Container transport: 1300847300 - 2461 ← Pre-/on-carriage: 2460",
+              "transportSector": 1,
+              "transportWaypoint": {
+                "number": 4959,
+                "sharedLocation": {
+                  "externalDesignation": "",
+                  "contact": "",
+                  "emailAddress": "",
+                  "phoneNumber": "",
+                  "address": {
+                    "state": null
+                  }
+                },
+                "startTarget": null,
+                "endTarget": null,
+                "startActual": null,
+                "endActual": null,
+                "referenceLoadingUnloadingPickupDropoff": null
+              }
+            }
+          ],
+          "transportType": {
+            "number": null,
+            "matchcode": null,
+            "description": null
+          }
+        }
+      ],
+      "id": 1607444,
+      "differentFreightPayer": {
+        "businessPartnerId": 12178,
+        "externalNumber": "25000",
+        "matchcode": "BASFSE_DE",
+        "name1": "BASF SE",
+        "name2": "ZFS-PF",
+        "finAccAccountDebtor": "25000",
+        "finAccAccountCreditor": "25000",
+        "inttraRefType": "InttraCompanyId",
+        "addresses": [
+          {
+            "businessPartnerAddressType": "Default",
+            "location1": "LUDWIGSHAFEN/RH",
+            "zipCode": "67056",
+            "street": "Carl-Bosch-Strasse 38",
+            "country": {
+              "countryID": "DE",
+              "countryName": "Germany"
+            }
+          }
+        ],
+        "senderReceiver": true,
+        "freightBusinessPartner": true,
+        "valueAddedTaxNumber": "149145247",
+        "vATIsoTwoCharacterCountryCode": "DE",
+        "locationCode": {
+          "matchcode": "DELUH",
+          "designation": "Ludwigshafen",
+          "cityCode": "LUH"
+        }
+      },
+      "documentData": []
+    }
+  ]
+}
