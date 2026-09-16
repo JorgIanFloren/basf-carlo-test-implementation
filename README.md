@@ -151,16 +151,18 @@ message recycles each of them.
 
 Collected from the three specs; each is written up where it belongs.
 
-1. **No pipeline step performs the "GET dossier by CustomerRef" lookup.** Both
-   `seaHouseShipment` mappings now consume its result off `payload.lookup`, and without it they
-   fall back to a single unaddressed upsert — which is exactly the master-sub behaviour the
-   three issues in `00-basf.md` describe. This is the one piece of wiring still missing; see
-   `config/README.md` check 6 for the contract it has to satisfy and
-   `docs/carlo/06-dossier-lookup.md` for the call itself.
+1. **The "GET dossier by CustomerRef" step is wired but not yet loadable.** It sits at sequence 2
+   of the IFTMIN and IFTMBF profiles as a `dataDelivery` step — that step type can fetch from
+   another source and *extend* the payload rather than replace it, which is what lets the
+   transformer see the interchange and the lookup response together. The CarLo call is verified
+   against the live server (`docs/carlo/06-dossier-lookup.md`); what is still a guess is how the
+   step is told to extend, and how to template `BGM0201` into the `$filter`. Both are marked in
+   the config and in `config/README.md` check 6. **Do not load those two profiles until the field
+   names are confirmed.**
 
    **This is the live 16-09-2026 defect.** "Master-sub update still only updates the first
    shipment" is not a mapping bug — the CustomerRef + BL addressing is implemented and tested —
-   it is this step being absent, so the mappings never leave fallback mode.
+   it is this step not yet running, so the mappings never leave fallback mode.
 2. **The IFTMIN cancel shape is still unattested by an example message** — `00-basf.md` now
    specifies the mechanism (recycle and upsert, keyed on `customerrefSet`), but no code 1
    EDIFACT message exists anywhere in the example set, so the branch is covered only by

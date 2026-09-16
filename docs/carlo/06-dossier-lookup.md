@@ -1,9 +1,11 @@
 # The dossier lookup
 
-This page specifies the one call the pipeline is still missing: the **"GET dossier by
-CustomerRef"** step that `BasfIftmin.dwl` and `BasfIftmbf.dwl` read off `payload.lookup`. See
-README open item 1 and `config/README.md` check 6 for why it is needed; this page is only about
-what the call has to look like.
+This page specifies the **"GET dossier by CustomerRef"** call that `BasfIftmin.dwl` and
+`BasfIftmbf.dwl` read off `payload.lookup`. It is wired as a `dataDelivery` step at sequence 2 of
+the IFTMIN and IFTMBF profiles — that step type can fetch from another source and *extend* the
+payload rather than replace it. See `config/README.md` check 6 for the two field names on that
+step that are still unconfirmed; this page is only about what the call itself has to look like,
+and everything here is verified against the live test server.
 
 ## Why it exists
 
