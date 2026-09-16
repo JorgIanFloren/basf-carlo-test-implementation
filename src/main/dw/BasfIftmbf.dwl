@@ -49,6 +49,32 @@ output application/json encoding="UTF-8"
 */
 
 
+// ===========================================================================
+// Feature switches
+// ===========================================================================
+
+/**
+* Whether FCL orders are processed at all.
+*
+* The same switch as in BasfIftmin.dwl, and it must hold the same value in both: a booking
+* that created an FCL dossier the instruction then ignores is the state issue 3 of
+* docs/00-basf.md describes, so enabling FCL means flipping this to `true` and re-uploading
+* *both* mappings. LCL is unconditional; FCL is switchable because BASF go-live carries LCL
+* only. A cancelled booking already emits nothing, so this only ever gates an update or a
+* create. See docs/00-basf.md "FCL switch".
+*/
+var PROCESS_FCL = false
+
+/**
+* The switch as the mapping actually reads it.
+*
+* `PROCESS_FCL` is the operative setting - nothing in the pipeline puts a `config` key on the
+* payload. The override is the seam the test suite needs, because `evalPath` runs this file as
+* shipped and there is no other way to exercise both states. See the same function in
+* BasfIftmin.dwl.
+*/
+fun processFcl(payload) = payload.config.processFcl default PROCESS_FCL
+
 /**
 * Helpers shared by the three BASF inbound mappings (IFTMIN, IFTMBF, IFCSUM).
 *
@@ -394,8 +420,8 @@ fun dispatchDate(doc) = do {
     if (d == null) null else d ++ "T00:00:00"
 }
 
-/** Scenario matchcode: containers booked (EQD present) -> FCL, otherwise LCL. */
-fun scenario(doc) = if (isEmpty(equipments(doc))) "BASF LCL" else "BASF FCL"
+/** Load type: containers booked (EQD present) -> FCL, otherwise LCL. */
+fun loadType(doc) = if (isEmpty(equipments(doc))) "LCL" else "FCL"
 
 /**
 * HaulageType matchcode "<pre-carriage>/<on-carriage>", first occurrence only:
@@ -453,7 +479,7 @@ fun bookingRef(doc) = seg1(body(doc), "BGM").BGM0201
 *   NAD+CZ NAD0201                   -> Customer/Matchcode                        (with conversion)
 *   FTX+ITR of the first EQD         -> EstimatedDispatchDate
 *   constant                         -> ObjectOwner/OrganisationalUnitId = 5
-*   EQD present?                     -> Scenario/Matchcode = BASF FCL | BASF LCL
+*   EQD present?                     -> FCL | LCL, which the FCL switch gates on
 *   TMD03 + LOC+20                   -> HaulageType/Matchcode
 *
 * Plus three fields the sheet does not mention but the Carlo contract needs:
@@ -528,7 +554,10 @@ fun toCarloBookingUpdate(doc, target) = do {
             }
         }) if (present(pickup.LOC0201) or present(pickup.LOC0204)),
         ObjectOwner: { OrganisationalUnitId: 5 },
-        Scenario: { Matchcode: scenario(doc) },
+        // Scenario is deliberately not emitted. The field is obsolete on BASF's side (IFTMIN
+        // spec v1.1 section 16) and real Carlo records carry `scenario.matchcode: null`; it is
+        // dropped here too, or every booking update would write back what the instruction
+        // stopped sending. See docs/get-responses.
         (HaulageType: { Matchcode: haulage }) if (haulage != null),
         // Contract-required, not sheet-mapped - same values BasfIftmin.dwl sends for this shipment.
         DeliveryTerms: "Prepaid",
@@ -579,7 +608,12 @@ fun isCancel(doc) = str(seg1(body(doc), "BGM").BGM03) == "1"
 * this mapping emitted before the GET step existed.
 */
 fun toCarloBookingUpdates(payload) = do {
-    var msgs = messagesOfType(payload, "IFTMBF") filter ((m) -> !isCancel(m))
+    // The FCL switch (`PROCESS_FCL`), applied beside the cancel filter: with FCL off an FCL
+    // booking contributes nothing, so it can neither create a dossier the instruction will
+    // ignore nor update one the instruction never made.
+    var msgs = messagesOfType(payload, "IFTMBF")
+        filter ((m) -> !isCancel(m))
+        filter ((m) -> processFcl(payload) or loadType(m) == "LCL")
     ---
     (msgs flatMap ((m) -> do {
         var targets = dossiersOf(payload, bookingRef(m))

@@ -10,6 +10,10 @@ JSON** representation of an interchange — the mappings never see EDIFACT.
 | IFTMBF (firm booking) | `src/main/dw/BasfIftmbf.dwl` | `basf/BasfIftmbf.dwl` | ″ | `docs/iftmbf/01-IFTMBF_mapping_spec.md` |
 | IFCSUM (consolidation summary) | `src/main/dw/BasfIfcsum.dwl` | `basf/BasfIfcsum.dwl` | `docs/expected_output_ShipmentCargo.json` | `docs/ifcsum/01-IFCSUM_mapping_spec.md` |
 
+**The target API is documented in `docs/carlo/`** — how to call it, all 54 schemas, the
+`$filter` property ids, and the behaviour its OpenAPI document does not describe. Start at
+`docs/carlo/README.md`.
+
 **Each mapping is a single self-contained script.** The data-transformer evaluates the uploaded
 file on its own and resolves no imports off Blob Storage, so nothing may be imported from a
 shared module — the helpers all three need (date conversion, `camelKeys`, the position-agnostic
@@ -43,7 +47,7 @@ cd basf
 mvn -o test
 ```
 
-145 tests. Every EDIFACT interchange in `docs/example-orders` is exercised by the mapping for
+170 tests. Every EDIFACT interchange in `docs/example-orders` is exercised by the mapping for
 its message type: 21 IFTMIN, 9 IFTMBF, 4 IFCSUM.
 
 The suites run each mapping the way the data-transformer does — `evalPath` evaluates the
@@ -151,17 +155,24 @@ Collected from the three specs; each is written up where it belongs.
    `seaHouseShipment` mappings now consume its result off `payload.lookup`, and without it they
    fall back to a single unaddressed upsert — which is exactly the master-sub behaviour the
    three issues in `00-basf.md` describe. This is the one piece of wiring still missing; see
-   `config/README.md` check 6 for the contract it has to satisfy.
+   `config/README.md` check 6 for the contract it has to satisfy and
+   `docs/carlo/06-dossier-lookup.md` for the call itself.
+
+   **This is the live 16-09-2026 defect.** "Master-sub update still only updates the first
+   shipment" is not a mapping bug — the CustomerRef + BL addressing is implemented and tested —
+   it is this step being absent, so the mappings never leave fallback mode.
 2. **The IFTMIN cancel shape is still unattested by an example message** — `00-basf.md` now
    specifies the mechanism (recycle and upsert, keyed on `customerrefSet`), but no code 1
    EDIFACT message exists anywhere in the example set, so the branch is covered only by
    synthetic interchanges. `00-basf.md` also still marks step 1b "HOW TO BE CONFIRMED by
    Robin/Niels".
-3. **24 fields the IFTMIN mapping emits are not attested in any contract sample.** They come
-   from the Create sheet's XPaths but appear in neither `expected_output_SeaHouseShipment.json`
-   nor the v3 XML sample — both of which are export dumps rather than schemas. Carlo ignores
-   unknown fields silently. Check them against Carlo's Swagger.
-   (`expected_output_ShipmentCargo.json` *is* a schema, so IFCSUM is fully verified against it.)
+3. ~~**24 fields the IFTMIN mapping emits are not attested in any contract sample.**~~ Resolved —
+   checked against Carlo's Swagger, see `docs/carlo/07-contract-conformance.md`. Every field all
+   three mappings emit exists in the v3 contract. The two exceptions are `SendDate` and
+   `ExportItemReference` in `carloHeader`, which is **dead code** — never called, a leftover of
+   the legacy TRS `<Header>` element that v3 has no equivalent of. It can be deleted.
+   (`expected_output_SeaHouseShipment.json` and the v3 XML sample are still export dumps rather
+   than schemas; `docs/carlo/` is generated from the OpenAPI document itself.)
 4. **Multi-container IFCSUM** would lose its VGM data — see `docs/ifcsum` §7.1.
 5. **LCL bookings lose `HaulageType` and `EstimatedDispatchDate`** — the sheet's rules need an
    `EQD`, and an LCL booking has none. See `docs/iftmbf` §7.6.
@@ -172,3 +183,22 @@ Collected from the three specs; each is written up where it belongs.
    those messages. See `docs/iftmbf` §10 — it belongs with BASF.
 8. **There is no IFCSUM mapping sheet**; that mapping is derived from `00-basf.md`, the
    contract and the captures.
+
+9. **FCL is switched off.** `PROCESS_FCL` ships `false` in `BasfIftmin.dwl` and
+   `BasfIftmbf.dwl`, because go-live carries LCL only. Both must hold the same value; flipping it
+   means editing and re-uploading both blobs. See `docs/00-basf.md` *"FCL switch"*. Two
+   consequences: an FCL interchange maps to `{ "seaHouseShipment": [] }` and **nothing in
+   `config/` says whether the delivery step POSTs that or short-circuits**; and open item 5 below
+   stops being an edge case, since LCL is now the only path.
+
+10. **Spec v1.1 §10 (ACID, `RFF+ABT`) is unattested.** No IFTMIN interchange in the example set
+    carries one, and the message the spec names as the example (ML `2800244245`) is not in the
+    repo. The mapping tries header SG1 then goods-item SG22 and takes whichever is present.
+    Re-verify against a real Egypt message.
+
+11. **Vacating `portOfLoading` / `portOfDischarge` / `placeOfDelivery` needs a second opinion.**
+    Spec v1.1 §5–§7 move POL, POD and Place of Delivery onto the customer UDFs, and rule 6 says
+    the standard field must not be populated instead — which is also what vessel and voyage
+    already did. But `portOfLoading` was resolving CarLo master data (real records come back with
+    `designation: "Antwerpen"`, `cityCode: "ANR"`), so something downstream may read it. Confirm
+    with the analyst.

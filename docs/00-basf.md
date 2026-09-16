@@ -18,12 +18,16 @@ Get the dossier(s) by `customerrefSet`, then for each result set the property is
 #### FCL
 Confirmed FCL conversion is good. One new change: HouseShipmentType = "BACK-TO-BACK"
 
+> FCL is currently **switched off** in both `seaHouseShipment` mappings - see "FCL switch" below.
+
 #### LCL
 We need to send an LCL example through the implementation and look what comes out of it.
 
 #### Master Sub
 Multiple BL's in one file. Could be all FCL or all LCL. One booking, multiple BLs.
 IF LCL -> HouseShipmentType = "Co-load in" "Coloadin"
+
+A master-sub interchange is **always uniformly FCL or uniformly LCL, never mixed.**
 
 #### Needed flow
 Step 0: "BASF IFTMIN START"
@@ -153,6 +157,27 @@ Mapping underway (Robin)
 ### IFTSTA (Status message)
 Mapping underway (Niels)
 
+## FCL switch
+
+Both `seaHouseShipment` mappings carry a constant `PROCESS_FCL`, shipped `false`.
+
+LCL is processed unconditionally. FCL is switchable because go-live carries LCL only. When the
+switch is off an FCL message contributes nothing at all - no create, no update and no cancel
+either, since a load type the integration never created is one it must not address. A master-sub
+interchange is always uniformly FCL or uniformly LCL, so the filter takes such an interchange
+whole or not at all.
+
+To enable FCL: set `PROCESS_FCL = true` in **both** `BasfIftmin.dwl` and `BasfIftmbf.dwl` and
+re-upload both blobs. They must hold the same value - a booking that creates an FCL dossier the
+instruction then ignores is exactly the orphaned-record state issue 3 below describes.
+Re-uploading is how these mappings deploy, so this is a configuration change rather than a code
+change. `BasfIfcsum.dwl` has no switch: it addresses a cargo line by `RFF+LI` id and cannot tell
+FCL from LCL, so with FCL off an IFCSUM for an FCL order simply finds nothing to update.
+
+> With FCL off an FCL interchange maps to `{ "seaHouseShipment": [] }`. Whether the delivery step
+> POSTs that empty array to Carlo or short-circuits is **not established** - nothing in `config/`
+> says. Confirm before go-live.
+
 ## Issues
 #### Current issues 
 Date: 2026-09-02
@@ -160,7 +185,95 @@ Date: 2026-09-02
 2. IFTMIN Master sub create = ok / IFTMBF only contains data for the whole order (Master). The IFTMBF should therefore be applied to every sub of the Master that was send before.
 3. When IFTMBF comes first and is of type Master Sub, we currently run into problems because there is no indication of it being of type Master Sub. The automation will currently create a new dossier with empty BL ID.
 
+Date: 11-09-2026
+1. Segment PCI in the excel file line 102 should take into account the whole line, not just the first two values.
+
+Date: 16-09-2026
+1. Master sub update is still only updating the first shipment, not the second. 
+ 
 #### Proposed solutions
+Date: 2026-09-02
 1. When master sub, look-ups must be done using the CustomerRef AND bill of lading id (BL ID)
 2. When IFTMBF comes in and the lookup returns multiple dossiers, apply the mapping to each returned dossier.
 3. When an IFTMIN comes in and the lookup returns one dossier with no BL AND the IFTMIN is of type Master-Sub, then we need to read the existing dossier (IFTMBF data) and cache it. Then we should update the existing dossier with the data of the first Sub BL. Hereafter every other Sub dossier should also get the cached values mapped.
+
+Date: 11-09-2026
+1. Join **every** `PCI02` component present, in order, separated by CR/LF, into
+   `Cargo/HandlingInfo`. `PCI02` is EDIFACT composite C210 - up to ten 35-character components,
+   which BASF uses as a block of fixed-width display lines. A real message carries nine: the
+   customer mark, the delivery reference, destination port, batch number, production and expiry
+   dates, net and gross weights, country of manufacture - with component 8 padded with leading
+   spaces to continue the sentence component 7 begins. One component per line preserves that
+   layout, and also supplies the "enter between 'BASF' and the reference" the sheet asks for on
+   row 102.
+
+Date: 16-09-2026
+1. Not a mapping defect. The addressing fix for 2026-09-02 #1 is in the mapping and tested, but
+   **inert in production**: no pipeline step performs the "GET dossier by CustomerRef", so
+   `payload.lookup` is never set and both mappings fall back to a single unaddressed upsert.
+   Carlo's `updateorcreate` then matches on `customerReference` alone, so every BL of a
+   master-sub resolves onto the same record. The fix is to wire that step - the call is specified
+   and server-verified in `docs/carlo/06-dossier-lookup.md`; see also README open item 1 and
+   `config/README.md` check 6.
+
+#### Status
+| Issue | Solution | State |
+|---|---|---|
+| 02-09 #1 | CustomerRef + BL ID addressing | Implemented in the mapping, **blocked in production** on the lookup step (16-09 #1) |
+| 02-09 #2 | one update per returned dossier | Implemented (`toCarloBookingUpdates`), same block |
+| 02-09 #3 | cache the booking dossier, re-purpose it for the first sub | Implemented (`bookingCarryForward` / `mergeUnder`), same block |
+| 11-09 #1 | whole PCI line | Implemented (`handlingInfo`) |
+| 16-09 #1 | wire the dossier lookup | **Open - pipeline work, not mapping work** |
+
+## IFTMIN mapping specification v1.1
+
+`docs/01-BASF-CarLo_IFTMIN_Mapping_Specification_v1.1.md`. Implemented except where noted.
+
+#### Correction to the spec: sections 4-7
+
+The spec lists `customerVessel`, `customerVoyage`, `customerPOL`, `customerPOD` and
+`customerPlaceofDelivery` as fields that **must not** be used. That is inverted - those *are* the
+BASF customer UDFs, and they are the targets. Three things establish it:
+
+- The `customer` prefix is Carlo's own naming for them; the standard fields are `vessel`,
+  `voyageNumber`, `portOfLoading`, `portOfDischarge`.
+- A real record this integration created carries `vessel: {null, null}` and `voyageNumber: ""`
+  beside `customerVessel: {"GSL MARIA", "9231236"}` and `customerVoyage: "Ocean Vessel"`
+  (`docs/get-responses`).
+- The v1 mapping sheet targets exactly the standard names that v1.1 says to change away from
+  (rows 39, 42, 43, 46).
+
+So POL, POD and Place of Delivery moved onto the customer UDFs, and the standard fields are now
+left unset - per the spec's general rule 6, and matching what vessel and voyage already did.
+
+> **Confirm with the analyst:** `portOfLoading` was resolving Carlo master data (it comes back
+> with `designation: "Antwerpen"`, `cityCode: "ANR"`), so something downstream may read it.
+> Vacating it follows the spec and the vessel precedent, but the effect is not visible from here.
+
+#### Other deviations
+
+- **Section 13 (VGM signature).** The spec says `NAD+AM` occurs once per message and should be
+  copied to every container. It actually occurs once *per container*, in that container's own
+  SG39 group, so it is read per container with a message-level fallback. Same result whenever the
+  value repeats, correct when it does not.
+- **Section 4 (Erstinfo gate).** The v1 sheet gated vessel and voyage on "Only when Erstinfo 9",
+  which dropped them from every Abschlussinfo - the message a corrected vessel arrives on. The
+  gate is withdrawn: vessel, voyage and VGM now map on both code 9 and code 4.
+- **Section 11 (DG cardinality).** `dangerousGoods` is now an array, per the v3 contract and the
+  spec's own `dangerousGoods[0]`. It was a bare object, matching the legacy TRS sample.
+- **Section 16 (Scenario).** The field is obsolete, and removed from `BasfIftmin.dwl` **and**
+  `BasfIftmbf.dwl`. The spec covers IFTMIN only, but leaving it in the booking mapping would
+  write back on every update what the instruction stopped sending.
+
+#### Open
+
+1. **Section 10 (ACID, `RFF+ABT`) is unattested.** No IFTMIN interchange in `docs/example-orders`
+   carries one, and ML `2800244245`, which the spec names as the example, is not in the repo. The
+   mapping tries the two positions BASF uses for a reference in IFTMIN - header SG1, then
+   goods-item SG22 - and takes whichever is present. **Re-verify against a real Egypt message
+   before go-live.**
+2. **v1.1 pins this integration to contract v3.** The five TAX ID fields plus `lCNumber` and
+   `aCIDNumber` exist only in v3; v4 drops all eight. See `docs/carlo/07-contract-conformance.md`.
+3. **LCL bookings lose `HaulageType` and `EstimatedDispatchDate`** (README open item 5). The
+   IFTMBF sheet's rules need an `EQD` and an LCL booking has none. With FCL switched off this is
+   the main path, not an edge case.

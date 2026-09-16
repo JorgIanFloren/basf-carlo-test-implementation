@@ -39,7 +39,27 @@ var iftmin = manifest filter ((e) -> e.messageType == "IFTMIN")
 * This is the only route the suite has into the mapping - the same call the data-transformer
 * makes - so a break in the output header, the document body or any helper surfaces here.
 */
-fun document(payload) = evalPath(MAPPING, { payload: payload }, "application/json")
+fun document(payload) = documentWith(payload, true)
+
+/**
+* Run the mapping with the FCL switch explicitly set.
+*
+* The mapping ships with `PROCESS_FCL = false`, because BASF go-live carries LCL only. Nearly
+* every example interchange is FCL, so a suite that could only ever see the shipped state
+* would assert almost nothing - and the FCL behaviour is what has to keep working for the day
+* the switch is flipped. `processFcl` in the mapping reads `payload.config.processFcl` and
+* falls back to the constant, which is the seam this uses; nothing in the pipeline sets that
+* key, so production is always the constant.
+*
+* So `document` - and everything built on it - describes the mapping with **FCL enabled**.
+* The shipped default is covered on its own terms by `documentAsShipped`, under
+* "the FCL switch" below.
+*/
+fun documentWith(payload, fcl) =
+    evalPath(MAPPING, { payload: payload ++ { config: { processFcl: fcl } } }, "application/json")
+
+/** Run the mapping exactly as shipped, letting `PROCESS_FCL` in the file decide. */
+fun documentAsShipped(payload) = evalPath(MAPPING, { payload: payload }, "application/json")
 
 /** The document for an interchange built from the given synthetic messages. */
 fun documentOf(msgs) = document({ EDI: { Messages: { D99A: { IFTMIN: msgs } } } })
@@ -53,7 +73,6 @@ fun actual(fixture) = shipmentsOf(fixture) map ((s) -> {
     ref: s.customerReference,
     load: s.loadType,
     house: s.houseType,
-    scenario: s.scenario.matchcode,
     action: s.actionAttribute,
     // The Carlo contract's required top-level set. `customer` and `master` are objects, so
     // presence is what matters here; their contents are covered by the field tests below.
@@ -75,7 +94,6 @@ fun expected(e) = e.messages map ((m) -> {
     load: expectedLoad(m),
     // Co-load only where the flow says: a master-sub interchange whose block is LCL.
     house: if (e.masterSub and expectedLoad(m) == "LCL") "Coloadin" else "BackToBack",
-    scenario: "BASF " ++ expectedLoad(m),
     action: expectedAction(m.code),
     complete: true
 })
@@ -320,7 +338,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // ports and ETD. Replacing the node either way would drop half the carriage.
     () -> "cached booking values merge into the carriage node rather than replacing it" in (
         { fromBooking: msAfterBooking[0].master.mainCarriageAsOcean.customerETA,
-          fromMessage: msAfterBooking[0].master.mainCarriageAsOcean.portOfLoading.matchcode }
+          fromMessage: msAfterBooking[0].master.mainCarriageAsOcean.customerPOL.matchcode }
             must equalTo({ fromBooking: "2026-08-04", fromMessage: "BEANR" })),
 
     // Two structural properties of the merge, top level and inside the nodes it reaches into.
@@ -427,6 +445,177 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
 
     () -> "without a lookup no cached booking values are invented" in (
         (shipmentsOf("ms/2800231445-iftmbf-2.json") map ((s) -> s.estimatedDispatchDate))
-            must equalTo([null, null]))
+            must equalTo([null, null])),
+
+    // === the FCL switch ===================================================================
+    // `PROCESS_FCL` in the mapping. LCL is unconditional; FCL is switchable because go-live
+    // carries LCL only. These run the file exactly as shipped, so they also assert which way
+    // the committed constant is set - flip it and these four fail, which is intended: the
+    // switch is a deployment decision and should not move unnoticed.
+
+    () -> "as shipped, an FCL interchange produces no call at all" in (
+        sizeOf(documentAsShipped(load("fcl/2800209301-fcl-iftmin-erst-9.json")).seaHouseShipment)
+            must equalTo(0)),
+
+    () -> "as shipped, an LCL interchange is mapped as usual" in (
+        (documentAsShipped(load("lcl/2800226066-iftmin-erst-9.json")).seaHouseShipment
+            map ((s) -> s.loadType)) must equalTo(["LCL"])),
+
+    // A master-sub is always uniformly FCL or uniformly LCL, so the per-message filter takes
+    // the whole interchange or none of it - never half an order.
+    () -> "as shipped, an FCL master-sub is dropped whole and an LCL one is kept whole" in (
+        { fcl: sizeOf(documentAsShipped(load("ms/2800231445-ab-9.json")).seaHouseShipment),
+          lcl: sizeOf(documentAsShipped(load("ms/trissquid-138083512.json")).seaHouseShipment) }
+            must equalTo({ fcl: 0, lcl: 2 })),
+
+    // Cancels are gated with everything else: a load type the integration never created is
+    // one it must not address either.
+    () -> "the switch gates FCL cancels too, and never LCL ones" in (
+        { fcl: sizeOf(documentAsShipped(
+                   { EDI: { Messages: { D99A: { IFTMIN: [ withEquipment(bgm("1", "X")) ] } } } }
+               ).seaHouseShipment),
+          lcl: sizeOf(documentAsShipped(
+                   { EDI: { Messages: { D99A: { IFTMIN: [ bgm("1", "X") ] } } } }
+               ).seaHouseShipment) }
+            must equalTo({ fcl: 0, lcl: 1 })),
+
+    () -> "with the switch on, FCL is processed again" in (
+        (documentWith(load("fcl/2800209301-fcl-iftmin-erst-9.json"), true).seaHouseShipment
+            map ((s) -> s.loadType)) must equalTo(["FCL"])),
+
+    // === spec v1.1 ========================================================================
+
+    // Sections 4-7. These are the BASF customer UDFs, not Carlo's standard vessel and port
+    // fields - a real record this integration created carries `vessel: {null, null}` beside a
+    // populated `customerVessel` (docs/get-responses). The standard fields stay unset.
+    () -> "the customer UDFs carry vessel, voyage, POL, POD and place of delivery" in (
+        do {
+            var mc = shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].master.mainCarriageAsOcean
+            ---
+            { lloyds: mc.customerVessel.vesselNumber, vessel: mc.customerVessel.vesselName,
+              voyage: mc.customerVoyage, pol: mc.customerPOL.matchcode, pod: mc.customerPOD.matchcode,
+              delivery: mc.customerPlaceofDelivery.matchcode }
+                must equalTo({ lloyds: "9472165", vessel: "COSCO HOPE", voyage: "Ocean Vessel",
+                               pol: "BEANR", pod: "USNYC", delivery: "USCMH" })
+        }),
+
+    () -> "the standard vessel and port fields are left unset" in (
+        do {
+            var mc = shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].master.mainCarriageAsOcean
+            ---
+            [ mc.vessel, mc.voyageNumber, mc.portOfLoading, mc.portOfDischarge ]
+                must equalTo([null, null, null, null])
+        }),
+
+    // The v1 sheet gated vessel and voyage on "Only when Erstinfo 9", which silently dropped
+    // them from every Abschlussinfo - exactly the message a corrected vessel arrives on.
+    () -> "vessel and voyage are mapped on a code 4 update, not only on a code 9" in (
+        do {
+            var mc = shipmentsOf("fcl/2800209301-iftmin-erst-4-v2.json")[0].master.mainCarriageAsOcean
+            ---
+            { code: shipmentsOf("fcl/2800209301-iftmin-erst-4-v2.json")[0].actionAttribute,
+              vessel: mc.customerVessel.vesselName, voyage: mc.customerVoyage }
+                must equalTo({ code: "update", vessel: "COSCO HOPE", voyage: "Ocean Vessel" })
+        }),
+
+    // Section 8. RFF+BN occurs twice per message - header SG1 and again on the main carriage
+    // stage - with the same value. Only the first may be mapped, and only one entry created.
+    () -> "the booking number is one external reference of type 9, not two" in (
+        (shipmentsOf("ms/2800231445-ab-9.json") map ((s) -> s.master.externalReferences))
+            must equalTo([
+                [{ referenceType: 9, value: "272215347" }],
+                [{ referenceType: 9, value: "272215347" }]
+            ])),
+
+    // Section 9. BASF carries RFF+LC on the goods item, not the header.
+    () -> "the letter of credit number is read off the goods item" in (
+        (shipmentsOf("lcl/2800226066-iftmin-erst-9.json") map ((s) -> s.lCNumber))
+            must equalTo(["LCS/2/76/2804"])),
+
+    // Section 12/13. Both are per container in the real messages: the three containers of
+    // this interchange carry two different VGM values, so a broadcast would be wrong.
+    () -> "VGM is numeric and per container, and the signature rides with it" in (
+        (shipmentsOf("fcl/2800209301-iftmin-erst-9.json")[0].container
+            map ((c) -> { vgm: c.verifiedGrossMass, sig: c.vgmVerificationSignature }))
+            must equalTo([
+                { vgm: 24220.0, sig: "MR UNGER JOCHEN, HEAD OF WH" },
+                { vgm: 24220.0, sig: "MR UNGER JOCHEN, HEAD OF WH" },
+                { vgm: 22273.0, sig: "MR UNGER JOCHEN, HEAD OF WH" }
+            ])),
+
+    // A message that carries no VGM must not grow the fields - the interchange below is the
+    // same order without the Abschlussinfo measurements.
+    () -> "a message with no VGM leaves the container fields unset" in (
+        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].container
+            map ((c) -> c.verifiedGrossMass)) must equalTo([null, null, null])),
+
+    // Section 11. The DG package fields are additional - the Cargo ones must survive intact.
+    () -> "DG quantity and packaging are added without disturbing the cargo fields" in (
+        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].cargo
+            map ((c) -> { packages: c.totalNumberOfPackages, packaging: c.packaging.matchcode,
+                          dgQty: c.dangerousGoods[0].quantity,
+                          dgPkg: c.dangerousGoods[0].packaging.matchcode }))
+            must equalTo([
+                { packages: 35,  packaging: "1H1", dgQty: 35,  dgPkg: "1H1" },
+                { packages: 50,  packaging: "1H1", dgQty: 50,  dgPkg: "1H1" },
+                { packages: 50,  packaging: "1H1", dgQty: 50,  dgPkg: "1H1" },
+                { packages: 150, packaging: "1H1", dgQty: 150, dgPkg: "1H1" },
+                { packages: 150, packaging: "1H1", dgQty: 150, dgPkg: "1H1" }
+            ])),
+
+    // Spec rule 6 of section 11: never copy a value from one GID goods item to another's DG
+    // data. The five lines above carry 35 / 50 / 50 / 150 / 150 packages, so a mapping that
+    // read the wrong item - or hoisted the first - fails this rather than passing by accident.
+    () -> "each DG line takes its quantity from its own goods item" in (
+        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].cargo
+            map ((c) -> c.dangerousGoods[0].quantity == c.totalNumberOfPackages))
+            must equalTo([true, true, true, true, true])),
+
+    // Section 15. BASF reuses NAD02 for an internal partner number (qualifier 160) and a tax
+    // registration (167). Only 167 is a TAX ID.
+    () -> "a TAX ID is taken only from a 167-qualified identifier" in (
+        (shipmentsOf("fcl/2013386790-iftmin-erstinfo-9.json")
+            map ((s) -> { cons: s.consigneeTAXID, n1: s.notify1TAXID }))
+            must equalTo([{ cons: "80005230-7", n1: "80005230-7" }])),
+
+    () -> "a 160-qualified identifier is not a TAX ID" in (
+        (shipmentsOf("lcl/2800226066-iftmin-erst-9.json")
+            map ((s) -> { n1: s.notify1TAXID, n2: s.notify2TAXID }))
+            must equalTo([{ n1: null, n2: null }])),
+
+    // Section 14. NAD+N2 sits in the same goods-item party group as NAD+N1.
+    () -> "Notify2 is mapped with the Notify1 logic" in (
+        (shipmentsOf("lcl/2800226066-iftmin-erst-9.json") map ((s) -> s.notify2.name1))
+            must equalTo(["HABIB METROPOLITAN BANK LTD,"])),
+
+    // Section 16. The field is obsolete on BASF's side and real Carlo records carry null.
+    () -> "Scenario is no longer emitted" in (
+        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json") map ((s) -> s.scenario))
+            must equalTo([null])),
+
+    // === PCI / HandlingInfo (issue of 11-09-2026) =========================================
+    // PCI02 is composite C210, up to ten 35-character components used as display lines. The
+    // earlier mapping emitted only the first two and dropped destination port, batch number,
+    // dates, weights and country of manufacture.
+    // Asserted line by line rather than as one literal: several components are Spanish and a
+    // non-ASCII literal in this file does not survive the test reader's decoding, which would
+    // make the test fail on its own encoding rather than on the mapping.
+    () -> "HandlingInfo carries every PCI component, not just the first two" in (
+        do {
+            var lines = (shipmentsOf("fcl/2013386790-iftmin-erstinfo-9.json")[0]
+                            .cargo[0].handlingInfo splitBy "\r\n")
+            ---
+            { count: sizeOf(lines), first: lines[0], second: lines[1],
+              seventh: lines[6], eighth: lines[7] }
+                must equalTo({ count: 9, first: "BASF", second: "3020994027 / 000010",
+                               // 7 and 8 are one sentence the sender split across two
+                               // 35-character components, the second padded to line up.
+                               seventh: "Neto:        160,000  Kg  Bruto:",
+                               eighth: "     181,800  Kg" })
+        }),
+
+    () -> "a two-component PCI still yields both lines" in (
+        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].cargo[0].handlingInfo)
+            must equalTo("BASF\r\n3020963670 / 000010"))
     ]
 )

@@ -61,6 +61,45 @@ output application/json encoding="UTF-8"
 
 import substringAfter, substringBefore from dw::core::Strings
 
+// ===========================================================================
+// Feature switches
+// ===========================================================================
+
+/**
+* Whether FCL orders are processed at all.
+*
+* LCL is unconditional; FCL is switchable because BASF go-live carries LCL only and FCL
+* follows later. With this `false` an FCL message contributes nothing - no create, no
+* update, and no cancel either: the switch gates the whole load type, so that an order the
+* integration never created is also never addressed.
+*
+* A master-sub interchange is always uniformly FCL or uniformly LCL, never mixed, so a
+* per-message filter drops such an interchange whole rather than half of it. The filter is
+* still per-message because that is the only level at which the load type is knowable.
+*
+* To enable FCL: flip this to `true` and re-upload *both* `BasfIftmin.dwl` and
+* `BasfIftmbf.dwl` - the same constant lives in each, and a booking that creates an FCL
+* dossier the instruction then ignores is the state issue 3 of docs/00-basf.md describes.
+* Re-uploading the blob is how these mappings deploy, so this is a configuration change
+* rather than a code change. See docs/00-basf.md "FCL switch".
+*/
+var PROCESS_FCL = false
+
+/**
+* The switch as the mapping actually reads it.
+*
+* `PROCESS_FCL` is the operative setting: nothing in the pipeline puts a `config` key on the
+* payload (the transformer is handed `EDI`, and `lookup` once that step exists - see
+* config/README.md check 6), so in production this is always the constant above.
+*
+* The override exists because the test suite has no other way in. It runs the mapping through
+* `evalPath`, which evaluates this file as shipped, and `dw::Runtime::eval` - the only route
+* that could patch the constant - types its scope as `Dictionary<String>` and so cannot be
+* handed a payload. Without the seam the suite could only ever exercise whichever state
+* happened to be committed, and the 21 example interchanges are mostly FCL.
+*/
+fun processFcl(payload) = payload.config.processFcl default PROCESS_FCL
+
 /**
 * Helpers shared by the three BASF inbound mappings (IFTMIN, IFTMBF, IFCSUM).
 *
@@ -368,9 +407,49 @@ fun meaByDesc(item, d) = ((item."1050_Segment_group_20" default []) filter ((m) 
 /** Container measurement value (plain 1680_MEA array) for MEA type `t`. */
 fun contMea(measArr, t) = ((measArr default []) filter ((m) -> m.MEA0201 == t))[0].MEA0302
 
+/**
+* Container Verified Gross Mass, in kilograms.
+*
+* BASF sends this as `MEA+WT+AAB:::VGM+KGM:24220.000` inside the equipment group, so it
+* arrives in the same `1680_MEA` array the tare weight is read from and is already per
+* container - different containers of one message carry different values. There is no
+* standalone `VGM+` segment in any BASF message; the free description `MEA0204 = "VGM"` is
+* what distinguishes this measurement from the ordinary gross weight beside it.
+*/
+fun contVgm(measArr) = ((measArr default []) filter ((m) -> m.MEA0204 == "VGM"))[0].MEA0302
+
+/**
+* The VGM verification signature of one equipment group (`NAD+AM` -> NAD0401), or null.
+*
+* Spec v1.1 section 13 states that `NAD+AM` occurs once per message and should be copied to
+* every container. In the actual BASF messages it occurs once *per container*, inside that
+* container's own SG39 party group - so it is read per container here, which gives the same
+* result whenever the value repeats and the right one when it does not. `anyVgmSignature`
+* supplies the spec's broadcast behaviour for a container that carries none of its own.
+*/
+fun contVgmSignature(entry) =
+    ((entry."1840_Segment_group_39" default []) filter ((e) -> e."1850_NAD".NAD01 == "AM"))[0]."1850_NAD".NAD0401
+
+/** The first VGM verification signature anywhere in the message - fallback for a container without one. */
+fun anyVgmSignature(doc) =
+    (containers(doc) map ((c) -> contVgmSignature(c)) filter ((v) -> present(v)))[0]
+
 /** Item RFF object (SG22) for qualifier `q`. */
 fun rffObj(item, q) = ((item."1110_Segment_group_22" default []) filter ((r) -> r."1120_RFF".RFF0101 == q))[0]."1120_RFF"
 fun rffVal(item, q) = rffObj(item, q).RFF0102
+
+/** Header-level RFF value (SG1) for qualifier `q` - where RFF+BN sits. */
+fun headerRffVal(doc, q) =
+    ((doc.Heading."0110_Segment_group_1" default []) filter ((r) -> r."0120_RFF".RFF0101 == q))[0]."0120_RFF".RFF0102
+
+/** Transport-stage RFF value (SG8/SG10) for qualifier `q`, first across every stage. */
+fun stageRffVal(doc, q) =
+    ((stages(doc) flatMap ((st) -> st."0530_Segment_group_10" default []))
+        filter ((g) -> g."0540_RFF".RFF0101 == q))[0]."0540_RFF".RFF0102
+
+/** The first goods-item RFF value for qualifier `q`, across every goods item. */
+fun itemRffValAny(doc, q) =
+    (goods(doc) map ((g) -> rffVal(g, q)) filter ((v) -> present(v)))[0]
 
 /** The container number this goods item is loaded in (SGP link). */
 fun itemContainerNo(item) = item."1360_Segment_group_29"[0]."1370_SGP".SGP0101
@@ -397,6 +476,15 @@ fun shipmentAction(doc) = do {
 
 /** True for a cancellation (BGM03 = 1), which takes the cancel branch of the flow. */
 fun isCancel(doc) = (doc.Heading."0020_BGM".BGM03 default "9") == "1"
+
+/**
+* A party's TAX ID - its identifier, but only when the identifier qualifier is 167.
+*
+* Spec v1.1 section 15. BASF reuses NAD02 for two different things: qualifier 160 carries an
+* internal partner number and 167 a tax registration. Only the latter is a TAX ID, so a party
+* identified by 160 yields null here rather than writing a partner number into a tax field.
+*/
+fun taxId(n) = if ((n.NAD0202 default "") == "167") nz(n.NAD0201) else null
 
 // ===========================================================================
 // Shipment identity (issue 1 / proposed solution 1)
@@ -517,9 +605,6 @@ fun loadType(doc) = if (isEmpty(containers(doc))) "LCL" else "FCL"
 */
 fun houseType(doc, masterSub) =
     if (masterSub and loadType(doc) == "LCL") "Coloadin" else "BackToBack"
-
-/** Scenario matchcode: the BASF FCL / BASF LCL scenario the shipment is created under. */
-fun scenarioMatchcode(doc) = "BASF " ++ loadType(doc)
 
 /**
 * One cancellation payload: identity plus the recycle-bin flag, and nothing else.
@@ -724,10 +809,18 @@ fun technicalName(item) = do {
 fun bpMatch(nadObj) = if (nadObj == null) null else { Matchcode: nadObj.NAD0201 default "" }
 
 /** Cargo DangerousGoods block (emitted only when DGS is regulated). */
-fun dgObj(item) = do {
+fun dgObj(doc, item) = do {
     var dgs = itemDgs(item)
+    var gid = item."0900_GID"
     ---
     {
+        // Spec v1.1 section 11: the GID package quantity and packaging code are mapped a
+        // *second* time here, in addition to - never instead of - the Cargo fields above.
+        // Both are read off this goods item's own GID, so a DG line can never pick up the
+        // packaging of a neighbouring one, and both are emitted only on a line that
+        // `isRegulatedDg` already established carries dangerous goods.
+        (Quantity: pkgCount(doc, gid)) if (pkgCount(doc, gid) != null),
+        (Packaging: { Matchcode: pkgMatchcode(doc, gid) }) if present(pkgMatchcode(doc, gid)),
         (UnNumber: dgs.DGS0301) if (dgs.DGS0301 != null),
         (PackagingGroup: dgs.DGS05) if present(dgs.DGS05),
         (Flashpoint: (dgs.DGS0401 default meaByDesc(item, "Flash Point"))) if ((dgs.DGS0401 default meaByDesc(item, "Flash Point")) != null),
@@ -762,12 +855,17 @@ fun containerObj(doc, entry, idx) = do {
     var eqd = entry."1650_EQD"
     var meas = entry."1680_MEA" default []
     var ediid = containerEdiid(doc, eqd.EQD0201)
+    var vgm = contVgm(meas)
+    var sig = contVgmSignature(entry) default anyVgmSignature(doc)
     ---
     {
         SequenceNumber: idx + 1,
         (ContainerNumber: eqd.EQD0201) if present(eqd.EQD0201),
         ContainerType: { (Matchcode: eqd.EQD0301) if present(eqd.EQD0301) },
         (TareWeight: contMea(meas, "T")) if (contMea(meas, "T") != null),
+        // Numeric, not the localized display text the segment carries as a string.
+        (VerifiedGrossMass: num(vgm)) if (vgm != null),
+        (VgmVerificationSignature: sig) if present(sig),
         (EDIID: ediid) if (ediid != null),
         ContainerNumberType: "Known",
         TransportMode: "Container"
@@ -816,38 +914,119 @@ fun cargoObj(doc, item, idx) = do {
         (GoodsReceiverReference: rffVal(item, "CO")) if (rffVal(item, "CO") != null),
         (CustomerPONumber: rffVal(item, "OP")) if (rffVal(item, "OP") != null),
         (HSCode: rffVal(item, "AQV")) if (rffVal(item, "AQV") != null),
-        (HandlingInfo: (pci.PCI0201 default "") ++ "\r\n" ++ (pci.PCI0202 default "")) if (pci != null),
+        (HandlingInfo: handlingInfo(pci)) if (handlingInfo(pci) != null),
         (AdditionalDGInfo: dgFullText(item)) if (dgFullText(item) != null),
         (AdditionalInfo: ftxAgg(itemDgFtx(item), "ACB", " ", "\r\n")) if (ftxAgg(itemDgFtx(item), "ACB", " ", "\r\n") != null),
         (LoadingInstructions: ftxAgg(itemDgFtx(item), "LOI", " ", "\r\n")) if (ftxAgg(itemDgFtx(item), "LOI", " ", "\r\n") != null),
         (HandlingRestrictions: ftxAgg(itemDgFtx(item), "AAN", " ", "\r\n")) if (ftxAgg(itemDgFtx(item), "AAN", " ", "\r\n") != null),
         (TemperatureControlInstructions: ftxAgg(itemDgFtx(item), "AEB", " ", "\r\n")) if (ftxAgg(itemDgFtx(item), "AEB", " ", "\r\n") != null),
-        (DangerousGoods: dgObj(item)) if isRegulatedDg(item)
+        // An array, not a bare object: the v3 contract types `dangerousGoods` as one entry
+        // per UN number on the line, and spec v1.1 section 11 addresses `dangerousGoods[0]`.
+        // BASF sends a single DGS per goods item, so this is always one entry.
+        (DangerousGoods: [ dgObj(doc, item) ]) if isRegulatedDg(item)
     }
 }
 
-/** Master / MainCarriageAsOcean block. */
+/**
+* HandlingInfo - the whole PCI marks-and-numbers line, one component per line.
+*
+* `PCI02` is EDIFACT composite C210, up to ten 35-character components, and BASF uses it as a
+* block of fixed-width display lines: a real message carries the customer mark, the delivery
+* reference, destination port, batch number, production and expiry dates, net and gross
+* weights and the country of manufacture across nine of them, with component 8 padded with
+* leading spaces to continue the sentence component 7 begins.
+*
+* The earlier version emitted only PCI0201 and PCI0202 and dropped everything after, which is
+* the 11-09-2026 issue in docs/00-basf.md. Every present component is now joined in order,
+* which also supplies the "enter between 'BASF' and the reference" the mapping sheet asks for
+* on row 102. The sheet caps the field at 2000 characters; ten 35-character components cannot
+* approach that, so no truncation is applied.
+*/
+fun handlingInfo(pci) = do {
+    var parts = (kvs(pci) filter ((e) -> (e.k as String) startsWith "PCI02")
+                          orderBy ((e) -> e.k as String)
+                          map ((e) -> e.v)
+                          filter ((v) -> present(v))
+                          map ((v) -> v as String))
+    ---
+    if (isEmpty(parts)) null else (parts joinBy "\r\n")
+}
+
+/**
+* Master / MainCarriageAsOcean block.
+*
+* --- The customer UDF fields (spec v1.1 sections 4-7) ---------------------------------------
+* `CustomerVessel`, `CustomerVoyage`, `CustomerPOL`, `CustomerPOD` and
+* `CustomerPlaceofDelivery` are the BASF customer-specific UDFs, *not* Carlo's standard
+* vessel and port fields - which is the reverse of how spec v1.1 words sections 4-7. Three
+* things establish it: the `customer` prefix is Carlo's own naming for them; a real record
+* this integration created carries `vessel: {null, null}` and `voyageNumber: ""` beside
+* `customerVessel: {"GSL MARIA", "9231236"}` and `customerVoyage: "Ocean Vessel"`
+* (docs/get-responses); and the v1 mapping sheet targets exactly the standard names that
+* v1.1 now says to change away from (rows 39, 42, 43, 46).
+*
+* So the standard `Vessel`, `VoyageNumber`, `PortOfLoading` and `PortOfDischarge` are
+* deliberately left unset, per general rule 6 of that spec ("The standard CarLo field must
+* not be populated instead") and matching what the vessel fields already did.
+*
+* `CustomerVessel` and `CustomerVoyage` are emitted for every message function. The v1 sheet
+* gated them on "Only when Erstinfo 9" (row 39, condition H); that gate is withdrawn, since
+* an Abschlussinfo (BGM03 = 4) is exactly where a corrected vessel or voyage arrives and the
+* gate silently dropped it.
+*
+* Customer Lloyds is `TDT0801` and rides in `CustomerVessel/VesselNumber` - the Lloyds number
+* is the matchcode Carlo identifies a vessel by. No vessel master-data lookup is performed.
+*/
 fun masterObj(doc) = do {
     var main = mainStage(doc)
     var tdt = main."0470_TDT"
     var etd = ((main."0480_DTM" default []) filter ((d) -> d.DTM0101 == "133"))[0].DTM0102
-    var isOriginal = (doc.Heading."0020_BGM".BGM03 default "9") == "9"
+    var pod = stageLoc(stage(doc, "30"), "20")
+    var bkg = bookingNumber(doc)
     ---
     {
         PreferredModeOfTransport: "Ocean",
+        // First RFF+BN only. It occurs twice per message - header SG1 and again on the main
+        // carriage stage - with the same value, which is what the spec's first-occurrence
+        // rule is about; later occurrences must not add a second entry.
+        (ExternalReferences: [ { ReferenceType: 9, Value: bkg } ]) if present(bkg),
         MainCarriageAsOcean: {
             (CustomerVessel: {
                 (VesselNumber: tdt.TDT0801) if present(tdt.TDT0801),
                 (VesselName: tdt.TDT0804) if present(tdt.TDT0804)
-            }) if (isOriginal and (present(tdt.TDT0801) or present(tdt.TDT0804))),
-            (CustomerVoyage: tdt.TDT02) if (isOriginal and present(tdt.TDT02)),
-            (PortOfLoading: { Matchcode: stageLoc(main, "5").LOC0201 }) if (stageLoc(main, "5") != null),
-            (PortOfDischarge: { Matchcode: stageLoc(main, "12").LOC0201 }) if (stageLoc(main, "12") != null),
+            }) if (present(tdt.TDT0801) or present(tdt.TDT0804)),
+            (CustomerVoyage: tdt.TDT02) if present(tdt.TDT02),
+            (CustomerPOL: { Matchcode: stageLoc(main, "5").LOC0201 }) if (stageLoc(main, "5") != null),
+            (CustomerPOD: { Matchcode: stageLoc(main, "12").LOC0201 }) if (stageLoc(main, "12") != null),
+            (CustomerPlaceofDelivery: {
+                (Matchcode: pod.LOC0201) if present(pod.LOC0201),
+                (Designation: pod.LOC0204) if present(pod.LOC0204)
+            }) if (pod != null),
             (CustomerETD: toIsoDate(etd)) if (etd != null),
             (Carrier: { Matchcode: carrierMatchcode(doc) }) if (nad(doc, "CA") != null)
         }
     }
 }
+
+/**
+* Booking number (`RFF+BN`), first occurrence only.
+*
+* Header SG1 is the first occurrence in every message that carries one; the main-carriage
+* stage repeats the same value, and is the fallback in case a message ever carries only that.
+*/
+fun bookingNumber(doc) = headerRffVal(doc, "BN") default stageRffVal(doc, "BN")
+
+/**
+* ACID number (`RFF+ABT`) - spec v1.1 section 10.
+*
+* Unattested: no IFTMIN interchange in docs/example-orders carries an RFF+ABT, and the
+* message the spec names as the example (ML 2800244245) is not in the repo. The qualifier
+* does occur in IFCSUM, at cargo-line level. So both of the positions BASF uses for a
+* reference in IFTMIN are tried - the header SG1 that carries RFF+BN, then the goods-item
+* SG22 that carries RFF+LC - and whichever is present wins. Re-verify against a real Egypt
+* message before go-live.
+*/
+fun acidNumber(doc) = headerRffVal(doc, "ABT") default itemRffValAny(doc, "ABT")
 
 /** BLRecipients block for a header BL party entry. */
 fun blRecipient(entry) = do {
@@ -894,6 +1073,8 @@ fun toCarloShipment(doc, masterSub, target) = do {
     var cn = itemNad(g0, "CN")
     var dm = itemNad(g0, "DM")
     var n1 = itemNad(g0, "N1")
+    var n2 = itemNad(g0, "N2")
+    var n3 = itemNad(g0, "N3")
     var dorec = itemNad(g0, "DO")
     var os = nad(doc, "OS")
     var incoLoc = ((g0."0950_LOC" default []) filter ((l) -> l.LOC01 == "1"))[0]
@@ -919,6 +1100,13 @@ fun toCarloShipment(doc, masterSub, target) = do {
         (DocDeliveryInstructions: docDeliveryInstructions(doc)) if (docDeliveryInstructions(doc) != null),
         (BLRemarks: ftxAgg(headerFtx(doc), "AAS", "", "\r\n")) if (ftxAgg(headerFtx(doc), "AAS", "", "\r\n") != null),
         (CustomerEDIType: { Matchcode: ediType(doc) }) if (ediType(doc) != null),
+        // Letter of credit (RFF+LC) - spec v1.1 section 9. BASF carries it on the goods item
+        // rather than the header, so the first one found across the items is the shipment's.
+        (LCNumber: itemRffValAny(doc, "LC")) if (itemRffValAny(doc, "LC") != null),
+        // ACID (RFF+ABT) - spec v1.1 section 10, Egypt shipments. Taken from the structured
+        // segment only, never from free-text FTX. No IFTMIN example message in the repo
+        // carries one, so both plausible positions are tried; see docs/00-basf.md.
+        (ACIDNumber: acidNumber(doc)) if (acidNumber(doc) != null),
         MovementType: movementType(doc),
         LoadType: loadType(doc),
         HouseType: houseType(doc, masterSub),
@@ -927,9 +1115,9 @@ fun toCarloShipment(doc, masterSub, target) = do {
         ShipmentDate: toIsoDate(((mainStage(doc)."0480_DTM" default []) filter ((d) -> d.DTM0101 == "133"))[0].DTM0102)
             default toIsoDate(doc.Heading."0050_DTM"[0].DTM0102),
         DeliveryTerms: "Prepaid",
-        // Emitted for LCL as well as FCL - the v1 mapping only ever set it for FCL, which
-        // left every LCL shipment without a scenario.
-        Scenario: { Matchcode: scenarioMatchcode(doc) },
+        // Scenario is deliberately not emitted. The field is obsolete on BASF's side (spec
+        // v1.1 section 16), and real Carlo records carry `scenario.matchcode: null` - see
+        // docs/get-responses. The load type itself still rides on `LoadType` above.
         (HaulageType: { Matchcode: haulageType(doc) }) if (haulageType(doc) != null),
         ObjectOwner: { OrganisationalUnitId: 5 },
         Customer: bpMatch(nad(doc, "CZ")),
@@ -980,6 +1168,28 @@ fun toCarloShipment(doc, masterSub, target) = do {
         }) if (n1 != null),
         (PhoneNumberNotify1: itemZzz(g0, "N1").LOC0204) if present(itemZzz(g0, "N1").LOC0204),
         (EmailNotify1: itemZzz(g0, "N1").LOC0404) if present(itemZzz(g0, "N1").LOC0404),
+        // Notify 2 (from item N2) - spec v1.1 section 14. NAD+N2 sits in the same goods-item
+        // party group as NAD+N1, so this is deliberately the Notify1 block field for field,
+        // writing to the Notify2 targets. Keep the two in step.
+        (Notify2: {
+            (Name1: n2.NAD0401) if present(n2.NAD0401),
+            (Name2: n2.NAD0402) if present(n2.NAD0402),
+            Address: {
+                (Street: n2.NAD0501) if present(n2.NAD0501),
+                (Location1: n2.NAD06) if present(n2.NAD06),
+                (Location2: itemRegion(g0, "N2")) if present(itemRegion(g0, "N2")),
+                (ZipCode: n2.NAD08) if present(n2.NAD08),
+                (Country: { CountryID: n2.NAD09 }) if present(n2.NAD09)
+            }
+        }) if (n2 != null),
+        (PhoneNumberNotify2: itemZzz(g0, "N2").LOC0204) if present(itemZzz(g0, "N2").LOC0204),
+        (EmailNotify2: itemZzz(g0, "N2").LOC0404) if present(itemZzz(g0, "N2").LOC0404),
+        // Party TAX IDs - spec v1.1 section 15, qualifier 167 only.
+        (ShipperTAXID: taxId(os)) if (taxId(os) != null),
+        (ConsigneeTAXID: taxId(dorec)) if (taxId(dorec) != null),
+        (Notify1TAXID: taxId(n1)) if (taxId(n1) != null),
+        (Notify2TAXID: taxId(n2)) if (taxId(n2) != null),
+        (Notify3TAXID: taxId(n3)) if (taxId(n3) != null),
         // Goods receiver (from item CN), House level
         (GoodsReceiverName: (cn.NAD0401 default "") ++ " " ++ (cn.NAD0402 default "")) if present(cn.NAD0401),
         (GoodsReceiverRoad: cn.NAD0501) if present(cn.NAD0501),
@@ -993,11 +1203,8 @@ fun toCarloShipment(doc, masterSub, target) = do {
         (CustomerExportManagerAddress: ([dm.NAD0501, dm.NAD08, dm.NAD06, dm.NAD09] filter ((x) -> present(x)) map ((x) -> x as String)) joinBy "\r\n") if (dm != null),
         (CustomerExportManagerPhone: itemZzz(g0, "DM").LOC0204) if present(itemZzz(g0, "DM").LOC0204),
         (CustomerExportManagerEmail: itemZzz(g0, "DM").LOC0404) if present(itemZzz(g0, "DM").LOC0404),
-        // Place of delivery (LOC 20)
-        (PlaceOfDelivery: {
-            (Matchcode: stageLoc(stage(doc, "30"), "20").LOC0201) if present(stageLoc(stage(doc, "30"), "20").LOC0201),
-            (Designation: stageLoc(stage(doc, "30"), "20").LOC0204) if present(stageLoc(stage(doc, "30"), "20").LOC0204)
-        }) if (stageLoc(stage(doc, "30"), "20") != null),
+        // Place of delivery (LOC 20) now rides on Master/MainCarriageAsOcean/
+        // CustomerPlaceofDelivery - see `masterObj`. Spec v1.1 section 7.
         // Pre-carriage / subcontractor (equipment parties)
         (PickupLocation: { ExportCarrier: { Matchcode: dcp.NAD0201 } }) if present(dcp.NAD0201),
         (TransportSubcontractor: { Matchcode: subcontractorMatchcode(ep.NAD0201) }) if present(ep.NAD0201),
@@ -1056,8 +1263,13 @@ fun ediType(doc) = do {
 * first - the master-sub LCL capture comes back BL02 first.
 */
 fun toCarloShipments(payload): Array<Any> = do {
-    var msgs = messagesOfType(payload, "IFTMIN")
-    var masterSub = sizeOf(msgs) > 1
+    var all = messagesOfType(payload, "IFTMIN")
+    // A property of the interchange, so it is read before the FCL filter - see `houseType`.
+    var masterSub = sizeOf(all) > 1
+    // The FCL switch (`PROCESS_FCL`). Cancels are gated with everything else: a load type the
+    // integration never created is one it must not address either. A master-sub interchange is
+    // always uniformly FCL or uniformly LCL, so this drops such an interchange whole.
+    var msgs = all filter ((m) -> processFcl(payload) or loadType(m) == "LCL")
     var carry = bookingCarryForward(bookingOnlyDossier(payload, refOf(msgs[0])))
     ---
     (msgs flatMap ((m, i) ->

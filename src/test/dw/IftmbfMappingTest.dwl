@@ -38,7 +38,24 @@ var iftmbf = manifest filter ((e) -> e.messageType == "IFTMBF")
 * This is the only route the suite has into the mapping - the same call the data-transformer
 * makes - so a break in the output header, the document body or any helper surfaces here.
 */
-fun document(payload) = evalPath(MAPPING, { payload: payload }, "application/json")
+fun document(payload) = documentWith(payload, true)
+
+/**
+* Run the mapping with the FCL switch explicitly set.
+*
+* The mapping ships with `PROCESS_FCL = false` - BASF go-live carries LCL only - and most of
+* the example bookings are FCL, so a suite that could only see the shipped state would assert
+* almost nothing. `processFcl` in the mapping reads `payload.config.processFcl` and falls back
+* to the constant; nothing in the pipeline sets that key, so production is always the constant.
+*
+* So `document`, and everything built on it, describes the mapping with **FCL enabled**. The
+* shipped default is covered on its own terms under "the FCL switch" below.
+*/
+fun documentWith(payload, fcl) =
+    evalPath(MAPPING, { payload: payload ++ { config: { processFcl: fcl } } }, "application/json")
+
+/** Run the mapping exactly as shipped, letting `PROCESS_FCL` in the file decide. */
+fun documentAsShipped(payload) = evalPath(MAPPING, { payload: payload }, "application/json")
 
 /** The document for an interchange built from the given synthetic messages. */
 fun documentOf(msgs) = document({ EDI: { Messages: { D08A: { IFTMBF: msgs } } } })
@@ -59,14 +76,13 @@ var lcl = bookingsOf("lcl/2800226066-iftmbf-9.json")
  *  A booking that emitted anything else would be overwriting shipment data. */
 var allowedFields = [
     "actionAttribute", "id", "dUNSCustomer", "customerReference", "bASFBL", "eDIID",
-    "customer", "estimatedDispatchDate", "pickupLocation", "objectOwner", "scenario",
+    "customer", "estimatedDispatchDate", "pickupLocation", "objectOwner",
     "haulageType", "deliveryTerms", "shipmentDate", "master"
 ]
 
 fun actual(fixture) = bookingsOf(fixture) map ((s) -> {
     ref: s.customerReference,
     action: s.actionAttribute,
-    scenario: s.scenario.matchcode,
     terms: s.deliveryTerms,
     owner: s.objectOwner.organisationalUnitId,
     hasMaster: s.master != null,
@@ -81,7 +97,6 @@ fun expectedAction(code) = code match {
 fun expected(e) = e.messages map ((m) -> {
     ref: m.customerReference,
     action: expectedAction(m.code),
-    scenario: if (m.equipment > 0) "BASF FCL" else "BASF LCL",
     terms: "Prepaid",
     owner: 5,
     hasMaster: true,
@@ -195,8 +210,6 @@ var msFanOut = bookingsWith("ms/messages.json", "iftmin-before-iftmbf-mastersub-
         ((lcl[0] pluck ((v, k) -> k as String))
             filter ((k) -> ["haulageType", "estimatedDispatchDate"] contains k)) must equalTo([])),
 
-    () -> "an LCL booking is scenario BASF LCL" in (
-        lcl[0].scenario.matchcode must equalTo("BASF LCL")),
 
     // === cancel: the flow stops =============================================================
     () -> "a cancelled booking produces no call at all" in (
@@ -240,10 +253,11 @@ var msFanOut = bookingsWith("ms/messages.json", "iftmin-before-iftmbf-mastersub-
         only(booking("9", "X", equipment(carrierTmd()))).estimatedDispatchDate must beNull()),
 
     // === scenario and haulage ==============================================================
-    () -> "Scenario FCL when EQD present" in (
-        only(booking("9", "X", equipment(carrierTmd()))).scenario.matchcode must equalTo("BASF FCL")),
-    () -> "Scenario LCL when EQD absent" in (
-        only(booking("9", "X")).scenario.matchcode must equalTo("BASF LCL")),
+    // Scenario is obsolete on BASF's side and no longer emitted by either seaHouseShipment
+    // mapping - dropping it here too would otherwise let a booking update write back the
+    // value the instruction stopped sending.
+    () -> "Scenario is no longer emitted" in (
+        only(booking("9", "X", equipment(carrierTmd()))).scenario must beNull()),
 
     () -> "Haulage CAR/CAR (TMD 1 + LOC+20)" in (haulageForWithLoc20(carrierTmd()) must equalTo("CAR/CAR")),
     () -> "Haulage CAR/MER (TMD 1, no LOC+20)" in (haulageFor(carrierTmd()) must equalTo("CAR/MER")),
@@ -363,6 +377,30 @@ var msFanOut = bookingsWith("ms/messages.json", "iftmin-before-iftmbf-mastersub-
     // this file), so even a booking with two live dossiers produces no call.
     () -> "a cancelled booking produces no call even when dossiers exist" in (
         bookingsWithLookup([ booking("1", "2800231445") ],
-            lookup("iftmin-before-iftmbf-mastersub-fcl")) must equalTo([]))
+            lookup("iftmin-before-iftmbf-mastersub-fcl")) must equalTo([])),
+
+    // === the FCL switch ===================================================================
+    // `PROCESS_FCL`, which must hold the same value here as in BasfIftmin.dwl. These run the
+    // file exactly as shipped, so they also pin which way the committed constant is set.
+
+    () -> "as shipped, an FCL booking produces no call at all" in (
+        sizeOf(documentAsShipped(load("fcl/2800209301-iftmin-absch-9.json")).seaHouseShipment)
+            must equalTo(0)),
+
+    () -> "as shipped, an LCL booking is mapped as usual" in (
+        sizeOf(documentAsShipped(load("lcl/2800226066-iftmbf-9.json")).seaHouseShipment)
+            must equalTo(1)),
+
+    // With FCL off a booking must not fan out over FCL dossiers either - that fan-out is what
+    // issue 2 / proposed solution 2 added, and it has to stay behind the switch.
+    () -> "as shipped, an FCL booking does not fan out over the order's dossiers" in (
+        sizeOf(evalPath(MAPPING, { payload:
+            { EDI: { Messages: { D08A: { IFTMBF: [ booking("9", "2800231445", equipment(carrierTmd())) ] } } },
+              lookup: lookup("iftmin-before-iftmbf-mastersub-fcl") } }, "application/json").seaHouseShipment)
+            must equalTo(0)),
+
+    () -> "with the switch on, FCL is processed again" in (
+        sizeOf(documentWith(load("fcl/2800209301-iftmin-absch-9.json"), true).seaHouseShipment)
+            must equalTo(1))
     ]
 )
