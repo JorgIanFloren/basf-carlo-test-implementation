@@ -1,0 +1,513 @@
+{
+  "EDI": {
+    "Errors": [],
+    "Delimiters": "+: '?",
+    "Messages": {
+      "D08A": {
+        "IFTMBF": [
+          {
+            "Interchange": {
+              "UNB0101": "UNOC",
+              "UNB0102": "3",
+              "UNB0201": "BASFAG2",
+              "UNB0301": "102500",
+              "UNB0303": "283155273",
+              "UNB0401": 260812,
+              "UNB0402": 936,
+              "UNB05": "69226782871947",
+              "UNB07": "IFTMBF"
+            },
+            "Heading": {
+              "0020_BGM": {
+                "BGM0101": "335",
+                "BGM0201": "2800244026",
+                "BGM03": "1"
+              },
+              "0030_CTA": {
+                "CTA01": "MS",
+                "CTA0201": "E-CIE/LE",
+                "CTA0202": "Frau Kilinc (BOX)"
+              },
+              "0040_COM": [
+                {
+                  "COM01": [
+                    {
+                      "C07601": "+496216077406",
+                      "C07602": "TE"
+                    }
+                  ]
+                },
+                {
+                  "COM01": [
+                    {
+                      "C07601": "TIBELYA.KILINC@BASF.COM",
+                      "C07602": "EM"
+                    }
+                  ]
+                }
+              ],
+              "0050_DTM": [
+                {
+                  "DTM0101": "137",
+                  "DTM0102": "202608120935",
+                  "DTM0103": "203"
+                }
+              ],
+              "0080_FTX": [
+                {
+                  "FTX01": "AAI",
+                  "FTX0401": "CANCELLATION BOOKINGMAINLEG SEA - YS36"
+                },
+                {
+                  "FTX01": "ZZZ",
+                  "FTX0401": "CONTAINERDATA 2 x 22GP / 20Â´ Mehrzw.Cont. 8Â´6\""
+                }
+              ],
+              "0090_CNT": [
+                {
+                  "CNT0101": "32",
+                  "CNT0102": 19742.16,
+                  "CNT0103": "KGM"
+                },
+                {
+                  "CNT0101": "15",
+                  "CNT0102": 57.6,
+                  "CNT0103": "MTQ"
+                },
+                {
+                  "CNT0101": "1",
+                  "CNT0102": 18000,
+                  "CNT0103": "KGM"
+                }
+              ],
+              "0170_Segment_group_3": [
+                {
+                  "0180_RFF": {
+                    "RFF0101": "SI",
+                    "RFF0102": "2800244026"
+                  }
+                },
+                {
+                  "0180_RFF": {
+                    "RFF0101": "CT",
+                    "RFF0102": "GAA26023"
+                  }
+                }
+              ],
+              "0360_Segment_group_7": [
+                {
+                  "0370_TDT": {
+                    "TDT01": "10",
+                    "TDT0301": "60",
+                    "TDT0401": "11"
+                  },
+                  "0400_Segment_group_8": [
+                    {
+                      "0410_LOC": {
+                        "LOC01": "10",
+                        "LOC0201": "BEANR",
+                        "LOC0204": "Antwerpen",
+                        "LOC0304": "BASF Antwerpen N.V."
+                      }
+                    },
+                    {
+                      "0410_LOC": {
+                        "LOC01": "88",
+                        "LOC0201": "BEANR",
+                        "LOC0204": "ANTWERP",
+                        "LOC0304": "2040 Antwerpen"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0370_TDT": {
+                    "TDT01": "20",
+                    "TDT0301": "10",
+                    "TDT0401": "13",
+                    "TDT0801": "9922615",
+                    "TDT0804": "OOCL PORTUGAL"
+                  },
+                  "0380_DTM": [
+                    {
+                      "DTM0101": "132",
+                      "DTM0102": "20261006",
+                      "DTM0103": "102"
+                    },
+                    {
+                      "DTM0101": "133",
+                      "DTM0102": "20260821",
+                      "DTM0103": "102"
+                    },
+                    {
+                      "DTM0101": "180",
+                      "DTM0102": "20260817",
+                      "DTM0103": "102"
+                    }
+                  ],
+                  "0390_TSR": [
+                    {
+                      "TSR0101": "30"
+                    }
+                  ],
+                  "0400_Segment_group_8": [
+                    {
+                      "0410_LOC": {
+                        "LOC01": "9",
+                        "LOC0201": "BEANR",
+                        "LOC0204": "ANTWERP"
+                      }
+                    },
+                    {
+                      "0410_LOC": {
+                        "LOC01": "12",
+                        "LOC0201": "CNSGH",
+                        "LOC0204": "Shanghai"
+                      }
+                    },
+                    {
+                      "0410_LOC": {
+                        "LOC01": "7",
+                        "LOC0201": "CNSGH",
+                        "LOC0204": "Shanghai"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "0460_Segment_group_10": [
+                {
+                  "0470_NAD": {
+                    "NAD01": "AG",
+                    "NAD0201": "817630",
+                    "NAD0401": "POLYTRA N.V.",
+                    "NAD0501": "Desguinlei 92 box V 15 Verzicht geb",
+                    "NAD0502": "ouw",
+                    "NAD06": "ANTWERPEN",
+                    "NAD08": "2018",
+                    "NAD09": "BE"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "CZ",
+                    "NAD0201": "57076",
+                    "NAD0401": "BASF ANTWERPEN NV",
+                    "NAD0501": "SCHELDELAAN 600",
+                    "NAD06": "ANTWERPEN 4",
+                    "NAD0701": "1",
+                    "NAD08": "2040",
+                    "NAD09": "BE"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "BA",
+                    "NAD0201": "300812",
+                    "NAD0401": "COSCO SHIPPING LINES (Germany)",
+                    "NAD0402": "Germany Branch / Frankfurt Office",
+                    "NAD0501": "Hostatostr. 25",
+                    "NAD06": "Frankfurt am Main",
+                    "NAD08": "65929",
+                    "NAD09": "DE"
+                  },
+                  "0490_Segment_group_11": [
+                    {
+                      "0500_CTA": {
+                        "CTA01": "MR"
+                      },
+                      "0510_COM": [
+                        {
+                          "COM01": [
+                            {
+                              "C07601": "040361209579",
+                              "C07602": "FX"
+                            }
+                          ]
+                        },
+                        {
+                          "COM01": [
+                            {
+                              "C07601": "fra.booking@coscoshipping.de",
+                              "C07602": "EM"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "FW",
+                    "NAD0201": "817630",
+                    "NAD0401": "POLYTRA N.V.",
+                    "NAD0501": "Desguinlei 92 box V 15 Verzicht geb",
+                    "NAD0502": "ouw",
+                    "NAD06": "ANTWERPEN",
+                    "NAD08": "2018",
+                    "NAD09": "BE"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "CA",
+                    "NAD0201": "300606",
+                    "NAD0401": "Cosco Shipping Lines",
+                    "NAD0402": "(Hongkong) Co. Ltd.",
+                    "NAD0501": "No.378, Dong Da Ming Road",
+                    "NAD06": "Shanghai",
+                    "NAD08": "200080",
+                    "NAD09": "CN"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "PW",
+                    "NAD0201": "3016",
+                    "NAD0301": "BEANR",
+                    "NAD0401": "BASF Antwerpen N.V.",
+                    "NAD0402": "Versandstelle BASANT PIPERAZINE chi",
+                    "NAD0403": "ps ve",
+                    "NAD0404": "C160",
+                    "NAD0501": "Scheldelaan 600",
+                    "NAD06": "Antwerpen",
+                    "NAD08": "2040",
+                    "NAD09": "BE"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "FP",
+                    "NAD0201": "1000",
+                    "NAD0401": "BASF SE",
+                    "NAD0501": "Carl-Bosch-Strasse 38",
+                    "NAD06": "Ludwigshafen Friesenheim/Nord",
+                    "NAD0701": "07",
+                    "NAD08": "67063",
+                    "NAD09": "DE"
+                  }
+                }
+              ],
+              "0700_Segment_group_16": [
+                {
+                  "0710_GID": {
+                    "GID01": 1,
+                    "GID0201": 20,
+                    "GID0202": "CP3",
+                    "GID0203": "67",
+                    "GID0204": "91",
+                    "GID0205": "Palette,Holz,CP3,1140x1140x138mm,TH",
+                    "GID0301": 180,
+                    "GID0302": "4G",
+                    "GID0305": "Kisten aus Pappe"
+                  },
+                  "0780_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "50024080",
+                      "PIA0202": "SA"
+                    }
+                  ],
+                  "0790_FTX": [
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "Piperazin Chips",
+                      "FTX0402": "9x9x50KG Kisten aus Pappe"
+                    }
+                  ],
+                  "0850_Segment_group_18": [
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "9000.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAD",
+                        "MEA0301": "KGM",
+                        "MEA0302": "9451.080"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "WT",
+                        "MEA0301": "KGM",
+                        "MEA0302": "420.000"
+                      }
+                    }
+                  ],
+                  "0910_Segment_group_20": [
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "LI",
+                        "RFF0102": "5002378262",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "3021276588",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4000230003",
+                        "RFF0103": "10"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "AOC",
+                        "RFF0102": "6013989186",
+                        "RFF0103": "000010"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0710_GID": {
+                    "GID01": 2,
+                    "GID0201": 20,
+                    "GID0202": "CP3",
+                    "GID0203": "67",
+                    "GID0204": "91",
+                    "GID0205": "Palette,Holz,CP3,1140x1140x138mm,TH",
+                    "GID0301": 180,
+                    "GID0302": "4G",
+                    "GID0305": "Kisten aus Pappe"
+                  },
+                  "0780_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "50024080",
+                      "PIA0202": "SA"
+                    }
+                  ],
+                  "0790_FTX": [
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "Piperazin Chips",
+                      "FTX0402": "9x9x50KG Kisten aus Pappe"
+                    }
+                  ],
+                  "0850_Segment_group_18": [
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "9000.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAD",
+                        "MEA0301": "KGM",
+                        "MEA0302": "9451.080"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "WT",
+                        "MEA0301": "KGM",
+                        "MEA0302": "420.000"
+                      }
+                    }
+                  ],
+                  "0910_Segment_group_20": [
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "LI",
+                        "RFF0102": "5002378263",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "3021276588",
+                        "RFF0103": "000020"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4000230003",
+                        "RFF0103": "20"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "AOC",
+                        "RFF0102": "6013989186",
+                        "RFF0103": "000020"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "1260_Segment_group_32": [
+                {
+                  "1270_EQD": {
+                    "EQD01": "CN",
+                    "EQD0201": "1307292143",
+                    "EQD0301": "22GP",
+                    "EQD0304": "20Â´ Mehrzw.Cont. 8Â´6\""
+                  },
+                  "1280_EQN": {
+                    "EQN0101": 1
+                  },
+                  "1350_FTX": [
+                    {
+                      "FTX01": "AAF",
+                      "FTX0401": "Leercontainer frei Terminal Seehafen"
+                    }
+                  ]
+                },
+                {
+                  "1270_EQD": {
+                    "EQD01": "CN",
+                    "EQD0201": "1307292144",
+                    "EQD0301": "22GP",
+                    "EQD0304": "20Â´ Mehrzw.Cont. 8Â´6\""
+                  },
+                  "1280_EQN": {
+                    "EQN0101": 1
+                  },
+                  "1350_FTX": [
+                    {
+                      "FTX01": "AAF",
+                      "FTX0401": "Leercontainer frei Terminal Seehafen"
+                    }
+                  ]
+                }
+              ]
+            },
+            "Id": "IFTMBF",
+            "MessageHeader": {
+              "UNH01": "69226782871947",
+              "UNH0201": "IFTMBF",
+              "UNH0202": "D",
+              "UNH0203": "08A",
+              "UNH0204": "UN"
+            },
+            "Name": "Firm booking message"
+          }
+        ]
+      }
+    },
+    "FunctionalAcksReceived": [],
+    "FunctionalAcksGenerated": []
+  }
+}

@@ -205,7 +205,7 @@ module reads is verified against the real parser capture**
 
 ## 5. Test coverage
 
-`src/test/dw/IftminMappingTest.dwl`, 85 tests.
+`src/test/dw/IftminMappingTest.dwl`, 106 tests.
 
 Twenty-one interchanges are exercised — every IFTMIN interchange in `docs/example-orders`. Each
 is compared against a row of `src/test/resources/example-orders/manifest.json`, which records

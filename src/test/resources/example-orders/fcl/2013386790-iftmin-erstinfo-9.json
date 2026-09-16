@@ -14,13 +14,13 @@
               "UNB0301": "102500",
               "UNB0303": "283155273",
               "UNB0401": 260410,
-              "UNB0402": 716,
-              "UNB05": "84407736188752"
+              "UNB0402": 713,
+              "UNB05": "05964043478522"
             },
             "Heading": {
               "0020_BGM": {
                 "BGM0101": "705",
-                "BGM0104": "ABSCHLUSSINFO",
+                "BGM0104": "ERSTINFO",
                 "BGM0201": "2013386790",
                 "BGM03": "9"
               },
@@ -42,7 +42,7 @@
               "0050_DTM": [
                 {
                   "DTM0101": "137",
-                  "DTM0102": "202604100715",
+                  "DTM0102": "202604100711",
                   "DTM0103": "203"
                 }
               ],
@@ -96,7 +96,6 @@
                   "FTX0401": "It is declared that the packing of the freight container/ vehicle has",
                   "FTX0402": "been carried out in accordance with the provisions of 5.4.2.1 IMDG-Cod",
                   "FTX0403": "e.",
-                  "FTX0404": "MR UNGER JOCHEN, HEAD OF WH",
                   "FTX05": "EN"
                 },
                 {
@@ -104,7 +103,6 @@
                   "FTX0401": "It is declared that the packing of the freight container/ vehicle has",
                   "FTX0402": "been carried out in accordance with the provisions of 5.4.2.1 IMDG-Cod",
                   "FTX0403": "e.",
-                  "FTX0404": "MR UNGER JOCHEN, HEAD OF WH",
                   "FTX05": "EN"
                 },
                 {
@@ -135,8 +133,8 @@
                 },
                 {
                   "FTX01": "ABO",
-                  "FTX0401": "COMPLETION INFO",
-                  "FTX0402": "YE27",
+                  "FTX0401": "INITIAL INFO",
+                  "FTX0402": "YE22",
                   "FTX05": "EN"
                 },
                 {
@@ -2689,7 +2687,6 @@
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAB",
-                      "MEA0204": "VGM",
                       "MEA0301": "KGM",
                       "MEA0302": "29188.800"
                     },
@@ -2704,15 +2701,6 @@
                     {
                       "SEL01": "0077718",
                       "SEL0201": "CA"
-                    }
-                  ],
-                  "1750_FTX": [
-                    {
-                      "FTX01": "ABL",
-                      "FTX0301": "VGM",
-                      "FTX0401": "The container gross weights (CGW) represent the Verified Gross Mass",
-                      "FTX0402": "(VGM) in conformity with the International Convention for the Safety",
-                      "FTX0403": "  of Life at Sea (SOLAS) Chapter VI, Part A, Regulation 2."
                     }
                   ],
                   "1840_Segment_group_39": [
@@ -2738,12 +2726,6 @@
                         "NAD07": "07",
                         "NAD08": "76726",
                         "NAD09": "DE"
-                      }
-                    },
-                    {
-                      "1850_NAD": {
-                        "NAD01": "AM",
-                        "NAD0401": "MR UNGER JOCHEN, HEAD OF WH"
                       }
                     }
                   ]
@@ -2773,7 +2755,6 @@
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAB",
-                      "MEA0204": "VGM",
                       "MEA0301": "KGM",
                       "MEA0302": "29188.800"
                     },
@@ -2788,15 +2769,6 @@
                     {
                       "SEL01": "0077719",
                       "SEL0201": "CA"
-                    }
-                  ],
-                  "1750_FTX": [
-                    {
-                      "FTX01": "ABL",
-                      "FTX0301": "VGM",
-                      "FTX0401": "The container gross weights (CGW) represent the Verified Gross Mass",
-                      "FTX0402": "(VGM) in conformity with the International Convention for the Safety",
-                      "FTX0403": "  of Life at Sea (SOLAS) Chapter VI, Part A, Regulation 2."
                     }
                   ],
                   "1840_Segment_group_39": [
@@ -2822,12 +2794,6 @@
                         "NAD07": "07",
                         "NAD08": "76726",
                         "NAD09": "DE"
-                      }
-                    },
-                    {
-                      "1850_NAD": {
-                        "NAD01": "AM",
-                        "NAD0401": "MR UNGER JOCHEN, HEAD OF WH"
                       }
                     }
                   ]
@@ -2857,7 +2823,6 @@
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAB",
-                      "MEA0204": "VGM",
                       "MEA0301": "KGM",
                       "MEA0302": "29188.800"
                     },
@@ -2872,15 +2837,6 @@
                     {
                       "SEL01": "0077713",
                       "SEL0201": "CA"
-                    }
-                  ],
-                  "1750_FTX": [
-                    {
-                      "FTX01": "ABL",
-                      "FTX0301": "VGM",
-                      "FTX0401": "The container gross weights (CGW) represent the Verified Gross Mass",
-                      "FTX0402": "(VGM) in conformity with the International Convention for the Safety",
-                      "FTX0403": "  of Life at Sea (SOLAS) Chapter VI, Part A, Regulation 2."
                     }
                   ],
                   "1840_Segment_group_39": [
@@ -2907,12 +2863,6 @@
                         "NAD08": "76726",
                         "NAD09": "DE"
                       }
-                    },
-                    {
-                      "1850_NAD": {
-                        "NAD01": "AM",
-                        "NAD0401": "MR UNGER JOCHEN, HEAD OF WH"
-                      }
                     }
                   ]
                 }
@@ -2920,7 +2870,7 @@
             },
             "Id": "IFTMIN",
             "MessageHeader": {
-              "UNH01": "773618875200",
+              "UNH01": "404347852200",
               "UNH0201": "IFTMIN",
               "UNH0202": "D",
               "UNH0203": "99A",

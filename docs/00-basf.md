@@ -250,6 +250,24 @@ left unset - per the spec's general rule 6, and matching what vessel and voyage 
 > with `designation: "Antwerpen"`, `cityCode: "ANR"`), so something downstream may read it.
 > Vacating it follows the spec and the vessel precedent, but the effect is not visible from here.
 
+#### Verified against BASF's reference messages
+
+Section 18 of the spec names three validation messages, and all three are now in
+`docs/example-orders/fcl/`. Every v1.1 field is asserted against them, and every value matches
+what the specification itself prints:
+
+| Item | Message | Mapped value |
+|---|---|---|
+| ACID (`RFF+ABT`) | `2800244245` (Egypt) | `2101495821022010016` |
+| Booking number | `2800245098` | `57681221`, one entry, `referenceType 9` |
+| VGM | ″ | `20897.04`, numeric |
+| VGM signature | ″ | `MR WILLMANN, JAN` |
+| Notify2 | `2800250325` | `BASF MEXICANA` |
+| Notify2 TAX ID | ″ | `BME8109104S6` |
+
+`2800244245` settles where BASF puts `RFF+ABT`: on the **goods item** (SG22), beside `RFF+LC`,
+not in the header. That was the one v1.1 mapping this repo could not attest before.
+
 #### Other deviations
 
 - **Section 13 (VGM signature).** The spec says `NAD+AM` occurs once per message and should be
@@ -267,13 +285,8 @@ left unset - per the spec's general rule 6, and matching what vessel and voyage 
 
 #### Open
 
-1. **Section 10 (ACID, `RFF+ABT`) is unattested.** No IFTMIN interchange in `docs/example-orders`
-   carries one, and ML `2800244245`, which the spec names as the example, is not in the repo. The
-   mapping tries the two positions BASF uses for a reference in IFTMIN - header SG1, then
-   goods-item SG22 - and takes whichever is present. **Re-verify against a real Egypt message
-   before go-live.**
-2. **v1.1 pins this integration to contract v3.** The five TAX ID fields plus `lCNumber` and
+1. **v1.1 pins this integration to contract v3.** The five TAX ID fields plus `lCNumber` and
    `aCIDNumber` exist only in v3; v4 drops all eight. See `docs/carlo/07-contract-conformance.md`.
-3. **LCL bookings lose `HaulageType` and `EstimatedDispatchDate`** (README open item 5). The
+2. **LCL bookings lose `HaulageType` and `EstimatedDispatchDate`** (README open item 5). The
    IFTMBF sheet's rules need an `EQD` and an LCL booking has none. With FCL switched off this is
    the main path, not an edge case.

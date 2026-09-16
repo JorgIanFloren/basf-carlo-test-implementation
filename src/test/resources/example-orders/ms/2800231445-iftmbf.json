@@ -12,16 +12,16 @@
               "UNB0201": "BASFAG2",
               "UNB0301": "102500",
               "UNB0303": "283155273",
-              "UNB0401": 260723,
-              "UNB0402": 820,
-              "UNB05": "17801389543707",
+              "UNB0401": 260617,
+              "UNB0402": 707,
+              "UNB05": "26872489924681",
               "UNB07": "IFTMBF"
             },
             "Heading": {
               "0020_BGM": {
                 "BGM0101": "335",
                 "BGM0201": "2800231445",
-                "BGM03": "4"
+                "BGM03": "9"
               },
               "0030_CTA": {
                 "CTA01": "MS",
@@ -49,7 +49,7 @@
               "0050_DTM": [
                 {
                   "DTM0101": "137",
-                  "DTM0102": "202607230820",
+                  "DTM0102": "202606170707",
                   "DTM0103": "203"
                 }
               ],
@@ -91,7 +91,7 @@
                 },
                 {
                   "CNT0101": "15",
-                  "CNT0102": 31.318,
+                  "CNT0102": 31.217,
                   "CNT0103": "MTQ"
                 }
               ],
@@ -100,12 +100,6 @@
                   "0180_RFF": {
                     "RFF0101": "SI",
                     "RFF0102": "2800231445"
-                  }
-                },
-                {
-                  "0180_RFF": {
-                    "RFF0101": "BN",
-                    "RFF0102": "272215347"
                   }
                 },
                 {
@@ -144,7 +138,6 @@
                 {
                   "0370_TDT": {
                     "TDT01": "20",
-                    "TDT02": "628W",
                     "TDT0301": "10",
                     "TDT0401": "13",
                     "TDT0801": "9231236",
@@ -307,12 +300,12 @@
                 {
                   "0710_GID": {
                     "GID01": 1,
-                    "GID0201": 12,
+                    "GID0201": 11,
                     "GID0202": "CP3",
                     "GID0203": "67",
                     "GID0204": "91",
                     "GID0205": "Pallet,wood,CP3,1140x1140x138mm,HT",
-                    "GID0301": 45,
+                    "GID0301": 44,
                     "GID0302": "1A1",
                     "GID0305": "Steel drums"
                   },
@@ -342,7 +335,7 @@
                         "MEA01": "WT",
                         "MEA0201": "AAC",
                         "MEA0301": "KGM",
-                        "MEA0302": "7425.000"
+                        "MEA0302": "7260.000"
                       }
                     },
                     {
@@ -350,7 +343,7 @@
                         "MEA01": "WT",
                         "MEA0201": "AAD",
                         "MEA0301": "KGM",
-                        "MEA0302": "8167.500"
+                        "MEA0302": "7986.000"
                       }
                     },
                     {
@@ -358,7 +351,7 @@
                         "MEA01": "WT",
                         "MEA0201": "WT",
                         "MEA0301": "KGM",
-                        "MEA0302": "252.000"
+                        "MEA0302": "231.000"
                       }
                     },
                     {
@@ -447,7 +440,7 @@
                   "1070_Segment_group_25": [
                     {
                       "1080_SGP": {
-                        "SGP0101": "SEKU4476180"
+                        "SGP0101": "1300847300"
                       }
                     }
                   ],
@@ -502,6 +495,201 @@
                 {
                   "0710_GID": {
                     "GID01": 2,
+                    "GID0201": 1,
+                    "GID0202": "CP3",
+                    "GID0203": "67",
+                    "GID0204": "91",
+                    "GID0205": "Pallet,wood,CP3,1140x1140x138mm,HT",
+                    "GID0301": 1,
+                    "GID0302": "1A1",
+                    "GID0305": "Steel drums"
+                  },
+                  "0740_RNG": {
+                    "RNG01": "5",
+                    "RNG0201": "CEL",
+                    "RNG0202": 0,
+                    "RNG0203": 35
+                  },
+                  "0780_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "50818152",
+                      "PIA0202": "SA"
+                    }
+                  ],
+                  "0790_FTX": [
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "EutanolÂ® G",
+                      "FTX0402": "165KG Steel drums"
+                    }
+                  ],
+                  "0850_Segment_group_18": [
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "165.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAD",
+                        "MEA0301": "KGM",
+                        "MEA0302": "181.500"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "WT",
+                        "MEA0301": "KGM",
+                        "MEA0302": "21.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "ADE",
+                        "MEA0203": "45",
+                        "MEA0204": "Transport Temperature Bulk",
+                        "MEA0301": "CEL",
+                        "MEA0303": "1.00",
+                        "MEA0304": "35.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "DEN",
+                        "MEA0201": "TC",
+                        "MEA0204": "Density 20(C)",
+                        "MEA0301": "23",
+                        "MEA0302": "0.83"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Flash Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "189.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Melting Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "-1.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Boiling Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "223.00"
+                      }
+                    }
+                  ],
+                  "0910_Segment_group_20": [
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "LI",
+                        "RFF0102": "3551116615",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "3021184605",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4996844941",
+                        "RFF0103": "10"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "AQV",
+                        "RFF0102": "29051900"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "CO",
+                        "RFF0102": "4996844941"
+                      }
+                    }
+                  ],
+                  "1070_Segment_group_25": [
+                    {
+                      "1080_SGP": {
+                        "SGP0101": "1300847300"
+                      }
+                    }
+                  ],
+                  "1120_Segment_group_27": [
+                    {
+                      "1130_DGS": {
+                        "DGS01": "ZZZ"
+                      },
+                      "1140_FTX": [
+                        {
+                          "FTX01": "ACB",
+                          "FTX0401": "Odor: odourless"
+                        },
+                        {
+                          "FTX01": "LOI",
+                          "FTX0401": "Properties of the product change irreversibly on exceeding the limit temperature."
+                        },
+                        {
+                          "FTX01": "LOI",
+                          "FTX0401": "Tanks must be cleaned completely and pH-neutral. The European cleaning",
+                          "FTX0402": "document  is to be carried and transferred to the loading station."
+                        },
+                        {
+                          "FTX01": "AAN",
+                          "FTX0401": "Suitable Materials For Packages: High density polyethylene (HDPE), Low density polyethylene (LDPE), Carbon steel (Iron), tinned carbon steel (Tinplate), Galvanized carbon steel (Zinc), glass"
+                        },
+                        {
+                          "FTX01": "AEB",
+                          "FTX0401": "Below the temperature limit, the product is no longer pumpable."
+                        }
+                      ],
+                      "1150_Segment_group_28": [
+                        {
+                          "1160_CTA": {
+                            "CTA01": "HE"
+                          },
+                          "1170_COM": [
+                            {
+                              "COM01": [
+                                {
+                                  "C07601": "+49 180 2273 112",
+                                  "C07602": "TE"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "0710_GID": {
+                    "GID01": 3,
                     "GID0201": 10,
                     "GID0202": "CP3",
                     "GID0203": "67",
@@ -646,7 +834,7 @@
                   "1070_Segment_group_25": [
                     {
                       "1080_SGP": {
-                        "SGP0101": "SEKU4476180"
+                        "SGP0101": "1300847300"
                       }
                     }
                   ],
@@ -703,7 +891,7 @@
                 {
                   "1270_EQD": {
                     "EQD01": "CN",
-                    "EQD0201": "SEKU4476180",
+                    "EQD0201": "1300847300",
                     "EQD0301": "45GP",
                     "EQD0304": "40Â´ High cube Cont.  9Â´6\""
                   },
@@ -762,7 +950,7 @@
             },
             "Id": "IFTMBF",
             "MessageHeader": {
-              "UNH01": "17801389543707",
+              "UNH01": "26872489924681",
               "UNH0201": "IFTMBF",
               "UNH0202": "D",
               "UNH0203": "08A",

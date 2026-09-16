@@ -67,7 +67,7 @@ fun load(fixture) = readUrl("classpath://example-orders/" ++ fixture, "applicati
 fun bookingsOf(fixture) = document(load(fixture)).seaHouseShipment
 
 // Evaluated once and reused: the richest FCL fixture backs most of the field assertions.
-var fclRich = bookingsOf("fcl/2800209301-iftmin-absch-9.json")
+var fclRich = bookingsOf("fcl/2800209301-iftmbf-9.json")
 var lcl = bookingsOf("lcl/2800226066-iftmbf-9.json")
 
 /** Every field name the "Update" worksheet maps, plus the contract-required extras and the
@@ -94,7 +94,7 @@ fun expectedAction(code) = code match {
     case "5" -> "update"
     else -> "updateorcreate"
 }
-fun expected(e) = e.messages map ((m) -> {
+fun expected(e) = (e.messages filter ((m) -> m.code != "1")) map ((m) -> {
     ref: m.customerReference,
     action: expectedAction(m.code),
     terms: "Prepaid",
@@ -172,7 +172,7 @@ fun mappedValuesOf(s) = {
 
 // Evaluated once and reused: the master-sub booking for order 2800231445, read against the
 // two dossiers its IFTMIN already created for BL01 and BL02.
-var msFanOut = bookingsWith("ms/messages.json", "iftmin-before-iftmbf-mastersub-fcl")
+var msFanOut = bookingsWith("ms/2800231445-iftmbf.json", "iftmin-before-iftmbf-mastersub-fcl")
 ---
 "BASF IFTMBF mapping" describedBy (
 
@@ -343,7 +343,7 @@ var msFanOut = bookingsWith("ms/messages.json", "iftmin-before-iftmbf-mastersub-
     // A code 4 booking is an update even with nothing to address - the action comes from
     // BGM03 whenever the lookup resolved no record.
     () -> "an unaddressed code 4 booking keeps its BGM03 action" in (
-        (bookingsWith("ms/trissquid-138207661.json", "dossier-not-found")
+        (bookingsWith("ms/trissquid-138083510.json", "dossier-not-found")
             map ((s) -> s.actionAttribute)) must equalTo(["update"])),
 
     () -> "a recycled dossier is never addressed" in (
@@ -354,7 +354,7 @@ var msFanOut = bookingsWith("ms/messages.json", "iftmin-before-iftmbf-mastersub-
     // The FCL counterpart of the plain-booking case above: this booking's order already has a
     // dossier from its IFTMIN, so the booking addresses it rather than upserting blindly.
     () -> "an FCL booking addresses the dossier its IFTMIN created" in (
-        (bookingsWith("fcl/2800209301-iftmin-absch-9.json", "iftmin-before-iftmbf-fcl")
+        (bookingsWith("fcl/2800209301-iftmbf-9.json", "iftmin-before-iftmbf-fcl")
             map ((s) -> addressOf(s)))
             must equalTo([{ bl: "BL00", ediid: "2800209301BL00", id: 1623824, action: "update" }])),
 
@@ -370,7 +370,7 @@ var msFanOut = bookingsWith("ms/messages.json", "iftmin-before-iftmbf-mastersub-
     // The pre-lookup contract: with no GET at all the mapping emits exactly the one upsert
     // it always did, so it stays deployable while the GET step is being wired up.
     () -> "without a lookup a booking is still a single upsert" in (
-        (bookingsOf("ms/messages.json") map ((s) -> addressOf(s)))
+        (bookingsOf("ms/2800231445-iftmbf.json") map ((s) -> addressOf(s)))
             must equalTo([{ bl: null, ediid: null, id: 0, action: "updateorcreate" }])),
 
     // A cancel is dropped before the lookup is ever consulted ("IFTMBF / Cancel": ignore
@@ -384,7 +384,7 @@ var msFanOut = bookingsWith("ms/messages.json", "iftmin-before-iftmbf-mastersub-
     // file exactly as shipped, so they also pin which way the committed constant is set.
 
     () -> "as shipped, an FCL booking produces no call at all" in (
-        sizeOf(documentAsShipped(load("fcl/2800209301-iftmin-absch-9.json")).seaHouseShipment)
+        sizeOf(documentAsShipped(load("fcl/2800209301-iftmbf-9.json")).seaHouseShipment)
             must equalTo(0)),
 
     () -> "as shipped, an LCL booking is mapped as usual" in (
@@ -400,7 +400,7 @@ var msFanOut = bookingsWith("ms/messages.json", "iftmin-before-iftmbf-mastersub-
             must equalTo(0)),
 
     () -> "with the switch on, FCL is processed again" in (
-        sizeOf(documentWith(load("fcl/2800209301-iftmin-absch-9.json"), true).seaHouseShipment)
+        sizeOf(documentWith(load("fcl/2800209301-iftmbf-9.json"), true).seaHouseShipment)
             must equalTo(1))
     ]
 )

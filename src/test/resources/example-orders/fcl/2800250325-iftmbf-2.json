@@ -1,0 +1,551 @@
+{
+  "EDI": {
+    "Errors": [],
+    "Delimiters": "+: '?",
+    "Messages": {
+      "D08A": {
+        "IFTMBF": [
+          {
+            "Interchange": {
+              "UNB0101": "UNOC",
+              "UNB0102": "3",
+              "UNB0201": "BASFAG2",
+              "UNB0301": "102500",
+              "UNB0303": "283155273",
+              "UNB0401": 260910,
+              "UNB0402": 1316,
+              "UNB05": "31153632477484",
+              "UNB07": "IFTMBF"
+            },
+            "Heading": {
+              "0020_BGM": {
+                "BGM0101": "335",
+                "BGM0201": "2800250325",
+                "BGM03": "9"
+              },
+              "0030_CTA": {
+                "CTA01": "MS",
+                "CTA0201": "GB/SE-CC",
+                "CTA0202": "Mrs Ruhrberg"
+              },
+              "0040_COM": [
+                {
+                  "COM01": [
+                    {
+                      "C07601": "+49 30 2005",
+                      "C07602": "TE"
+                    }
+                  ]
+                },
+                {
+                  "COM01": [
+                    {
+                      "C07601": "TINA.RUHRBERG@BASF.COM",
+                      "C07602": "EM"
+                    }
+                  ]
+                }
+              ],
+              "0050_DTM": [
+                {
+                  "DTM0101": "137",
+                  "DTM0102": "202609101316",
+                  "DTM0103": "203"
+                }
+              ],
+              "0080_FTX": [
+                {
+                  "FTX01": "AAI",
+                  "FTX0401": "BOOKING MAINLEG SEA - YE3D"
+                },
+                {
+                  "FTX01": "TRA",
+                  "FTX0401": "ex Riga"
+                },
+                {
+                  "FTX01": "ZZZ",
+                  "FTX0401": "CONTAINERDATA 1 x 22GP / 20' 8'6 General Purpose Container"
+                },
+                {
+                  "FTX01": "ACB",
+                  "FTX0401": "Planned Loading Date: 17.09.2026"
+                }
+              ],
+              "0090_CNT": [
+                {
+                  "CNT0101": "32",
+                  "CNT0102": 19080,
+                  "CNT0103": "KGM"
+                },
+                {
+                  "CNT0101": "15",
+                  "CNT0102": 25.488,
+                  "CNT0103": "MTQ"
+                }
+              ],
+              "0170_Segment_group_3": [
+                {
+                  "0180_RFF": {
+                    "RFF0101": "SI",
+                    "RFF0102": "2800250325"
+                  }
+                },
+                {
+                  "0180_RFF": {
+                    "RFF0101": "CT",
+                    "RFF0102": "26-190GAC"
+                  }
+                }
+              ],
+              "0360_Segment_group_7": [
+                {
+                  "0370_TDT": {
+                    "TDT01": "10",
+                    "TDT0301": "30",
+                    "TDT0401": "31"
+                  },
+                  "0400_Segment_group_8": [
+                    {
+                      "0410_LOC": {
+                        "LOC01": "10",
+                        "LOC0201": "BEBEV",
+                        "LOC0204": "BEVEREN-KALLO",
+                        "LOC0304": "RIGA LOGISTICS N.V."
+                      }
+                    },
+                    {
+                      "0410_LOC": {
+                        "LOC01": "88",
+                        "LOC0201": "BEANR",
+                        "LOC0204": "Antwerpen",
+                        "LOC0304": "2040 Antwerpen"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0370_TDT": {
+                    "TDT01": "20",
+                    "TDT0301": "10",
+                    "TDT0401": "13",
+                    "TDT0801": "9975569",
+                    "TDT0804": "MSC LYON"
+                  },
+                  "0380_DTM": [
+                    {
+                      "DTM0101": "132",
+                      "DTM0102": "20261017",
+                      "DTM0103": "102"
+                    },
+                    {
+                      "DTM0101": "133",
+                      "DTM0102": "20260924",
+                      "DTM0103": "102"
+                    },
+                    {
+                      "DTM0101": "180",
+                      "DTM0102": "20260919",
+                      "DTM0103": "102"
+                    }
+                  ],
+                  "0390_TSR": [
+                    {
+                      "TSR0101": "30"
+                    }
+                  ],
+                  "0400_Segment_group_8": [
+                    {
+                      "0410_LOC": {
+                        "LOC01": "9",
+                        "LOC0201": "BEANR",
+                        "LOC0204": "Antwerpen"
+                      }
+                    },
+                    {
+                      "0410_LOC": {
+                        "LOC01": "12",
+                        "LOC0201": "MXVER",
+                        "LOC0204": "VERACRUZ"
+                      }
+                    },
+                    {
+                      "0410_LOC": {
+                        "LOC01": "7",
+                        "LOC0201": "MXVER",
+                        "LOC0204": "VERACRUZ"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "0460_Segment_group_10": [
+                {
+                  "0470_NAD": {
+                    "NAD01": "AG",
+                    "NAD0201": "817630",
+                    "NAD0401": "POLYTRA N.V.",
+                    "NAD0501": "Desguinlei 92 box V 15 Verzicht geb",
+                    "NAD0502": "ouw",
+                    "NAD06": "ANTWERPEN",
+                    "NAD08": "2018",
+                    "NAD09": "BE"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "CZ",
+                    "NAD0201": "1000",
+                    "NAD0401": "BASF SE",
+                    "NAD0501": "Carl-Bosch-Strasse 38",
+                    "NAD06": "Ludwigshafen Friesenheim/Nord",
+                    "NAD0701": "07",
+                    "NAD08": "67063",
+                    "NAD09": "DE"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "BA",
+                    "NAD0201": "4071504",
+                    "NAD0401": "MSC Germany SA & Co. KG",
+                    "NAD0501": "Berliner Allee 59",
+                    "NAD06": "DÃ¼sseldorf",
+                    "NAD08": "40212",
+                    "NAD09": "DE"
+                  },
+                  "0490_Segment_group_11": [
+                    {
+                      "0500_CTA": {
+                        "CTA01": "MR"
+                      },
+                      "0510_COM": [
+                        {
+                          "COM01": [
+                            {
+                              "C07601": "0211867680",
+                              "C07602": "TE"
+                            }
+                          ]
+                        },
+                        {
+                          "COM01": [
+                            {
+                              "C07601": "02118676830",
+                              "C07602": "FX"
+                            }
+                          ]
+                        },
+                        {
+                          "COM01": [
+                            {
+                              "C07601": "DE459-DUS.FAX@msc.com",
+                              "C07602": "EM"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "FW",
+                    "NAD0201": "817630",
+                    "NAD0401": "POLYTRA N.V.",
+                    "NAD0501": "Desguinlei 92 box V 15 Verzicht geb",
+                    "NAD0502": "ouw",
+                    "NAD06": "ANTWERPEN",
+                    "NAD08": "2018",
+                    "NAD09": "BE"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "CA",
+                    "NAD0201": "300627",
+                    "NAD0401": "MSC Mediterranean Shipping",
+                    "NAD0402": "Company SA",
+                    "NAD0501": "Chemin Rieu 12-14",
+                    "NAD06": "Geneve",
+                    "NAD08": "1208",
+                    "NAD09": "CH"
+                  }
+                },
+                {
+                  "0470_NAD": {
+                    "NAD01": "PW",
+                    "NAD0201": "2320",
+                    "NAD0301": "BEBEV",
+                    "NAD0401": "RIGA LOGISTICS N.V.",
+                    "NAD0501": "Land van Waaslaan 1",
+                    "NAD06": "BEVEREN-KALLO",
+                    "NAD08": "9130",
+                    "NAD09": "BE"
+                  }
+                }
+              ],
+              "0700_Segment_group_16": [
+                {
+                  "0710_GID": {
+                    "GID01": 1,
+                    "GID0201": 18,
+                    "GID0202": "31HA1",
+                    "GID0205": "Composite IBC"
+                  },
+                  "0740_RNG": {
+                    "RNG01": "5",
+                    "RNG0201": "CEL",
+                    "RNG0202": -5,
+                    "RNG0203": 50
+                  },
+                  "0780_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "50645656",
+                      "PIA0202": "SA"
+                    }
+                  ],
+                  "0790_FTX": [
+                    {
+                      "FTX01": "PRD",
+                      "FTX0301": "1",
+                      "FTX0401": "weakly water-endangering"
+                    },
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "D620 -",
+                      "FTX0402": "Gas Migration Control Additive",
+                      "FTX0403": "1000KG Composite IBC"
+                    }
+                  ],
+                  "0850_Segment_group_18": [
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "18000.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAD",
+                        "MEA0301": "KGM",
+                        "MEA0302": "19080.000"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0203": "45",
+                        "MEA0204": "Filling temperature",
+                        "MEA0301": "CEL",
+                        "MEA0302": "40.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "DEN",
+                        "MEA0201": "TC",
+                        "MEA0204": "Density 20(C)",
+                        "MEA0301": "23",
+                        "MEA0302": "1.03"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Flash Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "98.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Boiling Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "98.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "AAE",
+                        "MEA0201": "ZZZ",
+                        "MEA0204": "pH-value",
+                        "MEA0301": "ZZ",
+                        "MEA0302": "8.00"
+                      }
+                    },
+                    {
+                      "0860_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "RUN",
+                        "MEA0204": "Cinematic viscosity",
+                        "MEA0301": "800",
+                        "MEA0302": "24.00"
+                      }
+                    }
+                  ],
+                  "0910_Segment_group_20": [
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "LI",
+                        "RFF0102": "3551324677",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "3021291769",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4000390442",
+                        "RFF0103": "10"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "AQV",
+                        "RFF0102": "40021100"
+                      }
+                    },
+                    {
+                      "0920_RFF": {
+                        "RFF0101": "CO",
+                        "RFF0102": "4000390442"
+                      }
+                    }
+                  ],
+                  "1070_Segment_group_25": [
+                    {
+                      "1080_SGP": {
+                        "SGP0101": "1310445160"
+                      }
+                    }
+                  ],
+                  "1120_Segment_group_27": [
+                    {
+                      "1130_DGS": {
+                        "DGS01": "ZZZ"
+                      },
+                      "1140_FTX": [
+                        {
+                          "FTX01": "ACB",
+                          "FTX0401": "Odor: rubber-like"
+                        },
+                        {
+                          "FTX01": "LOI",
+                          "FTX0401": "Because of possible odour nuisance do not load/store in locations/vehicles which are intended to be used for foodstuffs."
+                        },
+                        {
+                          "FTX01": "LOI",
+                          "FTX0401": "Properties of the product change irreversibly on exceeding the limit temperature."
+                        },
+                        {
+                          "FTX01": "AAN",
+                          "FTX0401": "Suitable Materials For Packages: glass, High density polyethylene (HDPE)"
+                        }
+                      ],
+                      "1150_Segment_group_28": [
+                        {
+                          "1160_CTA": {
+                            "CTA01": "HE"
+                          },
+                          "1170_COM": [
+                            {
+                              "COM01": [
+                                {
+                                  "C07601": "+49 180 2273 112",
+                                  "C07602": "TE"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "1260_Segment_group_32": [
+                {
+                  "1270_EQD": {
+                    "EQD01": "CN",
+                    "EQD0201": "1310445160",
+                    "EQD0301": "22GP",
+                    "EQD0304": "20' 8'6 General Purpose Container"
+                  },
+                  "1280_EQN": {
+                    "EQN0101": 1
+                  },
+                  "1290_TMD": {
+                    "TMD0101": "3",
+                    "TMD0102": "Merchant Haulage E",
+                    "TMD03": "2"
+                  },
+                  "1350_FTX": [
+                    {
+                      "FTX01": "AAF",
+                      "FTX0401": "Empty container free ex port of loading"
+                    },
+                    {
+                      "FTX01": "ITR",
+                      "FTX0401": "17.09.2026"
+                    }
+                  ],
+                  "1370_Segment_group_33": [
+                    {
+                      "1380_NAD": {
+                        "NAD01": "DCP",
+                        "NAD0201": "817630",
+                        "NAD0401": "POLYTRA N.V.",
+                        "NAD0501": "Desguinlei 92 box V 15 Verzicht geb",
+                        "NAD0502": "ouw",
+                        "NAD06": "ANTWERPEN",
+                        "NAD08": "2018",
+                        "NAD09": "BE"
+                      }
+                    },
+                    {
+                      "1380_NAD": {
+                        "NAD01": "EP",
+                        "NAD0201": "817630",
+                        "NAD0401": "POLYTRA N.V.",
+                        "NAD0501": "Desguinlei 92 box V 15 Verzicht geb",
+                        "NAD0502": "ouw",
+                        "NAD06": "ANTWERPEN",
+                        "NAD08": "2018",
+                        "NAD09": "BE"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "Id": "IFTMBF",
+            "MessageHeader": {
+              "UNH01": "31153632477484",
+              "UNH0201": "IFTMBF",
+              "UNH0202": "D",
+              "UNH0203": "08A",
+              "UNH0204": "UN"
+            },
+            "Name": "Firm booking message"
+          }
+        ]
+      }
+    },
+    "FunctionalAcksReceived": [],
+    "FunctionalAcksGenerated": []
+  }
+}

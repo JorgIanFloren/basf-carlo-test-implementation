@@ -13,21 +13,21 @@
               "UNB0203": "283155273",
               "UNB0301": "102500",
               "UNB0303": "283155273",
-              "UNB0401": 260707,
-              "UNB0402": 1043,
-              "UNB05": "15228210476439"
+              "UNB0401": 260723,
+              "UNB0402": 820,
+              "UNB05": "68876353508626"
             },
             "Heading": {
               "0020_BGM": {
                 "BGM0101": "705",
-                "BGM0104": "ABSCHLUSSINFO",
+                "BGM0104": "ERSTINFO",
                 "BGM0201": "2800231445",
-                "BGM03": "9"
+                "BGM03": "4"
               },
               "0030_CTA": {
                 "CTA01": "MS",
                 "CTA0201": "GB/SE-CA",
-                "CTA0202": "Herr Durmus"
+                "CTA0202": "Mr Durmus"
               },
               "0040_COM": [
                 {
@@ -42,7 +42,7 @@
               "0050_DTM": [
                 {
                   "DTM0101": "137",
-                  "DTM0102": "202607071043",
+                  "DTM0102": "202607230820",
                   "DTM0103": "203"
                 }
               ],
@@ -88,8 +88,8 @@
                 },
                 {
                   "FTX01": "ABO",
-                  "FTX0401": "COMPLETION INFO",
-                  "FTX0402": "YE27",
+                  "FTX0401": "INITIAL INFO",
+                  "FTX0402": "YE22",
                   "FTX05": "EN"
                 },
                 {
@@ -184,7 +184,7 @@
                   "0480_DTM": [
                     {
                       "DTM0101": "133",
-                      "DTM0102": "20260714",
+                      "DTM0102": "20260713",
                       "DTM0103": "102"
                     }
                   ],
@@ -509,7 +509,7 @@
                     {
                       "1010_NAD": {
                         "NAD01": "DM",
-                        "NAD0401": "Herr Konrad",
+                        "NAD0401": "Mr Konrad",
                         "NAD0501": "Storkower StraÃe 146",
                         "NAD06": "Berlin",
                         "NAD08": "10407",
@@ -856,7 +856,7 @@
                     {
                       "1010_NAD": {
                         "NAD01": "DM",
-                        "NAD0401": "Herr Konrad",
+                        "NAD0401": "Mr Konrad",
                         "NAD0501": "Storkower StraÃe 146",
                         "NAD06": "Berlin",
                         "NAD08": "10407",
@@ -1133,7 +1133,6 @@
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAB",
-                      "MEA0204": "VGM",
                       "MEA0301": "KGM",
                       "MEA0302": "21235.500"
                     },
@@ -1154,13 +1153,6 @@
                     {
                       "FTX01": "AAF",
                       "FTX0401": "Empty container release ex inland depot nearest to loadsite"
-                    },
-                    {
-                      "FTX01": "ABL",
-                      "FTX0301": "VGM",
-                      "FTX0401": "The container gross weights (CGW) represent the Verified Gross Mass",
-                      "FTX0402": "(VGM) in conformity with the International Convention for the Safety",
-                      "FTX0403": "  of Life at Sea (SOLAS) Chapter VI, Part A, Regulation 2."
                     }
                   ],
                   "1840_Segment_group_39": [
@@ -1189,12 +1181,6 @@
                         "NAD08": "28237",
                         "NAD09": "DE"
                       }
-                    },
-                    {
-                      "1850_NAD": {
-                        "NAD01": "AM",
-                        "NAD0401": "Ralph Schichterich"
-                      }
                     }
                   ]
                 }
@@ -1202,7 +1188,7 @@
             },
             "Id": "IFTMIN",
             "MessageHeader": {
-              "UNH01": "821047643900",
+              "UNH01": "635350862600",
               "UNH0201": "IFTMIN",
               "UNH0202": "D",
               "UNH0203": "99A",

@@ -88,15 +88,23 @@ fun expectedAction(code) = code match {
     case "5" -> "update"
     else -> "updateorcreate"
 }
-fun expected(e) = e.messages map ((m) -> {
-    bl: m.bl,
-    ref: m.customerReference,
-    load: expectedLoad(m),
-    // Co-load only where the flow says: a master-sub interchange whose block is LCL.
-    house: if (e.masterSub and expectedLoad(m) == "LCL") "Coloadin" else "BackToBack",
-    action: expectedAction(m.code),
-    complete: true
-})
+fun expected(e) = e.messages map ((m) ->
+    if (m.code == "1")
+        // A cancel is an identity-only recycle - `recycleShipment` emits the address plus
+        // IsInRecycleBin and nothing else, so there is no load type, no house type and none
+        // of the business fields `complete` checks for. Pushing order values onto a dossier
+        // being withdrawn would overwrite live data. With no lookup the action is the BGM03
+        // default, since there is no dossier to address.
+        { bl: m.bl, ref: m.customerReference, load: null, house: null,
+          action: "updateorcreate", complete: false }
+    else
+        { bl: m.bl,
+          ref: m.customerReference,
+          load: expectedLoad(m),
+          // Co-load only where the flow says: a master-sub interchange whose block is LCL.
+          house: if (e.masterSub and expectedLoad(m) == "LCL") "Coloadin" else "BackToBack",
+          action: expectedAction(m.code),
+          complete: true })
 
 // --- synthetic messages for the branches the examples never reach ---------------------------
 fun bgm(code, ref) = bgm(code, ref, "BL00")
@@ -163,8 +171,8 @@ fun hasNoDuplicateKeys(o) = sizeOf(keysOf(o)) == sizeOf(keysOf(o) distinctBy ((k
 // Evaluated once and reused. The same master-sub order (BL01 + BL02 of 2800231445) read
 // against the two states it can meet: its own dossiers, already created by an earlier
 // IFTMIN, and the single BL-less dossier an IFTMBF that arrived first left behind.
-var msAfterIftmin = shipmentsWith("ms/2800231445-ab-9.json", "iftmin-before-iftmbf-mastersub-fcl")
-var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before-iftmin-mastersub-fcl")
+var msAfterIftmin = shipmentsWith("ms/2800231445-erst-9.json", "iftmin-before-iftmbf-mastersub-fcl")
+var msAfterBooking = shipmentsWith("ms/2800231445-ab-4-5.json", "iftmbf-before-iftmin-mastersub-fcl")
 ---
 "BASF IFTMIN mapping" describedBy (
 
@@ -178,19 +186,19 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     [
     // === the flow decisions, called out explicitly ========================================
     () -> "a master-sub interchange yields one shipment per BASF BL" in (
-        (shipmentsOf("ms/2800231445-ab-9.json") map ((s) -> s.bASFBL))
+        (shipmentsOf("ms/2800231445-erst-9.json") map ((s) -> s.bASFBL))
             must equalTo(["BL01", "BL02"])),
 
     () -> "an ordinary interchange yields exactly one shipment" in (
-        sizeOf(shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")) must equalTo(1)),
+        sizeOf(shipmentsOf("fcl/2800209301-iftmin-erst-9.json")) must equalTo(1)),
 
     // The whole point of the co-load rule: same split, but the blocks carry no equipment.
     () -> "an LCL master-sub marks every block as a co-load" in (
-        (shipmentsOf("ms/trissquid-138083512.json") map ((s) -> s.houseType))
+        (shipmentsOf("ms/2800237044-iftmin-erstinfo-9.json") map ((s) -> s.houseType))
             must equalTo(["Coloadin", "Coloadin"])),
 
     () -> "an FCL master-sub stays back-to-back" in (
-        (shipmentsOf("ms/2800231445-iftmbf-2.json") map ((s) -> s.houseType))
+        (shipmentsOf("ms/2800231445-ab-4-5.json") map ((s) -> s.houseType))
             must equalTo(["BackToBack", "BackToBack"])),
 
     () -> "a single LCL shipment is not a co-load" in (
@@ -299,14 +307,14 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // The GET returns dossiers in no particular order - this LCL capture comes back BL02
     // first - so the match has to be by BL value. Indexing the result would swap the two.
     () -> "a master-sub matches by BL value, not by the order the lookup returned" in (
-        (shipmentsWith("ms/trissquid-138083512.json", "iftmin-before-iftmbf-mastersub-lcl")
+        (shipmentsWith("ms/2800237044-iftmin-erstinfo-9.json", "iftmin-before-iftmbf-mastersub-lcl")
             map ((s) -> { bl: s.bASFBL, id: s.id default 0 }))
             must equalTo([{ bl: "BL01", id: 1621576 }, { bl: "BL02", id: 1621596 }])),
 
     // EDIID is what makes the composite identity explicit on the wire, and it is the field
     // the real records carry ("2800231445BL01"). A plain order is CustomerReference + BL00.
     () -> "EDIID is CustomerReference ++ BASFBL" in (
-        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json") map ((s) -> s.eDIID))
+        (shipmentsOf("fcl/2800209301-iftmin-erst-9.json") map ((s) -> s.eDIID))
             must equalTo(["2800209301BL00"])),
 
     // === issue 3: an IFTMBF arrived before the IFTMIN ======================================
@@ -317,7 +325,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     () -> "the first sub re-purposes the booking's dossier and the rest are created" in (
         (msAfterBooking map ((s) -> addressOf(s))) must equalTo([
             { bl: "BL01", ediid: "2800231445BL01", id: 1621690, action: "update" },
-            { bl: "BL02", ediid: "2800231445BL02", id: 0, action: "updateorcreate" }
+            { bl: "BL02", ediid: "2800231445BL02", id: 0, action: "update" }
         ])),
 
     // The second half of proposed solution 3. Without this the booking's data survives only
@@ -353,7 +361,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // The cache adds and never removes: every field the message mapped on its own has to
     // survive the merge untouched, on the re-purposed sub and the newly created one alike.
     () -> "merging cached values keeps every field the message mapped" in (
-        (shipmentsOf("ms/2800231445-iftmbf-2.json") map ((plain, i) ->
+        (shipmentsOf("ms/2800231445-ab-4-5.json") map ((plain, i) ->
             keysOf(plain) filter ((k) -> !(keysOf(msAfterBooking[i]) contains k))))
             must equalTo([[], []])),
 
@@ -370,7 +378,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // so the single shipment re-purposes it instead of creating a second record for the
     // order. This is the "IFTMBF comes first / Fcl - Lcl" scenario.
     () -> "a plain FCL re-purposes the booking's dossier" in (
-        (shipmentsWith("fcl/2800209301-fcl-iftmin-erst-9.json", "iftmbf-before-iftmin-fcl")
+        (shipmentsWith("fcl/2800209301-iftmin-erst-9.json", "iftmbf-before-iftmin-fcl")
             map ((s) -> addressOf(s)))
             must equalTo([{ bl: "BL00", ediid: "2800209301BL00", id: 1621631, action: "update" }])),
 
@@ -378,7 +386,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // an earlier IFTMIN already created the dossier addresses that dossier by BL, not the
     // BL-less one of the booking path above.
     () -> "a re-sent FCL addresses the dossier its own earlier run created" in (
-        (shipmentsWith("fcl/2800209301-fcl-iftmin-erst-9.json", "iftmin-before-iftmbf-fcl")
+        (shipmentsWith("fcl/2800209301-iftmin-erst-9.json", "iftmin-before-iftmbf-fcl")
             map ((s) -> addressOf(s)))
             must equalTo([{ bl: "BL00", ediid: "2800209301BL00", id: 1623824, action: "update" }])),
 
@@ -401,7 +409,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // === what the lookup must NOT do =======================================================
     // The create path: nothing found, so nothing is addressed and the call stays an upsert.
     () -> "a lookup that found nothing leaves the shipment a create" in (
-        (shipmentsWith("fcl/2800209301-fcl-iftmin-erst-9.json", "dossier-not-found")
+        (shipmentsWith("fcl/2800209301-iftmin-erst-9.json", "dossier-not-found")
             map ((s) -> addressOf(s)))
             must equalTo([{ bl: "BL00", ediid: "2800209301BL00", id: 0, action: "updateorcreate" }])),
 
@@ -439,12 +447,12 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // no dossier is addressed and BGM03 alone decides the action. This is what lets the
     // mapping deploy before the GET step is wired up.
     () -> "without a lookup nothing is addressed and the action comes from BGM03" in (
-        (shipmentsOf("ms/2800231445-iftmbf-2.json") map ((s) ->
+        (shipmentsOf("ms/2800231445-ab-4-5.json") map ((s) ->
             { id: s.id default 0, action: s.actionAttribute }))
-            must equalTo([{ id: 0, action: "updateorcreate" }, { id: 0, action: "updateorcreate" }])),
+            must equalTo([{ id: 0, action: "update" }, { id: 0, action: "update" }])),
 
     () -> "without a lookup no cached booking values are invented" in (
-        (shipmentsOf("ms/2800231445-iftmbf-2.json") map ((s) -> s.estimatedDispatchDate))
+        (shipmentsOf("ms/2800231445-ab-4-5.json") map ((s) -> s.estimatedDispatchDate))
             must equalTo([null, null])),
 
     // === the FCL switch ===================================================================
@@ -454,7 +462,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // switch is a deployment decision and should not move unnoticed.
 
     () -> "as shipped, an FCL interchange produces no call at all" in (
-        sizeOf(documentAsShipped(load("fcl/2800209301-fcl-iftmin-erst-9.json")).seaHouseShipment)
+        sizeOf(documentAsShipped(load("fcl/2800209301-iftmin-erst-9.json")).seaHouseShipment)
             must equalTo(0)),
 
     () -> "as shipped, an LCL interchange is mapped as usual" in (
@@ -464,8 +472,8 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // A master-sub is always uniformly FCL or uniformly LCL, so the per-message filter takes
     // the whole interchange or none of it - never half an order.
     () -> "as shipped, an FCL master-sub is dropped whole and an LCL one is kept whole" in (
-        { fcl: sizeOf(documentAsShipped(load("ms/2800231445-ab-9.json")).seaHouseShipment),
-          lcl: sizeOf(documentAsShipped(load("ms/trissquid-138083512.json")).seaHouseShipment) }
+        { fcl: sizeOf(documentAsShipped(load("ms/2800231445-erst-9.json")).seaHouseShipment),
+          lcl: sizeOf(documentAsShipped(load("ms/2800237044-iftmin-erstinfo-9.json")).seaHouseShipment) }
             must equalTo({ fcl: 0, lcl: 2 })),
 
     // Cancels are gated with everything else: a load type the integration never created is
@@ -480,7 +488,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
             must equalTo({ fcl: 0, lcl: 1 })),
 
     () -> "with the switch on, FCL is processed again" in (
-        (documentWith(load("fcl/2800209301-fcl-iftmin-erst-9.json"), true).seaHouseShipment
+        (documentWith(load("fcl/2800209301-iftmin-erst-9.json"), true).seaHouseShipment
             map ((s) -> s.loadType)) must equalTo(["FCL"])),
 
     // === spec v1.1 ========================================================================
@@ -490,7 +498,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // populated `customerVessel` (docs/get-responses). The standard fields stay unset.
     () -> "the customer UDFs carry vessel, voyage, POL, POD and place of delivery" in (
         do {
-            var mc = shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].master.mainCarriageAsOcean
+            var mc = shipmentsOf("fcl/2800209301-iftmin-erst-9.json")[0].master.mainCarriageAsOcean
             ---
             { lloyds: mc.customerVessel.vesselNumber, vessel: mc.customerVessel.vesselName,
               voyage: mc.customerVoyage, pol: mc.customerPOL.matchcode, pod: mc.customerPOD.matchcode,
@@ -501,7 +509,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
 
     () -> "the standard vessel and port fields are left unset" in (
         do {
-            var mc = shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].master.mainCarriageAsOcean
+            var mc = shipmentsOf("fcl/2800209301-iftmin-erst-9.json")[0].master.mainCarriageAsOcean
             ---
             [ mc.vessel, mc.voyageNumber, mc.portOfLoading, mc.portOfDischarge ]
                 must equalTo([null, null, null, null])
@@ -521,11 +529,16 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // Section 8. RFF+BN occurs twice per message - header SG1 and again on the main carriage
     // stage - with the same value. Only the first may be mapped, and only one entry created.
     () -> "the booking number is one external reference of type 9, not two" in (
-        (shipmentsOf("ms/2800231445-ab-9.json") map ((s) -> s.master.externalReferences))
+        (shipmentsOf("ms/2800231445-ab-4-5.json") map ((s) -> s.master.externalReferences))
             must equalTo([
                 [{ referenceType: 9, value: "272215347" }],
                 [{ referenceType: 9, value: "272215347" }]
             ])),
+
+    // ...and a message that carries none grows no entry.
+    () -> "no booking number means no external reference" in (
+        (shipmentsOf("ms/2800231445-erst-9.json") map ((s) -> s.master.externalReferences))
+            must equalTo([null, null])),
 
     // Section 9. BASF carries RFF+LC on the goods item, not the header.
     () -> "the letter of credit number is read off the goods item" in (
@@ -535,7 +548,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // Section 12/13. Both are per container in the real messages: the three containers of
     // this interchange carry two different VGM values, so a broadcast would be wrong.
     () -> "VGM is numeric and per container, and the signature rides with it" in (
-        (shipmentsOf("fcl/2800209301-iftmin-erst-9.json")[0].container
+        (shipmentsOf("fcl/2800209301-iftmin-absch-9.json")[0].container
             map ((c) -> { vgm: c.verifiedGrossMass, sig: c.vgmVerificationSignature }))
             must equalTo([
                 { vgm: 24220.0, sig: "MR UNGER JOCHEN, HEAD OF WH" },
@@ -546,12 +559,12 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // A message that carries no VGM must not grow the fields - the interchange below is the
     // same order without the Abschlussinfo measurements.
     () -> "a message with no VGM leaves the container fields unset" in (
-        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].container
+        (shipmentsOf("fcl/2800209301-iftmin-erst-9.json")[0].container
             map ((c) -> c.verifiedGrossMass)) must equalTo([null, null, null])),
 
     // Section 11. The DG package fields are additional - the Cargo ones must survive intact.
     () -> "DG quantity and packaging are added without disturbing the cargo fields" in (
-        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].cargo
+        (shipmentsOf("fcl/2800209301-iftmin-erst-9.json")[0].cargo
             map ((c) -> { packages: c.totalNumberOfPackages, packaging: c.packaging.matchcode,
                           dgQty: c.dangerousGoods[0].quantity,
                           dgPkg: c.dangerousGoods[0].packaging.matchcode }))
@@ -567,7 +580,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
     // data. The five lines above carry 35 / 50 / 50 / 150 / 150 packages, so a mapping that
     // read the wrong item - or hoisted the first - fails this rather than passing by accident.
     () -> "each DG line takes its quantity from its own goods item" in (
-        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].cargo
+        (shipmentsOf("fcl/2800209301-iftmin-erst-9.json")[0].cargo
             map ((c) -> c.dangerousGoods[0].quantity == c.totalNumberOfPackages))
             must equalTo([true, true, true, true, true])),
 
@@ -590,7 +603,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
 
     // Section 16. The field is obsolete on BASF's side and real Carlo records carry null.
     () -> "Scenario is no longer emitted" in (
-        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json") map ((s) -> s.scenario))
+        (shipmentsOf("fcl/2800209301-iftmin-erst-9.json") map ((s) -> s.scenario))
             must equalTo([null])),
 
     // === PCI / HandlingInfo (issue of 11-09-2026) =========================================
@@ -615,7 +628,60 @@ var msAfterBooking = shipmentsWith("ms/2800231445-iftmbf-2.json", "iftmbf-before
         }),
 
     () -> "a two-component PCI still yields both lines" in (
-        (shipmentsOf("fcl/2800209301-fcl-iftmin-erst-9.json")[0].cargo[0].handlingInfo)
-            must equalTo("BASF\r\n3020963670 / 000010"))
+        (shipmentsOf("fcl/2800209301-iftmin-erst-9.json")[0].cargo[0].handlingInfo)
+            must equalTo("BASF\r\n3020963670 / 000010")),
+
+    // === spec v1.1, against BASF's own reference messages ==================================
+    // Section 18 of the specification names three messages as the validation set, and all
+    // three are now in the example orders. These assert the v1.1 fields against those rather
+    // than against the older examples, and every value below also appears verbatim in the
+    // specification - so a drift here is a drift from what BASF themselves documented.
+
+    // ML 2800244245, the Egypt shipment. The only IFTMIN in the whole example set carrying an
+    // RFF+ABT, and it settles where BASF puts it: on the goods item (SG22), beside RFF+LC,
+    // not in the header.
+    () -> "ACID comes off the structured RFF+ABT of the Egypt message" in (
+        (shipmentsOf("fcl/2800244245-erstinfo-9.json") map ((s) -> s.aCIDNumber))
+            must equalTo(["2101495821022010016"])),
+
+    () -> "every message of the ACID order carries it, on both message codes" in (
+        ([ "fcl/2800244245-erstinfo-9.json", "fcl/2800244245-erstinfo-4-1.json",
+           "fcl/2800244245-erstinfo-4-2.json", "fcl/2800244245-abschlussinfo-9.json" ]
+            flatMap ((f) -> shipmentsOf(f) map ((s) -> s.aCIDNumber)))
+            must equalTo([ "2101495821022010016", "2101495821022010016",
+                           "2101495821022010016", "2101495821022010016" ])),
+
+    // ML 2800245098, the Abschlussinfo the spec cites for repeated RFF+BN, VGM and NAD+AM.
+    () -> "the booking number of the repeated-RFF+BN message is mapped once" in (
+        (shipmentsOf("fcl/2800245098-abschlussinfo-9.json") map ((s) -> s.master.externalReferences))
+            must equalTo([[{ referenceType: 9, value: "57681221" }]])),
+
+    // The spec's own VGM example is `MEA+WT+AAB:::VGM+KGM:20897.040` - numeric here, not the
+    // string the segment carries, so the trailing zero is gone.
+    () -> "VGM and its signature come off the Abschlussinfo" in (
+        (shipmentsOf("fcl/2800245098-abschlussinfo-9.json")[0].container
+            map ((c) -> { vgm: c.verifiedGrossMass, sig: c.vgmVerificationSignature }))
+            must equalTo([{ vgm: 20897.04, sig: "MR WILLMANN, JAN" }])),
+
+    // ML 2800250325, the second-notifier example. NAD+N2 sits in the same goods-item party
+    // group as NAD+N1, so Notify2 is the Notify1 logic pointed at the Notify2 fields.
+    () -> "Notify2 and its TAX ID come off the second-notifier message" in (
+        (shipmentsOf("fcl/2800250325-iftmin.json") map ((s) ->
+            { name1: s.notify2.name1, tax: s.notify2TAXID,
+              phone: s.phoneNumberNotify2, email: s.emailNotify2 }))
+            must equalTo([{ name1: "BASF MEXICANA", tax: "BME8109104S6",
+                            phone: "55-57233082", email: "Basf-coatings-MX@basf.com" }])),
+
+    // === cancel, from a real message =======================================================
+    // The example set now carries an actual code 1 IFTMIN, which it did not before, so the
+    // cancel branch is no longer covered only by synthetic interchanges. A cancel is identity
+    // plus IsInRecycleBin and nothing else - no business field may ride along, or a dossier
+    // being withdrawn would be overwritten on its way out.
+    () -> "a real cancel message emits identity and the recycle flag only" in (
+        (shipmentsOf("fcl/2800244026-iftmin-cancel.json") map ((s) ->
+            { bl: s.bASFBL, ref: s.customerReference, recycled: s.isInRecycleBin,
+              load: s.loadType, terms: s.deliveryTerms, cargo: s.cargo }))
+            must equalTo([{ bl: "BL00", ref: "2800244026", recycled: true,
+                            load: null, terms: null, cargo: null }]))
     ]
 )

@@ -47,8 +47,8 @@ cd basf
 mvn -o test
 ```
 
-170 tests. Every EDIFACT interchange in `docs/example-orders` is exercised by the mapping for
-its message type: 21 IFTMIN, 9 IFTMBF, 4 IFCSUM.
+197 tests. Every EDIFACT interchange in `docs/example-orders` is exercised by the mapping for
+its message type: 35 IFTMIN, 13 IFTMBF, 6 IFCSUM.
 
 The suites run each mapping the way the data-transformer does — `evalPath` evaluates the
 uploaded script itself against a `payload` context and asserts on the JSON Carlo would receive.
@@ -69,6 +69,14 @@ Test fixtures are **generated, not hand-written**:
 python tools/edifact_to_json.py --all          # docs/example-orders -> src/test/resources/example-orders
 python tools/edifact_to_json.py <in.txt>       # one file, to stdout
 ```
+
+**Regenerate whenever `docs/example-orders` changes, and commit the result.** The fixture set had
+drifted once: the sources were reorganised without re-running the converter, so fixture names no
+longer matched their content — `fcl/ifcsum-2013354401.json` held an IFTMIN, `ms/2800231445-iftmbf-2.json`
+held a two-message IFTMIN, and four names had no source at all. The suites went on passing because
+the manifest is generated from the same stale tree, so nothing contradicted anything. Only adding
+new examples surfaced it. A fixture set that is regenerated on every change cannot drift like that;
+one that is regenerated occasionally silently can.
 
 `tools/edifact_to_json.py` reproduces the Fracht Connect EDI parser: the position-prefixed
 segment keys (`"0020_BGM"`, `"0890_Segment_group_18"`), the `<TAG><ee>` / `<TAG><ee><cc>`
@@ -193,12 +201,7 @@ Collected from the three specs; each is written up where it belongs.
    `config/` says whether the delivery step POSTs that or short-circuits**; and open item 5 below
    stops being an edge case, since LCL is now the only path.
 
-10. **Spec v1.1 §10 (ACID, `RFF+ABT`) is unattested.** No IFTMIN interchange in the example set
-    carries one, and the message the spec names as the example (ML `2800244245`) is not in the
-    repo. The mapping tries header SG1 then goods-item SG22 and takes whichever is present.
-    Re-verify against a real Egypt message.
-
-11. **Vacating `portOfLoading` / `portOfDischarge` / `placeOfDelivery` needs a second opinion.**
+10. **Vacating `portOfLoading` / `portOfDischarge` / `placeOfDelivery` needs a second opinion.**
     Spec v1.1 §5–§7 move POL, POD and Place of Delivery onto the customer UDFs, and rule 6 says
     the standard field must not be populated instead — which is also what vessel and voyage
     already did. But `portOfLoading` was resolving CarLo master data (real records come back with

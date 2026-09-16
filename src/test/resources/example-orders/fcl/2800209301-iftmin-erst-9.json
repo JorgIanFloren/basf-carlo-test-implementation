@@ -13,21 +13,21 @@
               "UNB0203": "283155273",
               "UNB0301": "102500",
               "UNB0303": "283155273",
-              "UNB0401": 260408,
-              "UNB0402": 1335,
-              "UNB05": "01089591993596"
+              "UNB0401": 260316,
+              "UNB0402": 1243,
+              "UNB05": "72812226113355"
             },
             "Heading": {
               "0020_BGM": {
                 "BGM0101": "705",
-                "BGM0104": "ABSCHLUSSINFO",
+                "BGM0104": "ERSTINFO",
                 "BGM0201": "2800209301",
                 "BGM03": "9"
               },
               "0030_CTA": {
                 "CTA01": "MS",
-                "CTA0201": "GB/SG-ECI",
-                "CTA0202": "Frau Ho"
+                "CTA0201": "GB/SE-CA",
+                "CTA0202": "Mrs Ho"
               },
               "0040_COM": [
                 {
@@ -38,7 +38,7 @@
               "0050_DTM": [
                 {
                   "DTM0101": "137",
-                  "DTM0102": "202604081334",
+                  "DTM0102": "202603161242",
                   "DTM0103": "203"
                 }
               ],
@@ -99,7 +99,6 @@
                   "FTX0401": "It is declared that the packing of the freight container/ vehicle has",
                   "FTX0402": "been carried out in accordance with the provisions of 5.4.2.1 IMDG-Cod",
                   "FTX0403": "e.",
-                  "FTX0404": "MR UNGER JOCHEN, HEAD OF WH",
                   "FTX05": "EN"
                 },
                 {
@@ -107,7 +106,6 @@
                   "FTX0401": "It is declared that the packing of the freight container/ vehicle has",
                   "FTX0402": "been carried out in accordance with the provisions of 5.4.2.1 IMDG-Cod",
                   "FTX0403": "e.",
-                  "FTX0404": "MR UNGER JOCHEN, HEAD OF WH",
                   "FTX05": "EN"
                 },
                 {
@@ -138,8 +136,8 @@
                 },
                 {
                   "FTX01": "ABO",
-                  "FTX0401": "COMPLETION INFO",
-                  "FTX0402": "YE27",
+                  "FTX0401": "INITIAL INFO",
+                  "FTX0402": "YE22",
                   "FTX05": "EN"
                 },
                 {
@@ -547,7 +545,7 @@
                     {
                       "1010_NAD": {
                         "NAD01": "DM",
-                        "NAD0401": "Frau Juppi",
+                        "NAD0401": "Mrs Juppi",
                         "NAD0501": "Storkower StraÃe 146",
                         "NAD06": "Berlin",
                         "NAD08": "10407",
@@ -747,7 +745,7 @@
                   "1360_Segment_group_29": [
                     {
                       "1370_SGP": {
-                        "SGP0101": "CGMU5666332"
+                        "SGP0101": "1288725860"
                       }
                     }
                   ],
@@ -912,7 +910,7 @@
                     {
                       "1010_NAD": {
                         "NAD01": "DM",
-                        "NAD0401": "Frau Juppi",
+                        "NAD0401": "Mrs Juppi",
                         "NAD0501": "Storkower StraÃe 146",
                         "NAD06": "Berlin",
                         "NAD08": "10407",
@@ -1112,7 +1110,7 @@
                   "1360_Segment_group_29": [
                     {
                       "1370_SGP": {
-                        "SGP0101": "CGMU5666332"
+                        "SGP0101": "1288725860"
                       }
                     }
                   ],
@@ -1277,7 +1275,7 @@
                     {
                       "1010_NAD": {
                         "NAD01": "DM",
-                        "NAD0401": "Frau Juppi",
+                        "NAD0401": "Mrs Juppi",
                         "NAD0501": "Storkower StraÃe 146",
                         "NAD06": "Berlin",
                         "NAD08": "10407",
@@ -1477,7 +1475,7 @@
                   "1360_Segment_group_29": [
                     {
                       "1370_SGP": {
-                        "SGP0101": "CGMU5666332"
+                        "SGP0101": "1288725860"
                       }
                     }
                   ],
@@ -1642,7 +1640,7 @@
                     {
                       "1010_NAD": {
                         "NAD01": "DM",
-                        "NAD0401": "Frau Juppi",
+                        "NAD0401": "Mrs Juppi",
                         "NAD0501": "Storkower StraÃe 146",
                         "NAD06": "Berlin",
                         "NAD08": "10407",
@@ -1842,7 +1840,7 @@
                   "1360_Segment_group_29": [
                     {
                       "1370_SGP": {
-                        "SGP0101": "AMCU9361861"
+                        "SGP0101": "1288724478"
                       }
                     }
                   ],
@@ -2007,7 +2005,7 @@
                     {
                       "1010_NAD": {
                         "NAD01": "DM",
-                        "NAD0401": "Frau Juppi",
+                        "NAD0401": "Mrs Juppi",
                         "NAD0501": "Storkower StraÃe 146",
                         "NAD06": "Berlin",
                         "NAD08": "10407",
@@ -2207,7 +2205,7 @@
                   "1360_Segment_group_29": [
                     {
                       "1370_SGP": {
-                        "SGP0101": "SEKU9141997"
+                        "SGP0101": "1288724479"
                       }
                     }
                   ],
@@ -2277,7 +2275,7 @@
                 {
                   "1650_EQD": {
                     "EQD01": "CN",
-                    "EQD0201": "AMCU9361861",
+                    "EQD0201": "1288724478",
                     "EQD0301": "45RT",
                     "EQD0304": "40Â´ Reefer 9Â´6\" operated high cube"
                   },
@@ -2299,30 +2297,14 @@
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAB",
-                      "MEA0204": "VGM",
                       "MEA0301": "KGM",
-                      "MEA0302": "24220.000"
+                      "MEA0302": "24070.000"
                     },
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAA",
                       "MEA0301": "KGM",
                       "MEA0302": "19470.000"
-                    }
-                  ],
-                  "1700_SEL": [
-                    {
-                      "SEL01": "0024451",
-                      "SEL0201": "CA"
-                    }
-                  ],
-                  "1750_FTX": [
-                    {
-                      "FTX01": "ABL",
-                      "FTX0301": "VGM",
-                      "FTX0401": "The container gross weights (CGW) represent the Verified Gross Mass",
-                      "FTX0402": "(VGM) in conformity with the International Convention for the Safety",
-                      "FTX0403": "  of Life at Sea (SOLAS) Chapter VI, Part A, Regulation 2."
                     }
                   ],
                   "1840_Segment_group_39": [
@@ -2350,19 +2332,13 @@
                         "NAD08": "67065",
                         "NAD09": "DE"
                       }
-                    },
-                    {
-                      "1850_NAD": {
-                        "NAD01": "AM",
-                        "NAD0401": "MR UNGER JOCHEN, HEAD OF WH"
-                      }
                     }
                   ]
                 },
                 {
                   "1650_EQD": {
                     "EQD01": "CN",
-                    "EQD0201": "SEKU9141997",
+                    "EQD0201": "1288724479",
                     "EQD0301": "45RT",
                     "EQD0304": "40Â´ Reefer 9Â´6\" operated high cube"
                   },
@@ -2384,30 +2360,14 @@
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAB",
-                      "MEA0204": "VGM",
                       "MEA0301": "KGM",
-                      "MEA0302": "24220.000"
+                      "MEA0302": "24070.000"
                     },
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAA",
                       "MEA0301": "KGM",
                       "MEA0302": "19470.000"
-                    }
-                  ],
-                  "1700_SEL": [
-                    {
-                      "SEL01": "0024453",
-                      "SEL0201": "CA"
-                    }
-                  ],
-                  "1750_FTX": [
-                    {
-                      "FTX01": "ABL",
-                      "FTX0301": "VGM",
-                      "FTX0401": "The container gross weights (CGW) represent the Verified Gross Mass",
-                      "FTX0402": "(VGM) in conformity with the International Convention for the Safety",
-                      "FTX0403": "  of Life at Sea (SOLAS) Chapter VI, Part A, Regulation 2."
                     }
                   ],
                   "1840_Segment_group_39": [
@@ -2435,19 +2395,13 @@
                         "NAD08": "67065",
                         "NAD09": "DE"
                       }
-                    },
-                    {
-                      "1850_NAD": {
-                        "NAD01": "AM",
-                        "NAD0401": "MR UNGER JOCHEN, HEAD OF WH"
-                      }
                     }
                   ]
                 },
                 {
                   "1650_EQD": {
                     "EQD01": "CN",
-                    "EQD0201": "CGMU5666332",
+                    "EQD0201": "1288725860",
                     "EQD0301": "45RT",
                     "EQD0304": "40Â´ Reefer 9Â´6\" operated high cube"
                   },
@@ -2469,9 +2423,8 @@
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAB",
-                      "MEA0204": "VGM",
                       "MEA0301": "KGM",
-                      "MEA0302": "22273.000"
+                      "MEA0302": "22123.000"
                     },
                     {
                       "MEA01": "WT",
@@ -2480,21 +2433,6 @@
                       "MEA0302": "17523.000"
                     }
                   ],
-                  "1700_SEL": [
-                    {
-                      "SEL01": "0024456",
-                      "SEL0201": "CA"
-                    }
-                  ],
-                  "1750_FTX": [
-                    {
-                      "FTX01": "ABL",
-                      "FTX0301": "VGM",
-                      "FTX0401": "The container gross weights (CGW) represent the Verified Gross Mass",
-                      "FTX0402": "(VGM) in conformity with the International Convention for the Safety",
-                      "FTX0403": "  of Life at Sea (SOLAS) Chapter VI, Part A, Regulation 2."
-                    }
-                  ],
                   "1840_Segment_group_39": [
                     {
                       "1850_NAD": {
@@ -2520,12 +2458,6 @@
                         "NAD08": "67065",
                         "NAD09": "DE"
                       }
-                    },
-                    {
-                      "1850_NAD": {
-                        "NAD01": "AM",
-                        "NAD0401": "MR UNGER JOCHEN, HEAD OF WH"
-                      }
                     }
                   ]
                 }
@@ -2533,7 +2465,7 @@
             },
             "Id": "IFTMIN",
             "MessageHeader": {
-              "UNH01": "959199359600",
+              "UNH01": "222611335500",
               "UNH0201": "IFTMIN",
               "UNH0202": "D",
               "UNH0203": "99A",

@@ -43,8 +43,8 @@ fun cargoOf(fixture) = document(load(fixture)).shipmentCargo
 
 // Evaluated once each and reused: `var` is cached, so a fixture the assertions below return
 // to repeatedly costs one run of the mapping rather than one per assertion.
-var fclVgm = cargoOf("fcl/20260625-142940-681-v2.json")
-var fclSingle = cargoOf("fcl/20260625-093948-681.json")
+var fclVgm = cargoOf("fcl/ifcsum-2013354403.json")
+var fclSingle = cargoOf("fcl/ifcsum-2013354401.json")
 var lclMrn = cargoOf("lcl/ifcsum-136579804.json")
 
 fun actual(fixture) = cargoOf(fixture) map ((c) -> {
@@ -94,9 +94,9 @@ fun summary(code) = message(code) update {
     // eDIID is the same "<note>/<position>" string BasfIftmin.dwl writes onto the cargo line.
     () -> "a cargo line is keyed by delivery note, position and the IFTMIN join key" in (
         fclSingle[0] must [
-            $.deliveryNoteSAP must equalTo("3550880113"),
+            $.deliveryNoteSAP must equalTo("3550879994"),
             $.deliveryPositionNumber must equalTo("000010"),
-            $.eDIID must equalTo("3550880113/000010")
+            $.eDIID must equalTo("3550879994/000010")
         ]),
 
     // The flow has no create path, and an upsert would add a duplicate line whenever the
