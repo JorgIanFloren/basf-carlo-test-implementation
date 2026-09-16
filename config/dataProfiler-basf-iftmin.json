@@ -1,7 +1,7 @@
 {
   "id": "8bb0a796-a4e9-412c-9d03-6cdf58da34d5",
   "name": "basf-carlo-iftmin-profile",
-  "description": "BASF IFTMIN (instruction) -> Carlo v3 SeaHouseShipment. Covers create, update, cancel, FCL, LCL and master-sub; the mapping emits one seaHouseShipment entry per IFTMIN message in the interchange.",
+  "description": "BASF IFTMIN (instruction) -> Carlo v3 SeaHouseShipment. Covers create, update, cancel, FCL, LCL and master-sub; the mapping emits one seaHouseShipment entry per IFTMIN message in the interchange. Seq 2 is the 'GET dossier by CustomerRef' lookup: a dataDelivery step that extends the payload with the response under 'lookup' rather than replacing it, which is what lets each BL of a master-sub address its own dossier. See config/README.md check 6 and docs/carlo/06-dossier-lookup.md.",
   "active": true,
   "configuration": [
     {
@@ -10,6 +10,36 @@
       "sender": "BASF",
       "receiver": "CARLO",
       "subject": "IFTMIN",
+      "nextResource": {
+        "protocol": "HTTPS",
+        "host": "api-ch2.fracht-connect.com",
+        "port": "443",
+        "headers": {
+          "client_id": "2603a16897af4fa1906afe4440b2f4ca",
+          "client_secret": "6E49D43886D240E9AE92c612b03BAF0c",
+          "Content-Type": "application/json"
+        },
+        "path": "/dev/s/v1/data-delivery/https",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "dataDelivery",
+      "sequence": 2,
+      "host": "api-carlo-test.fracht.be",
+      "port": "4712",
+      "path": "/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment/0",
+      "method": "GET",
+      "queryParameters": {
+        "$filter": "700071 eq '{{CONFIRM_REFERENCE_EXPRESSION}}'",
+        "$top": "200"
+      },
+      "headers": {
+        "X-API-Key": "o!x_ygTjTb25QbOmEJSf_test",
+        "Accept": "application/json"
+      },
+      "validResponseCodes": "200..299",
+      "extendPayloadAt": "lookup",
       "nextResource": {
         "protocol": "HTTPS",
         "host": "api-ch2.fracht-connect.com",
@@ -25,7 +55,7 @@
     },
     {
       "type": "dataTransformer",
-      "sequence": 2,
+      "sequence": 3,
       "dwlPath": "basf/BasfIftmin.dwl",
       "inputMimeType": "application/json",
       "reportingContacts": "integration.support@fracht.com",
@@ -44,7 +74,7 @@
     },
     {
       "type": "dataDelivery",
-      "sequence": 3,
+      "sequence": 4,
       "host": "api-carlo-test.fracht.be",
       "port": "4712",
       "path": "/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment",

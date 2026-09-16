@@ -112,13 +112,26 @@ contributing the carrier's ETA, the message the vessel, ports and ETD. Replacing
 wholesale would drop half of it. It runs *after* `camelKeys`, because the cached fragment comes
 back from Carlo already camelCase.
 
-### LoadType and Scenario
+### LoadType, Scenario and the FCL switch
 
-`LoadType` = `FCL` when the message carries equipment (`EQD`), else `LCL`. `Scenario/Matchcode`
-follows it: `BASF FCL` / `BASF LCL`.
+`LoadType` = `FCL` when the message carries equipment (`EQD`), else `LCL`.
 
-> **Changed from v1.** The first version emitted `Scenario` only for FCL, so every LCL shipment
-> arrived without a scenario. It is now unconditional.
+`Scenario` is **no longer emitted at all.** The field is obsolete on BASF's side (spec v1.1 §16)
+and real CarLo records carry `scenario.matchcode: null`. `BasfIftmbf.dwl` drops it too, or a
+booking update would write back on every run what the instruction stopped sending.
+
+`PROCESS_FCL`, a constant at the head of this mapping, decides whether FCL is processed at all.
+It ships `false`: go-live carries LCL only. With it off an FCL message contributes nothing — no
+create, no update and no cancel either, since a load type the integration never created is one it
+must not address. A master-sub interchange is always uniformly FCL or uniformly LCL, so the filter
+takes such an interchange whole or not at all. The same constant lives in `BasfIftmbf.dwl` and the
+two must agree; see `docs/00-basf.md` *"FCL switch"*.
+
+The mapping reads it through `processFcl(payload)`, which falls back to the constant when the
+payload carries no `config` key — which it never does in production. That seam exists only so the
+test suite can exercise both states: it runs the file through `evalPath` exactly as shipped, and
+`dw::Runtime::eval`, the only route that could patch the constant, types its scope as
+`Dictionary<String>` and so cannot be handed a payload.
 
 ### Cancel
 
@@ -192,7 +205,7 @@ module reads is verified against the real parser capture**
 
 ## 5. Test coverage
 
-`src/test/dw/IftminMappingTest.dwl`, 43 tests.
+`src/test/dw/IftminMappingTest.dwl`, 106 tests.
 
 Twenty-one interchanges are exercised — every IFTMIN interchange in `docs/example-orders`. Each
 is compared against a row of `src/test/resources/example-orders/manifest.json`, which records

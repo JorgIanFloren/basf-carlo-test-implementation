@@ -63,7 +63,7 @@ wrong record. See §8 for the two guards that hold this.
 | 7 | `NAD+CZ+1000+…` | header NAD group, `NAD01 == "CZ"` → `NAD0201` | `Customer/Matchcode` *(conversion)* | `"1000"` |
 | 8 | `FTX+ITR+++08.04.2026` | first EQD group, `FTX01 == "ITR"` | `EstimatedDispatchDate` | `"2026-04-08T00:00:00"` |
 | 9 | — constant — | — | `ObjectOwner/OrganisationalUnitId` | `5` |
-| 10 | `EQD` present? | header EQD groups | `Scenario/Matchcode` | `"BASF FCL"` / `"BASF LCL"` |
+| 10 | `EQD` present? | header EQD groups | *(load type — gates the FCL switch; no longer a mapped field)* | `FCL` / `LCL` |
 | 11 | `TMD03` + `LOC+20` | first EQD group's TMD; LOC+20 across stages | `HaulageType/Matchcode` | `"CAR/CAR"` |
 
 **Derivations**
@@ -73,7 +73,11 @@ wrong record. See §8 for the two guards that hold this.
   present → `CAR`, absent → `MER`. First occurrence only; omitted entirely when there is no TMD.
   The sheet's fourth clause reads `MER/CAR ← TMD+…+2/TMD+…+1`, which is a typo — the other three
   clauses all derive slot 2 from `LOC+20`, and the four combinations exhaust the 2×2 space.
-- **Scenario** = `EQD` present → `BASF FCL`, else `BASF LCL`.
+- **Scenario** is **no longer emitted.** The field is obsolete on BASF's side (IFTMIN spec v1.1
+  §16). The instruction mapping stopped sending it, and this one has to as well — otherwise every
+  booking update would write the value straight back.
+- **Load type** = `EQD` present → FCL, else LCL. It is no longer a mapped field; it survives only
+  as the input to the FCL switch below.
 - **EstimatedDispatchDate**: the date is pulled out of the FTX free text. Accepted spellings per
   the sheet: `DD.MM.YYYY`, `DD/MM/YYYY`, `DD-MM-YYYY`, `DD MM YYYY`.
 - **Date formats on the wire**: `CustomerETA` / `CustomerClosing` / `ShipmentDate` are date-only
@@ -82,6 +86,18 @@ wrong record. See §8 for the two guards that hold this.
   "DD/MM/YYYY" notation describes the Carlo UI / the BASF side, not the wire format.
 - **DTM disambiguation**: `DTM+132` occurs under both `TDT+20` (20260508) and `TDT+30` (20260512).
   Only the main-carriage stage feeds `CustomerETA`.
+
+**The FCL switch**
+
+`PROCESS_FCL`, a constant at the head of this mapping, decides whether FCL bookings are processed
+at all. It ships `false` — go-live carries LCL only — and applies beside the cancel filter, so an
+FCL booking neither creates a dossier the instruction will ignore nor updates one the instruction
+never made. **It must hold the same value as the constant in `BasfIftmin.dwl`**; see
+`docs/00-basf.md` *"FCL switch"*. The `processFcl(payload)` indirection is a test seam only —
+nothing in the pipeline sets `payload.config`.
+
+With FCL off, note that §7.6 below stops being an edge case: an LCL booking has no `EQD`, so it
+carries neither `HaulageType` nor `EstimatedDispatchDate`, and that is now the main path.
 
 ## 3. Emitted but not in the sheet
 

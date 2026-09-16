@@ -13,20 +13,20 @@
               "UNB0203": "283155273",
               "UNB0301": "102500",
               "UNB0303": "283155273",
-              "UNB0401": 260414,
-              "UNB0402": 1235,
-              "UNB05": "94856456478179"
+              "UNB0401": 260316,
+              "UNB0402": 1243,
+              "UNB05": "72812226113355"
             },
             "Heading": {
               "0020_BGM": {
                 "BGM0101": "705",
                 "BGM0104": "ERSTINFO",
                 "BGM0201": "2800209301",
-                "BGM03": "4"
+                "BGM03": "9"
               },
               "0030_CTA": {
                 "CTA01": "MS",
-                "CTA0201": "GB/SG-ECI",
+                "CTA0201": "GB/SE-CA",
                 "CTA0202": "Mrs Ho"
               },
               "0040_COM": [
@@ -38,7 +38,7 @@
               "0050_DTM": [
                 {
                   "DTM0101": "137",
-                  "DTM0102": "202604141234",
+                  "DTM0102": "202603161242",
                   "DTM0103": "203"
                 }
               ],
@@ -155,7 +155,7 @@
                 },
                 {
                   "FTX01": "AAS",
-                  "FTX0401": "Name, address and phone number of the carrier's agent at port of desti",
+                  "FTX0401": "Name, address and phone number of the carrier s agent at port of desti",
                   "FTX0402": "nation"
                 },
                 {
@@ -197,12 +197,12 @@
                   "0450_QTY": [
                     {
                       "QTY0101": "100",
-                      "QTY0102": 51920,
+                      "QTY0102": 56463,
                       "QTY0103": "KGM"
                     },
                     {
                       "QTY0101": "109",
-                      "QTY0102": 99.84,
+                      "QTY0102": 108.576,
                       "QTY0103": "MTQ"
                     }
                   ]
@@ -305,7 +305,7 @@
                     "NAD01": "CA",
                     "NAD0201": "220343",
                     "NAD0401": "CMA-CGM AGENCIES WORLDWIDE S.A.S.",
-                    "NAD0501": "4 quai d'Arenc BOULEVARD JACQUES SA",
+                    "NAD0501": "4 quai d Arenc BOULEVARD JACQUES SA",
                     "NAD0502": "ADÃ",
                     "NAD06": "Marseille",
                     "NAD07": "13",
@@ -448,12 +448,12 @@
                 {
                   "0900_GID": {
                     "GID01": 1,
-                    "GID0201": 10,
+                    "GID0201": 7,
                     "GID0202": "CP3",
                     "GID0203": "67",
                     "GID0204": "91",
                     "GID0205": "Pallet,wood,CP3,1140x1140x138mm,HT",
-                    "GID0301": 50,
+                    "GID0301": 35,
                     "GID0302": "1H1",
                     "GID0305": "Plastic drums"
                   },
@@ -626,7 +626,7 @@
                         "MEA01": "WT",
                         "MEA0201": "AAE",
                         "MEA0301": "KGM",
-                        "MEA0302": "6280.000"
+                        "MEA0302": "4396.000"
                       }
                     },
                     {
@@ -634,7 +634,7 @@
                         "MEA01": "WT",
                         "MEA0201": "AAC",
                         "MEA0301": "KGM",
-                        "MEA0302": "6000.000"
+                        "MEA0302": "4200.000"
                       }
                     },
                     {
@@ -642,7 +642,7 @@
                         "MEA01": "WT",
                         "MEA0201": "WT",
                         "MEA0301": "KGM",
-                        "MEA0302": "210.000"
+                        "MEA0302": "147.000"
                       }
                     },
                     {
@@ -650,7 +650,7 @@
                         "MEA01": "VOL",
                         "MEA0201": "ABJ",
                         "MEA0301": "MTQ",
-                        "MEA0302": "12.480"
+                        "MEA0302": "8.736"
                       }
                     },
                     {
@@ -703,27 +703,27 @@
                     {
                       "1120_RFF": {
                         "RFF0101": "LI",
-                        "RFF0102": "3550879730",
+                        "RFF0102": "3550879430",
                         "RFF0103": "000010"
                       }
                     },
                     {
                       "1120_RFF": {
                         "RFF0101": "VN",
-                        "RFF0102": "3020963671",
+                        "RFF0102": "3020963670",
                         "RFF0103": "000010"
                       }
                     },
                     {
                       "1120_RFF": {
                         "RFF0101": "CO",
-                        "RFF0102": "4994886335"
+                        "RFF0102": "4994886331"
                       }
                     },
                     {
                       "1120_RFF": {
                         "RFF0101": "OP",
-                        "RFF0102": "4994886335",
+                        "RFF0102": "4994886331",
                         "RFF0103": "10"
                       }
                     },
@@ -738,7 +738,14 @@
                     {
                       "1150_PCI": {
                         "PCI0201": "BASF",
-                        "PCI0202": "3020963671 / 000010"
+                        "PCI0202": "3020963670 / 000010"
+                      }
+                    }
+                  ],
+                  "1360_Segment_group_29": [
+                    {
+                      "1370_SGP": {
+                        "SGP0101": "1288725860"
                       }
                     }
                   ],
@@ -1061,27 +1068,27 @@
                     {
                       "1120_RFF": {
                         "RFF0101": "LI",
-                        "RFF0102": "3550879847",
+                        "RFF0102": "3550879730",
                         "RFF0103": "000010"
                       }
                     },
                     {
                       "1120_RFF": {
                         "RFF0101": "VN",
-                        "RFF0102": "3020991631",
+                        "RFF0102": "3020963671",
                         "RFF0103": "000010"
                       }
                     },
                     {
                       "1120_RFF": {
                         "RFF0101": "CO",
-                        "RFF0102": "4995117414"
+                        "RFF0102": "4994886335"
                       }
                     },
                     {
                       "1120_RFF": {
                         "RFF0101": "OP",
-                        "RFF0102": "4995117414",
+                        "RFF0102": "4994886335",
                         "RFF0103": "10"
                       }
                     },
@@ -1096,7 +1103,14 @@
                     {
                       "1150_PCI": {
                         "PCI0201": "BASF",
-                        "PCI0202": "3020991631 / 000010"
+                        "PCI0202": "3020963671 / 000010"
+                      }
+                    }
+                  ],
+                  "1360_Segment_group_29": [
+                    {
+                      "1370_SGP": {
+                        "SGP0101": "1288725860"
                       }
                     }
                   ],
@@ -1164,12 +1178,12 @@
                 {
                   "0900_GID": {
                     "GID01": 3,
-                    "GID0201": 30,
+                    "GID0201": 10,
                     "GID0202": "CP3",
                     "GID0203": "67",
                     "GID0204": "91",
                     "GID0205": "Pallet,wood,CP3,1140x1140x138mm,HT",
-                    "GID0301": 150,
+                    "GID0301": 50,
                     "GID0302": "1H1",
                     "GID0305": "Plastic drums"
                   },
@@ -1342,7 +1356,7 @@
                         "MEA01": "WT",
                         "MEA0201": "AAE",
                         "MEA0301": "KGM",
-                        "MEA0302": "18840.000"
+                        "MEA0302": "6280.000"
                       }
                     },
                     {
@@ -1350,7 +1364,7 @@
                         "MEA01": "WT",
                         "MEA0201": "AAC",
                         "MEA0301": "KGM",
-                        "MEA0302": "18000.000"
+                        "MEA0302": "6000.000"
                       }
                     },
                     {
@@ -1358,7 +1372,7 @@
                         "MEA01": "WT",
                         "MEA0201": "WT",
                         "MEA0301": "KGM",
-                        "MEA0302": "630.000"
+                        "MEA0302": "210.000"
                       }
                     },
                     {
@@ -1366,7 +1380,7 @@
                         "MEA01": "VOL",
                         "MEA0201": "ABJ",
                         "MEA0301": "MTQ",
-                        "MEA0302": "37.440"
+                        "MEA0302": "12.480"
                       }
                     },
                     {
@@ -1419,27 +1433,27 @@
                     {
                       "1120_RFF": {
                         "RFF0101": "LI",
-                        "RFF0102": "3550879994",
+                        "RFF0102": "3550879847",
                         "RFF0103": "000010"
                       }
                     },
                     {
                       "1120_RFF": {
                         "RFF0101": "VN",
-                        "RFF0102": "3021036468",
+                        "RFF0102": "3020991631",
                         "RFF0103": "000010"
                       }
                     },
                     {
                       "1120_RFF": {
                         "RFF0101": "CO",
-                        "RFF0102": "4995488194"
+                        "RFF0102": "4995117414"
                       }
                     },
                     {
                       "1120_RFF": {
                         "RFF0101": "OP",
-                        "RFF0102": "4995488194",
+                        "RFF0102": "4995117414",
                         "RFF0103": "10"
                       }
                     },
@@ -1454,14 +1468,14 @@
                     {
                       "1150_PCI": {
                         "PCI0201": "BASF",
-                        "PCI0202": "3021036468 / 000010"
+                        "PCI0202": "3020991631 / 000010"
                       }
                     }
                   ],
                   "1360_Segment_group_29": [
                     {
                       "1370_SGP": {
-                        "SGP0101": "AMCU9361861"
+                        "SGP0101": "1288725860"
                       }
                     }
                   ],
@@ -1784,6 +1798,371 @@
                     {
                       "1120_RFF": {
                         "RFF0101": "LI",
+                        "RFF0102": "3550879994",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "3021036468",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "CO",
+                        "RFF0102": "4995488194"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4995488194",
+                        "RFF0103": "10"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "AQV",
+                        "RFF0102": "39059100"
+                      }
+                    }
+                  ],
+                  "1140_Segment_group_23": [
+                    {
+                      "1150_PCI": {
+                        "PCI0201": "BASF",
+                        "PCI0202": "3021036468 / 000010"
+                      }
+                    }
+                  ],
+                  "1360_Segment_group_29": [
+                    {
+                      "1370_SGP": {
+                        "SGP0101": "1288724478"
+                      }
+                    }
+                  ],
+                  "1500_Segment_group_32": [
+                    {
+                      "1510_DGS": {
+                        "DGS01": "IMD",
+                        "DGS0201": "9",
+                        "DGS0301": 3082,
+                        "DGS0401": 101,
+                        "DGS0402": "CEL",
+                        "DGS05": "3",
+                        "DGS06": "F-AS-F",
+                        "DGS1001": "9",
+                        "DGS1002": "EHSM"
+                      },
+                      "1520_FTX": [
+                        {
+                          "FTX01": "AAC",
+                          "FTX0301": "P",
+                          "FTX0401": "Marine Pollutant"
+                        },
+                        {
+                          "FTX01": "AAC",
+                          "FTX0401": "IMDG: UN 3082, ENVIRONMENTALLY HAZARDOUS SUBSTANCE, LIQUID, N.O.S. ( 1",
+                          "FTX0402": "-VINYL-2-PYRROLIDONE), 9, PG III, MARINE POLLUTANT , IMDG Code segrega",
+                          "FTX0403": "tion group - Not appropriate"
+                        },
+                        {
+                          "FTX01": "ACB",
+                          "FTX0401": "Odor: faint specific odour"
+                        },
+                        {
+                          "FTX01": "LOI",
+                          "FTX0401": "Properties of the product change irreversibly on exceeding the limit t",
+                          "FTX0402": "emperature."
+                        },
+                        {
+                          "FTX01": "AAN",
+                          "FTX0401": "Suitable Materials For Packages: High density polyethylene (HDPE), Low",
+                          "FTX0402": " density polyethylene (LDPE)"
+                        },
+                        {
+                          "FTX01": "AEB",
+                          "FTX0401": "Characteristics of the product are irreversibly changed below the limi",
+                          "FTX0402": "t temperature."
+                        }
+                      ],
+                      "1530_Segment_group_33": [
+                        {
+                          "1540_CTA": {
+                            "CTA01": "HE"
+                          },
+                          "1550_COM": [
+                            {
+                              "COM0101": "BASF EMERGENCY CONTACT:  +49 180 2273 112 |TPLST-DL40|",
+                              "COM0102": "TE"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "0900_GID": {
+                    "GID01": 5,
+                    "GID0201": 30,
+                    "GID0202": "CP3",
+                    "GID0203": "67",
+                    "GID0204": "91",
+                    "GID0205": "Pallet,wood,CP3,1140x1140x138mm,HT",
+                    "GID0301": 150,
+                    "GID0302": "1H1",
+                    "GID0305": "Plastic drums"
+                  },
+                  "0930_RNG": {
+                    "RNG01": "5",
+                    "RNG0201": "CEL",
+                    "RNG0202": 5,
+                    "RNG0203": 30
+                  },
+                  "0950_LOC": [
+                    {
+                      "LOC01": "1",
+                      "LOC0201": "CIP",
+                      "LOC0204": "Columbus Rail Ramp"
+                    }
+                  ],
+                  "0970_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "50403932",
+                      "PIA0202": "SA",
+                      "PIA0301": "4014439010826",
+                      "PIA0302": "EN"
+                    }
+                  ],
+                  "0980_FTX": [
+                    {
+                      "FTX01": "PRD",
+                      "FTX0401": "2",
+                      "FTX0402": "water-endangering"
+                    },
+                    {
+                      "FTX01": "DEL",
+                      "FTX0401": "Temperature sensitive product.",
+                      "FTX0402": "Refeer container needed. Irreversible damage.",
+                      "FTX0403": "For temperature range please see Master Data"
+                    },
+                    {
+                      "FTX01": "DEL",
+                      "FTX0401": "Temperature sensitive product.",
+                      "FTX0402": "Refeer container needed. Irreversible damage.",
+                      "FTX0403": "For temperature range please see Master Data"
+                    },
+                    {
+                      "FTX01": "AAW",
+                      "FTX0401": "6253"
+                    },
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "LuviquatÂ® Hold AT 3",
+                      "FTX0402": "120KG Plastic drums"
+                    },
+                    {
+                      "FTX01": "AAS",
+                      "FTX0401": "US Harmonized tariff code:390591"
+                    },
+                    {
+                      "FTX01": "COI",
+                      "FTX0301": "AM",
+                      "FTX0401": "FABIENNE.JUPPI@BASF.COM"
+                    }
+                  ],
+                  "1000_Segment_group_19": [
+                    {
+                      "1010_NAD": {
+                        "NAD01": "CN",
+                        "NAD0201": "3780100",
+                        "NAD0202": "160",
+                        "NAD0401": "BASF CORPORATION",
+                        "NAD0402": "MIDWEST DISTRIBUTION CENTER",
+                        "NAD0501": "9565 LOGISTICS CT",
+                        "NAD06": "COLUMBUS",
+                        "NAD07": "OH",
+                        "NAD08": "432170000",
+                        "NAD09": "US"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "IntercompanyNorthAmerica@basf.com"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "Ohio"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "DM",
+                        "NAD0401": "Mrs Juppi",
+                        "NAD0501": "Storkower StraÃe 146",
+                        "NAD06": "Berlin",
+                        "NAD08": "10407",
+                        "NAD09": "DE"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "+49 30 2005-5660",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "FABIENNE.JUPPI@BASF.COM"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "N1",
+                        "NAD0201": "4377277",
+                        "NAD0202": "160",
+                        "NAD0401": "BDP INTERNATIONAL",
+                        "NAD0402": "BASF IMPORT OPERATIONS",
+                        "NAD0501": "510 WALNUT ST, FL 3",
+                        "NAD06": "PHILADELPHIA",
+                        "NAD07": "PA",
+                        "NAD08": "191063690",
+                        "NAD09": "US"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "8564201182",
+                          "LOC0301": "FAX",
+                          "LOC0304": "2155585751",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "BASFDocs@bdpint.com"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "Pennsylvania"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "DO",
+                        "NAD0201": "38325",
+                        "NAD0202": "160",
+                        "NAD0301": "MORRIS",
+                        "NAD0401": "BASF CORPORATION",
+                        "NAD0501": "100 Park Avenue/PO Box 685",
+                        "NAD06": "FLORHAM PARK",
+                        "NAD07": "NJ",
+                        "NAD08": "079321089",
+                        "NAD09": "US"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "9732456000",
+                          "LOC0301": "FAX",
+                          "LOC0304": "9732456002",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "Inquiries-Intercompany-MX-CAC@basf.com"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "New Jersey"
+                        }
+                      ]
+                    }
+                  ],
+                  "1050_Segment_group_20": [
+                    {
+                      "1060_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAE",
+                        "MEA0301": "KGM",
+                        "MEA0302": "18840.000"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "18000.000"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "WT",
+                        "MEA0301": "KGM",
+                        "MEA0302": "630.000"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "VOL",
+                        "MEA0201": "ABJ",
+                        "MEA0301": "MTQ",
+                        "MEA0302": "37.440"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "DEN",
+                        "MEA0201": "TC",
+                        "MEA0204": "Density 20(C)",
+                        "MEA0301": "23",
+                        "MEA0302": "1.05"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Flash Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "101.00"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Melting Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "-1.00"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Boiling Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "100.00"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "AAE",
+                        "MEA0201": "ZZZ",
+                        "MEA0204": "pH-value",
+                        "MEA0301": "ZZ",
+                        "MEA0302": "5.00"
+                      }
+                    }
+                  ],
+                  "1110_Segment_group_22": [
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "LI",
                         "RFF0102": "3550880113",
                         "RFF0103": "000010"
                       }
@@ -1826,7 +2205,7 @@
                   "1360_Segment_group_29": [
                     {
                       "1370_SGP": {
-                        "SGP0101": "SEKU9141997"
+                        "SGP0101": "1288724479"
                       }
                     }
                   ],
@@ -1896,7 +2275,7 @@
                 {
                   "1650_EQD": {
                     "EQD01": "CN",
-                    "EQD0201": "AMCU9361861",
+                    "EQD0201": "1288724478",
                     "EQD0301": "45RT",
                     "EQD0304": "40Â´ Reefer 9Â´6\" operated high cube"
                   },
@@ -1919,19 +2298,13 @@
                       "MEA01": "WT",
                       "MEA0201": "AAB",
                       "MEA0301": "KGM",
-                      "MEA0302": "24220.000"
+                      "MEA0302": "24070.000"
                     },
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAA",
                       "MEA0301": "KGM",
                       "MEA0302": "19470.000"
-                    }
-                  ],
-                  "1700_SEL": [
-                    {
-                      "SEL01": "0024451",
-                      "SEL0201": "CA"
                     }
                   ],
                   "1840_Segment_group_39": [
@@ -1965,7 +2338,7 @@
                 {
                   "1650_EQD": {
                     "EQD01": "CN",
-                    "EQD0201": "SEKU9141997",
+                    "EQD0201": "1288724479",
                     "EQD0301": "45RT",
                     "EQD0304": "40Â´ Reefer 9Â´6\" operated high cube"
                   },
@@ -1988,19 +2361,13 @@
                       "MEA01": "WT",
                       "MEA0201": "AAB",
                       "MEA0301": "KGM",
-                      "MEA0302": "24220.000"
+                      "MEA0302": "24070.000"
                     },
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAA",
                       "MEA0301": "KGM",
                       "MEA0302": "19470.000"
-                    }
-                  ],
-                  "1700_SEL": [
-                    {
-                      "SEL01": "0024453",
-                      "SEL0201": "CA"
                     }
                   ],
                   "1840_Segment_group_39": [
@@ -2034,7 +2401,7 @@
                 {
                   "1650_EQD": {
                     "EQD01": "CN",
-                    "EQD0201": "CGMU5666332",
+                    "EQD0201": "1288725860",
                     "EQD0301": "45RT",
                     "EQD0304": "40Â´ Reefer 9Â´6\" operated high cube"
                   },
@@ -2057,19 +2424,13 @@
                       "MEA01": "WT",
                       "MEA0201": "AAB",
                       "MEA0301": "KGM",
-                      "MEA0302": "22273.000"
+                      "MEA0302": "22123.000"
                     },
                     {
                       "MEA01": "WT",
                       "MEA0201": "AAA",
                       "MEA0301": "KGM",
                       "MEA0302": "17523.000"
-                    }
-                  ],
-                  "1700_SEL": [
-                    {
-                      "SEL01": "0024456",
-                      "SEL0201": "CA"
                     }
                   ],
                   "1840_Segment_group_39": [
@@ -2104,7 +2465,7 @@
             },
             "Id": "IFTMIN",
             "MessageHeader": {
-              "UNH01": "645647817900",
+              "UNH01": "222611335500",
               "UNH0201": "IFTMIN",
               "UNH0202": "D",
               "UNH0203": "99A",

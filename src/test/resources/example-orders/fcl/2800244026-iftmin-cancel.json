@@ -1,0 +1,1054 @@
+{
+  "EDI": {
+    "Errors": [],
+    "Delimiters": "+: '?",
+    "Messages": {
+      "D99A": {
+        "IFTMIN": [
+          {
+            "Interchange": {
+              "UNB0101": "UNOC",
+              "UNB0102": "3",
+              "UNB0201": "BASFAG2",
+              "UNB0203": "283155273",
+              "UNB0301": "102500",
+              "UNB0303": "283155273",
+              "UNB0401": 260812,
+              "UNB0402": 936,
+              "UNB05": "21196808537089"
+            },
+            "Heading": {
+              "0020_BGM": {
+                "BGM0101": "705",
+                "BGM0104": "ERSTINFO",
+                "BGM0201": "2800244026",
+                "BGM03": "1"
+              },
+              "0030_CTA": {
+                "CTA01": "MS",
+                "CTA0201": "E-CIE/LE",
+                "CTA0202": "Frau Kilinc (BOX)"
+              },
+              "0040_COM": [
+                {
+                  "COM0101": "+496216077406",
+                  "COM0102": "TE"
+                },
+                {
+                  "COM0101": "TIBELYA.KILINC@BASF.COM",
+                  "COM0102": "EM"
+                }
+              ],
+              "0050_DTM": [
+                {
+                  "DTM0101": "137",
+                  "DTM0102": "202608120935",
+                  "DTM0103": "203"
+                }
+              ],
+              "0090_FTX": [
+                {
+                  "FTX01": "ABR",
+                  "FTX0401": "B/L has to be presented to below addressees at least 3 days after depa",
+                  "FTX0402": "rture of vessel. In case of any difficulties, new vessel booking or de",
+                  "FTX0403": "lays please inform in writting to the responsible Transport Manager."
+                },
+                {
+                  "FTX01": "DCL",
+                  "FTX0401": "Im Sinne der BefÃ¶rderungsvorschriften ( z.B. GGVSE, ADR ) ist BASF SE",
+                  "FTX0402": "nicht Absender",
+                  "FTX05": "DE"
+                },
+                {
+                  "FTX01": "DCL",
+                  "FTX0401": "BASF SE erklÃ¤rt sich als Verzichtskunde der Schadenversicherung im Sin",
+                  "FTX0402": "ne der ADSp. Sitz der Gesellschaft: 67056 Ludwigshafen",
+                  "FTX05": "DE"
+                },
+                {
+                  "FTX01": "AAS",
+                  "FTX0401": "Date Shipped On Board"
+                },
+                {
+                  "FTX01": "AAS",
+                  "FTX0401": "Depending on order: \"freight prepaid\" or \"freight collect\""
+                },
+                {
+                  "FTX01": "AAS",
+                  "FTX0401": "Please show Container No. & Seal No"
+                },
+                {
+                  "FTX01": "AAS",
+                  "FTX0401": "Name, address and phone/fax number (and/or email) of the carrier's age",
+                  "FTX0402": "nt at port of destination"
+                },
+                {
+                  "FTX01": "DOC",
+                  "FTX0401": "BASF SE TAX ID: 27/671/00172 VAT ID: DE149145247 Import Export Operati",
+                  "FTX0402": "ons EU +49621/60-0 B/L must show: IMDG-class and UN number in case of",
+                  "FTX0403": "dangerous goods cargo"
+                },
+                {
+                  "FTX01": "DOC",
+                  "FTX0401": "In case of DGD shipment to China: DGD to be sent together with B/L cop",
+                  "FTX0402": "y to order manager, bapsimport-cn@basf.com and APTC_KL_Document@basf.c",
+                  "FTX0403": "om"
+                }
+              ],
+              "0100_CNT": [
+                {
+                  "CNT0101": "16",
+                  "CNT0102": 2,
+                  "CNT0103": "C62"
+                }
+              ],
+              "0360_Segment_group_7": [
+                {
+                  "0370_TCC": {
+                    "TCC0101": "101021"
+                  },
+                  "0450_QTY": [
+                    {
+                      "QTY0101": "100",
+                      "QTY0102": 19742.16,
+                      "QTY0103": "KGM"
+                    },
+                    {
+                      "QTY0101": "109",
+                      "QTY0102": 57.6,
+                      "QTY0103": "MTQ"
+                    }
+                  ]
+                }
+              ],
+              "0460_Segment_group_8": [
+                {
+                  "0470_TDT": {
+                    "TDT01": "10"
+                  },
+                  "0500_Segment_group_9": [
+                    {
+                      "0510_LOC": {
+                        "LOC01": "88",
+                        "LOC0201": "BEANR",
+                        "LOC0204": "ANTWERP",
+                        "LOC0304": "2040 Antwerpen"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0470_TDT": {
+                    "TDT01": "20",
+                    "TDT02": "Ocean Vessel",
+                    "TDT0301": "10",
+                    "TDT0401": "13",
+                    "TDT0801": "9922615",
+                    "TDT0802": "146",
+                    "TDT0803": "11",
+                    "TDT0804": "OOCL PORTUGAL"
+                  },
+                  "0480_DTM": [
+                    {
+                      "DTM0101": "133",
+                      "DTM0102": "20260821",
+                      "DTM0103": "102"
+                    }
+                  ],
+                  "0490_TSR": [
+                    {
+                      "TSR0101": "30"
+                    }
+                  ],
+                  "0500_Segment_group_9": [
+                    {
+                      "0510_LOC": {
+                        "LOC01": "5",
+                        "LOC0201": "BEANR",
+                        "LOC0204": "ANTWERP"
+                      }
+                    },
+                    {
+                      "0510_LOC": {
+                        "LOC01": "12",
+                        "LOC0201": "CNSGH",
+                        "LOC0204": "Shanghai"
+                      }
+                    }
+                  ],
+                  "0530_Segment_group_10": [
+                    {
+                      "0540_RFF": {
+                        "RFF0101": "AHI",
+                        "RFF0102": "2800244026"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0470_TDT": {
+                    "TDT01": "30"
+                  }
+                }
+              ],
+              "0560_Segment_group_11": [
+                {
+                  "0570_NAD": {
+                    "NAD01": "CZ",
+                    "NAD0201": "57076",
+                    "NAD0401": "BASF ANTWERPEN NV",
+                    "NAD0501": "SCHELDELAAN 600",
+                    "NAD06": "ANTWERPEN 4",
+                    "NAD07": "1",
+                    "NAD08": "2040",
+                    "NAD09": "BE"
+                  }
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "CA",
+                    "NAD0201": "300606",
+                    "NAD0401": "Cosco Shipping Lines",
+                    "NAD0402": "(Hongkong) Co. Ltd.",
+                    "NAD0501": "No.378, Dong Da Ming Road",
+                    "NAD06": "Shanghai",
+                    "NAD07": "SHI",
+                    "NAD08": "200080",
+                    "NAD09": "CN"
+                  }
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "FW",
+                    "NAD0201": "817630",
+                    "NAD0401": "POLYTRA N.V.",
+                    "NAD0501": "Desguinlei 92 box V 15 Verzicht geb",
+                    "NAD0502": "ouw",
+                    "NAD06": "ANTWERPEN",
+                    "NAD07": "001",
+                    "NAD08": "2018",
+                    "NAD09": "BE"
+                  },
+                  "0600_Segment_group_12": [
+                    {
+                      "0610_CTA": {
+                        "CTA01": "TR"
+                      },
+                      "0620_COM": [
+                        {
+                          "COM0101": "032050501",
+                          "COM0102": "TE"
+                        },
+                        {
+                          "COM0101": "032050419",
+                          "COM0102": "FX"
+                        },
+                        {
+                          "COM0101": "basf@polytra.be",
+                          "COM0102": "EM"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "FP",
+                    "NAD0201": "1000",
+                    "NAD0401": "BASF SE",
+                    "NAD0501": "Carl-Bosch-Strasse 38",
+                    "NAD06": "Ludwigshafen Friesenheim/Nord",
+                    "NAD07": "07",
+                    "NAD08": "67063",
+                    "NAD09": "DE"
+                  }
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "OS",
+                    "NAD0401": "BASF SE",
+                    "NAD0402": "Carl-Bosch-Strasse 38",
+                    "NAD06": "67056 Ludwigshafen",
+                    "NAD09": "DE"
+                  }
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "BL",
+                    "NAD0201": "1",
+                    "NAD0401": "BASF SE",
+                    "NAD09": "DE"
+                  },
+                  "0600_Segment_group_12": [
+                    {
+                      "0610_CTA": {
+                        "CTA01": "MR"
+                      },
+                      "0620_COM": [
+                        {
+                          "COM0101": "Order Manager",
+                          "COM0102": "EM"
+                        }
+                      ]
+                    }
+                  ],
+                  "0630_Segment_group_13": [
+                    {
+                      "0640_DOC": {
+                        "DOC0101": "710",
+                        "DOC0204": "EN",
+                        "DOC03": "EM",
+                        "DOC04": 1,
+                        "DOC05": 0
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "BL",
+                    "NAD0201": "2",
+                    "NAD0401": "BASF Advanced Chemicals Co., Ltd.",
+                    "NAD0501": "300, Jiangxinsha Road Pudong",
+                    "NAD06": "Shanghai China 200137",
+                    "NAD09": "CN"
+                  },
+                  "0600_Segment_group_12": [
+                    {
+                      "0610_CTA": {
+                        "CTA01": "MR"
+                      },
+                      "0620_COM": [
+                        {
+                          "COM0101": "baccimport-cn@basf.com",
+                          "COM0102": "EM"
+                        }
+                      ]
+                    }
+                  ],
+                  "0630_Segment_group_13": [
+                    {
+                      "0640_DOC": {
+                        "DOC0101": "710",
+                        "DOC0204": "EN",
+                        "DOC03": "EM",
+                        "DOC04": 1,
+                        "DOC05": 0
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "BL",
+                    "NAD0201": "3",
+                    "NAD0401": "BASF Advanced Chemicals Co., Ltd."
+                  },
+                  "0600_Segment_group_12": [
+                    {
+                      "0610_CTA": {
+                        "CTA01": "MR"
+                      },
+                      "0620_COM": [
+                        {
+                          "COM0101": "Shirley.ye@basf.com",
+                          "COM0102": "EM"
+                        }
+                      ]
+                    }
+                  ],
+                  "0630_Segment_group_13": [
+                    {
+                      "0640_DOC": {
+                        "DOC0101": "710",
+                        "DOC0204": "EN",
+                        "DOC03": "EM",
+                        "DOC04": 1,
+                        "DOC05": 0
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "BL",
+                    "NAD0201": "4",
+                    "NAD0401": "BASF Advanced Chemicals Co., Ltd."
+                  },
+                  "0600_Segment_group_12": [
+                    {
+                      "0610_CTA": {
+                        "CTA01": "MR"
+                      },
+                      "0620_COM": [
+                        {
+                          "COM0101": "eva.cheng@basf",
+                          "COM0102": "EM"
+                        }
+                      ]
+                    }
+                  ],
+                  "0630_Segment_group_13": [
+                    {
+                      "0640_DOC": {
+                        "DOC0101": "710",
+                        "DOC0204": "EN",
+                        "DOC03": "EM",
+                        "DOC04": 1,
+                        "DOC05": 0
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "BL",
+                    "NAD0201": "5",
+                    "NAD0401": "BASF Advanced Chemicals Co., Ltd."
+                  },
+                  "0600_Segment_group_12": [
+                    {
+                      "0610_CTA": {
+                        "CTA01": "MR"
+                      },
+                      "0620_COM": [
+                        {
+                          "COM0101": "jane.gu@basf.com",
+                          "COM0102": "EM"
+                        }
+                      ]
+                    }
+                  ],
+                  "0630_Segment_group_13": [
+                    {
+                      "0640_DOC": {
+                        "DOC0101": "710",
+                        "DOC0204": "EN",
+                        "DOC03": "EM",
+                        "DOC04": 1,
+                        "DOC05": 0
+                      }
+                    }
+                  ]
+                }
+              ],
+              "0890_Segment_group_18": [
+                {
+                  "0900_GID": {
+                    "GID01": 1,
+                    "GID0201": 20,
+                    "GID0202": "CP3",
+                    "GID0203": "67",
+                    "GID0204": "91",
+                    "GID0205": "Palette,Holz,CP3,1140x1140x138mm,TH",
+                    "GID0301": 180,
+                    "GID0302": "4G",
+                    "GID0305": "Kisten aus Pappe"
+                  },
+                  "0950_LOC": [
+                    {
+                      "LOC01": "1",
+                      "LOC0201": "CIF",
+                      "LOC0204": "Shanghai"
+                    }
+                  ],
+                  "0970_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "50024080",
+                      "PIA0202": "SA"
+                    }
+                  ],
+                  "0980_FTX": [
+                    {
+                      "FTX01": "DEL",
+                      "FTX0401": "Manifest and B/L must show below:",
+                      "FTX0402": "USCI code: 911301017651639792",
+                      "FTX0403": "Atten: Ms. Zhang Yuming",
+                      "FTX0404": "Tel: 18032097668",
+                      "FTX0405": "Email: zijin.zhang@hejia-china.com"
+                    },
+                    {
+                      "FTX01": "DEL",
+                      "FTX0401": "Pls print the GW of cargo on the label.",
+                      "FTX0402": "Pls show the correct net weight and gross weight on CN GHS label.",
+                      "FTX0403": "The package of all drums needs to be attached the correct \"Chinese",
+                      "FTX0404": "wording\" CN GHS label with the latest version.",
+                      "FTX0405": "Pls send the correct drum UN MARK to fairy.ji@basf.com."
+                    },
+                    {
+                      "FTX01": "DEL",
+                      "FTX0401": "Pls arrange ETA after Oct.6,2026."
+                    },
+                    {
+                      "FTX01": "AAW",
+                      "FTX0401": "1901"
+                    },
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "Piperazin Chips",
+                      "FTX0402": "9x9x50KG Kisten aus Pappe"
+                    },
+                    {
+                      "FTX01": "AAS",
+                      "FTX0401": "BITC SO NO: 6013989186"
+                    },
+                    {
+                      "FTX01": "COI",
+                      "FTX0301": "AM",
+                      "FTX0401": "TIBELYA.KILINC@BASF.COM"
+                    }
+                  ],
+                  "1000_Segment_group_19": [
+                    {
+                      "1010_NAD": {
+                        "NAD01": "CN",
+                        "NAD0201": "2409190",
+                        "NAD0202": "160",
+                        "NAD0301": "HIGH-TECH DISTRICT",
+                        "NAD0401": "SHIJIAZHUANG HEJIA CHEMICAL",
+                        "NAD0402": "PRODUCTS CO., LTD.",
+                        "NAD0501": "THE 23RD FLOOR, TOWER A, EWT CENTER",
+                        "NAD0502": ", NO/155 CHANGJIANG AVENUE",
+                        "NAD06": "SHIJIAZHUANG",
+                        "NAD07": "HBE",
+                        "NAD08": "050000",
+                        "NAD09": "CN"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "89928215",
+                          "LOC0301": "FAX",
+                          "LOC0304": "031185370151",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "zijin.zhang@hejia-china.com"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "Hebei"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "DM",
+                        "NAD0401": "Frau Kilinc",
+                        "NAD0501": "Carl-Bosch-StraÃe 38",
+                        "NAD06": "Ludwigshafen",
+                        "NAD08": "67056",
+                        "NAD09": "DE"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "+496216077406",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "TIBELYA.KILINC@BASF.COM"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "N1",
+                        "NAD0201": "2409190",
+                        "NAD0202": "160",
+                        "NAD0301": "HIGH-TECH DISTRICT",
+                        "NAD0401": "SHIJIAZHUANG HEJIA CHEMICAL",
+                        "NAD0402": "PRODUCTS CO., LTD.",
+                        "NAD0501": "THE 23RD FLOOR, TOWER A, EWT CENTER",
+                        "NAD0502": ", NO/155 CHANGJIANG AVENUE",
+                        "NAD06": "SHIJIAZHUANG",
+                        "NAD07": "HBE",
+                        "NAD08": "050000",
+                        "NAD09": "CN"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "89928215",
+                          "LOC0301": "FAX",
+                          "LOC0304": "031185370151",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "zijin.zhang@hejia-china.com"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "Hebei"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "DO",
+                        "NAD0201": "2409190",
+                        "NAD0202": "160",
+                        "NAD0301": "HIGH-TECH DISTRICT",
+                        "NAD0401": "SHIJIAZHUANG HEJIA CHEMICAL",
+                        "NAD0402": "PRODUCTS CO., LTD.",
+                        "NAD0501": "THE 23RD FLOOR, TOWER A, EWT CENTER",
+                        "NAD0502": ", NO/155 CHANGJIANG AVENUE",
+                        "NAD06": "SHIJIAZHUANG",
+                        "NAD07": "HBE",
+                        "NAD08": "050000",
+                        "NAD09": "CN"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "89928215",
+                          "LOC0301": "FAX",
+                          "LOC0304": "031185370151",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "zijin.zhang@hejia-china.com"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "Hebei"
+                        }
+                      ]
+                    }
+                  ],
+                  "1050_Segment_group_20": [
+                    {
+                      "1060_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAE",
+                        "MEA0301": "KGM",
+                        "MEA0302": "9451.080"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "9000.000"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "WT",
+                        "MEA0301": "KGM",
+                        "MEA0302": "420.000"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "VOL",
+                        "MEA0201": "ABJ",
+                        "MEA0301": "MTQ",
+                        "MEA0302": "28.800"
+                      }
+                    }
+                  ],
+                  "1110_Segment_group_22": [
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "LI",
+                        "RFF0102": "5002378262",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "3021276588",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "AOC",
+                        "RFF0102": "6013989186",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4000230003",
+                        "RFF0103": "10"
+                      }
+                    }
+                  ],
+                  "1140_Segment_group_23": [
+                    {
+                      "1150_PCI": {
+                        "PCI0201": "BASF",
+                        "PCI0202": "6013989186/10",
+                        "PCI0203": "3021276588 / 000010",
+                        "PCI0204": "Made in ....",
+                        "PCI0205": "Net Wt.        450,000   KG Gross W",
+                        "PCI0206": "t.        495,054  KG"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0900_GID": {
+                    "GID01": 2,
+                    "GID0201": 20,
+                    "GID0202": "CP3",
+                    "GID0203": "67",
+                    "GID0204": "91",
+                    "GID0205": "Palette,Holz,CP3,1140x1140x138mm,TH",
+                    "GID0301": 180,
+                    "GID0302": "4G",
+                    "GID0305": "Kisten aus Pappe"
+                  },
+                  "0950_LOC": [
+                    {
+                      "LOC01": "1",
+                      "LOC0201": "CIF",
+                      "LOC0204": "Shanghai"
+                    }
+                  ],
+                  "0970_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "50024080",
+                      "PIA0202": "SA"
+                    }
+                  ],
+                  "0980_FTX": [
+                    {
+                      "FTX01": "DEL",
+                      "FTX0401": "Manifest and B/L must show below:",
+                      "FTX0402": "USCI code: 911301017651639792",
+                      "FTX0403": "Atten: Ms. Zhang Yuming",
+                      "FTX0404": "Tel: 18032097668",
+                      "FTX0405": "Email: zijin.zhang@hejia-china.com"
+                    },
+                    {
+                      "FTX01": "DEL",
+                      "FTX0401": "Pls print the GW of cargo on the label.",
+                      "FTX0402": "Pls show the correct net weight and gross weight on CN GHS label.",
+                      "FTX0403": "The package of all drums needs to be attached the correct \"Chinese",
+                      "FTX0404": "wording\" CN GHS label with the latest version.",
+                      "FTX0405": "Pls send the correct drum UN MARK to fairy.ji@basf.com."
+                    },
+                    {
+                      "FTX01": "DEL",
+                      "FTX0401": "Pls arrange ETA after Oct.6,2026."
+                    },
+                    {
+                      "FTX01": "AAW",
+                      "FTX0401": "1901"
+                    },
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "Piperazin Chips",
+                      "FTX0402": "9x9x50KG Kisten aus Pappe"
+                    },
+                    {
+                      "FTX01": "AAS",
+                      "FTX0401": "BITC SO NO: 6013989186"
+                    },
+                    {
+                      "FTX01": "COI",
+                      "FTX0301": "AM",
+                      "FTX0401": "TIBELYA.KILINC@BASF.COM"
+                    }
+                  ],
+                  "1000_Segment_group_19": [
+                    {
+                      "1010_NAD": {
+                        "NAD01": "CN",
+                        "NAD0201": "2409190",
+                        "NAD0202": "160",
+                        "NAD0301": "HIGH-TECH DISTRICT",
+                        "NAD0401": "SHIJIAZHUANG HEJIA CHEMICAL",
+                        "NAD0402": "PRODUCTS CO., LTD.",
+                        "NAD0501": "THE 23RD FLOOR, TOWER A, EWT CENTER",
+                        "NAD0502": ", NO/155 CHANGJIANG AVENUE",
+                        "NAD06": "SHIJIAZHUANG",
+                        "NAD07": "HBE",
+                        "NAD08": "050000",
+                        "NAD09": "CN"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "89928215",
+                          "LOC0301": "FAX",
+                          "LOC0304": "031185370151",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "zijin.zhang@hejia-china.com"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "Hebei"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "DM",
+                        "NAD0401": "Frau Kilinc",
+                        "NAD0501": "Carl-Bosch-StraÃe 38",
+                        "NAD06": "Ludwigshafen",
+                        "NAD08": "67056",
+                        "NAD09": "DE"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "+496216077406",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "TIBELYA.KILINC@BASF.COM"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "N1",
+                        "NAD0201": "2409190",
+                        "NAD0202": "160",
+                        "NAD0301": "HIGH-TECH DISTRICT",
+                        "NAD0401": "SHIJIAZHUANG HEJIA CHEMICAL",
+                        "NAD0402": "PRODUCTS CO., LTD.",
+                        "NAD0501": "THE 23RD FLOOR, TOWER A, EWT CENTER",
+                        "NAD0502": ", NO/155 CHANGJIANG AVENUE",
+                        "NAD06": "SHIJIAZHUANG",
+                        "NAD07": "HBE",
+                        "NAD08": "050000",
+                        "NAD09": "CN"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "89928215",
+                          "LOC0301": "FAX",
+                          "LOC0304": "031185370151",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "zijin.zhang@hejia-china.com"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "Hebei"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "DO",
+                        "NAD0201": "2409190",
+                        "NAD0202": "160",
+                        "NAD0301": "HIGH-TECH DISTRICT",
+                        "NAD0401": "SHIJIAZHUANG HEJIA CHEMICAL",
+                        "NAD0402": "PRODUCTS CO., LTD.",
+                        "NAD0501": "THE 23RD FLOOR, TOWER A, EWT CENTER",
+                        "NAD0502": ", NO/155 CHANGJIANG AVENUE",
+                        "NAD06": "SHIJIAZHUANG",
+                        "NAD07": "HBE",
+                        "NAD08": "050000",
+                        "NAD09": "CN"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "89928215",
+                          "LOC0301": "FAX",
+                          "LOC0304": "031185370151",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "zijin.zhang@hejia-china.com"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "Hebei"
+                        }
+                      ]
+                    }
+                  ],
+                  "1050_Segment_group_20": [
+                    {
+                      "1060_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAE",
+                        "MEA0301": "KGM",
+                        "MEA0302": "9451.080"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "9000.000"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "WT",
+                        "MEA0301": "KGM",
+                        "MEA0302": "420.000"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "VOL",
+                        "MEA0201": "ABJ",
+                        "MEA0301": "MTQ",
+                        "MEA0302": "28.800"
+                      }
+                    }
+                  ],
+                  "1110_Segment_group_22": [
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "LI",
+                        "RFF0102": "5002378263",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "3021276588",
+                        "RFF0103": "000020"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "AOC",
+                        "RFF0102": "6013989186",
+                        "RFF0103": "000020"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4000230003",
+                        "RFF0103": "20"
+                      }
+                    }
+                  ],
+                  "1140_Segment_group_23": [
+                    {
+                      "1150_PCI": {
+                        "PCI0201": "BASF",
+                        "PCI0202": "6013989186/20",
+                        "PCI0203": "3021276588 / 000020",
+                        "PCI0204": "Made in ....",
+                        "PCI0205": "Net Wt.        450,000   KG Gross W",
+                        "PCI0206": "t.        495,054  KG"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "1640_Segment_group_37": [
+                {
+                  "1650_EQD": {
+                    "EQD01": "CN",
+                    "EQD0201": "1307292143",
+                    "EQD0301": "22GP",
+                    "EQD0304": "20Â´ Mehrzw.Cont. 8Â´6\""
+                  },
+                  "1660_EQN": {
+                    "EQN0101": 1
+                  },
+                  "1670_TMD": {
+                    "TMD0102": "Merchant Haulage E",
+                    "TMD03": "2"
+                  },
+                  "1680_MEA": [
+                    {
+                      "MEA01": "WT",
+                      "MEA0201": "T",
+                      "MEA0301": "KGM",
+                      "MEA0302": "2250.000"
+                    },
+                    {
+                      "MEA01": "WT",
+                      "MEA0201": "AAB",
+                      "MEA0301": "KGM",
+                      "MEA0302": "2250.000"
+                    },
+                    {
+                      "MEA01": "WT",
+                      "MEA0201": "AAA",
+                      "MEA0301": "KGM",
+                      "MEA0302": "0.000"
+                    }
+                  ],
+                  "1750_FTX": [
+                    {
+                      "FTX01": "AAF",
+                      "FTX0401": "Leercontainer frei Terminal Seehafen"
+                    }
+                  ]
+                },
+                {
+                  "1650_EQD": {
+                    "EQD01": "CN",
+                    "EQD0201": "1307292144",
+                    "EQD0301": "22GP",
+                    "EQD0304": "20Â´ Mehrzw.Cont. 8Â´6\""
+                  },
+                  "1660_EQN": {
+                    "EQN0101": 1
+                  },
+                  "1670_TMD": {
+                    "TMD0102": "Merchant Haulage E",
+                    "TMD03": "2"
+                  },
+                  "1680_MEA": [
+                    {
+                      "MEA01": "WT",
+                      "MEA0201": "T",
+                      "MEA0301": "KGM",
+                      "MEA0302": "2250.000"
+                    },
+                    {
+                      "MEA01": "WT",
+                      "MEA0201": "AAB",
+                      "MEA0301": "KGM",
+                      "MEA0302": "2250.000"
+                    },
+                    {
+                      "MEA01": "WT",
+                      "MEA0201": "AAA",
+                      "MEA0301": "KGM",
+                      "MEA0302": "0.000"
+                    }
+                  ],
+                  "1750_FTX": [
+                    {
+                      "FTX01": "AAF",
+                      "FTX0401": "Leercontainer frei Terminal Seehafen"
+                    }
+                  ]
+                }
+              ]
+            },
+            "Id": "IFTMIN",
+            "MessageHeader": {
+              "UNH01": "680853708900",
+              "UNH0201": "IFTMIN",
+              "UNH0202": "D",
+              "UNH0203": "99A",
+              "UNH0204": "UN",
+              "UNH03": "BL00",
+              "UNH0401": 2
+            },
+            "Name": "Instruction message"
+          }
+        ]
+      }
+    },
+    "FunctionalAcksReceived": [],
+    "FunctionalAcksGenerated": []
+  }
+}

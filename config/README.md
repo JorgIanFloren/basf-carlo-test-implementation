@@ -17,22 +17,29 @@ Documents for the `integration-store` database, `configurations` collection. One
 
 Each profile wires the same four steps, differing only in subject, DWL and target path:
 
+IFCSUM wires three steps; IFTMIN and IFTMBF wire four, because both of those flows open with
+"GET DOSSIER by CustomerRef" and both mappings consume its result.
+
 ```
 BASF EDIFACT interchange
-  -> dataGetter      seq 1  sender BASF / receiver CARLO / subject IFTMIN|IFTMBF|IFCSUM
-  -> dataTransformer seq 2  basf/Basf{Iftmin,Iftmbf,Ifcsum}.dwl
-  -> dataDelivery    seq 3  HTTPS POST to Carlo
+  -> dataProfiler    seq 1  sender BASF / receiver CARLO / subject IFTMIN|IFTMBF|IFCSUM
+  -> dataDelivery    seq 2  HTTPS GET to Carlo, extending the payload at `lookup`
+                            (IFTMIN and IFTMBF only — IFCSUM needs no lookup)
+  -> dataTransformer seq 3  basf/Basf{Iftmin,Iftmbf,Ifcsum}.dwl
+  -> dataDelivery    seq 4  HTTPS POST to Carlo
 ```
 
-The `dataPipeline` pass-thru step that used to sit at seq 2 is gone; the three steps are
-resequenced accordingly.
+The `dataPipeline` pass-thru step that used to sit at seq 2 is gone.
 
-**This chain is now one step short of what the IFTMIN and IFTMBF mappings need.** Both flows in
-`docs/00-basf.md` begin with "GET DOSSIER by CustomerRef", and both mappings consume its result;
-there is no step here that performs it. See check 6 — it is the one outstanding piece of wiring,
-and until it is added those two mappings run in their pre-lookup fallback mode.
+**The lookup step is a `dataDelivery`.** That step type does not only deliver: it can be
+instructed to fetch from another source and **extend** the payload it was given, rather than
+replace it — which is exactly what this needs, since the transformer has to see the interchange
+*and* the lookup response in one object. Confirmed by the FrachtConnect team on 2026-09-16; the
+platform documentation is being updated to describe it. Check 6 below is now about getting that
+step's fields right rather than about a missing capability.
 
-Targets: `…/v3/SeaHouseShipment` for IFTMIN and IFTMBF, `…/v3/ShipmentCargo` for IFCSUM.
+Write targets: `…/v3/SeaHouseShipment` for IFTMIN and IFTMBF, `…/v3/ShipmentCargo` for IFCSUM.
+The lookup step reads from `…/v3/SeaHouseShipment/0`.
 
 There is no `isedifact` / `isx12` flag on the transformer step. Those flags make the transformer
 *write* EDI, which is the outbound direction; these three integrations are inbound and produce
@@ -41,8 +48,8 @@ JSON. What matters here is that the input blob is **read** as EDIFACT — see ch
 ## Before you load these
 
 Six things are inferred rather than documented. Checks 1–5 are each a one-line fix if they turn
-out wrong; check 6 is a missing step rather than a wrong value. The integration will not work
-until they are confirmed.
+out wrong; check 6 is a step that is now wired but whose field *names* are guesses. The
+integration will not work until they are confirmed.
 
 **1. `inputMimeType: "application/edifact"` is what parses the interchange.**
 The mappings expect the parsed structure `payload.EDI.Messages.<DIRECTORY>.<TYPE>[]`, which is
@@ -105,23 +112,49 @@ is needed.
 Note the SFTP path deletes each file from the partner server after successful pickup. Do not
 enable it until BASF expects that.
 
-**6. Nothing here performs the "GET dossier by CustomerRef" step, and both `seaHouseShipment`
-mappings now consume its result.**
-`BasfIftmin.dwl` and `BasfIftmbf.dwl` read the lookup response off **`payload.lookup`**, as the
-server returned it:
+**6. Two field names on the seq 2 lookup step are guesses.**
+The step exists in `dataProfiler-basf-iftmin.json` and `dataProfiler-basf-iftmbf.json` at
+sequence 2. Everything about the CarLo call itself is verified against the live server
+(`docs/carlo/06-dossier-lookup.md`) — host, path, method, `$filter`, `$top` and both required
+headers. What is **not** verified is how a `dataDelivery` step is told to *extend* rather than
+replace, so two things in that step are placeholders:
+
+| Field as written | What it has to mean |
+|---|---|
+| `"extendPayloadAt": "lookup"` | put the response under the key `lookup`, keeping `EDI` intact |
+| `"$filter": "700071 eq '{{CONFIRM_REFERENCE_EXPRESSION}}'"` | substitute `BGM0201` from the incoming payload |
+
+**Do not load these two profiles until both are replaced with the real field names and the real
+templating syntax.** A wrong extend-field is the dangerous one: the step would silently replace
+the payload instead of extending it, the transformer would find no `EDI`, and every interchange
+would map to an empty array — which looks exactly like "nothing to send" rather than like a
+failure.
+
+For the reference expression, `BGM0201` sits at `Heading."0020_BGM".BGM0201` of the first message
+in **both** directories (D99A/IFTMIN and D08A/IFTMBF), so one expression shape covers both
+profiles — only the directory and message-type level differ:
+
+```
+EDI.Messages.D99A.IFTMIN[0].Heading."0020_BGM".BGM0201     (iftmin profile)
+EDI.Messages.D08A.IFTMBF[0].Heading."0020_BGM".BGM0201     (iftmbf profile)
+```
+
+Take the **first** message, not each: every message of a master-sub interchange carries the same
+`BGM0201`, so it is one GET per interchange. Prefer a directory-agnostic expression if the
+templating supports one — the mappings read the directory level generically precisely because a
+bump from D99A would otherwise go unnoticed, and here it would silently yield no reference, no
+lookup, and a quiet slide back into fallback mode.
+
+`payload.lookup` was chosen over a second context variable because the transformer evaluates a
+mapping against `payload` and nothing else (check 2's constraint applies here too), so there is
+nowhere else for it to arrive:
 
 ```json
 { "EDI": { "Messages": { "…": { "IFTMIN": [ … ] } } },
   "lookup": { "seaHouseShipment": [ … ] } }
 ```
 
-So a step is needed between seq 1 and the transformer that GETs
-`…/v3/SeaHouseShipment?customerReference=<BGM0201>` and merges the response under `lookup`
-without disturbing `EDI`. `payload.lookup` was chosen over a second context variable because the
-transformer evaluates a mapping against `payload` and nothing else (check 2's constraint applies
-here too), so there is nowhere else for it to arrive.
-
-Three things this decides, none of which work without the step:
+Three things this step decides, none of which work without it:
 
 | Scenario | With the lookup | Without it |
 |---|---|---|
@@ -130,12 +163,20 @@ Three things this decides, none of which work without the step:
 | IFTMIN cancel | each dossier of the order is recycled | one upsert keyed on `CustomerReference` + BL |
 
 **An absent `payload.lookup` is not an error.** Both mappings fall back to exactly the single-
-upsert behaviour they had before the lookup existed, which is what lets them deploy now and
-gain the addressing when the step lands. What is *not* safe is a step that runs the GET and
-returns something other than `{ seaHouseShipment: [...] }` — `{ seaHouseShipment: [] }` must mean
-"found nothing", because the cancel path reads it as "no dossier to recycle" and emits no call at
-all. Real captures of every scenario's response are in `docs/get-responses/`, and the test suites
-run against them.
+upsert behaviour they had before the lookup existed, which is what let them deploy while this
+step was still being wired. What is *not* safe is a step that runs the GET and returns something
+other than `{ seaHouseShipment: [...] }` — `{ seaHouseShipment: [] }` must mean "found nothing",
+because the cancel path reads it as "no dossier to recycle" and emits no call at all. Real
+captures of every scenario's response are in `docs/get-responses/`, and the test suites run
+against them.
+
+**A failed GET must be distinguishable from an empty one.** `validResponseCodes` is set to
+`200..299` on the step for that reason: propagate the failure, or omit `lookup` entirely so the
+fallback engages. Returning `{ "seaHouseShipment": [] }` for an HTTP 500 would turn a cancel into
+a silent no-op.
+
+**Spaces in `$filter` must be `%20`, never `+`.** Sent as `+` this is an HTTP 500, not an empty
+result. If the step URL-encodes query parameters itself, check which of the two it produces.
 
 The query must match `customerReference` **exactly**, and the mappings treat a near-miss as no
 match rather than update the wrong record. Do not let the step "helpfully" widen the search to a
