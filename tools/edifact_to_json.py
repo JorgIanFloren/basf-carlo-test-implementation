@@ -3,7 +3,7 @@
 parser hands to the DataWeave mappings.
 
 The mappings never see EDIFACT - they receive the parsed JSON. This script reproduces
-that parse so the example interchanges in docs/example-orders can be used as test
+that parse so the example interchanges in docs/example-orders/inbound can be used as test
 fixtures.
 
 Output shape (verified against two real parser captures, see FIDELITY below):
@@ -24,7 +24,7 @@ omitted; numeric data elements become JSON numbers with trailing zeros dropped.
 FIDELITY
 --------
 All three structures were derived from real parser output. The captures are stored under
-docs/example-orders with misleading extensions - go by content, not by filename:
+docs/example-orders/inbound with misleading extensions - go by content, not by filename:
 
     IFTMIN D99A   fcl/2800209301_FCL_IFTMIN_ERST_9.json
     IFTMBF D08A   fcl/2013357254_IFCSUM.txt              (an IFTMBF capture)
@@ -65,12 +65,12 @@ def read_message_text(path: str) -> str:
     output carries mojibake: "40<C2><B4> Reefer" where the message said "40' Reefer".
     Reproducing that is what makes these fixtures match what the mappings receive.
 
-    The captures in docs/example-orders were saved in two different encodings, so the
+    The captures in docs/example-orders/inbound were saved in two different encodings, so the
     wire form has to be recovered before the mojibake step: a capture that decodes as
     UTF-8 already *is* the wire form, while one that does not was re-saved as CP1252 and
     has to be encoded back to UTF-8 first.
 
-    Verified: this reproduces docs/example-orders/fcl/2800209301_FCL_IFTMIN_ERST_9.json
+    Verified: this reproduces docs/example-orders/inbound/fcl/2800209301_FCL_IFTMIN_ERST_9.json
     exactly (0 differences over the whole document).
     """
     raw = open(path, "rb").read()
@@ -353,7 +353,7 @@ class Grp:
 
 
 # --- IFTMIN D99A -----------------------------------------------------------------------
-# Positions verified against docs/example-orders/fcl/2800209301_FCL_IFTMIN_ERST_9.json,
+# Positions verified against docs/example-orders/inbound/fcl/2800209301_FCL_IFTMIN_ERST_9.json,
 # except those marked ESTIMATED.
 
 IFTMIN_D99A = [
@@ -422,7 +422,7 @@ IFTMIN_D99A = [
 ]
 
 # --- IFTMBF D08A -----------------------------------------------------------------------
-# Positions verified against docs/example-orders/fcl/2013357254_IFCSUM.txt (an IFTMBF
+# Positions verified against docs/example-orders/inbound/fcl/2013357254_IFCSUM.txt (an IFTMBF
 # capture despite the filename), except those marked ESTIMATED.
 
 IFTMBF_D08A = [
@@ -476,7 +476,7 @@ IFTMBF_D08A = [
 
 # --- IFCSUM D08A -----------------------------------------------------------------------
 # Positions verified against the three real parser captures kept (despite their .xml
-# extensions) at docs/example-orders/fcl/TRS-000001_30062026_*.xml, except those marked
+# extensions) at docs/example-orders/inbound/fcl/TRS-000001_30062026_*.xml, except those marked
 # ESTIMATED.
 
 IFCSUM_D08A = [
@@ -770,8 +770,8 @@ def as_list(node: dict, name: str) -> list:
 def main(argv: list[str]) -> int:
     here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     if argv and argv[0] == "--all":
-        src = os.path.join(here, "docs", "example-orders")
-        dst = os.path.join(here, "src", "test", "resources", "example-orders")
+        src = os.path.join(here, "docs", "example-orders", "inbound")
+        dst = os.path.join(here, "src", "test", "resources", "example-orders", "inbound")
         ok = failed = skipped = 0
         manifest = []
         for root, _dirs, files in os.walk(src):
@@ -803,7 +803,7 @@ def main(argv: list[str]) -> int:
             json.dump(manifest, fh, indent=2, ensure_ascii=False)
             fh.write("\n")
         print(f"\n{ok} converted, {failed} failed, {skipped} skipped (not EDIFACT)")
-        print(f"manifest: {len(manifest)} fixtures -> example-orders/manifest.json")
+        print(f"manifest: {len(manifest)} fixtures -> example-orders/inbound/manifest.json")
         return 1 if failed else 0
 
     if not argv:

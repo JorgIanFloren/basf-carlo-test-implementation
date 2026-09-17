@@ -1,6 +1,6 @@
 /**
 * BASF IFTMIN mapping, exercised against every IFTMIN interchange in
-* docs/example-orders (21 fixtures: 9 FCL, 3 LCL, 9 master-sub/ms).
+* docs/example-orders/inbound (21 fixtures: 9 FCL, 3 LCL, 9 master-sub/ms).
 *
 * The mapping is run the way the data-transformer runs it: `evalPath` executes
 * src/main/dw/InboundIftmin.dwl - the whole self-contained script, output header and document
@@ -14,7 +14,7 @@
 * the field they produce. `masterSub` in particular is a property of the interchange (more
 * than one IFTMIN message), not of a message, so it can only be exercised this way.
 *
-* The bulk of the suite is data-driven from example-orders/manifest.json, which
+* The bulk of the suite is data-driven from example-orders/inbound/manifest.json, which
 * tools/edifact_to_json.py writes when it converts the examples. Each manifest row records
 * what the *message* says - its BASF BL, its BGM message-function code, its
 * CustomerReference and whether it carries equipment - read straight off the parsed tree.
@@ -31,7 +31,7 @@ import * from dw::test::Asserts
 
 var MAPPING = "InboundIftmin.dwl"
 
-var manifest = readUrl("classpath://example-orders/manifest.json", "application/json")
+var manifest = readUrl("classpath://example-orders/inbound/manifest.json", "application/json")
 var iftmin = manifest filter ((e) -> e.messageType == "IFTMIN")
 
 /**
@@ -64,7 +64,7 @@ fun documentAsShipped(payload) = evalPath(MAPPING, { payload: payload }, "applic
 /** The document for an interchange built from the given synthetic messages. */
 fun documentOf(msgs) = document({ EDI: { Messages: { D99A: { IFTMIN: msgs } } } })
 
-fun load(fixture) = readUrl("classpath://example-orders/" ++ fixture, "application/json")
+fun load(fixture) = readUrl("classpath://example-orders/inbound/" ++ fixture, "application/json")
 fun shipmentsOf(fixture) = document(load(fixture)).seaHouseShipment
 
 // --- what the mapping produced ------------------------------------------------------------

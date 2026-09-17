@@ -1,5 +1,5 @@
 /**
-* BASF IFCSUM mapping, exercised against every IFCSUM interchange in docs/example-orders
+* BASF IFCSUM mapping, exercised against every IFCSUM interchange in docs/example-orders/inbound
 * (4 fixtures: 3 FCL, 1 LCL).
 *
 * The mapping is run the way the data-transformer runs it: `evalPath` executes
@@ -9,7 +9,7 @@
 * is nothing to keep in sync; every assertion below is made on the camelCase document that
 * actually leaves the transformer.
 *
-* Every cargo line is checked against example-orders/manifest.json, whose `cargo` rows are
+* Every cargo line is checked against example-orders/inbound/manifest.json, whose `cargo` rows are
 * produced by `ifcsum_cargo()` in tools/edifact_to_json.py. That function walks the parsed
 * tree by explicit key lookup where InboundIfcsum.dwl walks it by segment-name suffix, so the
 * two arrive at the same answer by different routes - the manifest is a cross-check, not a
@@ -25,7 +25,7 @@ import * from dw::test::Asserts
 
 var MAPPING = "InboundIfcsum.dwl"
 
-var manifest = readUrl("classpath://example-orders/manifest.json", "application/json")
+var manifest = readUrl("classpath://example-orders/inbound/manifest.json", "application/json")
 var ifcsum = manifest filter ((e) -> e.messageType == "IFCSUM")
 
 /**
@@ -38,7 +38,7 @@ fun document(payload) = evalPath(MAPPING, { payload: payload }, "application/jso
 /** The same, over an interchange built from one synthetic message. */
 fun documentOf(msg) = document({ EDI: { Messages: { D08A: { IFCSUM: [ msg ] } } } })
 
-fun load(fixture) = readUrl("classpath://example-orders/" ++ fixture, "application/json")
+fun load(fixture) = readUrl("classpath://example-orders/inbound/" ++ fixture, "application/json")
 fun cargoOf(fixture) = document(load(fixture)).shipmentCargo
 
 // Evaluated once each and reused: `var` is cached, so a fixture the assertions below return

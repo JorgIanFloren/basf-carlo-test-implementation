@@ -7,7 +7,7 @@ Third of the three BASF inbound mappings, and the only one that does not target
 |---|---|
 | Authority | `docs/00-basf.md` §IFCSUM; `docs/expected_output_ShipmentCargo.json` (the contract) |
 | Mapping | `src/main/dw/InboundIfcsum.dwl` — one self-contained script, deployed as `basf/InboundIfcsum.dwl` |
-| Fixtures | every IFCSUM interchange in `docs/example-orders` (3 FCL, 1 LCL) |
+| Fixtures | every IFCSUM interchange in `docs/example-orders/inbound` (3 FCL, 1 LCL) |
 | Tests | `src/test/dw/IfcsumMappingTest.dwl` — `cd basf && mvn -o test` |
 
 ## 1. Role of the message

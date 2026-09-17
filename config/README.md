@@ -102,7 +102,7 @@ The `…/v3/ShipmentCargo` path for IFCSUM is inferred from the SeaHouseShipment
 contract's root element — **verify it against Carlo's Swagger.**
 
 **5. The transport is unknown.**
-Nothing in `docs/example-orders` says how BASF delivers these interchanges. The `dataGetter`
+Nothing in `docs/example-orders/inbound` says how BASF delivers these interchanges. The `dataGetter`
 document is an SFTP-polling placeholder, shipped `active: false` with `CONFIRM_WITH_BASF` in place
 of the username. If BASF instead pushes to an Azure Storage Queue, delete it and create a
 `dataOrchestrator` document plus a key-extraction DWL; if BASF posts to the FrachtConnect inbound

@@ -1,5 +1,5 @@
 /**
-* BASF IFTMBF mapping, exercised against every IFTMBF interchange in docs/example-orders
+* BASF IFTMBF mapping, exercised against every IFTMBF interchange in docs/example-orders/inbound
 * (9 fixtures: 4 FCL, 1 LCL, 4 master-sub/ms).
 *
 * The mapping is run the way the data-transformer runs it: `evalPath` executes
@@ -20,7 +20,7 @@
 * would overwrite live shipment data with booking-stage values. "nothing unmapped leaks"
 * below is the test that guards that, across every fixture.
 *
-* The per-fixture expectations come from example-orders/manifest.json, which records the
+* The per-fixture expectations come from example-orders/inbound/manifest.json, which records the
 * message's own BGM code, CustomerReference and equipment count.
 */
 %dw 2.0
@@ -30,7 +30,7 @@ import every from dw::core::Arrays
 
 var MAPPING = "InboundIftmbf.dwl"
 
-var manifest = readUrl("classpath://example-orders/manifest.json", "application/json")
+var manifest = readUrl("classpath://example-orders/inbound/manifest.json", "application/json")
 var iftmbf = manifest filter ((e) -> e.messageType == "IFTMBF")
 
 /**
@@ -63,7 +63,7 @@ fun documentOf(msgs) = document({ EDI: { Messages: { D08A: { IFTMBF: msgs } } } 
 /** The single booking update a one-message synthetic interchange maps to. */
 fun only(msg) = documentOf([ msg ]).seaHouseShipment[0]
 
-fun load(fixture) = readUrl("classpath://example-orders/" ++ fixture, "application/json")
+fun load(fixture) = readUrl("classpath://example-orders/inbound/" ++ fixture, "application/json")
 fun bookingsOf(fixture) = document(load(fixture)).seaHouseShipment
 
 // Evaluated once and reused: the richest FCL fixture backs most of the field assertions.
