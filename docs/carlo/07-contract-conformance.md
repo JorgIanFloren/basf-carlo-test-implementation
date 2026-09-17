@@ -16,9 +16,9 @@ This page is that check, run against
 
 | Mapping | Distinct keys emitted | In contract | Not in contract |
 |---|--:|--:|--:|
-| `BasfIftmin.dwl` | 130 | 128 | 2 |
-| `BasfIftmbf.dwl` | 22 | 22 | 0 |
-| `BasfIfcsum.dwl` | 12 | 12 | 0 |
+| `InboundIftmin.dwl` | 130 | 128 | 2 |
+| `InboundIftmbf.dwl` | 22 | 22 | 0 |
+| `InboundIfcsum.dwl` | 12 | 12 | 0 |
 
 The two exceptions are `SendDate` and `ExportItemReference`, both in one function:
 
@@ -76,7 +76,7 @@ import json, re
 spec = json.load(open('docs.json', encoding='utf-8'))
 valid = {k.lower() for s in spec['components']['schemas'].values()
                    for k in (s.get('properties') or {})}
-for f in ['src/main/dw/BasfIftmin.dwl','src/main/dw/BasfIftmbf.dwl','src/main/dw/BasfIfcsum.dwl']:
+for f in ['src/main/dw/InboundIftmin.dwl','src/main/dw/InboundIftmbf.dwl','src/main/dw/InboundIfcsum.dwl']:
     txt = open(f, encoding='utf-8').read()
     txt = re.sub(r'//.*', '', re.sub(r'/\*.*?\*/', '', txt, flags=re.S))
     keys = set(re.findall(r'(?m)(?:^|[\s({,])([A-Z][A-Za-z0-9]*)\s*:', txt))

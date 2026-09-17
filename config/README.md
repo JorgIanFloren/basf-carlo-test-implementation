@@ -61,8 +61,8 @@ text instead, every mapping returns an empty array rather than failing loudly.
 **2. ~~The DWL files import modules, so they are not self-contained.~~ Resolved — keep it that way.**
 `ee:dynamic-evaluate` resolves imports off the application classpath, not off Blob Storage, so a
 mapping that imports anything cannot run from an upload. The second of the two routes was taken:
-the shared helpers are **inlined into each mapping**, and `src/main/dw/BasfIftmin.dwl`,
-`BasfIftmbf.dwl` and `BasfIfcsum.dwl` are now three self-contained scripts with no `import` of a
+the shared helpers are **inlined into each mapping**, and `src/main/dw/InboundIftmin.dwl`,
+`InboundIftmbf.dwl` and `InboundIfcsum.dwl` are now three self-contained scripts with no `import` of a
 project module. `CommonModule.dwl` and the old thin wrappers under `src/test/dw/` are deleted.
 
 The cost is three copies of the helper block. Change one, change all three — the test suites run
@@ -73,7 +73,7 @@ carries:
 
 ```
 az storage blob upload --account-name saeus2integrationdev001 --container-name transforms \
-  --name "basf/BasfIftmin.dwl" --file ./src/main/dw/BasfIftmin.dwl
+  --name "basf/InboundIftmin.dwl" --file ./src/main/dw/InboundIftmin.dwl
 ```
 
 Repo filename, blob name and `dwlPath` are deliberately identical so they cannot drift apart.

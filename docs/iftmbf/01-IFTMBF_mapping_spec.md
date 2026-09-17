@@ -6,7 +6,7 @@ Canonical spec for the **second** mapping of the BASF integration: BASF **IFTMBF
 | | |
 |---|---|
 | Authority | `docs/iftmbf/IFTMBF_mapping_v1.xlsx`, single worksheet **"Update"** |
-| Mapping | `src/main/dw/BasfIftmbf.dwl` — one self-contained script, deployed as `basf/BasfIftmbf.dwl` |
+| Mapping | `src/main/dw/InboundIftmbf.dwl` — one self-contained script, deployed as `basf/InboundIftmbf.dwl` |
 | Fixture | every IFTMBF interchange in `docs/example-orders`, converted by `tools/edifact_to_json.py` |
 | Tests | `src/test/dw/IftmbfMappingTest.dwl` — `cd basf && mvn -o test` |
 | Rendered sample | `docs/2800209301_iftmbf_carlo_output.json` |
@@ -42,7 +42,7 @@ booking becomes:
 The mapped values are necessarily identical across the copies; only the address differs. It is
 taken from the dossier and never from the message — `Id`, `BASFBL` and `EDIID`, none of which the
 booking itself knows. The BL-less dossier the 0-result case creates is the one
-`BasfIftmin.dwl` later re-purposes when the IFTMIN arrives; see that spec's *"Carrying an earlier
+`InboundIftmin.dwl` later re-purposes when the IFTMIN arrives; see that spec's *"Carrying an earlier
 IFTMBF forward"*.
 
 Both halves of the address must match **exactly** — the reference *and*, where the dossier has
@@ -92,7 +92,7 @@ wrong record. See §8 for the two guards that hold this.
 `PROCESS_FCL`, a constant at the head of this mapping, decides whether FCL bookings are processed
 at all. It ships `false` — go-live carries LCL only — and applies beside the cancel filter, so an
 FCL booking neither creates a dossier the instruction will ignore nor updates one the instruction
-never made. **It must hold the same value as the constant in `BasfIftmin.dwl`**; see
+never made. **It must hold the same value as the constant in `InboundIftmin.dwl`**; see
 `docs/00-basf.md` *"FCL switch"*. The `processFcl(payload)` indirection is a test seam only —
 nothing in the pipeline sets `payload.config`.
 
@@ -101,7 +101,7 @@ carries neither `HaulageType` nor `EstimatedDispatchDate`, and that is now the m
 
 ## 3. Emitted but not in the sheet
 
-Three fields the Carlo contract needs; all carry the same values `BasfIftmin.dwl` already sends for
+Three fields the Carlo contract needs; all carry the same values `InboundIftmin.dwl` already sends for
 this shipment, so the update cannot change them:
 
 | Field | Value | Why |
@@ -122,7 +122,7 @@ deliberate — on an update, `Customer: { Matchcode: null }` could blank the cus
 existing shipment, which is worse than the 400 Carlo returns for a missing one. A booking without
 `NAD+CZ` is a data error and should surface as a rejected call.
 
-`ShipmentDate` intentionally does **not** reuse `BasfIftmin.dwl`'s `DTM+137` fallback: the message
+`ShipmentDate` intentionally does **not** reuse `InboundIftmin.dwl`'s `DTM+137` fallback: the message
 date would overwrite the real ETD that IFTMIN set. `Master` is always present but its
 `MainCarriageAsOcean` child is omitted when neither date is available, so the update never sends a
 blank carriage node.
@@ -143,7 +143,7 @@ blank carriage node.
 Only `Messages` carries value; `Errors`, `Delimiters` and `FunctionalAcks*` are ignored.
 
 **Output** — `{ "seaHouseShipment": [ { … } ] }`, camelCase (Carlo's deserializer is
-case-sensitive; `camelKeys` from `BasfIftmin.dwl` renders the PascalCase names the mapping is
+case-sensitive; `camelKeys` from `InboundIftmin.dwl` renders the PascalCase names the mapping is
 authored in). A message with no `CustomerReference` yields `{ "seaHouseShipment": [] }` rather
 than an identity-less shipment that this upsert endpoint would turn into a junk record.
 
@@ -164,10 +164,10 @@ almost every group relative to IFTMIN D99A:
 
 Two numbers even **collide with a different meaning**: `Segment_group_32` is the goods-item DGS
 group in D99A but the equipment group in D08A; `Segment_group_18` is the goods item in D99A but
-the item MEA group in D08A. Selectors copied from `BasfIftmin.dwl` would therefore have selected the
+the item MEA group in D08A. Selectors copied from `InboundIftmin.dwl` would therefore have selected the
 wrong data silently.
 
-So `BasfIftmbf.dwl` matches segments on their `_<SEGMENT>` key suffix and walks groups
+So `InboundIftmbf.dwl` matches segments on their `_<SEGMENT>` key suffix and walks groups
 structurally — `groupsWith(node, "NAD")` means "the direct child group that contains NAD segments":
 
 | Helper | Purpose |
@@ -209,7 +209,7 @@ segment or group degrades to an omitted key, never an error.
    date — "Planned Loading Date: 08.04.2026", sheet row 19 — but the sheet leaves it unhighlighted,
    so it is not mapped. Omitting a field on an update is the safe failure mode, so no code change
    is made on the strength of the sheet alone. **Ask BASF/Soloplan what LCL bookings should do.**
-7. **Function-name overlap with `BasfIftmin.dwl`** (`stages`, `stage`, `mainStage`, `parties`, `nad`,
+7. **Function-name overlap with `InboundIftmin.dwl`** (`stages`, `stage`, `mainStage`, `parties`, `nad`,
    `haulageType`, `shipmentAction` exist in both with different semantics). Safe today because
    every importer uses selective imports, but `import * from` both modules in one file would be
    ambiguous. Worth a prefix on the next touch.
@@ -232,7 +232,7 @@ every `BGM03` action and the date parser's reject cases.
 emitted key set is a subset of the twelve fields §2 and §3 allow. On an update, an extra field is
 not a cosmetic problem — it overwrites shipment data with booking-stage values.
 
-**`BasfIftmbf.dwl` is covered end to end, script included.** The suite runs it through
+**`InboundIftmbf.dwl` is covered end to end, script included.** The suite runs it through
 `evalPath`, exactly as the data-transformer evaluates the uploaded file, and asserts on the JSON
 Carlo would receive — so the output header, the document body and every inlined helper are all
 under test. Nothing is imported from the mapping and nothing about it is mirrored in the test,
@@ -242,7 +242,7 @@ so there is no wrapper shape to keep in sync.
 
 Scenario directories add no tests to `mvn -o test` yet, but they are **not** decoration. They are
 how the DataWeave IDE / preview runner binds the `payload` variable — without one, running
-`BasfIftmbf.dwl` in the preview fails with `Unable to resolve reference of: 'payload'` — and they
+`InboundIftmbf.dwl` in the preview fails with `Unable to resolve reference of: 'payload'` — and they
 are what `inputsFrom()` / `outputFrom()` read if a whole-document golden test is added (drop a
 reviewed `out.json` beside `inputs/`). The layout is
 `src/test/resources/<MappingFileName>/<ScenarioName>/inputs/<variableName>.json`, where each file
@@ -250,8 +250,8 @@ in `inputs/` is bound as a variable of that name:
 
 | Scenario | Input |
 |---|---|
-| `BasfIftmbf/FclBooking/` | `fcl/2800209301-iftmin-absch-9.json` — containers, TMD, FTX+ITR |
-| `BasfIftmbf/LclBooking/` | `lcl/2800226066-iftmbf-9.json` — no equipment, so §7.6 applies |
+| `InboundIftmbf/FclBooking/` | `fcl/2800209301-iftmin-absch-9.json` — containers, TMD, FTX+ITR |
+| `InboundIftmbf/LclBooking/` | `lcl/2800226066-iftmbf-9.json` — no equipment, so §7.6 applies |
 
 ## 9. Fixtures
 

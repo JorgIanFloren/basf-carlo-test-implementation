@@ -3,7 +3,7 @@
 * (9 fixtures: 4 FCL, 1 LCL, 4 master-sub/ms).
 *
 * The mapping is run the way the data-transformer runs it: `evalPath` executes
-* src/main/dw/BasfIftmbf.dwl - the whole self-contained script, output header and document
+* src/main/dw/InboundIftmbf.dwl - the whole self-contained script, output header and document
 * body included - against a `payload` context and returns the parsed JSON Carlo would
 * receive. Nothing is imported from the mapping, so no part of it is restated here and there
 * is nothing to keep in sync.
@@ -28,7 +28,7 @@ import * from dw::test::Tests
 import * from dw::test::Asserts
 import every from dw::core::Arrays
 
-var MAPPING = "BasfIftmbf.dwl"
+var MAPPING = "InboundIftmbf.dwl"
 
 var manifest = readUrl("classpath://example-orders/manifest.json", "application/json")
 var iftmbf = manifest filter ((e) -> e.messageType == "IFTMBF")
@@ -334,7 +334,7 @@ var msFanOut = bookingsWith("ms/2800231445-iftmbf.json", "iftmin-before-iftmbf-m
     // === the create path and the guards ====================================================
     // Nothing found means the booking arrived before its IFTMIN (step 3, POST). It stays a
     // single upsert with no address, which is what creates the BL-less dossier that
-    // BasfIftmin.dwl later re-purposes.
+    // InboundIftmin.dwl later re-purposes.
     () -> "a booking that found nothing stays a single unaddressed upsert" in (
         (bookingsWith("lcl/2800226066-iftmbf-9.json", "dossier-not-found")
             map ((s) -> addressOf(s)))
@@ -380,7 +380,7 @@ var msFanOut = bookingsWith("ms/2800231445-iftmbf.json", "iftmin-before-iftmbf-m
             lookup("iftmin-before-iftmbf-mastersub-fcl")) must equalTo([])),
 
     // === the FCL switch ===================================================================
-    // `PROCESS_FCL`, which must hold the same value here as in BasfIftmin.dwl. These run the
+    // `PROCESS_FCL`, which must hold the same value here as in InboundIftmin.dwl. These run the
     // file exactly as shipped, so they also pin which way the committed constant is set.
 
     () -> "as shipped, an FCL booking produces no call at all" in (

@@ -3,7 +3,7 @@
 * (4 fixtures: 3 FCL, 1 LCL).
 *
 * The mapping is run the way the data-transformer runs it: `evalPath` executes
-* src/main/dw/BasfIfcsum.dwl - the whole self-contained script, output header and document
+* src/main/dw/InboundIfcsum.dwl - the whole self-contained script, output header and document
 * body included - against a `payload` context and returns the parsed JSON Carlo would
 * receive. Nothing is imported from the mapping, so no part of it is restated here and there
 * is nothing to keep in sync; every assertion below is made on the camelCase document that
@@ -11,7 +11,7 @@
 *
 * Every cargo line is checked against example-orders/manifest.json, whose `cargo` rows are
 * produced by `ifcsum_cargo()` in tools/edifact_to_json.py. That function walks the parsed
-* tree by explicit key lookup where BasfIfcsum.dwl walks it by segment-name suffix, so the
+* tree by explicit key lookup where InboundIfcsum.dwl walks it by segment-name suffix, so the
 * two arrive at the same answer by different routes - the manifest is a cross-check, not a
 * restatement of the mapping.
 *
@@ -23,7 +23,7 @@
 import * from dw::test::Tests
 import * from dw::test::Asserts
 
-var MAPPING = "BasfIfcsum.dwl"
+var MAPPING = "InboundIfcsum.dwl"
 
 var manifest = readUrl("classpath://example-orders/manifest.json", "application/json")
 var ifcsum = manifest filter ((e) -> e.messageType == "IFCSUM")
@@ -91,7 +91,7 @@ fun summary(code) = message(code) update {
     [
     // === identity ===========================================================================
     // RFF+LI is the key docs/00-basf.md names ("Fetch Shipment Cargo Line by RFF-LI id"), and
-    // eDIID is the same "<note>/<position>" string BasfIftmin.dwl writes onto the cargo line.
+    // eDIID is the same "<note>/<position>" string InboundIftmin.dwl writes onto the cargo line.
     () -> "a cargo line is keyed by delivery note, position and the IFTMIN join key" in (
         fclSingle[0] must [
             $.deliveryNoteSAP must equalTo("3550879994"),

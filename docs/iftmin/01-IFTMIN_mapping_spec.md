@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Authority | `docs/iftmin/IFTMIN_mapping_v1.xlsx` (sheets Create / Feedback round 1 / Goods switch); `docs/iftmin/02-IFTMIN-additional-rules.md`; `docs/00-basf.md` |
-| Mapping | `src/main/dw/BasfIftmin.dwl` — one self-contained script, deployed as `basf/BasfIftmin.dwl` |
+| Mapping | `src/main/dw/InboundIftmin.dwl` — one self-contained script, deployed as `basf/InboundIftmin.dwl` |
 | Fixtures | every IFTMIN interchange in `docs/example-orders` (9 FCL, 3 LCL, 9 master-sub) |
 | Tests | `src/test/dw/IftminMappingTest.dwl` — `cd basf && mvn -o test` |
 
@@ -15,7 +15,7 @@ carry the per-field notes.
 
 `docs/00-basf.md` line 50 settles where it lives: *"we should be able to process all three
 kinds of basf iftmin messages in one big dwl mapping file"*. So the routing is in
-``BasfIftmin.dwl`'s `toCarloShipments``, not in the pipeline.
+``InboundIftmin.dwl`'s `toCarloShipments``, not in the pipeline.
 
 ```
 Step 0   BGM03 = 1  ->  recycleShipments        one identity-only recycle per dossier
@@ -99,7 +99,7 @@ every *other* sub is a brand-new record that would carry no booking data at all.
 
 `bookingCarryForward` reads those values once — the lookup is a single response, so there is
 nothing to re-fetch per message — and `mergeUnder` lays them under every sub. The set is exactly
-the fields `BasfIftmbf.dwl` maps that this mapping does not, verified against the captures rather
+the fields `InboundIftmbf.dwl` maps that this mapping does not, verified against the captures rather
 than assumed: `estimatedDispatchDate`, the pickup UN/LOCODE and place name, `haulageType`, and
 the carrier's `customerETA` / `customerClosing`. All are present on every
 `iftmbf-before-iftmin-*.json` and absent from every `iftmin-before-iftmbf-*.json`.
@@ -117,14 +117,14 @@ back from Carlo already camelCase.
 `LoadType` = `FCL` when the message carries equipment (`EQD`), else `LCL`.
 
 `Scenario` is **no longer emitted at all.** The field is obsolete on BASF's side (spec v1.1 §16)
-and real CarLo records carry `scenario.matchcode: null`. `BasfIftmbf.dwl` drops it too, or a
+and real CarLo records carry `scenario.matchcode: null`. `InboundIftmbf.dwl` drops it too, or a
 booking update would write back on every run what the instruction stopped sending.
 
 `PROCESS_FCL`, a constant at the head of this mapping, decides whether FCL is processed at all.
 It ships `false`: go-live carries LCL only. With it off an FCL message contributes nothing — no
 create, no update and no cancel either, since a load type the integration never created is one it
 must not address. A master-sub interchange is always uniformly FCL or uniformly LCL, so the filter
-takes such an interchange whole or not at all. The same constant lives in `BasfIftmbf.dwl` and the
+takes such an interchange whole or not at all. The same constant lives in `InboundIftmbf.dwl` and the
 two must agree; see `docs/00-basf.md` *"FCL switch"*.
 
 The mapping reads it through `processFcl(payload)`, which falls back to the constant when the
@@ -218,7 +218,7 @@ The flow decisions are additionally called out one by one — the master-sub spl
 co-load, the FCL master-sub staying back-to-back — plus the cancel branch and the derivation
 units.
 
-**`BasfIftmin.dwl` is covered end to end, script included.** The suite runs it through
+**`InboundIftmin.dwl` is covered end to end, script included.** The suite runs it through
 `evalPath`, exactly as the data-transformer evaluates the uploaded file, and asserts on the JSON
 Carlo would receive — so the output header, the document body and every inlined helper are all
 under test. Nothing is imported from the mapping and nothing about it is mirrored in the test,
@@ -226,12 +226,12 @@ so there is no wrapper shape to keep in sync.
 
 ### Scenario directories
 
-`src/test/resources/BasfIftmin/<Scenario>/inputs/payload.json` — how the IDE preview binds
+`src/test/resources/InboundIftmin/<Scenario>/inputs/payload.json` — how the IDE preview binds
 `payload`, and what `inputsFrom()` / `outputFrom()` read if a whole-document golden test is added
 (drop a reviewed `out.json` beside `inputs/`). Four are provided: `FclCreate`, `LclCreate`,
 `MasterSubFcl`, `MasterSubLcl`.
 
-The directory name must equal the mapping **filename**, so these live under `BasfIftmin/`. A
+The directory name must equal the mapping **filename**, so these live under `InboundIftmin/`. A
 directory named after a file that no longer exists silently binds nothing.
 
 ## 6. Open items

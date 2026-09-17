@@ -5,14 +5,14 @@ output application/json encoding="UTF-8"
 * BASF IFTMBF (firm booking, parsed JSON) -> Carlo / Soloplan v3 `seaHouseShipment` -
 * self-contained mapping.
 *
-* Deployed as `basf/BasfIftmbf.dwl` in the `transforms` container, which is the name
+* Deployed as `basf/InboundIftmbf.dwl` in the `transforms` container, which is the name
 * `dwlPath` carries in config/dataProfiler-basf-iftmbf.json. The data-transformer evaluates
 * this file on its own and resolves no imports off Blob Storage, so it carries everything it
 * needs: the shared helpers are inlined below rather than imported, and the document body at
 * the foot of the file renders the result. Keep it that way - an `import` added here fails at
 * runtime, not at build time. See config/README.md check 2.
 *
-* Sibling of BasfIftmin.dwl, aimed at the same Carlo endpoint. Where IFTMIN *creates* the
+* Sibling of InboundIftmin.dwl, aimed at the same Carlo endpoint. Where IFTMIN *creates* the
 * shipment, IFTMBF *updates* it, so the mapping sheet (docs/iftmbf/IFTMBF_mapping_v1.xlsx,
 * single worksheet "Update") maps only a handful of fields. Carlo finds the shipment through
 * DUNSCustomer + CustomerReference (BGM0201), which the sheet flags as "(searchfield)".
@@ -42,7 +42,7 @@ output application/json encoding="UTF-8"
 * practically every group relative to IFTMIN D99A, and two numbers even collide with a
 * different meaning (`Segment_group_32` = goods-item DGS in D99A but the equipment group in
 * D08A; `Segment_group_18` = the goods item in D99A but the item MEA group in D08A). Hard-coded
-* keys copied from BasfIftmin.dwl would therefore silently select the wrong data, and would
+* keys copied from InboundIftmin.dwl would therefore silently select the wrong data, and would
 * break again on the next directory bump. The suffix-navigation helpers below match on the
 * `_<SEGMENT>` suffix and walk groups structurally instead, so the mapping is immune to
 * renumbering.
@@ -56,7 +56,7 @@ output application/json encoding="UTF-8"
 /**
 * Whether FCL orders are processed at all.
 *
-* The same switch as in BasfIftmin.dwl, and it must hold the same value in both: a booking
+* The same switch as in InboundIftmin.dwl, and it must hold the same value in both: a booking
 * that created an FCL dossier the instruction then ignores is the state issue 3 of
 * docs/00-basf.md describes, so enabling FCL means flipping this to `true` and re-uploading
 * *both* mappings. LCL is unconditional; FCL is switchable because BASF go-live carries LCL
@@ -71,25 +71,25 @@ var PROCESS_FCL = false
 * `PROCESS_FCL` is the operative setting - nothing in the pipeline puts a `config` key on the
 * payload. The override is the seam the test suite needs, because `evalPath` runs this file as
 * shipped and there is no other way to exercise both states. See the same function in
-* BasfIftmin.dwl.
+* InboundIftmin.dwl.
 */
 fun processFcl(payload) = payload.config.processFcl default PROCESS_FCL
 
 /**
 * Helpers shared by the three BASF inbound mappings (IFTMIN, IFTMBF, IFCSUM).
 *
-* This block is inlined verbatim into BasfIftmin.dwl, BasfIftmbf.dwl and BasfIfcsum.dwl
+* This block is inlined verbatim into InboundIftmin.dwl, InboundIftmbf.dwl and InboundIfcsum.dwl
 * rather than imported: each file is uploaded to Blob Storage on its own and the
 * data-transformer resolves no imports there, so a shared module cannot be reached at
 * runtime. Change one copy and change all three.
 *
 * Two navigation styles live here and both are needed:
 *
-*   - Positional selectors ("0020_BGM") are what BasfIftmin.dwl uses. They are exact for a
+*   - Positional selectors ("0020_BGM") are what InboundIftmin.dwl uses. They are exact for a
 *     known directory and read naturally, but the position numbers are directory-specific.
 *   - Suffix navigation (`segs`/`seg1`/`groupsWith`) matches a segment by its "_<TAG>" key
-*     suffix and walks groups structurally, so it survives a directory change. BasfIftmbf.dwl
-*     and BasfIfcsum.dwl use it, because D08A renumbers almost every group relative to D99A
+*     suffix and walks groups structurally, so it survives a directory change. InboundIftmbf.dwl
+*     and InboundIfcsum.dwl use it, because D08A renumbers almost every group relative to D99A
 *     and two group numbers collide with a *different* meaning across the two directories.
 *
 * DataWeave 2.9 notes that this file depends on: `input` is a reserved word; the strict
@@ -239,8 +239,8 @@ fun ftxAgg(arr, q, compSep, segSep) = do {
 // ===========================================================================
 
 /**
-* This section is inlined verbatim into BasfIftmin.dwl and BasfIftmbf.dwl - the two mappings
-* whose flow starts with a lookup. It is deliberately NOT in BasfIfcsum.dwl, which finds its
+* This section is inlined verbatim into InboundIftmin.dwl and InboundIftmbf.dwl - the two mappings
+* whose flow starts with a lookup. It is deliberately NOT in InboundIfcsum.dwl, which finds its
 * cargo line by RFF+LI id instead. Change one copy and change the other.
 *
 * Both flows in docs/00-basf.md open with "GET DOSSIER by CustomerRef", and its result is
@@ -444,7 +444,7 @@ fun haulageType(doc) = do {
 }
 
 /**
-* Import action from BGM03, same table as BasfIftmin.dwl: 1 = delete, 4/5 = update, 9 = original.
+* Import action from BGM03, same table as InboundIftmin.dwl: 1 = delete, 4/5 = update, 9 = original.
 * Emitted as the first field of the shipment (`actionAttribute`), which is how Carlo decides
 * create-vs-update. The IFTMBF sample carries BGM03 = 9 -> "updateorcreate", i.e. update the
 * shipment IFTMIN already created, or create it if the booking arrives first.
@@ -461,7 +461,7 @@ fun shipmentAction(doc) = do {
 }
 
 // ===========================================================================
-// Top-level builder consumed by BasfIftmbf.dwl
+// Top-level builder consumed by InboundIftmbf.dwl
 // ===========================================================================
 
 /** CustomerReference (BGM0201) - the sheet's declared search field, i.e. the shipment identity. */
@@ -487,14 +487,14 @@ fun bookingRef(doc) = seg1(body(doc), "BGM").BGM0201
 *     default and every booking would create a duplicate shipment.
 *   - `DeliveryTerms` / `ShipmentDate` - part of the contract's required top-level set
 *     (DeliveryTerms, ShipmentDate, ObjectOwner, Customer, Master). Both carry exactly the values
-*     BasfIftmin.dwl already sends for the same shipment, so the update cannot change them.
+*     InboundIftmin.dwl already sends for the same shipment, so the update cannot change them.
 *
 * Of that required set, `DeliveryTerms`, `ObjectOwner` and `Master` are unconditional, but
 * `Customer` and `ShipmentDate` are emitted only when their source segment is present (NAD+CZ and
 * DTM+133 of TDT+20). That is deliberate: on an update, a `Customer: { Matchcode: null }` could
 * blank the customer on the existing shipment, which is worse than the 400 Carlo returns for a
 * missing one. A booking without NAD+CZ is a data error and should surface as a rejected call.
-* `ShipmentDate` intentionally does NOT reuse BasfIftmin.dwl's DTM+137 fallback - the message date would
+* `ShipmentDate` intentionally does NOT reuse InboundIftmin.dwl's DTM+137 fallback - the message date would
 * overwrite the real ETD that IFTMIN set.
 *
 * NOT emitted, on purpose:
@@ -559,7 +559,7 @@ fun toCarloBookingUpdate(doc, target) = do {
         // dropped here too, or every booking update would write back what the instruction
         // stopped sending. See docs/get-responses.
         (HaulageType: { Matchcode: haulage }) if (haulage != null),
-        // Contract-required, not sheet-mapped - same values BasfIftmin.dwl sends for this shipment.
+        // Contract-required, not sheet-mapped - same values InboundIftmin.dwl sends for this shipment.
         DeliveryTerms: "Prepaid",
         (ShipmentDate: etd) if (etd != null),
         // Sea main carriage: the carrier's ETA and closing date for the booked vessel.
