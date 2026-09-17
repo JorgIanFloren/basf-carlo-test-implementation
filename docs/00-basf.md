@@ -112,7 +112,9 @@ Each file is what a lookup by `customerref` returns from the system:
 | `dossier-not-found.json` | nothing | `{ "seaHouseShipment": [] }` |
 
 `src\test\resources\get-responses\` is the classpath copy the test suites read; keep the two in
-step. The mappings receive the response on `payload.lookup` - see `config\README.md` check 6.
+step. Both mappings receive the response on the `payload` node of the seq 3 envelope, beside the
+interchange on `originalPayload` - see `config\README.md` check 6 and
+`docs\carlo\06-dossier-lookup.md`.
 
 Reference fields, consistent across all nine captures:
 - `customerReference` is the **order**, shared by every BL of a master-sub.
@@ -209,21 +211,32 @@ Date: 11-09-2026
 
 Date: 16-09-2026
 1. Not a mapping defect. The addressing fix for 2026-09-02 #1 is in the mapping and tested, but
-   **inert in production**: no pipeline step performs the "GET dossier by CustomerRef", so
-   `payload.lookup` is never set and both mappings fall back to a single unaddressed upsert.
+   **inert in production**: no pipeline step performed the "GET dossier by CustomerRef", so no
+   lookup ever reached the mappings and both fell back to a single unaddressed upsert.
    Carlo's `updateorcreate` then matches on `customerReference` alone, so every BL of a
    master-sub resolves onto the same record. The fix is to wire that step - the call is specified
    and server-verified in `docs/carlo/06-dossier-lookup.md`; see also README open item 1 and
    `config/README.md` check 6.
 
+Date: 17-09-2026
+1. The lookup step is wired on both profiles, and it does **not** extend the payload - that
+   assumption was wrong, and `payload.lookup` is never populated by FrachtConnect. The
+   `dataDelivery` at sequence 3 hands the transformer an envelope of two sibling nodes: the
+   message as it entered the system under `originalPayload` (the node name is
+   `originalPayloadNodeName` on that step) and the GET response under `payload`. The reference the
+   GET filters on is injected into its path by the `dataPipeline` at sequence 2.
+   `InboundIftmin.dwl` and `InboundIftmbf.dwl` both read the two halves off that envelope, through
+   one pair of accessors each ("The pipeline envelope").
+
 #### Status
 | Issue | Solution | State |
 |---|---|---|
-| 02-09 #1 | CustomerRef + BL ID addressing | Implemented in the mapping, **blocked in production** on the lookup step (16-09 #1) |
-| 02-09 #2 | one update per returned dossier | Implemented (`toCarloBookingUpdates`), same block |
-| 02-09 #3 | cache the booking dossier, re-purpose it for the first sub | Implemented (`bookingCarryForward` / `mergeUnder`), same block |
+| 02-09 #1 | CustomerRef + BL ID addressing | Implemented and live now the lookup is wired (17-09 #1) |
+| 02-09 #2 | one update per returned dossier | Implemented (`toCarloBookingUpdates`) and live |
+| 02-09 #3 | cache the booking dossier, re-purpose it for the first sub | Implemented (`bookingCarryForward` / `mergeUnder`) and live |
 | 11-09 #1 | whole PCI line | Implemented (`handlingInfo`) |
-| 16-09 #1 | wire the dossier lookup | **Open - pipeline work, not mapping work** |
+| 16-09 #1 | wire the dossier lookup | Wired on both profiles (seq 2 + seq 3) |
+| 17-09 #1 | read the lookup off the `originalPayload` / `payload` envelope | Implemented in both mappings |
 
 ## IFTMIN mapping specification v1.1
 

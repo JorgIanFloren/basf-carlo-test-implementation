@@ -38,8 +38,13 @@ var iftmin = manifest filter ((e) -> e.messageType == "IFTMIN")
 * Run the mapping script over a whole parsed interchange and return the Carlo document.
 * This is the only route the suite has into the mapping - the same call the data-transformer
 * makes - so a break in the output header, the document body or any helper surfaces here.
+*
+* Every helper here takes the *interchange* and wraps it in the envelope the seq 3
+* `dataDelivery` step hands the transformer (`originalPayload` + `payload`); `envelope` below
+* is the single place that shape is built, so the suite feeds the mapping exactly what
+* FrachtConnect does and nothing restates the wiring.
 */
-fun document(payload) = documentWith(payload, true)
+fun document(interchange) = documentWith(interchange, true)
 
 /**
 * Run the mapping with the FCL switch explicitly set.
@@ -55,14 +60,31 @@ fun document(payload) = documentWith(payload, true)
 * The shipped default is covered on its own terms by `documentAsShipped`, under
 * "the FCL switch" below.
 */
-fun documentWith(payload, fcl) =
-    evalPath(MAPPING, { payload: payload ++ { config: { processFcl: fcl } } }, "application/json")
+fun documentWith(interchange, fcl) = documentOfLookup(interchange, null, fcl)
+
+/**
+* The envelope the data-transformer is handed: the interchange on `originalPayload` (the node
+* name `originalPayloadNodeName` configures on the seq 3 step of the profile) and the GET
+* response on `payload`. `config` is the FCL test seam and is never present in production.
+*
+* `lk` is null wherever a test describes the pre-lookup fallback, which is also what a GET
+* whose response the mapping cannot recognise comes down to.
+*/
+fun envelope(interchange, lk) = { originalPayload: interchange, payload: lk }
+
+fun documentOfLookup(interchange, lk, fcl) =
+    evalPath(MAPPING, { payload: envelope(interchange, lk) ++ { config: { processFcl: fcl } } },
+             "application/json")
 
 /** Run the mapping exactly as shipped, letting `PROCESS_FCL` in the file decide. */
-fun documentAsShipped(payload) = evalPath(MAPPING, { payload: payload }, "application/json")
+fun documentAsShipped(interchange) =
+    evalPath(MAPPING, { payload: envelope(interchange, null) }, "application/json")
+
+/** An interchange built from the given synthetic messages. */
+fun interchangeOf(msgs) = { EDI: { Messages: { D99A: { IFTMIN: msgs } } } }
 
 /** The document for an interchange built from the given synthetic messages. */
-fun documentOf(msgs) = document({ EDI: { Messages: { D99A: { IFTMIN: msgs } } } })
+fun documentOf(msgs) = document(interchangeOf(msgs))
 
 fun load(fixture) = readUrl("classpath://example-orders/inbound/" ++ fixture, "application/json")
 fun shipmentsOf(fixture) = document(load(fixture)).seaHouseShipment
@@ -134,21 +156,40 @@ fun bothOf(msgA, msgB) = documentOf([ msgA, msgB ]).seaHouseShipment
 * `docs/get-responses` is the source of truth; `src/test/resources/get-responses` is the
 * classpath copy the suite reads.
 *
-* The mapping reads the response off `payload.lookup`, so a test supplies it by merging it
-* into the payload exactly as the pipeline does after step 1 of the flow.
+* The mapping reads the response off the `payload` node of the envelope, so a test supplies it
+* the way the seq 3 `dataDelivery` step does: beside the interchange, verbatim.
 */
 fun lookup(name) = readUrl("classpath://get-responses/" ++ name ++ ".json", "application/json")
 
 /** The shipments a fixture interchange maps to when evaluated together with a lookup. */
 fun shipmentsWith(fixture, name) =
-    document(load(fixture) ++ { lookup: lookup(name) }).seaHouseShipment
+    documentOfLookup(load(fixture), lookup(name), true).seaHouseShipment
 
 /** The shipments synthetic messages map to when evaluated with an explicit lookup value. */
 fun shipmentsWithLookup(msgs, lk) =
-    document({ EDI: { Messages: { D99A: { IFTMIN: msgs } } }, lookup: lk }).seaHouseShipment
+    documentOfLookup(interchangeOf(msgs), lk, true).seaHouseShipment
 
 /** A lookup response carrying the given dossiers. */
 fun found(dossiers) = { seaHouseShipment: dossiers }
+
+/**
+* A whole envelope captured from a real FrachtConnect run, by file stem.
+*
+* Unlike every other helper here this one does not build the envelope: the file *is* the
+* transformer's input, exactly as the seq 3 `dataDelivery` step handed it over - the parsed
+* interchange on `originalPayload` and the live GET response on `payload`. That makes it the
+* one fixture that can catch a wrong node name, since nothing in the suite restates it.
+*
+* `docs/documentation-input/inbound/mulesoft-*-get-existing-append-original.json` are the
+* originals; `src/test/resources/envelopes/` is the classpath copy. Captured 2026-09-17.
+*/
+fun envelopeCapture(name) =
+    readUrl("classpath://envelopes/" ++ name ++ ".json", "application/json")
+
+/** Run the mapping over a captured envelope, with the FCL switch set. */
+fun documentOfCapture(name, fcl) =
+    evalPath(MAPPING, { payload: envelopeCapture(name) ++ { config: { processFcl: fcl } } },
+             "application/json")
 
 /**
 * The address a shipment carries: which record it updates and how.
@@ -454,6 +495,73 @@ var msAfterBooking = shipmentsWith("ms/2800231445-ab-4-5.json", "iftmbf-before-i
     () -> "without a lookup no cached booking values are invented" in (
         (shipmentsOf("ms/2800231445-ab-4-5.json") map ((s) -> s.estimatedDispatchDate))
             must equalTo([null, null])),
+
+    // === the pipeline envelope =============================================================
+    // How the two halves reach the mapping, asserted on the node names themselves rather than
+    // through `envelope`, because those names are configuration: `originalPayload` is what
+    // `originalPayloadNodeName` is set to on the seq 3 step of the profile, and `payload` is
+    // where that step puts the GET response. Change either on the step and this fails.
+    () -> "the interchange is read off `originalPayload` and the lookup off `payload`" in (
+        (evalPath(MAPPING, { payload: {
+            originalPayload: interchangeOf([ bgm("9", "X", "BL01") ]),
+            payload: found([{ customerReference: "X", bASFBL: "BL01", eDIID: "XBL01", id: 4711 }])
+        } }, "application/json").seaHouseShipment map ((s) -> addressOf(s)))
+            must equalTo([{ bl: "BL01", ediid: "XBL01", id: 4711, action: "update" }])),
+
+    // The shape this mapping used to expect - interchange at the root, response on `lookup` -
+    // is one FrachtConnect never produces. Pinned as "maps to nothing" rather than left
+    // undefined: a half-working fallback is what hid the wiring error before, since a payload
+    // with no dossiers in it looks exactly like an order that has none.
+    () -> "the old extend-the-payload shape yields no shipment at all" in (
+        evalPath(MAPPING, { payload: interchangeOf([ bgm("9", "X") ]) ++ { lookup: found([]) } },
+                 "application/json")
+            must equalTo({ seaHouseShipment: [] })),
+
+    // A GET that failed, or returned something other than a seaHouseShipment object, is the
+    // no-lookup case and not the found-nothing case. The difference only shows on a cancel:
+    // found-nothing emits no call, this emits the identity-addressed recycle.
+    () -> "a GET body carrying no seaHouseShipment is treated as no lookup at all" in (
+        (shipmentsWithLookup([ bgm("1", "2800244026") ], { error: "Internal Server Error" })
+            map ((s) -> addressOf(s)))
+            must equalTo([{ bl: "BL00", ediid: "2800244026BL00", id: 0,
+                            action: "updateorcreate" }])),
+
+    // === a real captured envelope ==========================================================
+    // The three tests above build the envelope; these run the mapping over one FrachtConnect
+    // actually produced - order 2800209301_RV1, whose GET found the BL00 dossier an earlier
+    // run created. Nothing here is hand-written: the addressing asserted is a real CarLo
+    // record id, and the business content is what the real interchange carries.
+    () -> "a captured envelope addresses the dossier its own GET returned" in (
+        (documentOfCapture("iftmin-get-existing-append-original", true).seaHouseShipment
+            map ((s) -> addressOf(s)))
+            must equalTo([{ bl: "BL00", ediid: "2800209301_RV1BL00", id: 1564415,
+                            action: "update" }])),
+
+    // Both halves of the envelope, in one assertion: the id can only come from `payload` and
+    // the vessel, ports and containers only from `originalPayload`. A mapping reading the
+    // wrong node loses one half and this fails.
+    () -> "a captured envelope's business content comes off originalPayload" in (
+        (documentOfCapture("iftmin-get-existing-append-original", true).seaHouseShipment
+            map ((s) -> {
+                ref: s.customerReference,
+                load: s.loadType,
+                house: s.houseType,
+                vessel: s.master.mainCarriageAsOcean.customerVessel.vesselName,
+                pol: s.master.mainCarriageAsOcean.customerPOL.matchcode,
+                pod: s.master.mainCarriageAsOcean.customerPOD.matchcode,
+                etd: s.master.mainCarriageAsOcean.customerETD,
+                containers: sizeOf(s.container default []),
+                cargo: sizeOf(s.cargo default [])
+            }))
+            must equalTo([{ ref: "2800209301_RV1", load: "FCL", house: "BackToBack",
+                            vessel: "COSCO HOPE", pol: "BEANR", pod: "USNYC",
+                            etd: "2026-04-20", containers: 3, cargo: 5 }])),
+
+    // The capture is an FCL order, so as shipped it is the switch that decides - which is what
+    // production does with this very message today.
+    () -> "as shipped, the captured FCL envelope emits nothing" in (
+        documentOfCapture("iftmin-get-existing-append-original", false)
+            must equalTo({ seaHouseShipment: [] })),
 
     // === the FCL switch ===================================================================
     // `PROCESS_FCL` in the mapping. LCL is unconditional; FCL is switchable because go-live

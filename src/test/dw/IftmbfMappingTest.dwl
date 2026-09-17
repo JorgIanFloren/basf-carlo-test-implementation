@@ -37,8 +37,13 @@ var iftmbf = manifest filter ((e) -> e.messageType == "IFTMBF")
 * Run the mapping script over a whole parsed interchange and return the Carlo document.
 * This is the only route the suite has into the mapping - the same call the data-transformer
 * makes - so a break in the output header, the document body or any helper surfaces here.
+*
+* Every helper here takes the *interchange* and wraps it in the envelope the seq 3
+* `dataDelivery` step hands the transformer (`originalPayload` + `payload`); `envelope` below
+* is the single place that shape is built, so the suite feeds the mapping exactly what
+* FrachtConnect does and nothing restates the wiring. Same harness as IftminMappingTest.dwl.
 */
-fun document(payload) = documentWith(payload, true)
+fun document(interchange) = documentWith(interchange, true)
 
 /**
 * Run the mapping with the FCL switch explicitly set.
@@ -51,14 +56,31 @@ fun document(payload) = documentWith(payload, true)
 * So `document`, and everything built on it, describes the mapping with **FCL enabled**. The
 * shipped default is covered on its own terms under "the FCL switch" below.
 */
-fun documentWith(payload, fcl) =
-    evalPath(MAPPING, { payload: payload ++ { config: { processFcl: fcl } } }, "application/json")
+fun documentWith(interchange, fcl) = documentOfLookup(interchange, null, fcl)
+
+/**
+* The envelope the data-transformer is handed: the interchange on `originalPayload` (the node
+* name `originalPayloadNodeName` configures on the seq 3 step of the profile) and the GET
+* response on `payload`. `config` is the FCL test seam and is never present in production.
+*
+* `lk` is null wherever a test describes the pre-lookup fallback, which is also what a GET
+* whose response the mapping cannot recognise comes down to.
+*/
+fun envelope(interchange, lk) = { originalPayload: interchange, payload: lk }
+
+fun documentOfLookup(interchange, lk, fcl) =
+    evalPath(MAPPING, { payload: envelope(interchange, lk) ++ { config: { processFcl: fcl } } },
+             "application/json")
 
 /** Run the mapping exactly as shipped, letting `PROCESS_FCL` in the file decide. */
-fun documentAsShipped(payload) = evalPath(MAPPING, { payload: payload }, "application/json")
+fun documentAsShipped(interchange) =
+    evalPath(MAPPING, { payload: envelope(interchange, null) }, "application/json")
+
+/** An interchange built from the given synthetic messages. */
+fun interchangeOf(msgs) = { EDI: { Messages: { D08A: { IFTMBF: msgs } } } }
 
 /** The document for an interchange built from the given synthetic messages. */
-fun documentOf(msgs) = document({ EDI: { Messages: { D08A: { IFTMBF: msgs } } } })
+fun documentOf(msgs) = document(interchangeOf(msgs))
 
 /** The single booking update a one-message synthetic interchange maps to. */
 fun only(msg) = documentOf([ msg ]).seaHouseShipment[0]
@@ -149,14 +171,27 @@ fun lookup(name) = readUrl("classpath://get-responses/" ++ name ++ ".json", "app
 
 /** The booking updates a fixture maps to when evaluated together with a lookup. */
 fun bookingsWith(fixture, name) =
-    document(load(fixture) ++ { lookup: lookup(name) }).seaHouseShipment
+    documentOfLookup(load(fixture), lookup(name), true).seaHouseShipment
 
 /** The booking updates synthetic messages map to when evaluated with an explicit lookup. */
 fun bookingsWithLookup(msgs, lk) =
-    document({ EDI: { Messages: { D08A: { IFTMBF: msgs } } }, lookup: lk }).seaHouseShipment
+    documentOfLookup(interchangeOf(msgs), lk, true).seaHouseShipment
 
 /** A lookup response carrying the given dossiers. */
 fun found(dossiers) = { seaHouseShipment: dossiers }
+
+/**
+* A whole envelope captured from a real FrachtConnect run, by file stem. See the same helper
+* in IftminMappingTest.dwl: the file *is* the transformer's input, so it is the one fixture
+* that can catch a wrong node name. Captured 2026-09-17.
+*/
+fun envelopeCapture(name) =
+    readUrl("classpath://envelopes/" ++ name ++ ".json", "application/json")
+
+/** Run the mapping over a captured envelope, with the FCL switch set. */
+fun documentOfCapture(name, fcl) =
+    evalPath(MAPPING, { payload: envelopeCapture(name) ++ { config: { processFcl: fcl } } },
+             "application/json")
 
 /** The address a booking update carries: which record it updates and how. */
 fun addressOf(s) = { bl: s.bASFBL, ediid: s.eDIID, id: s.id default 0, action: s.actionAttribute }
@@ -379,6 +414,72 @@ var msFanOut = bookingsWith("ms/2800231445-iftmbf.json", "iftmin-before-iftmbf-m
         bookingsWithLookup([ booking("1", "2800231445") ],
             lookup("iftmin-before-iftmbf-mastersub-fcl")) must equalTo([])),
 
+    // === the pipeline envelope =============================================================
+    // How the two halves reach the mapping, asserted on the node names themselves rather than
+    // through `envelope`, because those names are configuration: `originalPayload` is what
+    // `originalPayloadNodeName` is set to on the seq 3 step of the profile, and `payload` is
+    // where that step puts the GET response. Change either on the step and this fails. The
+    // same three tests are in IftminMappingTest.dwl.
+    () -> "the interchange is read off `originalPayload` and the lookup off `payload`" in (
+        (evalPath(MAPPING, { payload: {
+            originalPayload: interchangeOf([ booking("9", "2800231445") ]),
+            payload: lookup("iftmin-before-iftmbf-mastersub-fcl")
+        } }, "application/json").seaHouseShipment map ((s) -> addressOf(s)))
+            must equalTo([
+                { bl: "BL01", ediid: "2800231445BL01", id: 1607396, action: "update" },
+                { bl: "BL02", ediid: "2800231445BL02", id: 1607444, action: "update" }
+            ])),
+
+    // The shape this mapping used to expect - interchange at the root, response on `lookup` -
+    // is one FrachtConnect never produces. Pinned as "maps to nothing" rather than left
+    // undefined: a half-working fallback is what hid the wiring error before, since a payload
+    // with no dossiers in it looks exactly like an order that has none.
+    () -> "the old extend-the-payload shape yields no call at all" in (
+        evalPath(MAPPING, { payload: interchangeOf([ booking("9", "2800231445") ])
+                                     ++ { lookup: found([]) } }, "application/json")
+            must equalTo({ seaHouseShipment: [] })),
+
+    // A GET that failed, or returned something other than a seaHouseShipment object, is the
+    // no-lookup case and not the found-nothing case: the booking falls back to the single
+    // unaddressed upsert rather than fanning out over records it never saw.
+    () -> "a GET body carrying no seaHouseShipment is treated as no lookup at all" in (
+        (bookingsWithLookup([ booking("9", "2800231445") ], { error: "Internal Server Error" })
+            map ((s) -> addressOf(s)))
+            must equalTo([{ bl: null, ediid: null, id: 0, action: "updateorcreate" }])),
+
+    // === a real captured envelope ==========================================================
+    // The tests above build the envelope; these run the mapping over one FrachtConnect actually
+    // produced - booking 2800209301_RV1, whose GET found the BL00 dossier the instruction
+    // created. The BL on the update comes from that dossier and not from the message: an
+    // IFTMBF carries no UNH03, which is exactly why the lookup has to address it.
+    () -> "a captured envelope updates the dossier its own GET returned" in (
+        (documentOfCapture("iftmbf-get-existing-append-original", true).seaHouseShipment
+            map ((s) -> addressOf(s)))
+            must equalTo([{ bl: "BL00", ediid: "2800209301_RV1BL00", id: 1564415,
+                            action: "update" }])),
+
+    // Both halves of the envelope in one assertion: the id comes from `payload`, the booking's
+    // own values only from `originalPayload`.
+    () -> "a captured envelope's booking values come off originalPayload" in (
+        (documentOfCapture("iftmbf-get-existing-append-original", true).seaHouseShipment
+            map ((s) -> {
+                ref: s.customerReference,
+                dispatch: s.estimatedDispatchDate,
+                pickup: s.pickupLocation.pickupLocation.unLocationCode.matchcode,
+                haulage: s.haulageType.matchcode,
+                eta: s.master.mainCarriageAsOcean.customerETA,
+                closing: s.master.mainCarriageAsOcean.customerClosing
+            }))
+            must equalTo([{ ref: "2800209301_RV1", dispatch: "2026-04-08T00:00:00",
+                            pickup: "DELUH", haulage: "CAR/CAR", eta: "2026-05-08",
+                            closing: "2026-04-15" }])),
+
+    // The capture is an FCL booking, so as shipped the switch decides - which is what
+    // production does with this very message today.
+    () -> "as shipped, the captured FCL envelope emits nothing" in (
+        documentOfCapture("iftmbf-get-existing-append-original", false)
+            must equalTo({ seaHouseShipment: [] })),
+
     // === the FCL switch ===================================================================
     // `PROCESS_FCL`, which must hold the same value here as in InboundIftmin.dwl. These run the
     // file exactly as shipped, so they also pin which way the committed constant is set.
@@ -394,9 +495,9 @@ var msFanOut = bookingsWith("ms/2800231445-iftmbf.json", "iftmin-before-iftmbf-m
     // With FCL off a booking must not fan out over FCL dossiers either - that fan-out is what
     // issue 2 / proposed solution 2 added, and it has to stay behind the switch.
     () -> "as shipped, an FCL booking does not fan out over the order's dossiers" in (
-        sizeOf(evalPath(MAPPING, { payload:
-            { EDI: { Messages: { D08A: { IFTMBF: [ booking("9", "2800231445", equipment(carrierTmd())) ] } } },
-              lookup: lookup("iftmin-before-iftmbf-mastersub-fcl") } }, "application/json").seaHouseShipment)
+        sizeOf(evalPath(MAPPING, { payload: envelope(
+            interchangeOf([ booking("9", "2800231445", equipment(carrierTmd())) ]),
+            lookup("iftmin-before-iftmbf-mastersub-fcl")) }, "application/json").seaHouseShipment)
             must equalTo(0)),
 
     () -> "with the switch on, FCL is processed again" in (

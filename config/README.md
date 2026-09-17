@@ -15,28 +15,33 @@ Documents for the `integration-store` database, `configurations` collection. One
 
 ## The chain
 
-Each profile wires the same four steps, differing only in subject, DWL and target path:
-
-IFCSUM wires three steps; IFTMIN and IFTMBF wire four, because both of those flows open with
-"GET DOSSIER by CustomerRef" and both mappings consume its result.
+Each profile wires the same steps, differing only in subject, DWL and target path. IFCSUM wires
+three; IFTMIN and IFTMBF wire five, because both of those flows open with "GET DOSSIER by
+CustomerRef" and both mappings consume its result.
 
 ```
 BASF EDIFACT interchange
-  -> dataProfiler    seq 1  sender BASF / receiver CARLO / subject IFTMIN|IFTMBF|IFCSUM
-  -> dataDelivery    seq 2  HTTPS GET to Carlo, extending the payload at `lookup`
-                            (IFTMIN and IFTMBF only — IFCSUM needs no lookup)
-  -> dataTransformer seq 3  basf/Basf{Iftmin,Iftmbf,Ifcsum}.dwl
-  -> dataDelivery    seq 4  HTTPS POST to Carlo
+  -> dataProfiler    seq 1  sender basf_ocean / receiver FrachtConnect / subject iftmin|iftmbf
+  -> dataPipeline    seq 2  manipulate-metadata: reads BGM0201 and injects it into seq 3
+  -> dataDelivery    seq 3  HTTPS GET to Carlo; hands on { originalPayload, payload }
+                            (IFTMIN and IFTMBF only - IFCSUM needs no lookup)
+  -> dataTransformer seq 4  Fracht-Belgium/basf/basf-inbound-{iftmin,iftmbf,ifcsum}-to-carlo.dwl
+  -> dataDelivery    seq 5  HTTPS POST to Carlo
 ```
 
-The `dataPipeline` pass-thru step that used to sit at seq 2 is gone.
+**The lookup step is a `dataDelivery`, and it does not extend the payload.** That was the earlier
+assumption and it was wrong: FrachtConnect never populates a `lookup` key. The step passes on an
+envelope of two sibling nodes — the message as it entered the system, under the node named by
+`originalPayloadNodeName` on the step, and the GET response under `payload`:
 
-**The lookup step is a `dataDelivery`.** That step type does not only deliver: it can be
-instructed to fetch from another source and **extend** the payload it was given, rather than
-replace it — which is exactly what this needs, since the transformer has to see the interchange
-*and* the lookup response in one object. Confirmed by the FrachtConnect team on 2026-09-16; the
-platform documentation is being updated to describe it. Check 6 below is now about getting that
-step's fields right rather than about a missing capability.
+```json
+{ "originalPayload": { "EDI": { "Messages": { "…": { "IFTMIN": [ … ] } } } },
+  "payload":         { "seaHouseShipment": [ … ] } }
+```
+
+`InboundIftmin.dwl` and `InboundIftmbf.dwl` both read the two halves off that envelope — see "The
+pipeline envelope" in either mapping and `docs/carlo/06-dossier-lookup.md`. Only the directory and
+message type differ between the two (`D99A`/`IFTMIN`, `D08A`/`IFTMBF`).
 
 Write targets: `…/v3/SeaHouseShipment` for IFTMIN and IFTMBF, `…/v3/ShipmentCargo` for IFCSUM.
 The lookup step reads from `…/v3/SeaHouseShipment/0`.
@@ -48,11 +53,12 @@ JSON. What matters here is that the input blob is **read** as EDIFACT — see ch
 ## Before you load these
 
 Six things are inferred rather than documented. Checks 1–5 are each a one-line fix if they turn
-out wrong; check 6 is a step that is now wired but whose field *names* are guesses. The
-integration will not work until they are confirmed.
+out wrong; check 6 is the lookup step, which is now wired on both profiles and needs nothing
+further. The integration will not work until checks 1-5 are confirmed.
 
 **1. `inputMimeType: "application/edifact"` is what parses the interchange.**
-The mappings expect the parsed structure `payload.EDI.Messages.<DIRECTORY>.<TYPE>[]`, which is
+The mappings expect the parsed structure `EDI.Messages.<DIRECTORY>.<TYPE>[]` (for IFTMIN and
+IFTMBF, under the envelope's `originalPayload` node — see the chain above), which is
 the `mule-edifact-extension` reader's output shape. Setting `inputMimeType` on the profiler,
 pipeline and transformer steps is the mechanism this repo assumes produces it. **Confirm the
 exact mime-type string the platform uses for inbound EDIFACT** — if the transformer receives raw
@@ -68,15 +74,21 @@ project module. `CommonModule.dwl` and the old thin wrappers under `src/test/dw/
 The cost is three copies of the helper block. Change one, change all three — the test suites run
 each file as a whole script, so a copy that drifts fails rather than passing quietly.
 
-Upload each to the `transforms` container under `basf/`, using the same name its `dwlPath`
-carries:
+Upload each to the `transforms` container under the name its `dwlPath` carries — the platform's
+naming, which differs from the repo filename:
+
+| Repo file | `dwlPath` / blob name |
+|---|---|
+| `src/main/dw/InboundIftmin.dwl` | `Fracht-Belgium/basf/basf-inbound-iftmin-to-carlo.dwl` |
+| `src/main/dw/InboundIftmbf.dwl` | `Fracht-Belgium/basf/basf-inbound-iftmbf-to-carlo.dwl` |
+| `src/main/dw/InboundIfcsum.dwl` | `basf/InboundIfcsum.dwl` (the IFCSUM profile still carries the old name) |
 
 ```
 az storage blob upload --account-name saeus2integrationdev001 --container-name transforms \
-  --name "basf/InboundIftmin.dwl" --file ./src/main/dw/InboundIftmin.dwl
+  --name "Fracht-Belgium/basf/basf-inbound-iftmin-to-carlo.dwl" --file ./src/main/dw/InboundIftmin.dwl
 ```
 
-Repo filename, blob name and `dwlPath` are deliberately identical so they cannot drift apart.
+Each mapping's header names the blob it deploys as, so the pairing is stated in both places.
 Do not add an `import` to these files: it compiles and tests green locally (where the classpath
 resolves it) and fails only at runtime in the transformer.
 
@@ -112,27 +124,28 @@ is needed.
 Note the SFTP path deletes each file from the partner server after successful pickup. Do not
 enable it until BASF expects that.
 
-**6. Two field names on the seq 2 lookup step are guesses.**
-The step exists in `dataProfiler-basf-iftmin.json` and `dataProfiler-basf-iftmbf.json` at
-sequence 2. Everything about the CarLo call itself is verified against the live server
-(`docs/carlo/06-dossier-lookup.md`) — host, path, method, `$filter`, `$top` and both required
-headers. What is **not** verified is how a `dataDelivery` step is told to *extend* rather than
-replace, so two things in that step are placeholders:
+**6. ~~Two field names on the seq 2 lookup step are guesses.~~ Resolved — the step is wired.**
+In both `dataProfiler-basf-iftmin.json` and `dataProfiler-basf-iftmbf.json` the GET is the
+`dataDelivery` at sequence 3, the reference is injected into its path in place of
+`<dynamicReference>` by the `dataPipeline` at sequence 2, and the response reaches the
+transformer as the `payload` node of the envelope described above, beside `originalPayload`.
+Everything about the CarLo call itself is verified against the live server
+(`docs/carlo/06-dossier-lookup.md`) — host, path, method, `$filter` and both required headers.
+The envelope shape is verified too, against captures of what each transformer was actually
+handed: `docs/documentation-input/inbound/mulesoft-{iftmin,iftmbf}-get-existing-append-original.json`,
+which both test suites run against.
 
-| Field as written | What it has to mean |
-|---|---|
-| `"extendPayloadAt": "lookup"` | put the response under the key `lookup`, keeping `EDI` intact |
-| `"$filter": "700071 eq '{{CONFIRM_REFERENCE_EXPRESSION}}'"` | substitute `BGM0201` from the incoming payload |
+No `$top` is set, deliberately. It defaults to 50 and truncates in silence (check the `$top`
+section of `docs/carlo/01-calling-the-api.md` before reusing this pattern elsewhere), but this
+filter returns the dossiers of one order — a master-sub's BL count, in practice far below 50.
+Confirmed by the integration team on 2026-09-17.
 
-**Do not load these two profiles until both are replaced with the real field names and the real
-templating syntax.** A wrong extend-field is the dangerous one: the step would silently replace
-the payload instead of extending it, the transformer would find no `EDI`, and every interchange
-would map to an empty array — which looks exactly like "nothing to send" rather than like a
-failure.
-
-For the reference expression, `BGM0201` sits at `Heading."0020_BGM".BGM0201` of the first message
-in **both** directories (D99A/IFTMIN and D08A/IFTMBF), so one expression shape covers both
-profiles — only the directory and message-type level differ:
+The reference the GET filters on comes from the seq 2 `dataPipeline`
+(`basf-ocean-iftmin-iftmbf-manipulate-metadata.dwl`, which lives in the blob container rather
+than this repo): it reads `BGM0201` and injects it into the seq 3 path where `<dynamicReference>`
+sits. `BGM0201` is at `Heading."0020_BGM".BGM0201` of the first message in **both** directories
+(D99A/IFTMIN and D08A/IFTMBF), so one expression shape covers both profiles — only the directory
+and message-type level differ:
 
 ```
 EDI.Messages.D99A.IFTMIN[0].Heading."0020_BGM".BGM0201     (iftmin profile)
@@ -145,14 +158,10 @@ templating supports one — the mappings read the directory level generically pr
 bump from D99A would otherwise go unnoticed, and here it would silently yield no reference, no
 lookup, and a quiet slide back into fallback mode.
 
-`payload.lookup` was chosen over a second context variable because the transformer evaluates a
-mapping against `payload` and nothing else (check 2's constraint applies here too), so there is
-nowhere else for it to arrive:
-
-```json
-{ "EDI": { "Messages": { "…": { "IFTMIN": [ … ] } } },
-  "lookup": { "seaHouseShipment": [ … ] } }
-```
+The envelope is how both halves reach the mapping at all: the transformer evaluates a mapping
+against `payload` and nothing else (check 2's constraint applies here too), so the interchange
+has to travel inside it beside the response — which is exactly what `originalPayloadNodeName`
+arranges.
 
 Three things this step decides, none of which work without it:
 
@@ -162,18 +171,18 @@ Three things this step decides, none of which work without it:
 | IFTMBF for a master-sub order | one update per dossier of the order | one update, landing on one dossier |
 | IFTMIN cancel | each dossier of the order is recycled | one upsert keyed on `CustomerReference` + BL |
 
-**An absent `payload.lookup` is not an error.** Both mappings fall back to exactly the single-
-upsert behaviour they had before the lookup existed, which is what let them deploy while this
-step was still being wired. What is *not* safe is a step that runs the GET and returns something
-other than `{ seaHouseShipment: [...] }` — `{ seaHouseShipment: [] }` must mean "found nothing",
-because the cancel path reads it as "no dossier to recycle" and emits no call at all. Real
-captures of every scenario's response are in `docs/get-responses/`, and the test suites run
+**A response that is not a `seaHouseShipment` object is not an error.** The mapping falls back to
+exactly the single-upsert behaviour it had before the lookup existed, which is what let it deploy
+while this step was still being wired — and what keeps a misconfigured step from looking like an
+order with no dossiers. What is *not* safe is a step that runs the GET and returns
+`{ seaHouseShipment: [] }` for something other than a real empty result: that must mean "found
+nothing", because the cancel path reads it as "no dossier to recycle" and emits no call at all.
+Real captures of every scenario's response are in `docs/get-responses/`, and the test suites run
 against them.
 
-**A failed GET must be distinguishable from an empty one.** `validResponseCodes` is set to
-`200..299` on the step for that reason: propagate the failure, or omit `lookup` entirely so the
-fallback engages. Returning `{ "seaHouseShipment": [] }` for an HTTP 500 would turn a cancel into
-a silent no-op.
+**A failed GET must be distinguishable from an empty one.** Propagate the failure, or let the
+body be anything other than `{ seaHouseShipment: … }` so the fallback engages. Returning
+`{ "seaHouseShipment": [] }` for an HTTP 500 would turn a cancel into a silent no-op.
 
 **Spaces in `$filter` must be `%20`, never `+`.** Sent as `+` this is an HTTP 500, not an empty
 result. If the step URL-encodes query parameters itself, check which of the two it produces.

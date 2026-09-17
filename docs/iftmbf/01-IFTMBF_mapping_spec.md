@@ -30,8 +30,8 @@ booking has to reach. Emitting one update left the booking data on only one of t
 
 Steps 1 and 2 of the flow say so directly: GET the dossiers of the order, then *"For each dossier
 in the result of step 1 — PUT DOSSIER (By CustomerRef and BL ID)"*. So the lookup response the
-pipeline puts on `payload.lookup` (see `config/README.md` check 6) decides how many calls one
-booking becomes:
+seq 3 `dataDelivery` step puts on the envelope's `payload` node (see `config/README.md` check 6)
+decides how many calls one booking becomes:
 
 | Lookup result | Emitted |
 |---|---|
@@ -139,7 +139,9 @@ blank carriage node.
 
 ## 5. Input / output
 
-**Input** — parsed IFTMBF JSON at `payload.EDI.Messages.D08A.IFTMBF[0]` (`UNH+…+IFTMBF:D:08A:UN`).
+**Input** — the envelope the seq 3 `dataDelivery` step hands on: parsed IFTMBF JSON at
+`payload.originalPayload.EDI.Messages.D08A.IFTMBF[0]` (`UNH+…+IFTMBF:D:08A:UN`), and the dossier
+lookup's response at `payload.payload`.
 Only `Messages` carries value; `Errors`, `Delimiters` and `FunctionalAcks*` are ignored.
 
 **Output** — `{ "seaHouseShipment": [ { … } ] }`, camelCase (Carlo's deserializer is
