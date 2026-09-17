@@ -58,7 +58,8 @@ as a parameter — a single message cannot tell whether it has siblings.
 ### Which dossier an entry updates
 
 Every entry is addressed at a specific record, resolved from the "GET dossier by CustomerRef"
-response the pipeline puts on `payload.lookup` (see `config/README.md` check 6). This is what
+response the seq 3 `dataDelivery` step puts on the envelope's `payload` node (see
+`config/README.md` check 6). This is what
 fixes the three master-sub defects in `00-basf.md` §Issues.
 
 **`CustomerReference` identifies the order, never the dossier.** Both subs of a master-sub carry
@@ -191,7 +192,9 @@ the shipment's DG line).
 
 ## 4. Input / output
 
-**Input** — the whole parsed interchange, `payload.EDI.Messages.D99A.IFTMIN[]`.
+**Input** — the envelope the seq 3 `dataDelivery` step hands on: the whole parsed interchange at
+`payload.originalPayload.EDI.Messages.D99A.IFTMIN[]`, and the dossier lookup's response at
+`payload.payload`.
 
 **Output** — `{ "seaHouseShipment": [ … ] }`, camelCase. Carlo's JSON deserializer is
 case-sensitive; `camelKeys` renders the PascalCase names the mapping is authored in (matching

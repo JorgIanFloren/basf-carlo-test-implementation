@@ -1,97 +1,123 @@
 {
   "id": "51028866-5dcb-4c62-827d-92031cf414eb",
   "name": "basf-carlo-iftmbf-profile",
-  "description": "BASF IFTMBF (firm booking) -> Carlo v3 SeaHouseShipment. Updates the dossiers the instruction created; a code 1 booking stops the flow and emits nothing. Seq 2 is the 'GET dossier by CustomerRef' lookup: a dataDelivery step that extends the payload with the response under 'lookup' rather than replacing it, which is what lets one booking fan out over every dossier of a master-sub order. See config/README.md check 6 and docs/carlo/06-dossier-lookup.md.",
+  "description": "BASF IFTMBF (firm booking) -> Carlo v3 SeaHouseShipment. Updates the dossiers the instruction created; a code 1 booking stops the flow and emits nothing. Seq 2 reads the CustomerReference and injects it into the seq 3 path; seq 3 is the 'GET dossier by CustomerRef' lookup, and it hands the seq 4 transformer an envelope of two nodes - the incoming message on 'originalPayload' and the GET response on 'payload' - which is what lets one booking fan out over every dossier of a master-sub order. See config/README.md check 6 and docs/carlo/06-dossier-lookup.md.",
   "active": true,
   "configuration": [
-    {
-      "type": "dataProfiler",
-      "sequence": 1,
-      "sender": "BASF",
-      "receiver": "CARLO",
-      "subject": "IFTMBF",
-      "nextResource": {
-        "protocol": "HTTPS",
-        "host": "api-ch2.fracht-connect.com",
-        "port": "443",
-        "headers": {
-          "client_id": "2603a16897af4fa1906afe4440b2f4ca",
-          "client_secret": "6E49D43886D240E9AE92c612b03BAF0c",
-          "Content-Type": "application/json"
+        {
+            "type": "dataProfiler",
+            "sequence": 1,
+            "sender": "basf_ocean",
+            "receiver": "FrachtConnect",
+            "subject": "iftmbf",
+            "contact": "",
+            "eventType": "",
+            "documentType": "",
+            "nextResource": {
+                "protocol": "HTTPS",
+                "host": "api-ch2.fracht-connect.com",
+                "port": "443",
+                "headers": {
+                    "client_id": "e42849a948154534935da0a6b6f7585a",
+                    "client_secret": "9d5F25AA5B0A40b99b187546ABE6aF3e",
+                    "Content-Type": "application/json"
+                },
+                "path": "/dev/s/v1/data-pipeline/manipulate-metadata",
+                "method": "POST"
+            }
         },
-        "path": "/dev/s/v1/data-delivery/https",
-        "method": "POST"
-      }
-    },
-    {
-      "type": "dataDelivery",
-      "sequence": 2,
-      "host": "api-carlo-test.fracht.be",
-      "port": "4712",
-      "path": "/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment/0",
-      "method": "GET",
-      "queryParameters": {
-        "$filter": "700071 eq '{{CONFIRM_REFERENCE_EXPRESSION}}'",
-        "$top": "200"
-      },
-      "headers": {
-        "X-API-Key": "o!x_ygTjTb25QbOmEJSf_test",
-        "Accept": "application/json"
-      },
-      "validResponseCodes": "200..299",
-      "extendPayloadAt": "lookup",
-      "nextResource": {
-        "protocol": "HTTPS",
-        "host": "api-ch2.fracht-connect.com",
-        "port": "443",
-        "headers": {
-          "client_id": "a151bfbb76a84c9dbf2a02bcf53627d7",
-          "client_secret": "cC4878E549784d459AD642FAF3e9a8f7",
-          "Content-Type": "application/json"
+        {
+            "type": "dataPipeline",
+            "sequence": 2,
+            "inputMimeType": "application/json",
+            "docsplitdwlPath": "Fracht-Belgium/basf/basf-ocean-iftmin-iftmbf-manipulate-metadata.dwl",
+            "nextResource": {
+                "protocol": "HTTPS",
+                "host": "api-ch2.fracht-connect.com",
+                "port": "443",
+                "headers": {
+                    "client_id": "458149796aff427cb64930b62450a458",
+                    "client_secret": "7c39cd04E7C048618a744af3157DcA06",
+                    "Content-Type": "application/json"
+                },
+                "path": "/dev/s/v1/data-delivery/https",
+                "method": "POST"
+            }
         },
-        "path": "/dev/s/v1/data-transformer/transform",
-        "method": "POST"
-      }
-    },
-    {
-      "type": "dataTransformer",
-      "sequence": 3,
-      "dwlPath": "basf/InboundIftmbf.dwl",
-      "inputMimeType": "application/json",
-      "reportingContacts": "integration.support@fracht.com",
-      "nextResource": {
-        "protocol": "HTTPS",
-        "host": "api-ch2.fracht-connect.com",
-        "port": "443",
-        "headers": {
-          "client_id": "2603a16897af4fa1906afe4440b2f4ca",
-          "client_secret": "6E49D43886D240E9AE92c612b03BAF0c",
-          "Content-Type": "application/json"
+        {
+            "type": "dataDelivery",
+            "sequence": 3,
+            "inputMimeType": "application/json",
+            "originalPayloadNodeName": "originalPayload",
+            "host": "api-carlo-test.fracht.be",
+            "port": "4712",
+            "username": "",
+            "password": "",
+            "cert": "",
+            "path": "/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment/0?%24filter=700071%20eq%20%27<dynamicReference>%27",
+            "headers": {
+                "X-API-Key": "o!x_ygTjTb25QbOmEJSf_test",
+                "accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            "method": "GET",
+            "nextResource": {
+                "protocol": "HTTPS",
+                "host": "api-ch2.fracht-connect.com",
+                "port": "443",
+                "headers": {
+                    "client_id": "a151bfbb76a84c9dbf2a02bcf53627d7",
+                    "client_secret": "cC4878E549784d459AD642FAF3e9a8f7",
+                    "Content-Type": "application/json"
+                },
+                "path": "/dev/s/v1/data-transformer/transform",
+                "method": "POST"
+            }
         },
-        "path": "/dev/s/v1/data-delivery/https",
-        "method": "POST"
-      }
-    },
-    {
-      "type": "dataDelivery",
-      "sequence": 4,
-      "host": "api-carlo-test.fracht.be",
-      "port": "4712",
-      "path": "/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment",
-      "method": "POST",
-      "inputMimeType": "application/json",
-      "validResponseCodes": "200..299",
-      "headers": {
-        "X-API-Key": "o!x_ygTjTb25QbOmEJSf_test"
-      },
-      "nextResource": {
-        "host": "",
-        "port": "",
-        "username": "",
-        "password": "",
-        "path": "",
-        "method": ""
-      }
-    }
-  ]
+        {
+            "type": "dataTransformer",
+            "sequence": 4,
+            "inputMimeType": "application/json",
+            "dwlPath": "Fracht-Belgium/basf/basf-inbound-iftmbf-to-carlo.dwl",
+            "nextResource": {
+                "protocol": "HTTPS",
+                "host": "api-ch2.fracht-connect.com",
+                "port": "443",
+                "headers": {
+                    "client_id": "458149796aff427cb64930b62450a458",
+                    "client_secret": "7c39cd04E7C048618a744af3157DcA06",
+                    "Content-Type": "application/json"
+                },
+                "path": "/dev/s/v1/data-delivery/https",
+                "method": "POST"
+            }
+        },
+        {
+            "type": "dataDelivery",
+            "sequence": 5,
+            "inputMimeType": "application/json",
+            "host": "api-carlo-test.fracht.be",
+            "port": "4712",
+            "username": "",
+            "password": "",
+            "cert": "",
+            "path": "/api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment",
+            "headers": {
+                "X-API-Key": "o!x_ygTjTb25QbOmEJSf_test"
+            },
+            "method": "POST",
+            "nextResource": {
+                "protocol": "",
+                "host": "",
+                "port": "",
+                "headers": {
+                    "client_id": "",
+                    "client_secret": "",
+                    "Content-Type": ""
+                },
+                "path": "",
+                "method": ""
+            }
+        }
+    ]
 }

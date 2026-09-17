@@ -6,8 +6,8 @@ JSON** representation of an interchange — the mappings never see EDIFACT.
 
 | Message | Mapping | Deployed as | Target contract | Spec |
 |---|---|---|---|---|
-| IFTMIN (instruction) | `src/main/dw/InboundIftmin.dwl` | `basf/InboundIftmin.dwl` | `docs/expected_output_SeaHouseShipment.json` | `docs/iftmin/01-IFTMIN_mapping_spec.md` |
-| IFTMBF (firm booking) | `src/main/dw/InboundIftmbf.dwl` | `basf/InboundIftmbf.dwl` | ″ | `docs/iftmbf/01-IFTMBF_mapping_spec.md` |
+| IFTMIN (instruction) | `src/main/dw/InboundIftmin.dwl` | `Fracht-Belgium/basf/basf-inbound-iftmin-to-carlo.dwl` | `docs/expected_output_SeaHouseShipment.json` | `docs/iftmin/01-IFTMIN_mapping_spec.md` |
+| IFTMBF (firm booking) | `src/main/dw/InboundIftmbf.dwl` | `Fracht-Belgium/basf/basf-inbound-iftmbf-to-carlo.dwl` | ″ | `docs/iftmbf/01-IFTMBF_mapping_spec.md` |
 | IFCSUM (consolidation summary) | `src/main/dw/InboundIfcsum.dwl` | `basf/InboundIfcsum.dwl` | `docs/expected_output_ShipmentCargo.json` | `docs/ifcsum/01-IFCSUM_mapping_spec.md` |
 
 **The target API is documented in `docs/carlo/`** — how to call it, all 54 schemas, the
@@ -18,12 +18,17 @@ JSON** representation of an interchange — the mappings never see EDIFACT.
 file on its own and resolves no imports off Blob Storage, so nothing may be imported from a
 shared module — the helpers all three need (date conversion, `camelKeys`, the position-agnostic
 segment navigation, `messagesOfType`) are inlined verbatim into each file. That is three copies
-on purpose: **change one and change all three.** The repo filename, the blob name and the
-`dwlPath` in `config/dataProfiler-basf-*.json` are deliberately identical, so they cannot drift
-apart.
+on purpose: **change one and change all three.** Each mapping's header names the blob it is
+deployed as, which is the `dwlPath` of its profile's transformer step — the platform's naming
+differs from the repo filename, so the pairing is stated in both places.
 
 Each mapping takes the **whole interchange** and returns an array, because one interchange can
 legitimately carry several messages — that is exactly what a BASF master-sub is.
+
+IFTMIN and IFTMBF are not handed the interchange on its own. Their flow opens with the "GET
+dossier by CustomerRef" `dataDelivery` step, which hands the transformer an envelope of two
+sibling nodes — the interchange on `originalPayload` and the GET response on `payload`. See
+`docs/carlo/06-dossier-lookup.md`.
 
 ## Deploying
 
@@ -33,11 +38,12 @@ one `dataProfiler` per message type wiring getter → transformer → delivery, 
 things in there are inferred rather than documented, including how the interchange gets parsed
 to JSON.
 
-Upload each mapping to the `transforms` container under the name its `dwlPath` already carries:
+Upload each mapping to the `transforms` container under the name its `dwlPath` carries — see the
+table in `config/README.md` check 2:
 
 ```
 az storage blob upload --account-name saeus2integrationdev001 --container-name transforms \
-  --name "basf/InboundIftmin.dwl" --file ./src/main/dw/InboundIftmin.dwl
+  --name "Fracht-Belgium/basf/basf-inbound-iftmin-to-carlo.dwl" --file ./src/main/dw/InboundIftmin.dwl
 ```
 
 ## Running the tests
@@ -47,23 +53,34 @@ cd basf
 mvn -o test
 ```
 
-197 tests. Every EDIFACT interchange in `docs/example-orders/inbound` is exercised by the mapping for
+209 tests. Every EDIFACT interchange in `docs/example-orders/inbound` is exercised by the mapping for
 its message type: 35 IFTMIN, 13 IFTMBF, 6 IFCSUM.
 
 The suites run each mapping the way the data-transformer does — `evalPath` evaluates the
 uploaded script itself against a `payload` context and asserts on the JSON Carlo would receive.
 Nothing is imported from a mapping, so the tests stay honest about the self-contained files.
 
-The IFTMIN and IFTMBF suites also read each interchange **together with a lookup response**, so
-the dossier-addressing rules are exercised against real data. `docs/get-responses/*.json` are
+The IFTMIN and IFTMBF suites feed the mapping the same envelope the pipeline does — the
+interchange on `originalPayload`, a captured GET response on `payload` — so the dossier-addressing
+rules are exercised against real data. `docs/get-responses/*.json` are
 captures of the "GET dossier by CustomerRef" call — one per scenario, plus a not-found response —
 and `src/test/resources/get-responses/` is the classpath copy the suites load. Because they are
 real server responses rather than hand-written expectations, the dossier ids and reference fields
 asserted in the tests are the records the integration actually created.
 
+Two fixtures go one step further and are **whole envelopes captured from a live FrachtConnect
+run** — `docs/documentation-input/inbound/mulesoft-{iftmin,iftmbf}-get-existing-append-original.json`,
+copied onto the classpath at `src/test/resources/envelopes/`. They are the transformer's input
+verbatim, so they are the only fixtures that can catch a wrong node name: nothing in the suite
+builds them. Both are order `2800209301_RV1`, whose GET found the `BL00` dossier (CarLo id
+`1564415`) an earlier run created.
+
 ## Fixtures
 
-Test fixtures are **generated, not hand-written**:
+Test fixtures are **generated, not hand-written** — with two exceptions that are *captured*
+rather than generated and are copied in by hand: `src/test/resources/get-responses/` (CarLo GET
+responses) and `src/test/resources/envelopes/` (whole transformer inputs). Their sources live
+under `docs/`, and the copies must be kept in step with them.
 
 ```
 python tools/edifact_to_json.py --all          # docs/example-orders/inbound -> src/test/resources/example-orders/inbound
@@ -159,18 +176,16 @@ message recycles each of them.
 
 Collected from the three specs; each is written up where it belongs.
 
-1. **The "GET dossier by CustomerRef" step is wired but not yet loadable.** It sits at sequence 2
-   of the IFTMIN and IFTMBF profiles as a `dataDelivery` step — that step type can fetch from
-   another source and *extend* the payload rather than replace it, which is what lets the
-   transformer see the interchange and the lookup response together. The CarLo call is verified
-   against the live server (`docs/carlo/06-dossier-lookup.md`); what is still a guess is how the
-   step is told to extend, and how to template `BGM0201` into the `$filter`. Both are marked in
-   the config and in `config/README.md` check 6. **Do not load those two profiles until the field
-   names are confirmed.**
+1. ~~**The "GET dossier by CustomerRef" step is wired but not yet loadable.**~~ Resolved — it is
+   the `dataDelivery` at sequence 3 of both the IFTMIN and IFTMBF profiles, fed by the
+   `dataPipeline` at sequence 2 that injects `BGM0201` into its `$filter`. It does **not** extend
+   the payload: it hands the transformer an envelope of two sibling nodes, `originalPayload` and
+   `payload`, and both mappings read the two halves off that envelope. The CarLo call is verified
+   against the live server (`docs/carlo/06-dossier-lookup.md`).
 
-   **This is the live 16-09-2026 defect.** "Master-sub update still only updates the first
-   shipment" is not a mapping bug — the CustomerRef + BL addressing is implemented and tested —
-   it is this step not yet running, so the mappings never leave fallback mode.
+   This was the live 16-09-2026 defect: "master-sub update still only updates the first shipment"
+   was never a mapping bug — the CustomerRef + BL addressing was implemented and tested — it was
+   this step not running, so the mappings never left fallback mode.
 2. **The IFTMIN cancel shape is still unattested by an example message** — `00-basf.md` now
    specifies the mechanism (recycle and upsert, keyed on `customerrefSet`), but no code 1
    EDIFACT message exists anywhere in the example set, so the branch is covered only by

@@ -5,8 +5,9 @@ output application/json encoding="UTF-8"
 * BASF IFTMBF (firm booking, parsed JSON) -> Carlo / Soloplan v3 `seaHouseShipment` -
 * self-contained mapping.
 *
-* Deployed as `basf/InboundIftmbf.dwl` in the `transforms` container, which is the name
-* `dwlPath` carries in config/dataProfiler-basf-iftmbf.json. The data-transformer evaluates
+* Deployed as `Fracht-Belgium/basf/basf-inbound-iftmbf-to-carlo.dwl`, which is the name
+* `dwlPath` carries on the seq 4 transformer step of config/dataProfiler-basf-iftmbf.json -
+* the deployed blob is this file under the platform's naming. The data-transformer evaluates
 * this file on its own and resolves no imports off Blob Storage, so it carries everything it
 * needs: the shared helpers are inlined below rather than imported, and the document body at
 * the foot of the file renders the result. Keep it that way - an `import` added here fails at
@@ -19,10 +20,12 @@ output application/json encoding="UTF-8"
 * Everything the sheet leaves unmapped is deliberately NOT emitted, so the update cannot
 * blank out data the IFTMIN message already put on the shipment.
 *
-* Input  : `payload` = the whole parsed interchange,
-*          `{ EDI: { Messages: { D08A: { IFTMBF: [...] } } } }`, plus - when the pipeline ran
-*          the GET of step 1 - the lookup response under `payload.lookup`. See the "Existing
-*          dossiers" section below for that contract; with no lookup the mapping behaves
+* Input  : `payload` = the envelope the seq 3 `dataDelivery` step hands on, two sibling nodes:
+*          `payload.originalPayload` is the whole parsed interchange,
+*          `{ EDI: { Messages: { D08A: { IFTMBF: [...] } } } }`, and `payload.payload` is the
+*          response of the "GET dossier by CustomerRef" call - see "The pipeline envelope"
+*          and "Existing dossiers" below for that contract. A GET whose response is not a
+*          `seaHouseShipment` object is treated as no lookup at all, and the mapping behaves
 *          exactly as it did before the GET step existed.
 * Output : `{ "seaHouseShipment": [ ... ] }` in camelCase, one entry per dossier the update
 *          has to reach. The mapping is authored in PascalCase to match the mapping sheet's
@@ -74,6 +77,45 @@ var PROCESS_FCL = false
 * InboundIftmin.dwl.
 */
 fun processFcl(payload) = payload.config.processFcl default PROCESS_FCL
+
+// ===========================================================================
+// The pipeline envelope
+// ===========================================================================
+
+/**
+* Where each half of the transformer's input lives.
+*
+* The data-transformer at sequence 4 is not handed the parsed interchange directly. Sequence 3
+* is the "GET dossier by CustomerRef" `dataDelivery` step, and a `dataDelivery` step hands the
+* next step an envelope of two sibling nodes rather than a payload it extended in place:
+*
+*     {
+*       "originalPayload": { "EDI": { "Messages": { "D08A": { "IFTMBF": [ ... ] } } } },
+*       "payload":         { "seaHouseShipment": [ ... ] }
+*     }
+*
+*   - `originalPayload` is the message as it entered FrachtConnect - here the parsed
+*     interchange, i.e. what the transformer used to receive as the whole payload. The node
+*     name is configurable and is set by `originalPayloadNodeName` on the seq 3 step of
+*     config/dataProfiler-basf-iftmbf.json; change it there and change it here.
+*   - `payload` is the GET response, verbatim.
+*
+* These two accessors are the only place that shape is known. Everything below takes the
+* envelope and goes through them, so a rename on the step is a one-line change here.
+*
+* This is a real change of contract, not a synonym: the earlier wiring was assumed to *extend*
+* the payload and put the response on `payload.lookup` beside `payload.EDI`. FrachtConnect does
+* not work that way - `payload.lookup` is never populated - so a mapping reading it silently
+* saw no dossiers and fell back to a single unaddressed upsert, which for a booking means one
+* update landing on one dossier of a master-sub order instead of one per record.
+*
+* The same section, with the same two functions, is in InboundIftmin.dwl - only the directory,
+* the message type and the profile file name differ. Change one and change the other.
+*/
+fun interchange(payload) = payload.originalPayload
+
+/** The GET response the seq 3 `dataDelivery` step put on the envelope, or null. */
+fun lookupResponse(payload) = payload.payload
 
 /**
 * Helpers shared by the three BASF inbound mappings (IFTMIN, IFTMBF, IFCSUM).
@@ -247,17 +289,21 @@ fun ftxAgg(arr, q, compSep, segSep) = do {
 * what decides create-vs-update and - for a master-sub order - how many records the single
 * incoming message has to touch. The data-transformer evaluates a mapping against one
 * `payload` context and nothing else (config/README.md), so the lookup result has to travel
-* inside it: the pipeline places the GET response under `payload.lookup`, alongside
-* `payload.EDI`, exactly as the server returned it.
+* inside it: the GET step hands on an envelope whose `payload` node is that response,
+* verbatim, beside the interchange on `originalPayload` - see "The pipeline envelope" above.
 *
-*     { EDI: { Messages: {...} }, lookup: { seaHouseShipment: [ ... ] } }
+*     { originalPayload: { EDI: { Messages: {...} } },
+*       payload:         { seaHouseShipment: [ ... ] } }
 *
 * docs/get-responses/*.json are real captures of that response, one per scenario, and are
 * what the test suites feed in. A lookup that found nothing is `{ seaHouseShipment: [] }`
-* (dossier-not-found.json), which is NOT the same as no lookup at all: an absent
-* `payload.lookup` means the pipeline ran no GET, and each mapping then falls back to the
-* single-upsert behaviour it had before this step existed. That is what keeps these mappings
-* deployable - and every pre-lookup test green - while the GET step is still being wired up.
+* (dossier-not-found.json), which is NOT the same as no lookup at all: an envelope whose
+* `payload` node carries no `seaHouseShipment` means no usable GET result reached the mapping
+* - a failed call, or a profile without the step - and each mapping then falls back to the
+* single-upsert behaviour it had before this step existed. That fallback is what keeps a
+* wrongly wired step from looking like "the order has no dossiers": a cancel that reads an
+* empty array emits no call at all, so "found nothing" must only ever come from a GET that
+* really ran and really found nothing.
 *
 * Reference fields, verified against all nine captures in docs/get-responses:
 *   customerReference - the order. Shared by every BL of a master-sub, so it identifies the
@@ -271,8 +317,15 @@ fun ftxAgg(arr, q, compSep, segSep) = do {
 * comes back BL02 first), so every match below is by value and never by position.
 */
 
-/** True when the pipeline performed a GET and put its response on the payload. */
-fun hasLookup(payload) = payload.lookup != null
+/**
+* True when a usable GET response reached the mapping.
+*
+* The test is the `seaHouseShipment` key rather than the node itself: the seq 3 step always
+* puts *something* on `payload`, so a null test would read an error body - or an empty object
+* - as "this order has no dossiers", which is the one reading that must never happen by
+* accident (it turns a cancel into a silent no-op). An unrecognised body falls back instead.
+*/
+fun hasLookup(payload) = lookupResponse(payload).seaHouseShipment != null
 
 /**
 * The dossiers the GET returned, minus the recycled ones.
@@ -283,7 +336,7 @@ fun hasLookup(payload) = payload.lookup != null
 * order would update - and so resurrect - a dossier that was deliberately cancelled.
 */
 fun liveDossiers(payload) =
-    asArray(payload.lookup.seaHouseShipment) filter ((d) -> d.isInRecycleBin != true)
+    asArray(lookupResponse(payload).seaHouseShipment) filter ((d) -> d.isInRecycleBin != true)
 
 /** Trimmed, null-safe string equality - how every reference below is compared. */
 fun sameRef(a, b) = trim(a as String default "") == trim(b as String default "")
@@ -611,7 +664,7 @@ fun toCarloBookingUpdates(payload) = do {
     // The FCL switch (`PROCESS_FCL`), applied beside the cancel filter: with FCL off an FCL
     // booking contributes nothing, so it can neither create a dossier the instruction will
     // ignore nor update one the instruction never made.
-    var msgs = messagesOfType(payload, "IFTMBF")
+    var msgs = messagesOfType(interchange(payload), "IFTMBF")
         filter ((m) -> !isCancel(m))
         filter ((m) -> processFcl(payload) or loadType(m) == "LCL")
     ---

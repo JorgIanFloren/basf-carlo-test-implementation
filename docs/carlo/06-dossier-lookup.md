@@ -1,11 +1,11 @@
 # The dossier lookup
 
 This page specifies the **"GET dossier by CustomerRef"** call that `InboundIftmin.dwl` and
-`InboundIftmbf.dwl` read off `payload.lookup`. It is wired as a `dataDelivery` step at sequence 2 of
-the IFTMIN and IFTMBF profiles — that step type can fetch from another source and *extend* the
-payload rather than replace it. See `config/README.md` check 6 for the two field names on that
-step that are still unconfirmed; this page is only about what the call itself has to look like,
-and everything here is verified against the live test server.
+`InboundIftmbf.dwl` consume. In both profiles it is the `dataDelivery` step at **sequence 3**, and
+it does not extend the payload: it hands the next step an envelope of two sibling nodes —
+`originalPayload` (the message as it entered FrachtConnect) and `payload` (this GET's response).
+See [Where the response lands](#where-the-response-lands) below. This page is otherwise about what
+the call itself has to look like, and everything here is verified against the live test server.
 
 ## Why it exists
 
@@ -24,7 +24,6 @@ first and let the mapping match each message to its own record by value.
 ```
 GET /api/PolytraSeafreightHouseShipment_BASF/v3/SeaHouseShipment/0
       ?$filter=700071%20eq%20'<customerReference>'
-      &$top=200
 Accept:    application/json
 X-API-Key: <key>
 ```
@@ -36,8 +35,13 @@ X-API-Key: <key>
   [§ $filter](01-calling-the-api.md#4-filter).
 - `Accept: application/json` is required or the call is an HTTP `500` —
   [§ Headers](01-calling-the-api.md#3-headers).
-- `$top` must be set. It defaults to 50 and truncates silently, and a master-sub order plus the
-  re-runs an order accumulates can exceed that.
+- **`$top` is deliberately not set**, although it defaults to 50 and truncates in silence
+  ([§ $top](01-calling-the-api.md#top-defaults-to-50)). This filter matches the dossiers of *one*
+  order, and that is a master-sub's bill-of-lading count — in practice far below 50. Confirmed by
+  the integration team on 2026-09-17. The general warning still holds for any other call on this
+  API; it is this query's result set that cannot grow. If an order ever did exceed 50, the
+  symptom would be a silently short result rather than an error, and the fix is `&%24top=200` on
+  the seq 3 path of both profiles.
 
 Verified against the test server: this returns HTTP `200` and the full 115-field dossier objects.
 
@@ -48,25 +52,39 @@ It is tempting to narrow the call to one dossier, either by adding `and 700199 e
 both were verified — but neither is the right call here:
 
 - One interchange carries **several** messages, each with its own BL, and the mappings expect the
-  whole order in one `payload.lookup`. Per-BL filtering would mean one GET per message.
+  whole order in one response. Per-BL filtering would mean one GET per message.
 - The cancel path needs *every* dossier of the order, because a cancel recycles all of them.
 - An IFTMBF that arrived before its IFTMIN created a dossier with **no** BL at all, and
   `bookingOnlyDossier` in both mappings looks for exactly that record. A BL filter hides it.
 
 Filter on `customerReference` and let the mapping do the matching.
 
-## What the mappings need from the response
+## Where the response lands
 
-The response goes onto the payload **unchanged**, under a `lookup` key, beside the parsed
-interchange:
+A `dataDelivery` step does not extend the payload it was given — that was an assumption, and it
+was wrong. It passes on an envelope of two sibling nodes: the message that entered FrachtConnect,
+under the node named by `originalPayloadNodeName` on the step, and this call's response, under
+`payload`:
 
 ```json
-{ "EDI":    { "Messages": { "…": { "IFTMIN": [ … ] } } },
-  "lookup": { "seaHouseShipment": [ … ] } }
+{ "originalPayload": { "EDI": { "Messages": { "…": { "IFTMIN": [ … ] } } } },
+  "payload":         { "seaHouseShipment": [ … ] } }
 ```
 
-`payload.lookup` was chosen because the data-transformer evaluates a mapping against `payload`
-and nothing else, so there is nowhere else for it to arrive.
+That is what the seq 4 data-transformer evaluates the mapping against, so `InboundIftmin.dwl` and
+`InboundIftmbf.dwl` each read the interchange off `payload.originalPayload` and the dossiers off
+`payload.payload`. Both accessors live in one place in each mapping ("The pipeline envelope"), and
+`originalPayload` is a configured name: rename it on the step and rename it there.
+
+This is not inferred. `docs/documentation-input/inbound/mulesoft-iftmin-get-existing-append-original.json`
+and its IFTMBF twin are captures of what each mapping was actually handed on 2026-09-17, and both
+test suites run against them — see [Captures](#captures).
+
+The reference the call filters on is not taken from this payload by the step itself. The
+`dataPipeline` at sequence 2 extracts `BGM0201` and injects it into the seq 3 path in place of
+`<dynamicReference>`.
+
+## What the mappings need from the response
 
 Four fields carry the addressing, and both mappings read them by value, never by position — the
 GET returns dossiers in no defined order:
@@ -86,19 +104,23 @@ cancelled.
 
 ## Contract the step has to satisfy
 
-1. **Return the server's response verbatim** as `{ "seaHouseShipment": [ … ] }`. Both mappings
-   read `payload.lookup.seaHouseShipment` directly; any other shape is silently wrong.
+1. **Return the server's response verbatim** as `{ "seaHouseShipment": [ … ] }` on the `payload`
+   node. Both mappings read `payload.payload.seaHouseShipment`; any other shape is read as "no
+   lookup ran" (contract 4), not as an error.
 2. **`{ "seaHouseShipment": [] }` must mean "found nothing".** The cancel path reads an empty
    array as "no dossier to recycle" and emits no call at all, so an empty array must never stand
    in for an error.
-3. **Do not disturb `EDI`.** The mapping still has to find the parsed interchange where it was.
-4. **An absent `payload.lookup` is not an error.** Both mappings fall back to the single-upsert
-   behaviour they had before the lookup existed, which is what lets them deploy without this step
-   and gain the addressing when it lands.
+3. **Keep `originalPayloadNodeName` set.** Without it the interchange never reaches the
+   transformer, and every message maps to an empty array — which looks exactly like "nothing to
+   send" rather than like a failure.
+4. **A response that is not a `seaHouseShipment` object is not an error either.** Both mappings
+   fall back to the single-upsert behaviour they had before the lookup existed, so a failed or
+   misconfigured GET degrades to the pre-lookup flow instead of silently claiming the order has
+   no dossiers.
 
-A failed GET must therefore be distinguishable from an empty one — propagate the failure, or omit
-`lookup` entirely so the fallback engages. Returning `{ "seaHouseShipment": [] }` for an HTTP
-`500` would turn a cancel into a silent no-op.
+A failed GET must therefore be distinguishable from an empty one — propagate the failure, or let
+the body be anything other than `{ "seaHouseShipment": … }` so the fallback engages. Returning
+`{ "seaHouseShipment": [] }` for an HTTP `500` would turn a cancel into a silent no-op.
 
 ## Which order number to look up
 
@@ -114,3 +136,12 @@ FCL, master-sub LCL, in both arrival orders, plus a not-found response — and t
 suites run against them. Because they are real server responses rather than hand-written
 expectations, the dossier ids and reference fields the tests assert are records the integration
 actually created.
+
+`docs/documentation-input/inbound/mulesoft-{iftmin,iftmbf}-get-existing-append-original.json` are
+captures of the whole **envelope** rather than of the response alone — the transformer's input as
+the seq 3 step handed it over. Both are order `2800209301_RV1`, an FCL order whose GET returned
+the one `BL00` dossier (CarLo id `1564415`). Running the mappings over them confirms end to end
+what this page specifies: the instruction resolves onto that record with `actionAttribute:
+"update"`, the booking updates the same record, and the vessel, ports, ETD and three containers
+come off `originalPayload` while the id comes off `payload`. `src/test/resources/envelopes/` is
+the classpath copy the suites load.
