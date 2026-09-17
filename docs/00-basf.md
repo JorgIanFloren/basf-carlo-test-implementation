@@ -253,7 +253,7 @@ left unset - per the spec's general rule 6, and matching what vessel and voyage 
 #### Verified against BASF's reference messages
 
 Section 18 of the spec names three validation messages, and all three are now in
-`docs/example-orders/fcl/`. Every v1.1 field is asserted against them, and every value matches
+`docs/example-orders/inbound/fcl/`. Every v1.1 field is asserted against them, and every value matches
 what the specification itself prints:
 
 | Item | Message | Mapped value |

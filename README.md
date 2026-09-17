@@ -47,7 +47,7 @@ cd basf
 mvn -o test
 ```
 
-197 tests. Every EDIFACT interchange in `docs/example-orders` is exercised by the mapping for
+197 tests. Every EDIFACT interchange in `docs/example-orders/inbound` is exercised by the mapping for
 its message type: 35 IFTMIN, 13 IFTMBF, 6 IFCSUM.
 
 The suites run each mapping the way the data-transformer does — `evalPath` evaluates the
@@ -66,11 +66,11 @@ asserted in the tests are the records the integration actually created.
 Test fixtures are **generated, not hand-written**:
 
 ```
-python tools/edifact_to_json.py --all          # docs/example-orders -> src/test/resources/example-orders
+python tools/edifact_to_json.py --all          # docs/example-orders/inbound -> src/test/resources/example-orders/inbound
 python tools/edifact_to_json.py <in.txt>       # one file, to stdout
 ```
 
-**Regenerate whenever `docs/example-orders` changes, and commit the result.** The fixture set had
+**Regenerate whenever `docs/example-orders/inbound` changes, and commit the result.** The fixture set had
 drifted once: the sources were reorganised without re-running the converter, so fixture names no
 longer matched their content — `fcl/ifcsum-2013354401.json` held an IFTMIN, `ms/2800231445-iftmbf-2.json`
 held a two-message IFTMIN, and four names had no source at all. The suites went on passing because
@@ -110,7 +110,7 @@ position IFTMIN reads is a verified one.
 
 ### `manifest.json`
 
-The converter also writes `src/test/resources/example-orders/manifest.json`: one row per
+The converter also writes `src/test/resources/example-orders/inbound/manifest.json`: one row per
 fixture recording its message type, directory, message count, master-sub flag, and per-message
 BASF BL / BGM code / CustomerReference / equipment count — plus, for IFCSUM, the cargo lines it
 should produce.
@@ -121,7 +121,7 @@ same answer by different routes; the manifest is a cross-check, not a restatemen
 
 ## Watch out: the example filenames are wrong
 
-Nearly every file in `docs/example-orders` is mislabelled. Classify by content, never by name:
+Nearly every file in `docs/example-orders/inbound` is mislabelled. Classify by content, never by name:
 
 - `fcl/2013357254_IFCSUM.txt` is a parsed **IFTMBF** JSON capture
 - `fcl/TRS-000001_*.xml` are parsed **IFCSUM** JSON captures

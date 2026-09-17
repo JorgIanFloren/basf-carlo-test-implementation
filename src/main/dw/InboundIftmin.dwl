@@ -51,7 +51,7 @@ output application/json encoding="UTF-8"
 * `toCarloShipments` for what it changes.
 *
 * Every position this module selects is verified against the real parser capture at
-* docs/example-orders/fcl/2800209301_FCL_IFTMIN_ERST_9.json - none of the positions that
+* docs/example-orders/inbound/fcl/2800209301_FCL_IFTMIN_ERST_9.json - none of the positions that
 * tools/edifact_to_json.py marks ESTIMATED are read here.
 *
 * Conventions: functions are left un-annotated (strict type-checker); never name a var
@@ -1019,7 +1019,7 @@ fun bookingNumber(doc) = headerRffVal(doc, "BN") default stageRffVal(doc, "BN")
 /**
 * ACID number (`RFF+ABT`) - spec v1.1 section 10.
 *
-* Unattested: no IFTMIN interchange in docs/example-orders carries an RFF+ABT, and the
+* Unattested: no IFTMIN interchange in docs/example-orders/inbound carries an RFF+ABT, and the
 * message the spec names as the example (ML 2800244245) is not in the repo. The qualifier
 * does occur in IFCSUM, at cargo-line level. So both of the positions BASF uses for a
 * reference in IFTMIN are tried - the header SG1 that carries RFF+BN, then the goods-item

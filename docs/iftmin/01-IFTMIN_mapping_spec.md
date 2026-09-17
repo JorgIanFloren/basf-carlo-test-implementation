@@ -4,7 +4,7 @@
 |---|---|
 | Authority | `docs/iftmin/IFTMIN_mapping_v1.xlsx` (sheets Create / Feedback round 1 / Goods switch); `docs/iftmin/02-IFTMIN-additional-rules.md`; `docs/00-basf.md` |
 | Mapping | `src/main/dw/InboundIftmin.dwl` — one self-contained script, deployed as `basf/InboundIftmin.dwl` |
-| Fixtures | every IFTMIN interchange in `docs/example-orders` (9 FCL, 3 LCL, 9 master-sub) |
+| Fixtures | every IFTMIN interchange in `docs/example-orders/inbound` (9 FCL, 3 LCL, 9 master-sub) |
 | Tests | `src/test/dw/IftminMappingTest.dwl` — `cd basf && mvn -o test` |
 
 This document covers **the flow** — the create/cancel/FCL/LCL/master-sub routing of
@@ -200,15 +200,15 @@ ignore every field.
 
 Positional selectors (`"0890_Segment_group_18"`) are used throughout, and **every position this
 module reads is verified against the real parser capture**
-`docs/example-orders/fcl/2800209301_FCL_IFTMIN_ERST_9.json` — none of the positions
+`docs/example-orders/inbound/fcl/2800209301_FCL_IFTMIN_ERST_9.json` — none of the positions
 `tools/edifact_to_json.py` marks ESTIMATED is read here.
 
 ## 5. Test coverage
 
 `src/test/dw/IftminMappingTest.dwl`, 106 tests.
 
-Twenty-one interchanges are exercised — every IFTMIN interchange in `docs/example-orders`. Each
-is compared against a row of `src/test/resources/example-orders/manifest.json`, which records
+Twenty-one interchanges are exercised — every IFTMIN interchange in `docs/example-orders/inbound`. Each
+is compared against a row of `src/test/resources/example-orders/inbound/manifest.json`, which records
 the message's own BASF BL, BGM code, CustomerReference and equipment count as read off the
 parsed tree. The expectations (`FCL`/`LCL`, `BackToBack`/`Coloadin`, the scenario, the action,
 the contract-required field set) are derived from those facts independently of the mapping, so

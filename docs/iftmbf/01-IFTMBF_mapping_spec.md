@@ -7,7 +7,7 @@ Canonical spec for the **second** mapping of the BASF integration: BASF **IFTMBF
 |---|---|
 | Authority | `docs/iftmbf/IFTMBF_mapping_v1.xlsx`, single worksheet **"Update"** |
 | Mapping | `src/main/dw/InboundIftmbf.dwl` — one self-contained script, deployed as `basf/InboundIftmbf.dwl` |
-| Fixture | every IFTMBF interchange in `docs/example-orders`, converted by `tools/edifact_to_json.py` |
+| Fixture | every IFTMBF interchange in `docs/example-orders/inbound`, converted by `tools/edifact_to_json.py` |
 | Tests | `src/test/dw/IftmbfMappingTest.dwl` — `cd basf && mvn -o test` |
 | Rendered sample | `docs/2800209301_iftmbf_carlo_output.json` |
 
@@ -218,8 +218,8 @@ segment or group degrades to an omitted key, never an error.
 
 `src/test/dw/IftmbfMappingTest.dwl`, run by `cd basf && mvn -o test`.
 
-Nine IFTMBF interchanges are exercised — every one in `docs/example-orders` (4 FCL, 1 LCL,
-4 master-sub). Each is checked against a row of `src/test/resources/example-orders/manifest.json`,
+Nine IFTMBF interchanges are exercised — every one in `docs/example-orders/inbound` (4 FCL, 1 LCL,
+4 master-sub). Each is checked against a row of `src/test/resources/example-orders/inbound/manifest.json`,
 which records the message's own BGM code, CustomerReference and equipment count as read off the
 parsed tree, so the expectations are derived independently of this mapping.
 
@@ -256,8 +256,8 @@ in `inputs/` is bound as a variable of that name:
 ## 9. Fixtures
 
 Fixtures are generated, not hand-written: `python tools/edifact_to_json.py --all` converts every
-EDIFACT interchange under `docs/example-orders` into the JSON shape the Fracht Connect EDI parser
-produces, writing `src/test/resources/example-orders/` plus `manifest.json`. Re-run it whenever
+EDIFACT interchange under `docs/example-orders/inbound` into the JSON shape the Fracht Connect EDI parser
+produces, writing `src/test/resources/example-orders/inbound/` plus `manifest.json`. Re-run it whenever
 the example set changes. See `README.md` §Fixtures for how faithful that conversion is and how it
 was verified.
 
