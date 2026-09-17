@@ -3,7 +3,7 @@
 * docs/example-orders (21 fixtures: 9 FCL, 3 LCL, 9 master-sub/ms).
 *
 * The mapping is run the way the data-transformer runs it: `evalPath` executes
-* src/main/dw/BasfIftmin.dwl - the whole self-contained script, output header and document
+* src/main/dw/InboundIftmin.dwl - the whole self-contained script, output header and document
 * body included - against a `payload` context and returns the parsed JSON Carlo would
 * receive. Nothing is imported from the mapping, so no part of it is restated here and there
 * is nothing to keep in sync.
@@ -29,7 +29,7 @@
 import * from dw::test::Tests
 import * from dw::test::Asserts
 
-var MAPPING = "BasfIftmin.dwl"
+var MAPPING = "InboundIftmin.dwl"
 
 var manifest = readUrl("classpath://example-orders/manifest.json", "application/json")
 var iftmin = manifest filter ((e) -> e.messageType == "IFTMIN")
@@ -392,7 +392,7 @@ var msAfterBooking = shipmentsWith("ms/2800231445-ab-4-5.json", "iftmbf-before-i
 
     // The LCL equivalent. Note what is NOT inherited: this booking dossier really does carry
     // `estimatedDispatchDate: null`, because an LCL booking has no EQD and so no equipment
-    // FTX+ITR to read a loading date from - the gap BasfIftmbf.dwl documents, confirmed here
+    // FTX+ITR to read a loading date from - the gap InboundIftmbf.dwl documents, confirmed here
     // against the real record. The cache only carries fields that exist; it invents nothing.
     () -> "a plain LCL re-purposes the booking's dossier and inherits the values it has" in (
         (shipmentsWith("lcl/2800226066-iftmin-erst-9.json", "iftmbf-before-iftmin-lcl")

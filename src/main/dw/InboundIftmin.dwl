@@ -4,7 +4,7 @@ output application/json encoding="UTF-8"
 /**
 * BASF IFTMIN (parsed JSON) -> Carlo / Soloplan v3 `seaHouseShipment` - self-contained mapping.
 *
-* Deployed as `basf/BasfIftmin.dwl` in the `transforms` container, which is the name
+* Deployed as `basf/InboundIftmin.dwl` in the `transforms` container, which is the name
 * `dwlPath` carries in config/dataProfiler-basf-iftmin.json. The data-transformer evaluates
 * this file on its own and resolves no imports off Blob Storage, so it carries everything it
 * needs: the shared helpers are inlined below rather than imported, and the document body at
@@ -77,8 +77,8 @@ import substringAfter, substringBefore from dw::core::Strings
 * per-message filter drops such an interchange whole rather than half of it. The filter is
 * still per-message because that is the only level at which the load type is knowable.
 *
-* To enable FCL: flip this to `true` and re-upload *both* `BasfIftmin.dwl` and
-* `BasfIftmbf.dwl` - the same constant lives in each, and a booking that creates an FCL
+* To enable FCL: flip this to `true` and re-upload *both* `InboundIftmin.dwl` and
+* `InboundIftmbf.dwl` - the same constant lives in each, and a booking that creates an FCL
 * dossier the instruction then ignores is the state issue 3 of docs/00-basf.md describes.
 * Re-uploading the blob is how these mappings deploy, so this is a configuration change
 * rather than a code change. See docs/00-basf.md "FCL switch".
@@ -103,18 +103,18 @@ fun processFcl(payload) = payload.config.processFcl default PROCESS_FCL
 /**
 * Helpers shared by the three BASF inbound mappings (IFTMIN, IFTMBF, IFCSUM).
 *
-* This block is inlined verbatim into BasfIftmin.dwl, BasfIftmbf.dwl and BasfIfcsum.dwl
+* This block is inlined verbatim into InboundIftmin.dwl, InboundIftmbf.dwl and InboundIfcsum.dwl
 * rather than imported: each file is uploaded to Blob Storage on its own and the
 * data-transformer resolves no imports there, so a shared module cannot be reached at
 * runtime. Change one copy and change all three.
 *
 * Two navigation styles live here and both are needed:
 *
-*   - Positional selectors ("0020_BGM") are what BasfIftmin.dwl uses. They are exact for a
+*   - Positional selectors ("0020_BGM") are what InboundIftmin.dwl uses. They are exact for a
 *     known directory and read naturally, but the position numbers are directory-specific.
 *   - Suffix navigation (`segs`/`seg1`/`groupsWith`) matches a segment by its "_<TAG>" key
-*     suffix and walks groups structurally, so it survives a directory change. BasfIftmbf.dwl
-*     and BasfIfcsum.dwl use it, because D08A renumbers almost every group relative to D99A
+*     suffix and walks groups structurally, so it survives a directory change. InboundIftmbf.dwl
+*     and InboundIfcsum.dwl use it, because D08A renumbers almost every group relative to D99A
 *     and two group numbers collide with a *different* meaning across the two directories.
 *
 * DataWeave 2.9 notes that this file depends on: `input` is a reserved word; the strict
@@ -263,8 +263,8 @@ fun ftxAgg(arr, q, compSep, segSep) = do {
 // ===========================================================================
 
 /**
-* This section is inlined verbatim into BasfIftmin.dwl and BasfIftmbf.dwl - the two mappings
-* whose flow starts with a lookup. It is deliberately NOT in BasfIfcsum.dwl, which finds its
+* This section is inlined verbatim into InboundIftmin.dwl and InboundIftmbf.dwl - the two mappings
+* whose flow starts with a lookup. It is deliberately NOT in InboundIfcsum.dwl, which finds its
 * cargo line by RFF+LI id instead. Change one copy and change the other.
 *
 * Both flows in docs/00-basf.md open with "GET DOSSIER by CustomerRef", and its result is
@@ -551,7 +551,7 @@ fun targetDossier(payload, doc, claimBooking) = do {
 * fields are read once, cached, and applied to all of them - "every other Sub dossier should
 * also get the cached values mapped".
 *
-* The set is exactly the fields BasfIftmbf.dwl maps that BasfIftmin.dwl does not, so nothing
+* The set is exactly the fields InboundIftmbf.dwl maps that InboundIftmin.dwl does not, so nothing
 * here can contend with a value the IFTMIN itself carries. That is verified against
 * docs/get-responses rather than assumed: `estimatedDispatchDate`, the pickup UN/LOCODE and
 * the carrier's ETA / closing date are set on every `iftmbf-before-iftmin-*.json` and absent
@@ -1045,7 +1045,7 @@ fun blRecipient(entry) = do {
 }
 
 // ===========================================================================
-// Top-level builders consumed by BasfIftmin.dwl
+// Top-level builders consumed by InboundIftmin.dwl
 // ===========================================================================
 
 /** Carlo `<Header>` content. */

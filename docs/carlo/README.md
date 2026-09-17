@@ -27,9 +27,9 @@ How to call CarLo (Soloplan) from this integration, and what its contracts actua
 
 | Message | Mapping | Call |
 |---|---|---|
-| IFTMIN | `BasfIftmin.dwl` | `POST /SeaHouseShipment` |
-| IFTMBF | `BasfIftmbf.dwl` | `POST /SeaHouseShipment` |
-| IFCSUM | `BasfIfcsum.dwl` | `POST /ShipmentCargo` |
+| IFTMIN | `InboundIftmin.dwl` | `POST /SeaHouseShipment` |
+| IFTMBF | `InboundIftmbf.dwl` | `POST /SeaHouseShipment` |
+| IFCSUM | `InboundIfcsum.dwl` | `POST /ShipmentCargo` |
 | *(missing)* | — | `GET /SeaHouseShipment/0?$filter=700071 eq '<ref>'` — [06](06-dossier-lookup.md) |
 
 Wiring is in `config/dataProfiler-basf-*.json`, under the `dataDelivery` step. `config/README.md`

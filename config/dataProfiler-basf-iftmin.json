@@ -56,7 +56,7 @@
     {
       "type": "dataTransformer",
       "sequence": 3,
-      "dwlPath": "basf/BasfIftmin.dwl",
+      "dwlPath": "basf/InboundIftmin.dwl",
       "inputMimeType": "application/json",
       "reportingContacts": "integration.support@fracht.com",
       "nextResource": {

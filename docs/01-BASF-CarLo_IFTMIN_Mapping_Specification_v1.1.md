@@ -11,7 +11,7 @@
 >   `portOfDischarge`.
 > - **§13 is wrong about cardinality.** `NAD+AM` occurs once *per container*, not once per
 >   message, so the signature is read per container with a message-level fallback.
-> - **§16 (remove Scenario) also applies to `BasfIftmbf.dwl`,** which this IFTMIN-scoped document
+> - **§16 (remove Scenario) also applies to `InboundIftmbf.dwl`,** which this IFTMIN-scoped document
 >   does not mention. Left in the booking mapping, it would write the value straight back.
 >
 > §10 (ACID) is implemented but **unattested** — no example message carries an `RFF+ABT`.

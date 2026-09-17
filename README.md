@@ -6,9 +6,9 @@ JSON** representation of an interchange — the mappings never see EDIFACT.
 
 | Message | Mapping | Deployed as | Target contract | Spec |
 |---|---|---|---|---|
-| IFTMIN (instruction) | `src/main/dw/BasfIftmin.dwl` | `basf/BasfIftmin.dwl` | `docs/expected_output_SeaHouseShipment.json` | `docs/iftmin/01-IFTMIN_mapping_spec.md` |
-| IFTMBF (firm booking) | `src/main/dw/BasfIftmbf.dwl` | `basf/BasfIftmbf.dwl` | ″ | `docs/iftmbf/01-IFTMBF_mapping_spec.md` |
-| IFCSUM (consolidation summary) | `src/main/dw/BasfIfcsum.dwl` | `basf/BasfIfcsum.dwl` | `docs/expected_output_ShipmentCargo.json` | `docs/ifcsum/01-IFCSUM_mapping_spec.md` |
+| IFTMIN (instruction) | `src/main/dw/InboundIftmin.dwl` | `basf/InboundIftmin.dwl` | `docs/expected_output_SeaHouseShipment.json` | `docs/iftmin/01-IFTMIN_mapping_spec.md` |
+| IFTMBF (firm booking) | `src/main/dw/InboundIftmbf.dwl` | `basf/InboundIftmbf.dwl` | ″ | `docs/iftmbf/01-IFTMBF_mapping_spec.md` |
+| IFCSUM (consolidation summary) | `src/main/dw/InboundIfcsum.dwl` | `basf/InboundIfcsum.dwl` | `docs/expected_output_ShipmentCargo.json` | `docs/ifcsum/01-IFCSUM_mapping_spec.md` |
 
 **The target API is documented in `docs/carlo/`** — how to call it, all 54 schemas, the
 `$filter` property ids, and the behaviour its OpenAPI document does not describe. Start at
@@ -37,7 +37,7 @@ Upload each mapping to the `transforms` container under the name its `dwlPath` a
 
 ```
 az storage blob upload --account-name saeus2integrationdev001 --container-name transforms \
-  --name "basf/BasfIftmin.dwl" --file ./src/main/dw/BasfIftmin.dwl
+  --name "basf/InboundIftmin.dwl" --file ./src/main/dw/InboundIftmin.dwl
 ```
 
 ## Running the tests
@@ -194,8 +194,8 @@ Collected from the three specs; each is written up where it belongs.
 8. **There is no IFCSUM mapping sheet**; that mapping is derived from `00-basf.md`, the
    contract and the captures.
 
-9. **FCL is switched off.** `PROCESS_FCL` ships `false` in `BasfIftmin.dwl` and
-   `BasfIftmbf.dwl`, because go-live carries LCL only. Both must hold the same value; flipping it
+9. **FCL is switched off.** `PROCESS_FCL` ships `false` in `InboundIftmin.dwl` and
+   `InboundIftmbf.dwl`, because go-live carries LCL only. Both must hold the same value; flipping it
    means editing and re-uploading both blobs. See `docs/00-basf.md` *"FCL switch"*. Two
    consequences: an FCL interchange maps to `{ "seaHouseShipment": [] }` and **nothing in
    `config/` says whether the delivery step POSTs that or short-circuits**; and open item 5 below

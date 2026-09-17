@@ -95,7 +95,7 @@ Step 3: POST DOSSIER
 The contract to map to is `expected_output_SeaHouseShipment.json`
 
 #### Scenario's
-The `lookup.json` files that used to sit under `src\test\resources\BasfIftmbf\*\inputs\` are
+The `lookup.json` files that used to sit under `src\test\resources\InboundIftmbf\*\inputs\` are
 superseded by `docs\get-responses\`, which names each capture after the scenario it belongs to.
 Each file is what a lookup by `customerref` returns from the system:
 
@@ -167,11 +167,11 @@ either, since a load type the integration never created is one it must not addre
 interchange is always uniformly FCL or uniformly LCL, so the filter takes such an interchange
 whole or not at all.
 
-To enable FCL: set `PROCESS_FCL = true` in **both** `BasfIftmin.dwl` and `BasfIftmbf.dwl` and
+To enable FCL: set `PROCESS_FCL = true` in **both** `InboundIftmin.dwl` and `InboundIftmbf.dwl` and
 re-upload both blobs. They must hold the same value - a booking that creates an FCL dossier the
 instruction then ignores is exactly the orphaned-record state issue 3 below describes.
 Re-uploading is how these mappings deploy, so this is a configuration change rather than a code
-change. `BasfIfcsum.dwl` has no switch: it addresses a cargo line by `RFF+LI` id and cannot tell
+change. `InboundIfcsum.dwl` has no switch: it addresses a cargo line by `RFF+LI` id and cannot tell
 FCL from LCL, so with FCL off an IFCSUM for an FCL order simply finds nothing to update.
 
 > With FCL off an FCL interchange maps to `{ "seaHouseShipment": [] }`. Whether the delivery step
@@ -279,8 +279,8 @@ not in the header. That was the one v1.1 mapping this repo could not attest befo
   gate is withdrawn: vessel, voyage and VGM now map on both code 9 and code 4.
 - **Section 11 (DG cardinality).** `dangerousGoods` is now an array, per the v3 contract and the
   spec's own `dangerousGoods[0]`. It was a bare object, matching the legacy TRS sample.
-- **Section 16 (Scenario).** The field is obsolete, and removed from `BasfIftmin.dwl` **and**
-  `BasfIftmbf.dwl`. The spec covers IFTMIN only, but leaving it in the booking mapping would
+- **Section 16 (Scenario).** The field is obsolete, and removed from `InboundIftmin.dwl` **and**
+  `InboundIftmbf.dwl`. The spec covers IFTMIN only, but leaving it in the booking mapping would
   write back on every update what the instruction stopped sending.
 
 #### Open

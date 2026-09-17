@@ -6,7 +6,7 @@ Third of the three BASF inbound mappings, and the only one that does not target
 | | |
 |---|---|
 | Authority | `docs/00-basf.md` §IFCSUM; `docs/expected_output_ShipmentCargo.json` (the contract) |
-| Mapping | `src/main/dw/BasfIfcsum.dwl` — one self-contained script, deployed as `basf/BasfIfcsum.dwl` |
+| Mapping | `src/main/dw/InboundIfcsum.dwl` — one self-contained script, deployed as `basf/InboundIfcsum.dwl` |
 | Fixtures | every IFCSUM interchange in `docs/example-orders` (3 FCL, 1 LCL) |
 | Tests | `src/test/dw/IfcsumMappingTest.dwl` — `cd basf && mvn -o test` |
 
@@ -59,7 +59,7 @@ One `shipmentCargo` entry per (`CNI`, `GID`) pair.
 
 ### Identity
 
-`RFF+LI` is the key `00-basf.md` names, and it is exactly what `BasfIftmin.dwl` wrote onto the
+`RFF+LI` is the key `00-basf.md` names, and it is exactly what `InboundIftmin.dwl` wrote onto the
 cargo line it created — as `DeliveryNoteSAP`, `DeliveryPositionNumber` and
 `EDIID` (`"<note>/<position>"`). All three are emitted so Carlo can match on whichever it
 indexes.
@@ -108,7 +108,7 @@ than an identity-less cargo line.
 
 Scenario directories add no tests to `mvn -o test` yet, but they are **not** decoration. They are
 how the DataWeave IDE / preview runner binds the `payload` variable — without one, running
-`BasfIfcsum.dwl` in the preview fails with `Unable to resolve reference of: 'payload'` — and they
+`InboundIfcsum.dwl` in the preview fails with `Unable to resolve reference of: 'payload'` — and they
 are what `inputsFrom()` / `outputFrom()` read if a whole-document golden test is added (drop a
 reviewed `out.json` beside `inputs/`). The layout is
 `src/test/resources/<MappingFileName>/<ScenarioName>/inputs/<variableName>.json`, where each file
@@ -116,10 +116,10 @@ in `inputs/` is bound as a variable of that name:
 
 | Scenario | Input |
 |---|---|
-| `BasfIfcsum/FclVgm/` | `fcl/20260625-142940-681-v2.json` — one container, VGM / seal / signatory, 3 cargo lines |
-| `BasfIfcsum/LclMrn/` | `lcl/ifcsum-136579804.json` — pre-carriage truck, an MRN per consignment, 6 cargo lines |
+| `InboundIfcsum/FclVgm/` | `fcl/20260625-142940-681-v2.json` — one container, VGM / seal / signatory, 3 cargo lines |
+| `InboundIfcsum/LclMrn/` | `lcl/ifcsum-136579804.json` — pre-carriage truck, an MRN per consignment, 6 cargo lines |
 
-The directory name must equal the mapping **filename**, so these live under `BasfIfcsum/`. A
+The directory name must equal the mapping **filename**, so these live under `InboundIfcsum/`. A
 directory named after a file that no longer exists silently binds nothing.
 
 ## 7. Open items
