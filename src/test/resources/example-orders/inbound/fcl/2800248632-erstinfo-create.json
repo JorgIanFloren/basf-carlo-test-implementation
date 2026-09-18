@@ -1,0 +1,832 @@
+{
+  "EDI": {
+    "Errors": [],
+    "Delimiters": "+: '?",
+    "Messages": {
+      "D99A": {
+        "IFTMIN": [
+          {
+            "Interchange": {
+              "UNB0101": "UNOC",
+              "UNB0102": "3",
+              "UNB0201": "BASFAG2",
+              "UNB0203": "283155273",
+              "UNB0301": "102500",
+              "UNB0303": "283155273",
+              "UNB0401": 260903,
+              "UNB0402": 701,
+              "UNB05": "14488619804382"
+            },
+            "Heading": {
+              "0020_BGM": {
+                "BGM0101": "705",
+                "BGM0104": "ERSTINFO",
+                "BGM0201": "2800248632",
+                "BGM03": "9"
+              },
+              "0030_CTA": {
+                "CTA01": "MS",
+                "CTA0201": "GB/SE-MM",
+                "CTA0202": "Mr Wong"
+              },
+              "0040_COM": [
+                {
+                  "COM0101": "VICTOR.WONG@BASF.COM",
+                  "COM0102": "EM"
+                }
+              ],
+              "0050_DTM": [
+                {
+                  "DTM0101": "137",
+                  "DTM0102": "202609030700",
+                  "DTM0103": "203"
+                }
+              ],
+              "0090_FTX": [
+                {
+                  "FTX01": "SIC",
+                  "FTX0401": "40 REEFER +25Â°C ( PLUS 25 DEGREES)",
+                  "FTX05": "EN"
+                },
+                {
+                  "FTX01": "ABR",
+                  "FTX0401": "B/L has to be presented to addresses at latest 3 working days after de",
+                  "FTX0402": "parture of vessel. In case of any difficulties, new vessel booking or",
+                  "FTX0403": "delays, please inform the responsible Transport Manager."
+                },
+                {
+                  "FTX01": "DCL",
+                  "FTX0401": "The customer is obliged. to comply with Â§Â§ 7b and 7c of the GÃ¼KG.",
+                  "FTX0402": "The documents mentioned in Â§ 7b must be presented to the customer by t",
+                  "FTX0403": "he driver on request.",
+                  "FTX05": "EN"
+                },
+                {
+                  "FTX01": "DCL",
+                  "FTX0401": "As per the transportation regulations (e.g. GGVSE/B, ADR) is the BASF",
+                  "FTX0402": "Polyurethanes GmbH not the sender. BASF Polyurethanes GmbH declarates",
+                  "FTX0403": "himself as waiver customer As per the ADSp. Location of company: 49448",
+                  "FTX0404": " LemfÃ¶rde",
+                  "FTX05": "EN"
+                },
+                {
+                  "FTX01": "ABO",
+                  "FTX0401": "INITIAL INFO",
+                  "FTX0402": "YE22",
+                  "FTX05": "EN"
+                },
+                {
+                  "FTX01": "AAS",
+                  "FTX0401": "Date Shipped On Board"
+                },
+                {
+                  "FTX01": "AAS",
+                  "FTX0401": "Depending on order: \"freight prepaid\" or \"freight collect\""
+                },
+                {
+                  "FTX01": "AAS",
+                  "FTX0401": "Pls show Container No. & Seal No."
+                },
+                {
+                  "FTX01": "AAS",
+                  "FTX0401": "Name, address and phone/fax number (and/or email) of the carrier's age",
+                  "FTX0402": "nt at port of destination"
+                },
+                {
+                  "FTX01": "DOC",
+                  "FTX0401": "OBL must show IMDG-class and UN number in case of dangerous goods carg",
+                  "FTX0402": "o. OBL must show actual sea freight amount in words + figures OBL must",
+                  "FTX0403": " show volume in cbm  (ALSO FOR TANK CONTAINER ORDERS!) OBL must mentio",
+                  "FTX0404": "n \"contains wood treated according to ISPM15 standards\""
+                },
+                {
+                  "FTX01": "DOC",
+                  "FTX0401": "Please send B/L draft prior to vessel departure by mail to the Orderm",
+                  "FTX0402": "Manager,,,,,,"
+                },
+                {
+                  "FTX01": "SIC",
+                  "FTX0401": "Main leg: Billing without our UST-ID",
+                  "FTX0402": "VAT must not be calculated with billing"
+                }
+              ],
+              "0100_CNT": [
+                {
+                  "CNT0101": "16",
+                  "CNT0102": 1,
+                  "CNT0103": "C62"
+                }
+              ],
+              "0360_Segment_group_7": [
+                {
+                  "0370_TCC": {
+                    "TCC0101": "101021"
+                  },
+                  "0450_QTY": [
+                    {
+                      "QTY0101": "100",
+                      "QTY0102": 20254,
+                      "QTY0103": "KGM"
+                    },
+                    {
+                      "QTY0101": "109",
+                      "QTY0102": 22.94,
+                      "QTY0103": "MTQ"
+                    }
+                  ]
+                }
+              ],
+              "0460_Segment_group_8": [
+                {
+                  "0470_TDT": {
+                    "TDT01": "10"
+                  },
+                  "0500_Segment_group_9": [
+                    {
+                      "0510_LOC": {
+                        "LOC01": "88",
+                        "LOC0201": "BEANR",
+                        "LOC0204": "Antwerpen",
+                        "LOC0304": "2040 Antwerpen"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0470_TDT": {
+                    "TDT01": "20",
+                    "TDT02": "Ocean Vessel",
+                    "TDT0301": "10",
+                    "TDT0401": "13",
+                    "TDT0801": "9324837",
+                    "TDT0802": "146",
+                    "TDT0803": "11",
+                    "TDT0804": "NAVIOS VERMILION"
+                  },
+                  "0480_DTM": [
+                    {
+                      "DTM0101": "133",
+                      "DTM0102": "20260917",
+                      "DTM0103": "102"
+                    }
+                  ],
+                  "0490_TSR": [
+                    {
+                      "TSR0101": "30"
+                    }
+                  ],
+                  "0500_Segment_group_9": [
+                    {
+                      "0510_LOC": {
+                        "LOC01": "5",
+                        "LOC0201": "BEANR",
+                        "LOC0204": "Antwerpen"
+                      }
+                    },
+                    {
+                      "0510_LOC": {
+                        "LOC01": "12",
+                        "LOC0201": "BRSSZ",
+                        "LOC0204": "Santos"
+                      }
+                    }
+                  ],
+                  "0530_Segment_group_10": [
+                    {
+                      "0540_RFF": {
+                        "RFF0101": "AHI",
+                        "RFF0102": "2800248632"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0470_TDT": {
+                    "TDT01": "30"
+                  }
+                }
+              ],
+              "0560_Segment_group_11": [
+                {
+                  "0570_NAD": {
+                    "NAD01": "CZ",
+                    "NAD0201": "57076",
+                    "NAD0401": "BASF ANTWERPEN NV",
+                    "NAD0501": "SCHELDELAAN 600",
+                    "NAD06": "ANTWERPEN 4",
+                    "NAD07": "1",
+                    "NAD08": "2040",
+                    "NAD09": "BE"
+                  }
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "CA",
+                    "NAD0201": "4925650",
+                    "NAD0401": "OCEAN NETWORK EXPRESS PTE LTD",
+                    "NAD0501": "7 Straits View, Hex16-01 Marine One",
+                    "NAD0502": " East Tower",
+                    "NAD06": "SINGAPORE",
+                    "NAD08": "018936",
+                    "NAD09": "SG"
+                  }
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "FW",
+                    "NAD0201": "817630",
+                    "NAD0401": "POLYTRA N.V.",
+                    "NAD0501": "Desguinlei 92 box V 15 Verzicht geb",
+                    "NAD0502": "ouw",
+                    "NAD06": "ANTWERPEN",
+                    "NAD07": "001",
+                    "NAD08": "2018",
+                    "NAD09": "BE"
+                  },
+                  "0600_Segment_group_12": [
+                    {
+                      "0610_CTA": {
+                        "CTA01": "TR"
+                      },
+                      "0620_COM": [
+                        {
+                          "COM0101": "032050501",
+                          "COM0102": "TE"
+                        },
+                        {
+                          "COM0101": "032050419",
+                          "COM0102": "FX"
+                        },
+                        {
+                          "COM0101": "basf@polytra.be",
+                          "COM0102": "EM"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "ZZZ",
+                    "NAD0201": "BE21",
+                    "NAD0202": "160",
+                    "NAD0401": "BASF ANTWERPEN",
+                    "NAD0501": "Haven 725, Scheldelaan 600",
+                    "NAD06": "Antwerpen 4",
+                    "NAD07": "1",
+                    "NAD08": "2040",
+                    "NAD09": "BE"
+                  }
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "FP",
+                    "NAD0201": "566827",
+                    "NAD0401": "BASF Polyurethanes GmbH",
+                    "NAD0402": "ENTITY 0190",
+                    "NAD0501": ".",
+                    "NAD06": "BERLIN",
+                    "NAD07": "11",
+                    "NAD08": "10899",
+                    "NAD09": "DE"
+                  }
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "OS",
+                    "NAD0401": "in your name as agent of BASF",
+                    "NAD0402": "Polyurethanes GmbH Elastogranstr.60",
+                    "NAD06": "49448 Lemfoerde",
+                    "NAD09": "DE"
+                  }
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "BL",
+                    "NAD0201": "1",
+                    "NAD0401": "Indaia Logistica Ltda.",
+                    "NAD0402": "Attn. Andrea Alves",
+                    "NAD0501": "Av Senador Feijo, 14    7.andar",
+                    "NAD06": "Santos (SP)",
+                    "NAD08": "11015-500",
+                    "NAD09": "BR"
+                  },
+                  "0630_Segment_group_13": [
+                    {
+                      "0640_DOC": {
+                        "DOC0101": "705",
+                        "DOC0204": "EN",
+                        "DOC03": "AA",
+                        "DOC04": 3,
+                        "DOC05": 3
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "BL",
+                    "NAD0201": "2",
+                    "NAD0401": "BASF S.A.",
+                    "NAD09": "BR"
+                  },
+                  "0600_Segment_group_12": [
+                    {
+                      "0610_CTA": {
+                        "CTA01": "MR"
+                      },
+                      "0620_COM": [
+                        {
+                          "COM0101": "import.comex@basf.com",
+                          "COM0102": "EM"
+                        }
+                      ]
+                    }
+                  ],
+                  "0630_Segment_group_13": [
+                    {
+                      "0640_DOC": {
+                        "DOC0101": "705",
+                        "DOC0204": "EN",
+                        "DOC03": "EM",
+                        "DOC04": 1,
+                        "DOC05": 0
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "BL",
+                    "NAD0201": "3",
+                    "NAD0401": "BASF S.A.",
+                    "NAD09": "BR"
+                  },
+                  "0600_Segment_group_12": [
+                    {
+                      "0610_CTA": {
+                        "CTA01": "MR"
+                      },
+                      "0620_COM": [
+                        {
+                          "COM0101": "fup@myindaia.com.br",
+                          "COM0102": "EM"
+                        }
+                      ]
+                    }
+                  ],
+                  "0630_Segment_group_13": [
+                    {
+                      "0640_DOC": {
+                        "DOC0101": "705",
+                        "DOC0204": "EN",
+                        "DOC03": "EM",
+                        "DOC04": 1,
+                        "DOC05": 0
+                      }
+                    }
+                  ]
+                },
+                {
+                  "0570_NAD": {
+                    "NAD01": "BL",
+                    "NAD0201": "4",
+                    "NAD0401": "BASF S.A."
+                  },
+                  "0600_Segment_group_12": [
+                    {
+                      "0610_CTA": {
+                        "CTA01": "MR"
+                      },
+                      "0620_COM": [
+                        {
+                          "COM0101": "indent.invoices@basf.com",
+                          "COM0102": "EM"
+                        }
+                      ]
+                    }
+                  ],
+                  "0630_Segment_group_13": [
+                    {
+                      "0640_DOC": {
+                        "DOC0101": "705",
+                        "DOC0204": "EN",
+                        "DOC03": "EM",
+                        "DOC04": 1,
+                        "DOC05": 0
+                      }
+                    }
+                  ]
+                }
+              ],
+              "0890_Segment_group_18": [
+                {
+                  "0900_GID": {
+                    "GID01": 1,
+                    "GID0201": 76,
+                    "GID0202": "1A1",
+                    "GID0203": "67",
+                    "GID0204": "91",
+                    "GID0205": "Steel drums"
+                  },
+                  "0930_RNG": {
+                    "RNG01": "5",
+                    "RNG0201": "CEL",
+                    "RNG0202": 20,
+                    "RNG0203": 35
+                  },
+                  "0950_LOC": [
+                    {
+                      "LOC01": "1",
+                      "LOC0201": "CFR",
+                      "LOC0204": "Santos"
+                    }
+                  ],
+                  "0970_PIA": [
+                    {
+                      "PIA01": "5",
+                      "PIA0201": "51099723",
+                      "PIA0202": "SA"
+                    }
+                  ],
+                  "0980_FTX": [
+                    {
+                      "FTX01": "PRD",
+                      "FTX0401": "1",
+                      "FTX0402": "weakly water-endangering"
+                    },
+                    {
+                      "FTX01": "DEL",
+                      "FTX0401": "Please note on B/L:",
+                      "FTX0402": "NCM: ....  (first 4 numbers)",
+                      "FTX0403": "4000096329"
+                    },
+                    {
+                      "FTX01": "AAW",
+                      "FTX0401": "0009"
+                    },
+                    {
+                      "FTX01": "AAA",
+                      "FTX0401": "LupranatÂ® MIP",
+                      "FTX0402": "250KG Steel drums"
+                    },
+                    {
+                      "FTX01": "AAS",
+                      "FTX0401": "NCM 2929"
+                    },
+                    {
+                      "FTX01": "COI",
+                      "FTX0301": "VE",
+                      "FTX0401": "SILKE.GEHLE@BASF.COM"
+                    },
+                    {
+                      "FTX01": "COI",
+                      "FTX0301": "AM",
+                      "FTX0401": "ESRA.ZORBAZ@BASF.COM"
+                    }
+                  ],
+                  "1000_Segment_group_19": [
+                    {
+                      "1010_NAD": {
+                        "NAD01": "CN",
+                        "NAD0201": "48539407009174",
+                        "NAD0202": "167",
+                        "NAD0301": "JD SANTO AFONSO",
+                        "NAD0401": "BASF SA (CD CUMBICA)",
+                        "NAD0402": "BRANCH CUMBICA - GUARULHOS",
+                        "NAD0501": "ESTRADA MUNICIPAL  MODULOS C 1156",
+                        "NAD06": "GUARULHOS",
+                        "NAD07": "SP",
+                        "NAD08": "07215040",
+                        "NAD09": "BR"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "11999999999",
+                          "LOC0301": "FAX",
+                          "LOC0304": "1134780804",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "nfe.br@basf.com"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "SÃ£o Paulo"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "DM",
+                        "NAD0401": "Mrs Zorbaz",
+                        "NAD0501": "Storkower StraÃe 146",
+                        "NAD06": "Berlin",
+                        "NAD08": "10407",
+                        "NAD09": "DE"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "+49 30 2005",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "ESRA.ZORBAZ@BASF.COM"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "N1",
+                        "NAD0201": "58156084000137",
+                        "NAD0202": "167",
+                        "NAD0301": "CENTRO",
+                        "NAD0401": "INDAIA LOGISTICA INTERNACIONAL LTDA",
+                        "NAD0501": "R QUINZE DE NOVEMBRO 170",
+                        "NAD06": "SANTOS",
+                        "NAD07": "SP",
+                        "NAD08": "11010150",
+                        "NAD09": "BR"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "1332225848",
+                          "LOC0301": "FAX",
+                          "LOC0304": "1332225848",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "fup@myindaia.com.br"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "SÃ£o Paulo"
+                        }
+                      ]
+                    },
+                    {
+                      "1010_NAD": {
+                        "NAD01": "DO",
+                        "NAD0201": "48539407009174",
+                        "NAD0202": "167",
+                        "NAD0301": "JD SANTO AFONSO",
+                        "NAD0401": "BASF SA (CD CUMBICA)",
+                        "NAD0402": "BRANCH CUMBICA - GUARULHOS",
+                        "NAD0501": "ESTRADA MUNICIPAL  MODULOS C 1156",
+                        "NAD06": "GUARULHOS",
+                        "NAD07": "SP",
+                        "NAD08": "07215040",
+                        "NAD09": "BR"
+                      },
+                      "1030_LOC": [
+                        {
+                          "LOC01": "ZZZ",
+                          "LOC0201": "TEL",
+                          "LOC0204": "11999999999",
+                          "LOC0301": "FAX",
+                          "LOC0304": "1134780804",
+                          "LOC0401": "EMAIL",
+                          "LOC0404": "nfe.br@basf.com"
+                        },
+                        {
+                          "LOC01": "47",
+                          "LOC0204": "SÃ£o Paulo"
+                        }
+                      ]
+                    }
+                  ],
+                  "1050_Segment_group_20": [
+                    {
+                      "1060_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAE",
+                        "MEA0301": "KGM",
+                        "MEA0302": "20254.000"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "WT",
+                        "MEA0201": "AAC",
+                        "MEA0301": "KGM",
+                        "MEA0302": "19000.000"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "VOL",
+                        "MEA0201": "ABJ",
+                        "MEA0301": "MTQ",
+                        "MEA0302": "22.940"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "ADE",
+                        "MEA0203": "45",
+                        "MEA0204": "Transport Temperature Bulk",
+                        "MEA0301": "CEL",
+                        "MEA0303": "20.00",
+                        "MEA0304": "35.00"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "DEN",
+                        "MEA0201": "TC",
+                        "MEA0204": "Density 20(C)",
+                        "MEA0301": "23",
+                        "MEA0302": "1.20"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Flash Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "208.50"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Melting Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "10.70"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "TE",
+                        "MEA0201": "TC",
+                        "MEA0204": "Boiling Point",
+                        "MEA0301": "CEL",
+                        "MEA0302": "300.00"
+                      }
+                    },
+                    {
+                      "1060_MEA": {
+                        "MEA01": "AAE",
+                        "MEA0201": "ZZZ",
+                        "MEA0204": "pH-value",
+                        "MEA0301": "ZZ",
+                        "MEA0302": "7.00"
+                      }
+                    }
+                  ],
+                  "1110_Segment_group_22": [
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "LI",
+                        "RFF0102": "5002375248",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "VN",
+                        "RFF0102": "2026144673",
+                        "RFF0103": "000010"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "CO",
+                        "RFF0102": "4000096329"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "OP",
+                        "RFF0102": "4000096329",
+                        "RFF0103": "10"
+                      }
+                    },
+                    {
+                      "1120_RFF": {
+                        "RFF0101": "AQV",
+                        "RFF0102": "29291000"
+                      }
+                    }
+                  ],
+                  "1140_Segment_group_23": [
+                    {
+                      "1150_PCI": {
+                        "PCI0201": "BASF",
+                        "PCI0202": "2026144673 / 000010",
+                        "PCI0203": "Batch No.: ....",
+                        "PCI0204": "Production Date ....",
+                        "PCI0205": "Expiry date ....",
+                        "PCI0206": "Customer-Order-Number 4000096329",
+                        "PCI0207": "Cust-Item-Code: 000000000051099723",
+                        "PCI0208": "Port of Dest.: Santos"
+                      }
+                    }
+                  ],
+                  "1360_Segment_group_29": [
+                    {
+                      "1370_SGP": {
+                        "SGP0101": "1309608150"
+                      }
+                    }
+                  ],
+                  "1500_Segment_group_32": [
+                    {
+                      "1510_DGS": {
+                        "DGS01": "ZZZ"
+                      },
+                      "1520_FTX": [
+                        {
+                          "FTX01": "ACB",
+                          "FTX0401": "Odor: faintly aromatic"
+                        },
+                        {
+                          "FTX01": "LOI",
+                          "FTX0401": "Empty the tank through the standpipe with closed gas displacement syst",
+                          "FTX0402": "em, with compressed nitrogen or compressed dried air."
+                        }
+                      ],
+                      "1530_Segment_group_33": [
+                        {
+                          "1540_CTA": {
+                            "CTA01": "HE"
+                          },
+                          "1550_COM": [
+                            {
+                              "COM0101": "BASF EMERGENCY CONTACT:  +49 180 2273 112 |TPLST-BE21|",
+                              "COM0102": "TE"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "1640_Segment_group_37": [
+                {
+                  "1650_EQD": {
+                    "EQD01": "CN",
+                    "EQD0201": "1309608150",
+                    "EQD0301": "42RT",
+                    "EQD0304": "40Â´ Reefer 8Â´6\" operated"
+                  },
+                  "1660_EQN": {
+                    "EQN0101": 1
+                  },
+                  "1670_TMD": {
+                    "TMD0101": "3",
+                    "TMD0102": "Merchant Haulage E",
+                    "TMD03": "2"
+                  },
+                  "1680_MEA": [
+                    {
+                      "MEA01": "WT",
+                      "MEA0201": "T",
+                      "MEA0301": "KGM",
+                      "MEA0302": "4600.000"
+                    },
+                    {
+                      "MEA01": "WT",
+                      "MEA0201": "AAB",
+                      "MEA0301": "KGM",
+                      "MEA0302": "24854.000"
+                    },
+                    {
+                      "MEA01": "WT",
+                      "MEA0201": "AAA",
+                      "MEA0301": "KGM",
+                      "MEA0302": "20254.000"
+                    }
+                  ],
+                  "1750_FTX": [
+                    {
+                      "FTX01": "AAF",
+                      "FTX0401": "Empty container free ex port of loading"
+                    }
+                  ]
+                }
+              ]
+            },
+            "Id": "IFTMIN",
+            "MessageHeader": {
+              "UNH01": "861980438200",
+              "UNH0201": "IFTMIN",
+              "UNH0202": "D",
+              "UNH0203": "99A",
+              "UNH0204": "UN",
+              "UNH03": "BL00",
+              "UNH0401": 2
+            },
+            "Name": "Instruction message"
+          }
+        ]
+      }
+    },
+    "FunctionalAcksReceived": [],
+    "FunctionalAcksGenerated": []
+  }
+}

@@ -220,7 +220,7 @@ segment or group degrades to an omitted key, never an error.
 
 `src/test/dw/IftmbfMappingTest.dwl`, run by `cd basf && mvn -o test`.
 
-Fourteen IFTMBF interchanges are exercised — every one in `docs/example-orders/inbound` (9 FCL, 1 LCL,
+Fifteen IFTMBF interchanges are exercised — every one in `docs/example-orders/inbound` (10 FCL, 1 LCL,
 4 master-sub). Each is checked against a row of `src/test/resources/example-orders/inbound/manifest.json`,
 which records the message's own BGM code, CustomerReference and equipment count as read off the
 parsed tree, so the expectations are derived independently of this mapping.

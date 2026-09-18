@@ -208,9 +208,9 @@ module reads is verified against the real parser capture**
 
 ## 5. Test coverage
 
-`src/test/dw/IftminMappingTest.dwl`, 119 tests.
+`src/test/dw/IftminMappingTest.dwl`, 125 tests.
 
-Thirty-seven interchanges are exercised — every IFTMIN interchange in `docs/example-orders/inbound`. Each
+Thirty-nine interchanges are exercised — every IFTMIN interchange in `docs/example-orders/inbound`. Each
 is compared against a row of `src/test/resources/example-orders/inbound/manifest.json`, which records
 the message's own BASF BL, BGM code, CustomerReference and equipment count as read off the
 parsed tree. The expectations (`FCL`/`LCL`, `BackToBack`/`Coloadin`, the scenario, the action,
