@@ -142,6 +142,37 @@ fun eventOf(matchcode, loadType, cargo) = {
 
 var oneLine = [{ containerTransport: { containerNumber: "APLU1234567" },
                  deliveryNoteSAP: "3550879847", deliveryPositionNumber: "000010" }]
+
+/**
+* The fields each scenario does **not** map, which are exactly the ones Carlo may leave null at
+* the point that scenario fires. Read down the seven and the shipment lifecycle falls out:
+*
+*   before departure   6817, 6819, 6828   ETD + ETA, no actuals - nothing has happened yet
+*   at/after departure 24, 6808           ATD + ETA, no ETD, no ATA
+*   on arrival         29, 21             all four
+*
+* Plus two that are not about dates: a departure confirmation carries no booking reference, and
+* an ETA change carries no master B/L or issue date.
+*/
+var NULLABLE = {
+    "IFTSTA21":   [],
+    "IFTSTA24":   ["etd", "ata", "booking"],
+    "IFTSTA29":   [],
+    "IFTSTA6808": ["etd", "ata", "bl", "issue"],
+    "IFTSTA6817": ["atd", "ata"],
+    "FRA9":       ["atd", "ata"],
+    "IFTSTA6828": ["atd", "ata"]
+}
+
+/** The same Carlo event with the named fields emptied. */
+fun without(doc, fields) = doc update {
+    case v at .shipmentChangeEventLogEntry[0].eventHouseShipment.master.mainCarriageAsOcean.estimatedTimeOfDeparture -> if (fields contains "etd") null else v
+    case v at .shipmentChangeEventLogEntry[0].eventHouseShipment.master.mainCarriageAsOcean.actualTimeOfDeparture -> if (fields contains "atd") null else v
+    case v at .shipmentChangeEventLogEntry[0].eventHouseShipment.master.mainCarriageAsOcean.actualTimeOfArrival -> if (fields contains "ata") null else v
+    case v at .shipmentChangeEventLogEntry[0].eventHouseShipment.master.mainCarriageAsOcean.masterBillOfLadingNumber -> if (fields contains "bl") null else v
+    case v at .shipmentChangeEventLogEntry[0].eventHouseShipment.billOfLading.dateOfIssue -> if (fields contains "issue") null else v
+    case v at .shipmentChangeEventLogEntry[0].eventHouseShipment.master.externalReferences -> if (fields contains "booking") [] else v
+}
 ---
 "BASF IFTSTA mapping" describedBy (
 
@@ -336,6 +367,24 @@ var oneLine = [{ containerTransport: { containerNumber: "APLU1234567" },
     () -> "the document carries no UNT and no UNZ" in (
         (heading(fcl21) pluck ((v, k) -> k as String) filter ((k) -> (k contains "UNT") or (k contains "UNZ")))
             must equalTo([])),
+
+    // === the nullable fields ===============================================================
+    // A scenario's unmapped fields are the ones Carlo may leave null when it fires. If that is
+    // right, emptying exactly those fields cannot change the message - which is what makes the
+    // mapping safe against a real event that carries fewer values than the examples do.
+    () -> "emptying the fields a scenario does not map leaves its message unchanged" in (
+        (MESSAGES map ((m) -> do {
+            var full = carloEvent("fcl", m.matchcode)
+            ---
+            anonymised(document(without(full, NULLABLE[m.matchcode]))) ==
+                anonymised(document(full))
+        })) must equalTo(MESSAGES map ((m) -> true))),
+
+    // The converse: a field a scenario *does* map is load-bearing, so emptying it must change the
+    // message. Without this the assertion above would also pass if the mapping ignored everything.
+    () -> "emptying a field a scenario does map changes its message" in (
+        anonymised(document(without(carloEvent("fcl", "IFTSTA21"), ["ata"]))) !=
+            anonymised(document(carloEvent("fcl", "IFTSTA21"))) must equalTo(true)),
 
     // === guards ============================================================================
     () -> "a cargo line with no container number yields no EQD" in (

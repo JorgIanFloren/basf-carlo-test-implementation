@@ -58,7 +58,7 @@ Types are as they appear on the wire: `loadType` and `referenceType` are JSON nu
 else is a string, and timestamps are local wall-clock ISO 8601 with no zone (`2026-09-18T13:33:42`).
 
 ```
-shipmentChangeEventLogEntry[]                        array - one event; see §4
+shipmentChangeEventLogEntry[]                        array - always ONE entry; §4
 ├── eventType.matchcode                      string  selects the message (spec §1)
 ├── localTime                                string  the event timestamp
 └── eventHouseShipment
@@ -69,11 +69,11 @@ shipmentChangeEventLogEntry[]                        array - one event; see §4
     ├── loadType                             number  1 = FCL, 2 = LCL -> TSR
     ├── master
     │   ├── preferredModeOfTransport         string  "Ocean" - not mapped
-    │   ├── externalReferences[]             array
+    │   ├── externalReferences[]             array   ° empty on IFTSTA24
     │   │   ├── referenceType                number  9 selects the booking reference
     │   │   └── value                        string  RFF+BN
     │   └── mainCarriageAsOcean
-    │       ├── masterBillOfLadingNumber     string  RFF+BM
+    │       ├── masterBillOfLadingNumber     string  RFF+BM    ° null on IFTSTA6808
     │       ├── voyageNumber                 string  TDT02
     │       ├── carrier.matchcode            string  not mapped
     │       ├── carrier.name1                string  TDT0504
@@ -83,16 +83,18 @@ shipmentChangeEventLogEntry[]                        array - one event; see §4
     │       ├── portOfDeparture.designation  string  LOC+9  LOC0204
     │       ├── portOfArrival.matchcode      string  LOC+12 LOC0201
     │       ├── portOfArrival.designation    string  LOC+12 LOC0204
-    │       ├── estimatedTimeOfDeparture     string  DTM+133
-    │       ├── actualTimeOfDeparture        string  DTM+186
+    │       ├── estimatedTimeOfDeparture     string  DTM+133   °
+    │       ├── actualTimeOfDeparture        string  DTM+186   °
     │       ├── estimatedTimeOfArrival       string  DTM+132
-    │       └── actualTimeOfArrival          string  DTM+178   nullable
+    │       └── actualTimeOfArrival          string  DTM+178   °
     ├── cargo[]                              array   one CNI block each
-    │   ├── containerTransport.containerNumber  string  EQD - **null on LCL**
+    │   ├── containerTransport.containerNumber  string  EQD       ° null on LCL
     │   ├── deliveryNoteSAP                  string  CNI0201
     │   └── deliveryPositionNumber           string  CNI0203
-    └── billOfLading.dateOfIssue             string  DTM+95
+    └── billOfLading.dateOfIssue             string  DTM+95    ° null on IFTSTA6808
 ```
+
+° = may be null, and which scenarios may leave it so is **§4**.
 
 ### FCL vs LCL
 
@@ -124,28 +126,58 @@ The mapping reads `mainCarriageAsOcean` unconditionally. Both `preferredModeOfTr
 say `"Ocean"` in every example, so there is no evidence any other mode reaches this flow — but if
 one can, `TDT` and `LOC` have no source and the sheets do not cover it. See spec §10.7.
 
-## 4. Nullability and cardinality — what the examples do *not* settle
+## 4. Nullability and cardinality
 
-The contract is confirmed as the shape Carlo always sends. Its *value* ranges are not, and three
-questions remain open. Each is a real branch in the mapping, so each is worth an answer rather
-than an assumption:
+### One event per file
 
-1. **Is `shipmentChangeEventLogEntry` ever longer than one?** Both examples carry exactly one
-   entry and every mapping sheet describes a single message. The mapping reads `[0]` and ignores
-   any tail. If Carlo can batch events, that tail is silently dropped — and the right handling
-   (one interchange per event, or several messages in one interchange) is a question for the
-   analyst, not a guess. Spec §10.5.
-2. **Which fields can be null besides `containerNumber` and `actualTimeOfArrival`?** Those two
-   are attested null. The mapping is defensive everywhere — a segment whose source is null or
-   blank is omitted rather than emitted empty — so a surprise null degrades to a missing segment
-   rather than a malformed one. Whether a *missing* segment is acceptable to BASF is the
-   question, and it differs per field: a missing `DTM+178` is routine, a missing `RFF+SI` is not.
-3. **Can `externalReferences` carry more than one entry, or a type other than 9?** The examples
-   carry exactly one, of type 9. The mapping takes the **first** entry with `referenceType = 9`
-   and ignores the rest, which is what the sheets' `externalReferences[0]` notation implies.
+`shipmentChangeEventLogEntry` carries **one entry** — one message per status change, one status
+change per file. Stated by the analyst 18-09-2026; both examples agree, and every mapping sheet
+describes a single message throughout.
 
-None of these blocks the mapping. All three are cheap to confirm with whoever owns the Carlo
-side.
+The mapping reads `[0]` accordingly. It is worth knowing that a longer array would be *silently*
+truncated rather than rejected, so if batching is ever introduced this is the line that has to
+change first.
+
+### Which fields can be null — read it off the scenarios
+
+**A scenario's unmapped fields are exactly the ones Carlo may leave null when that scenario
+fires.** Comparing the seven side by side makes the rule visible, and the shipment lifecycle
+falls straight out of it:
+
+| Scenario | | `RFF+BN` | `RFF+BM` | `DTM+95` | `133` ETD | `186` ATD | `132` ETA | `178` ATA |
+|---|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| IFTSTA6817 | ETD/ETA change *before departure* | Y | Y | Y | Y | **·** | Y | **·** |
+| IFTSTA6819 | vessel change | Y | Y | Y | Y | **·** | Y | **·** |
+| IFTSTA6828 | send B/L number | Y | Y | Y | Y | **·** | Y | **·** |
+| IFTSTA24 | departure confirmation | **·** | Y | Y | **·** | Y | Y | **·** |
+| IFTSTA6808 | ETA change *after departure* | Y | **·** | **·** | **·** | Y | Y | **·** |
+| IFTSTA29 | arrival on destination | Y | Y | Y | Y | Y | Y | Y |
+| IFTSTA21 | inland arrival | Y | Y | Y | Y | Y | Y | Y |
+
+Read down the date columns:
+
+- **Before departure** (6817, 6819, 6828) — ETD and ETA only. Neither actual exists yet.
+- **At and after departure** (24, 6808) — ATD and ETA. Departure has happened, arrival has not,
+  and the estimate ETD superseded is no longer reported.
+- **On arrival** (29, 21) — all four.
+
+Two more that are not about dates: a **departure confirmation carries no booking reference**, and
+an **ETA change carries no master B/L or issue date**.
+
+So the per-message differences in spec §4.4 are not sheet quirks. They track what Carlo actually
+knows at the moment the event fires, and the sheets' date lists and the mapping's
+omit-a-null-source rule agree by construction rather than by coincidence.
+
+`IftstaMappingTest.dwl` asserts this directly: for each scenario, emptying exactly the fields that
+scenario does not map leaves its message **unchanged**. The converse is asserted too — emptying a
+field a scenario *does* map changes the message — so the first assertion cannot pass vacuously.
+
+### Still open
+
+**Can `externalReferences` carry more than one entry, or a type other than 9?** Both examples
+carry exactly one, of type 9. The mapping takes the first entry with `referenceType = 9` and
+ignores any others, which is what the sheets' `externalReferences[0]` notation implies. Not yet
+confirmed.
 
 ## 5. Placeholder values still in the examples
 

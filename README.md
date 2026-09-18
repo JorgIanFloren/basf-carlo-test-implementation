@@ -218,6 +218,7 @@ Collected from the four specs; each is written up where it belongs.
    MuleSoft is not established, so the outbound `dataProfiler` `config/` still lacks cannot be
    written. The input contract itself is settled (`docs/iftsta/02-carlo-event-contract.md`).
 
+   Both are **parked until the week of 22-09-2026**.
    `docs/iftsta/01-IFTSTA_mapping_spec.md` §10 has the rest, including the leading-zero risk on
    `UNB0402` and the vessel flag Carlo does not supply.
 

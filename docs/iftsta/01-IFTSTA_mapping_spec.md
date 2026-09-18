@@ -243,6 +243,10 @@ document diff.
 
 ## 10. Open items
 
+> **Parked until the week of 22-09-2026.** Outstanding: 1–4 and 7. Items 0 and 6 are
+> housekeeping that resolves itself when a capture and real data arrive. Items 5 and 8 are
+> resolved and kept for the record.
+
 0. **UNB0401/UNB0402 lose a leading zero.** The parser types the interchange date and time as
    numeric, so the mapping emits them as numbers to stay comparable with a parsed message. An
    event at 08:20 therefore gives `UNB0402: 820`, not `"0820"`. A writer that knows the field is
@@ -279,12 +283,11 @@ document diff.
    header names none where the inbound three do.
 4. **The vessel flag has no source.** §8.2. Confirm with the analyst whether BASF needs it; if
    so, Carlo has to supply it.
-5. **Only `shipmentChangeEventLogEntry[0]` is read.** Every captured example carries exactly one
-   entry. The field set Carlo sends is now confirmed as fixed, but its *cardinality* is not: if
-   Carlo can batch several events into one payload, the tail is silently dropped, and whether
-   that should become several interchanges or several messages in one is a question the sheets
-   — which describe a single message throughout — do not answer. `02-carlo-event-contract.md`
-   §4 lists this with the two other value-range questions the examples leave open.
+5. ~~**Only `shipmentChangeEventLogEntry[0]` is read.**~~ Resolved — one message per status
+   change, one status change per file, so the array always carries one entry
+   (`02-carlo-event-contract.md` §4). Reading `[0]` is correct. A longer array would be silently
+   truncated rather than rejected, so this is the line to change first if batching is ever
+   introduced.
 6. **The example data is still partly placeholder.** `masterBillOfLadingNumber` is
    `"master bl number"` and `voyageNumber` is `"123"` in both FCL and LCL examples. The mapping
    passes them through (§6), so no change is expected when real values arrive — but the approved
@@ -293,3 +296,9 @@ document diff.
    reads `mainCarriageAsOcean` unconditionally. If a road or air shipment can raise the same
    events, `TDT`/`LOC` have no source and the sheets do not cover it. It is one of only three
    contract fields the mapping ignores — `02-carlo-event-contract.md` §3.
+8. ~~**Which fields Carlo can leave null is unknown.**~~ Resolved — a scenario's *unmapped*
+   fields are exactly its nullable ones, which tracks the shipment lifecycle: no actuals before
+   departure, no ATA before arrival, no booking reference on a departure confirmation, no master
+   B/L on an ETA change. `02-carlo-event-contract.md` §4 has the table, and the test suite asserts
+   both directions — emptying a scenario's unmapped fields leaves its message unchanged, and
+   emptying a mapped one does not.
