@@ -1,0 +1,90 @@
+{
+  "shipmentChangeEventLogEntry": [
+    {
+      "eventType": {
+        "matchcode": "IFTSTA6808"
+      },
+      "localTime": "2026-09-18T13:33:42",
+      "eventHouseShipment": {
+        "preferredModeOfTransport": "Ocean",
+        "frachtShipmentRef": "76000143",
+        "customerReference": "2800209301_training",
+        "dUNSCustomer": "315000554",
+        "loadType": 1,
+        "master": {
+          "preferredModeOfTransport": "Ocean",
+          "externalReferences": [
+            {
+              "referenceType": 9,
+              "value": "Ref2345"
+            }
+          ],
+          "mainCarriageAsOcean": {
+            "masterBillOfLadingNumber": "master bl number",
+            "voyageNumber": "123",
+            "carrier": {
+              "matchcode": "CMACGMANR1",
+              "name1": "CMA - CGM C/O CMA CGM & ANL SECURITIES B"
+            },
+            "vessel": {
+              "matchcode": "9720483",
+              "designation": "MSC CHLOE"
+            },
+            "portOfDeparture": {
+              "matchcode": "BEANR",
+              "designation": "Antwerpen"
+            },
+            "portOfArrival": {
+              "matchcode": "BRSSZ",
+              "designation": "Santos"
+            },
+            "estimatedTimeOfDeparture": "2026-04-20T00:00:00",
+            "estimatedTimeOfArrival": "2026-05-08T00:00:00",
+            "actualTimeOfDeparture": "2026-04-20T00:00:00",
+            "actualTimeOfArrival": "2026-04-21T00:00:00"
+          }
+        },
+        "cargo": [
+          {
+            "containerTransport": {
+              "containerNumber": "APLU1234567"
+            },
+            "deliveryNoteSAP": "3550879847",
+            "deliveryPositionNumber": "000010"
+          },
+          {
+            "containerTransport": {
+              "containerNumber": "ABCU1234567"
+            },
+            "deliveryNoteSAP": "3550879994",
+            "deliveryPositionNumber": "000010"
+          },
+          {
+            "containerTransport": {
+              "containerNumber": "APLU1234567"
+            },
+            "deliveryNoteSAP": "3550879430",
+            "deliveryPositionNumber": "000010"
+          },
+          {
+            "containerTransport": {
+              "containerNumber": "MSCU1234567"
+            },
+            "deliveryNoteSAP": "3550880113",
+            "deliveryPositionNumber": "000010"
+          },
+          {
+            "containerTransport": {
+              "containerNumber": "APLU1234567"
+            },
+            "deliveryNoteSAP": "3550879730",
+            "deliveryPositionNumber": "000010"
+          }
+        ],
+        "billOfLading": {
+          "dateOfIssue": "2026-09-06T00:00:00"
+        }
+      }
+    }
+  ]
+}
