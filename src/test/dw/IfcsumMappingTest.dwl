@@ -1,6 +1,6 @@
 /**
 * BASF IFCSUM mapping, exercised against every IFCSUM interchange in docs/example-orders/inbound
-* (4 fixtures: 3 FCL, 1 LCL).
+* (6 fixtures: 5 FCL, 1 LCL).
 *
 * The mapping is run the way the data-transformer runs it: `evalPath` executes
 * src/main/dw/InboundIfcsum.dwl - the whole self-contained script, output header and document
@@ -16,7 +16,8 @@
 * restatement of the mapping.
 *
 * The two shapes IFCSUM comes in are both covered:
-*   FCL - one sea container, its verified gross mass, seal and VGM signatory
+*   FCL - one sea container, its verified gross mass, seal, VGM signatory, pre-leg reference
+*         and the EDIID composed of every cargo line under it
 *   LCL - a truck (which must NOT land on the cargo line) and a customs MRN per consignment
 */
 %dw 2.0
@@ -48,7 +49,6 @@ var fclSingle = cargoOf("fcl/ifcsum-2013354401.json")
 var lclMrn = cargoOf("lcl/ifcsum-136579804.json")
 
 fun actual(fixture) = cargoOf(fixture) map ((c) -> {
-    itemNumber: c.itemNumber,
     deliveryNote: c.deliveryNoteSAP,
     position: c.deliveryPositionNumber,
     mrn: c.mRN,
@@ -57,12 +57,13 @@ fun actual(fixture) = cargoOf(fixture) map ((c) -> {
         containerType: c.container.containerType.matchcode,
         verifiedGrossMass: c.container.verifiedGrossMass,
         sealNumber: c.container.sealNumber,
-        vgmPerson: c.container.vGMPersonInChanrge
+        vgmPerson: c.container.vGMPersonInChanrge,
+        prelegReference: c.container.prelegReference,
+        ediid: c.container.eDIID
     }
 })
 
 fun expected(e) = e.cargo map ((line) -> {
-    itemNumber: line.itemNumber,
     deliveryNote: line.deliveryNote,
     position: line.position,
     mrn: line.mrn,
@@ -115,6 +116,29 @@ fun summary(code) = message(code) update {
             $.vGMPersonInChanrge must equalTo("MR UNGER JOCHEN, HEAD OF WH")
         ]),
 
+    // Sheet row 10: the header RFF+AIW, which repeats the BGM document number.
+    () -> "the container carries the pre-leg reference" in (
+        (fclVgm map ((c) -> c.container.prelegReference))
+            must equalTo(["2013354403", "2013354403", "2013354403"])),
+
+    // Sheet row 11: "Same as in IFTMIN on container level" - every cargo line's
+    // "<note>/<position>" joined by "-", with no separator after the last one. The sheet
+    // states this very string as its example.
+    () -> "the container is keyed by the EDIIDs of every cargo line under it" in (
+        (fclVgm map ((c) -> c.container.eDIID)) must equalTo([
+            "3550879430/000010-3550879730/000010-3550879847/000010",
+            "3550879430/000010-3550879730/000010-3550879847/000010",
+            "3550879430/000010-3550879730/000010-3550879847/000010"
+        ])),
+
+    () -> "a one-consignment summary keys its container on that single cargo line" in (
+        fclSingle[0].container.eDIID must equalTo("3550879994/000010")),
+
+    // The cargo line's own EDIID is one element of the container's; the two must agree.
+    () -> "the container EDIID is the join of the cargo-line EDIIDs" in (
+        fclVgm[0].container.eDIID
+            must equalTo((fclVgm map ((c) -> c.eDIID as String)) joinBy "-")),
+
     () -> "every consignment of an FCL summary lands on the same container" in (
         (fclVgm map ((c) -> c.container.containerNumber))
             must equalTo(["CGMU5666332", "CGMU5666332", "CGMU5666332"])),
@@ -141,6 +165,20 @@ fun summary(code) = message(code) update {
 
     () -> "six consignments yield six cargo lines" in (sizeOf(lclMrn) must equalTo(6)),
 
+    // Both new container fields live on the container block, so an LCL summary - which has
+    // no container - reports neither, even though it does carry a header RFF+AIW.
+    () -> "an LCL summary reports no pre-leg reference, having no container" in (
+        (lclMrn map ((c) -> c.container.prelegReference))
+            must equalTo([null, null, null, null, null, null])),
+
+    // === itemNumber is not mapped ===========================================================
+    // GID01 is the goods-item counter within the consignment, not the cargo line's item
+    // number in Carlo, and writing it would renumber the line the IFTMIN mapping created.
+    // Removed on BASF's feedback on IFCSUM_mapping_v1.xlsx; the sheet has no row for it.
+    () -> "no cargo line carries an itemNumber" in (
+        ((ifcsum flatMap ((e) -> cargoOf(e.fixture))) filter ((c) -> c.itemNumber != null))
+            must equalTo([])),
+
     // === cancel: the flow stops =============================================================
     // Cancelling a consolidation summary does not cancel the underlying cargo, so a code 1
     // message must contribute nothing at all. The pair below differs only in the BGM code,
@@ -166,13 +204,12 @@ fun summary(code) = message(code) update {
         documentOf({ Heading: { "1150_Segment_group_26": [{
             "1160_CNI": { CNI01: 1, CNI0201: "3550984178" },
             "2260_Segment_group_51": [{ "2270_GID": { GID01: 1 } }] }] } }).shipmentCargo
-            must equalTo([{ actionAttribute: "update", itemNumber: 1, deliveryNoteSAP: "3550984178" }])),
+            must equalTo([{ actionAttribute: "update", deliveryNoteSAP: "3550984178" }])),
 
     // === wrapper shape ======================================================================
     () -> "the document is a camelCase shipmentCargo array" in (
         lclMrn[0] must equalTo({
             actionAttribute: "update",
-            itemNumber: 1,
             deliveryNoteSAP: "3550984178",
             deliveryPositionNumber: "000010",
             eDIID: "3550984178/000010",

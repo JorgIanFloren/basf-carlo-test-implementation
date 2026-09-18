@@ -50,6 +50,16 @@ output application/json encoding="UTF-8"
 * `EDIID` ("<note>/<position>"). All three are emitted so Carlo can match on whichever it
 * indexes.
 *
+* The container carries its own `EDIID` on top of that - every cargo line's key joined with
+* "-", the same composite InboundIftmin.dwl writes on container level (`containerEdiid` there).
+* See `containerEdiid` below.
+*
+* GID01 is deliberately *not* emitted as `ItemNumber`: BASF's feedback on
+* docs/ifcsum/IFCSUM_mapping_v1.xlsx removed it, and the sheet has no row for it. It is the
+* goods-item counter within one consignment (1 on every captured line), so writing it would
+* renumber the line InboundIftmin.dwl created rather than address it. See
+* docs/ifcsum/01-IFCSUM_mapping_spec.md section 3.
+*
 * Navigation is by `_<SEGMENT>` suffix (see "Suffix navigation" below), not by position
 * key - InboundIftmbf.dwl explains why that matters in the D08A directory.
 */
@@ -270,6 +280,42 @@ fun vgmWeight(eq) = do {
 /** The person who signed off the VGM declaration (NAD+AM of the equipment group). */
 fun vgmPerson(eq) = (segs(eq, "NAD") filter ((n) -> str(n.NAD01) == "AM"))[0].NAD0401
 
+/**
+* Pre-leg reference: the header RFF+AIW, which repeats the BGM0201 document number in every
+* captured example. Mapping sheet row 10 (docs/ifcsum/IFCSUM_mapping_v1.xlsx, sheet JSON).
+*
+* The sheet spells the source as a TDT-group reference, but RFF+AIW is a header reference in
+* every capture (SG1, beside RFF+ACE) and suffix navigation finds it there: `groupsWith` only
+* considers direct children of `Heading`, and the TDT group carries no RFF of its own.
+*/
+fun prelegReference(doc) = refOf(body(doc), "AIW").RFF0102
+
+/**
+* Container/EDIID = "<note>/<position>-..." over every cargo line of the message - the same
+* composite InboundIftmin.dwl writes onto the container it creates (`containerEdiid` there),
+* which is what mapping sheet row 11 means by "Same as in IFTMIN on container level".
+*
+* IFTMIN can pick the goods items loaded in one container because its SG18 items name their
+* equipment. IFCSUM carries no such link, so this joins every cargo line of the message -
+* sound only because `soleContainer` has already established there is exactly one container,
+* which every cargo line therefore sits in.
+*
+* Built from the same (note, position) pair as the line-level EDIID, and on the same
+* condition, so the container key is exactly the join of the keys of the lines under it.
+*/
+fun containerEdiid(doc) = do {
+    var refs = consignments(doc) flatMap ((c) -> goodsOf(c) map ((g) -> do {
+        var li = refOf(g, "LI")
+        var note = li.RFF0102 default seg1(c, "CNI").CNI0201
+        ---
+        if (present(note) and present(li.RFF0103))
+            (note as String) ++ "/" ++ (li.RFF0103 as String)
+        else null
+    }))
+    ---
+    nz((refs filter ((x) -> x != null) map ((x) -> x as String)) joinBy "-")
+}
+
 /** Carlo `Container` block for a cargo line, or null when there is no unambiguous container. */
 fun containerObj(doc) = do {
     var eq = soleContainer(doc)
@@ -277,6 +323,8 @@ fun containerObj(doc) = do {
     var vgm = vgmWeight(eq)
     var seal = seg1(eq, "SEL").SEL01
     var person = vgmPerson(eq)
+    var preleg = prelegReference(doc)
+    var ediid = containerEdiid(doc)
     ---
     if (eq == null) null
     else {
@@ -285,7 +333,9 @@ fun containerObj(doc) = do {
         (VerifiedGrossMass: vgm) if (vgm != null),
         (SealNumber: seal) if present(seal),
         // Contract spelling, typo included (docs/expected_output_ShipmentCargo.json).
-        (VGMPersonInChanrge: person) if present(person)
+        (VGMPersonInChanrge: person) if present(person),
+        (PrelegReference: preleg) if present(preleg),
+        (EDIID: ediid) if (ediid != null)
     }
 }
 
@@ -312,7 +362,6 @@ fun cargoLine(doc, consignment, item) = do {
     if (!present(note)) null
     else {
         actionAttribute: "update",
-        (ItemNumber: seg1(item, "GID").GID01) if (seg1(item, "GID").GID01 != null),
         DeliveryNoteSAP: note,
         (DeliveryPositionNumber: position) if present(position),
         // Same join key InboundIftmin.dwl writes onto the cargo line it creates.

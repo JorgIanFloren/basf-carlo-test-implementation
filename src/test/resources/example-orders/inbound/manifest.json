@@ -17,7 +17,6 @@
     ],
     "cargo": [
       {
-        "itemNumber": 1,
         "deliveryNote": "3550885420",
         "position": "000010",
         "mrn": null,
@@ -26,11 +25,12 @@
           "containerType": "45RT",
           "verifiedGrossMass": 17620.22,
           "sealNumber": "0024473",
-          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH"
+          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH",
+          "prelegReference": "2013357254",
+          "ediid": "3550885420/000010-3550885434/000010-3550885437/000010-3550885486/000010-3550885604/000010-3550886466/000010"
         }
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3550885434",
         "position": "000010",
         "mrn": null,
@@ -39,11 +39,12 @@
           "containerType": "45RT",
           "verifiedGrossMass": 17620.22,
           "sealNumber": "0024473",
-          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH"
+          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH",
+          "prelegReference": "2013357254",
+          "ediid": "3550885420/000010-3550885434/000010-3550885437/000010-3550885486/000010-3550885604/000010-3550886466/000010"
         }
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3550885437",
         "position": "000010",
         "mrn": null,
@@ -52,11 +53,12 @@
           "containerType": "45RT",
           "verifiedGrossMass": 17620.22,
           "sealNumber": "0024473",
-          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH"
+          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH",
+          "prelegReference": "2013357254",
+          "ediid": "3550885420/000010-3550885434/000010-3550885437/000010-3550885486/000010-3550885604/000010-3550886466/000010"
         }
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3550885486",
         "position": "000010",
         "mrn": null,
@@ -65,11 +67,12 @@
           "containerType": "45RT",
           "verifiedGrossMass": 17620.22,
           "sealNumber": "0024473",
-          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH"
+          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH",
+          "prelegReference": "2013357254",
+          "ediid": "3550885420/000010-3550885434/000010-3550885437/000010-3550885486/000010-3550885604/000010-3550886466/000010"
         }
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3550885604",
         "position": "000010",
         "mrn": null,
@@ -78,11 +81,12 @@
           "containerType": "45RT",
           "verifiedGrossMass": 17620.22,
           "sealNumber": "0024473",
-          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH"
+          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH",
+          "prelegReference": "2013357254",
+          "ediid": "3550885420/000010-3550885434/000010-3550885437/000010-3550885486/000010-3550885604/000010-3550886466/000010"
         }
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3550886466",
         "position": "000010",
         "mrn": null,
@@ -91,7 +95,9 @@
           "containerType": "45RT",
           "verifiedGrossMass": 17620.22,
           "sealNumber": "0024473",
-          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH"
+          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH",
+          "prelegReference": "2013357254",
+          "ediid": "3550885420/000010-3550885434/000010-3550885437/000010-3550885486/000010-3550885604/000010-3550886466/000010"
         }
       }
     ]
@@ -114,7 +120,6 @@
     ],
     "cargo": [
       {
-        "itemNumber": 1,
         "deliveryNote": "3550879994",
         "position": "000010",
         "mrn": null,
@@ -123,7 +128,9 @@
           "containerType": "45RT",
           "verifiedGrossMass": 24220.0,
           "sealNumber": "0024451",
-          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH"
+          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH",
+          "prelegReference": "2013354401",
+          "ediid": "3550879994/000010"
         }
       }
     ]
@@ -146,7 +153,6 @@
     ],
     "cargo": [
       {
-        "itemNumber": 1,
         "deliveryNote": "3550880113",
         "position": "000010",
         "mrn": null,
@@ -155,7 +161,9 @@
           "containerType": "45RT",
           "verifiedGrossMass": 24220.0,
           "sealNumber": "0024453",
-          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH"
+          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH",
+          "prelegReference": "2013354402",
+          "ediid": "3550880113/000010"
         }
       }
     ]
@@ -178,7 +186,6 @@
     ],
     "cargo": [
       {
-        "itemNumber": 1,
         "deliveryNote": "3550879430",
         "position": "000010",
         "mrn": null,
@@ -187,11 +194,12 @@
           "containerType": "45RT",
           "verifiedGrossMass": 22273.0,
           "sealNumber": "0024456",
-          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH"
+          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH",
+          "prelegReference": "2013354403",
+          "ediid": "3550879430/000010-3550879730/000010-3550879847/000010"
         }
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3550879730",
         "position": "000010",
         "mrn": null,
@@ -200,11 +208,12 @@
           "containerType": "45RT",
           "verifiedGrossMass": 22273.0,
           "sealNumber": "0024456",
-          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH"
+          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH",
+          "prelegReference": "2013354403",
+          "ediid": "3550879430/000010-3550879730/000010-3550879847/000010"
         }
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3550879847",
         "position": "000010",
         "mrn": null,
@@ -213,7 +222,9 @@
           "containerType": "45RT",
           "verifiedGrossMass": 22273.0,
           "sealNumber": "0024456",
-          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH"
+          "vgmPerson": "MR UNGER JOCHEN, HEAD OF WH",
+          "prelegReference": "2013354403",
+          "ediid": "3550879430/000010-3550879730/000010-3550879847/000010"
         }
       }
     ]
@@ -236,7 +247,6 @@
     ],
     "cargo": [
       {
-        "itemNumber": 1,
         "deliveryNote": "3551128059",
         "position": "000010",
         "mrn": "26DE590489692934B7",
@@ -245,11 +255,12 @@
           "containerType": "42RT",
           "verifiedGrossMass": 16810.506,
           "sealNumber": "0063949",
-          "vgmPerson": "MRS GOETZ, LYDIA, WETLOG"
+          "vgmPerson": "MRS GOETZ, LYDIA, WETLOG",
+          "prelegReference": "2013476959",
+          "ediid": "3551128059/000010-3551130717/000010"
         }
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3551130717",
         "position": "000010",
         "mrn": "26DE590489692936B5",
@@ -258,7 +269,9 @@
           "containerType": "42RT",
           "verifiedGrossMass": 16810.506,
           "sealNumber": "0063949",
-          "vgmPerson": "MRS GOETZ, LYDIA, WETLOG"
+          "vgmPerson": "MRS GOETZ, LYDIA, WETLOG",
+          "prelegReference": "2013476959",
+          "ediid": "3551128059/000010-3551130717/000010"
         }
       }
     ]
@@ -281,42 +294,36 @@
     ],
     "cargo": [
       {
-        "itemNumber": 1,
         "deliveryNote": "3550984178",
         "position": "000010",
         "mrn": "26DE590487611538B5",
         "container": null
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3550985803",
         "position": "000010",
         "mrn": "26DE590487611538B5",
         "container": null
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3550986058",
         "position": "000010",
         "mrn": "26DE590487611538B5",
         "container": null
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3551020289",
         "position": "000010",
         "mrn": "26DE590487611535B8",
         "container": null
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3551058965",
         "position": "000010",
         "mrn": "26DE590487611537B6",
         "container": null
       },
       {
-        "itemNumber": 1,
         "deliveryNote": "3551071943",
         "position": "000010",
         "mrn": "26DE590487611536B7",

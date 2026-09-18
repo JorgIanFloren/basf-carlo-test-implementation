@@ -729,6 +729,17 @@ def ifcsum_cargo(msg: dict) -> list:
                 return r
         return {}
 
+    lines = []
+    for consignment in groups(heading, "CNI"):
+        mrn = ref(consignment, "ABT").get("RFF0102")
+        for item in groups(consignment, "GID"):
+            li = ref(item, "LI")
+            lines.append({
+                "deliveryNote": li.get("RFF0102") or seg(consignment, "CNI").get("CNI0201"),
+                "position": li.get("RFF0103"),
+                "mrn": mrn,
+            })
+
     # Only a real sea container (an ISO type code in EQD0301) belongs on a cargo line; an
     # LCL summary describes the truck that ran the consignments to the terminal.
     boxes = [e for e in groups(heading, "EQD") if seg(e, "EQD").get("EQD0301")]
@@ -737,26 +748,23 @@ def ifcsum_cargo(msg: dict) -> list:
         eqd = seg(boxes[0], "EQD")
         measures = [m for m in as_list(boxes[0], "MEA") if m.get("MEA0201") == "AAB"]
         persons = [n for n in as_list(boxes[0], "NAD") if n.get("NAD01") == "AM"]
+        # Container/EDIID: every cargo line's "<note>/<position>" joined by "-", the same
+        # composite the IFTMIN mapping writes on container level (sheet row 11).
+        keys = ["%s/%s" % (li["deliveryNote"], li["position"])
+                for li in lines if li["deliveryNote"] and li["position"]]
         container = {
             "containerNumber": eqd.get("EQD0201"),
             "containerType": eqd.get("EQD0301"),
             "verifiedGrossMass": float(measures[0]["MEA0302"]) if measures else None,
             "sealNumber": (as_list(boxes[0], "SEL") or [{}])[0].get("SEL01"),
             "vgmPerson": persons[0].get("NAD0401") if persons else None,
+            # Pre-leg reference: the header RFF+AIW (sheet row 10).
+            "prelegReference": ref(heading, "AIW").get("RFF0102"),
+            "ediid": "-".join(keys) or None,
         }
 
-    lines = []
-    for consignment in groups(heading, "CNI"):
-        mrn = ref(consignment, "ABT").get("RFF0102")
-        for item in groups(consignment, "GID"):
-            li = ref(item, "LI")
-            lines.append({
-                "itemNumber": seg(item, "GID").get("GID01"),
-                "deliveryNote": li.get("RFF0102") or seg(consignment, "CNI").get("CNI0201"),
-                "position": li.get("RFF0103"),
-                "mrn": mrn,
-                "container": container,
-            })
+    for li in lines:
+        li["container"] = container
     return lines
 
 
