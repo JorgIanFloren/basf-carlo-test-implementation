@@ -53,7 +53,7 @@ cd basf
 mvn -o test
 ```
 
-209 tests. Every EDIFACT interchange in `docs/example-orders/inbound` is exercised by the mapping for
+215 tests. Every EDIFACT interchange in `docs/example-orders/inbound` is exercised by the mapping for
 its message type: 35 IFTMIN, 13 IFTMBF, 6 IFCSUM.
 
 The suites run each mapping the way the data-transformer does — `evalPath` evaluates the
