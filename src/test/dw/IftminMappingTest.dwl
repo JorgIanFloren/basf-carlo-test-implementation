@@ -1,6 +1,6 @@
 /**
 * BASF IFTMIN mapping, exercised against every IFTMIN interchange in
-* docs/example-orders/inbound (37 fixtures: 23 FCL, 3 LCL, 11 master-sub/ms).
+* docs/example-orders/inbound (39 fixtures: 25 FCL, 3 LCL, 11 master-sub/ms).
 *
 * The mapping is run the way the data-transformer runs it: `evalPath` executes
 * src/main/dw/InboundIftmin.dwl - the whole self-contained script, output header and document
@@ -863,6 +863,92 @@ var msAfterBooking = shipmentsWith("ms/2800231445-ab-4-5.json", "iftmbf-before-i
         ([ "fcl/2800245092-erstinfo-create.json", "fcl/2800245092-abschlussinfo-create.json" ]
             flatMap ((f) -> shipmentsOf(f) map ((s) -> s.master.externalReferences)))
             must equalTo([null, [{ referenceType: 9, value: "275861976" }]])),
+
+    // ML 2800248632, the order the "in your name as agent" example folder is named after.
+    // Another whole order - Erstinfo, IFTMBF booking, Abschlussinfo - and the second one in
+    // the set, so where it repeats 2800245092 it is a second witness rather than a restatement
+    // of the same message. Its booking is asserted under the same heading in
+    // IftmbfMappingTest.dwl.
+
+    // The point of the folder. BASF's NAD+OS on this order is not a party at all - it is an
+    // instruction to the forwarder, "in your name as agent of BASF", with the principal's name
+    // and street run together in the second component of the same composite. The mapping
+    // carries all of it through verbatim, which is what keeps the shipper block a faithful
+    // record of what BASF sent. Tris does not: docs/example-orders/inbound/fcl/
+    // in-your-name-as-agent/readme.txt shows it rendering "POLYTRA N.V. as agent of BASF",
+    // substituting the forwarder's own name for "in your name". Both halves reach Carlo - the
+    // forwarder is mapped separately off NAD+FW, asserted here beside the shipper - so the
+    // substitution is composable downstream, but nothing in the mapping performs it today.
+    // See docs/00-basf.md; this test pins what the mapping does, not what it should do.
+    () -> "the agent shipper line is carried verbatim, on both messages" in (
+        ([ "fcl/2800248632-erstinfo-create.json", "fcl/2800248632-abschlussinfo-create.json" ]
+            flatMap ((f) -> shipmentsOf(f) map ((s) ->
+                { name1: s.shipper.name1, street: s.shipper.address.street,
+                  city: s.shipper.address.location1, zip: s.shipper.address.zipCode,
+                  country: s.shipper.address.country.countryID, tax: s.shipperTAXID,
+                  forwarder: s.forwarderName })))
+            must equalTo([
+                { name1: "in your name as agent of BASF",
+                  street: "Polyurethanes GmbH Elastogranstr.60", city: "49448 Lemfoerde",
+                  zip: null, country: "DE", tax: null, forwarder: "POLYTRA N.V." },
+                { name1: "in your name as agent of BASF",
+                  street: "Polyurethanes GmbH Elastogranstr.60", city: "49448 Lemfoerde",
+                  zip: null, country: "DE", tax: null, forwarder: "POLYTRA N.V." }
+            ])),
+
+    // Section 4 again, and the case 2800245092 could not show. There the placeholder "Ocean
+    // Vessel" is replaced by the real voyage code on the Abschlussinfo, which reads like a
+    // progression every order completes. This order never completes it: BASF sends the literal
+    // placeholder on the Erstinfo and sends it again on the Abschlussinfo, three weeks later,
+    // with the sailing re-dated (ETD 2026-09-17 -> 2026-10-04) and the vessel unchanged. So a
+    // mapping that treated a completion message as the point the voyage code becomes known -
+    // requiring one, or falling back to something else when TDT02 still looks like a
+    // placeholder - would be wrong on this order. TDT02 is copied, whatever it says, and the
+    // standard CarLo Vessel and VoyageNumber stay unset either way.
+    () -> "the voyage placeholder can survive to the completion message" in (
+        ([ "fcl/2800248632-erstinfo-create.json", "fcl/2800248632-abschlussinfo-create.json" ]
+            flatMap ((f) -> shipmentsOf(f) map ((s) ->
+                { voyage: s.master.mainCarriageAsOcean.customerVoyage,
+                  vessel: s.master.mainCarriageAsOcean.customerVessel.vesselName,
+                  lloyds: s.master.mainCarriageAsOcean.customerVessel.vesselNumber,
+                  etd: s.master.mainCarriageAsOcean.customerETD,
+                  stdVessel: s.vessel, stdVoyage: s.voyageNumber })))
+            must equalTo([
+                { voyage: "Ocean Vessel", vessel: "NAVIOS VERMILION", lloyds: "9324837",
+                  etd: "2026-09-17", stdVessel: null, stdVoyage: null },
+                { voyage: "Ocean Vessel", vessel: "NAVIOS VERMILION", lloyds: "9324837",
+                  etd: "2026-10-04", stdVessel: null, stdVoyage: null }
+            ])),
+
+    // Sections 12/13, on a second order. 2800245092 is the only other message pair that shows
+    // the labelled/unlabelled MEA+WT+AAB split, so on its own it could not tell the rule from
+    // an accident of that one order. Here the same thing happens again with different numbers,
+    // and with the unlabelled value the *larger* of the two (24854 planned, 24804 verified) -
+    // so a mapping that took the last AAB, or the highest, rather than the labelled one would
+    // pass 2800245092's shape and still report a weight BASF never verified. The container is
+    // replaced (1309608150 -> ONEU9419864) and re-tared while its EDIID stays put, which is
+    // what lets the update land on the container the Erstinfo created.
+    () -> "an unlabelled MEA+WT+AAB is not a VGM, on a second order" in (
+        ([ "fcl/2800248632-erstinfo-create.json", "fcl/2800248632-abschlussinfo-create.json" ]
+            flatMap ((f) -> shipmentsOf(f)[0].container map ((c) ->
+                { no: c.containerNumber, ediid: c.eDIID, tare: c.tareWeight,
+                  vgm: c.verifiedGrossMass, sig: c.vgmVerificationSignature })))
+            must equalTo([
+                { no: "1309608150", ediid: "5002375248/000010", tare: "4600.000",
+                  vgm: null, sig: null },
+                { no: "ONEU9419864", ediid: "5002375248/000010", tare: "4400.000",
+                  vgm: 24804.0, sig: "NICHOLAS GIBBS" }
+            ])),
+
+    // The other half of what 2800245092 left open. There the booking number is absent from the
+    // Erstinfo and present on the Abschlussinfo; this order carries no RFF+BN in either
+    // message, so a completion message with no carrier booking number at all is a shape BASF
+    // really sends. ExternalReferences is absent rather than an empty list - an empty list
+    // would be an instruction to clear whatever the dossier already holds.
+    () -> "an order can complete with no booking number at all" in (
+        ([ "fcl/2800248632-erstinfo-create.json", "fcl/2800248632-abschlussinfo-create.json" ]
+            flatMap ((f) -> shipmentsOf(f) map ((s) -> s.master.externalReferences)))
+            must equalTo([null, null])),
 
     // === cancel, from a real message =======================================================
     // The example set now carries an actual code 1 IFTMIN, which it did not before, so the

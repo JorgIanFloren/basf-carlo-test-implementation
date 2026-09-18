@@ -305,6 +305,69 @@ Both are asserted against this order in `IftminMappingTest.dwl`, alongside its v
 (`Ocean Vessel` on the Erstinfo, `635S` on the Abschlussinfo) and its `RFF+BN` booking number;
 `IftmbfMappingTest.dwl` pins the booking between them field for field.
 
+#### `2800248632` - the "in your name as agent" order
+
+`docs/example-orders/inbound/fcl/in-your-name-as-agent/` is the second whole order in the set -
+Erstinfo, IFTMBF booking, Abschlussinfo - and it is the folder to read for what BASF does with the
+**shipper**.
+
+- **`NAD+OS` is not always a party.** On this order it is an instruction to the forwarder:
+
+  ```
+  NAD+OS+++in your name as agent of BASF:Polyurethanes GmbH Elastogranstr.60++49448 Lemfoerde+++DE
+  ```
+
+  There is no party id and no `NAD05`. `NAD0401` holds the instruction, `NAD0402` holds the
+  principal's name and street run together, and `NAD06` holds a postcode and city in one field.
+  The mapping carries all four components through verbatim - `Name1` / `Street` / `Location1` /
+  `Country` - so the shipper block stays a faithful record of what BASF sent. `2800245092` carries
+  the identical line, so this is BASF's standard phrasing for the arrangement, not a one-off.
+
+  **Tris does not carry it through.** `readme.txt` in that folder records what the legacy system
+  prints for this order:
+
+  ```
+  POLYTRA N.V. as agent of BASF
+  Polyurethanes GmbH Elastogranstr.60
+  49448 Lemfoerde GERMANY
+  2800248632BL00
+  ```
+
+  Tris substitutes the forwarder's own name for the words "in your name", expands the country and
+  appends `CustomerReference + BASFBL`. **The CarLo mapping performs none of that**, and no BASF
+  specification this repo has asks for it. Both halves do reach CarLo - the forwarder is mapped
+  separately off `NAD+FW` (`ForwarderName: POLYTRA N.V.`), and the reference and BL are already on
+  the shipment - so the Tris rendering is composable downstream from what the mapping emits. Which
+  side should compose it is an **open question for BASF and Polytra**, not something the mapping
+  should decide quietly; until it is answered, the test pins the verbatim pass-through. (The last
+  line is not new information either: `2800248632BL00` is exactly the `EDIID` the mapping already
+  emits.)
+
+  The IFTMBF booking of the same order carries the structured counterpart, `NAD+AG+817630++POLYTRA
+  N.V.`. It is unmapped, and deliberately so: `Consignor` already comes from `NAD+CZ`, and a booking
+  may not push a party change onto a dossier the Erstinfo has already addressed. Fifteen example
+  bookings carry `NAD+AG` and every one of them names Polytra.
+
+Two more things this order settles that `2800245092` could not:
+
+- **The voyage placeholder can survive to the end.** `2800245092` replaces the literal
+  `Ocean Vessel` in `TDT02` with a real code on its Abschlussinfo, which reads like a progression
+  every order completes. This one does not: both messages carry `Ocean Vessel`, three weeks apart,
+  with the sailing re-dated (ETD `2026-09-17` -> `2026-10-04`) and the vessel unchanged. A mapping
+  that treated the completion message as the point a voyage code becomes known would be wrong here.
+- **An order can complete with no `RFF+BN` at all.** Neither message carries one, so
+  `ExternalReferences` is absent on both - not an empty list, which would tell CarLo to clear what
+  the dossier holds.
+
+It is also a second, independent witness for the labelled-`MEA+WT+AAB` rule above, and a sharper
+one: here the *unlabelled* value is the larger of the two (`24854.000` planned on the Erstinfo,
+`24804.000` labelled `:::VGM` on the Abschlussinfo, signed `NICHOLAS GIBBS`), so taking the last or
+the highest `AAB` would satisfy `2800245092`'s shape and still report a weight BASF never verified.
+The container is replaced and re-tared (`1309608150` -> `ONEU9419864`, 4600 -> 4400 kg) while its
+EDIID `5002375248/000010` stays put.
+
+All of this is asserted in `IftminMappingTest.dwl`; `IftmbfMappingTest.dwl` pins the booking.
+
 #### Other deviations
 
 - **Section 13 (VGM signature).** The spec says `NAD+AM` occurs once per message and should be

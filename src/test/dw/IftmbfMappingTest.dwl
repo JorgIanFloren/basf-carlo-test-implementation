@@ -1,6 +1,6 @@
 /**
 * BASF IFTMBF mapping, exercised against every IFTMBF interchange in docs/example-orders/inbound
-* (14 fixtures: 9 FCL, 1 LCL, 4 master-sub/ms).
+* (15 fixtures: 10 FCL, 1 LCL, 4 master-sub/ms).
 *
 * The mapping is run the way the data-transformer runs it: `evalPath` executes
 * src/main/dw/InboundIftmbf.dwl - the whole self-contained script, output header and document
@@ -260,6 +260,33 @@ var msFanOut = bookingsWith("ms/2800231445-iftmbf.json", "iftmin-before-iftmbf-m
                             haulage: "MER/MER", terms: "Prepaid", shipmentDate: "2026-09-07",
                             eta: "2026-09-25", closing: "2026-09-04",
                             cargo: null, container: null, consignee: null }])),
+
+    // === ML 2800248632, the booking of the "in your name as agent" order ====================
+    // The Erstinfo and Abschlussinfo of this order are asserted in IftminMappingTest.dwl under
+    // the same heading. Pinned the same way as 2800245092 above, for the same reason, and as a
+    // second complete FCL booking it is what makes that one a rule rather than one sample.
+    // This is also the booking that carries NAD+AG - BASF naming Polytra its agent, the
+    // structured counterpart of the "in your name as agent of BASF" line on the instructions.
+    // The booking mapping does not read NAD+AG, and must not start: Consignor already comes
+    // from NAD+CZ, and an agent arriving on the booking is not a party change to push onto a
+    // dossier the Erstinfo has already addressed.
+    () -> "the booking of the agent-shipper order carries the update worksheet and nothing else" in (
+        (bookingsOf("fcl/2800248632-iftbmf.json") map ((s) ->
+            { ref: s.customerReference, action: s.actionAttribute,
+              customer: s.customer.matchcode, dispatch: s.estimatedDispatchDate,
+              pickup: s.pickupLocation.pickupLocation.unLocationCode.matchcode,
+              haulage: s.haulageType.matchcode, terms: s.deliveryTerms,
+              shipmentDate: s.shipmentDate,
+              eta: s.master.mainCarriageAsOcean.customerETA,
+              closing: s.master.mainCarriageAsOcean.customerClosing,
+              cargo: s.cargo, container: s.container, consignee: s.consignee,
+              shipper: s.shipper, consignor: s.consignor }))
+            must equalTo([{ ref: "2800248632", action: "updateorcreate", customer: "57076",
+                            dispatch: "2026-09-11T00:00:00", pickup: "BEANR",
+                            haulage: "MER/MER", terms: "Prepaid", shipmentDate: "2026-09-17",
+                            eta: "2026-10-11", closing: "2026-09-14",
+                            cargo: null, container: null, consignee: null,
+                            shipper: null, consignor: null }])),
 
     // === the LCL gap the sheet leaves open ==================================================
     // With no EQD there is no equipment group, so neither HaulageType (no TMD) nor
