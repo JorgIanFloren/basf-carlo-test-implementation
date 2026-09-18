@@ -1,14 +1,33 @@
-# BASF → Carlo integration
+# BASF ↔ Carlo integration
 
-Three DataWeave mappings that turn BASF's inbound EDIFACT messages into calls on Carlo
-(Soloplan) v3. Deployed on Fracht Connect, where the EDI parser hands each mapping the **parsed
-JSON** representation of an interchange — the mappings never see EDIFACT.
+Four DataWeave mappings between BASF's EDIFACT messages and Carlo (Soloplan) v3, deployed on
+Fracht Connect. **Three inbound**, which turn a BASF interchange into a Carlo API call, and
+**one outbound**, which turns a Carlo event into a BASF message. No mapping ever sees EDIFACT
+text: the platform's EDI parser hands the inbound three the **parsed JSON** representation of an
+interchange, and the outbound one returns that same representation for the platform to
+serialise.
 
 | Message | Mapping | Deployed as | Target contract | Spec |
 |---|---|---|---|---|
 | IFTMIN (instruction) | `src/main/dw/InboundIftmin.dwl` | `Fracht-Belgium/basf/basf-inbound-iftmin-to-carlo.dwl` | `docs/expected_output_SeaHouseShipment.json` | `docs/iftmin/01-IFTMIN_mapping_spec.md` |
 | IFTMBF (firm booking) | `src/main/dw/InboundIftmbf.dwl` | `Fracht-Belgium/basf/basf-inbound-iftmbf-to-carlo.dwl` | ″ | `docs/iftmbf/01-IFTMBF_mapping_spec.md` |
 | IFCSUM (consolidation summary) | `src/main/dw/InboundIfcsum.dwl` | `basf/InboundIfcsum.dwl` | `docs/expected_output_ShipmentCargo.json` | `docs/ifcsum/01-IFCSUM_mapping_spec.md` |
+| **IFTSTA (status report) — outbound** | `src/main/dw/OutboundIftsta.dwl` | *not yet profiled* | `docs/example-orders/outbound/iftsta/basf/` (14 approved messages) | `docs/iftsta/01-IFTSTA_mapping_spec.md` |
+
+**IFTSTA runs the other way.** Its source is a Carlo `shipmentChangeEventLogEntry` and its
+target is the EDI JSON representation of an IFTSTA D96A interchange; one Carlo event becomes one
+status message for BASF. Seven event types are in scope, each in an FCL and an LCL flavour. It
+has no `dwlPath` yet because no outbound profiler exists in `config/` — see the spec's open
+items, the first of which (**the writer's JSON schema is reconstructed, not captured**) has to be
+settled before it can go live.
+
+Carlo reaches it by POSTing to `…/fra-e-inbound/carlo_be/basf_iftsta`, which writes the payload to
+Azure blob storage; MuleSoft is then triggered to process the file. The field contract is fixed
+and fully documented — `docs/iftsta/02-carlo-event-contract.md` — but **what triggers the flow off
+the blob is not established**, and that is what the missing profiler hinges on.
+
+`docs/iftsta/` holds three documents: **01** the mapping spec, **02** the input contract, and
+**03** the current state and open issues. Start at **03** when picking this back up.
 
 **The target API is documented in `docs/carlo/`** — how to call it, all 54 schemas, the
 `$filter` property ids, and the behaviour its OpenAPI document does not describe. Start at
@@ -16,11 +35,16 @@ JSON** representation of an interchange — the mappings never see EDIFACT.
 
 **Each mapping is a single self-contained script.** The data-transformer evaluates the uploaded
 file on its own and resolves no imports off Blob Storage, so nothing may be imported from a
-shared module — the helpers all three need (date conversion, `camelKeys`, the position-agnostic
-segment navigation, `messagesOfType`) are inlined verbatim into each file. That is three copies
-on purpose: **change one and change all three.** Each mapping's header names the blob it is
-deployed as, which is the `dwlPath` of its profile's transformer step — the platform's naming
-differs from the repo filename, so the pairing is stated in both places.
+shared module — the helpers the inbound three need (date conversion, `camelKeys`, the
+position-agnostic segment navigation, `messagesOfType`) are inlined verbatim into each file. That
+is three copies on purpose: **change one and change all three.** Each inbound mapping's header
+names the blob it is deployed as, which is the `dwlPath` of its profile's transformer step — the
+platform's naming differs from the repo filename, so the pairing is stated in both places.
+
+`OutboundIftsta.dwl` is self-contained on the same terms but shares none of that block: running
+the other way it has no interchange to navigate and no Carlo document to camel-case, so it
+carries its own, smaller set of helpers. Nothing needs to be kept in step between it and the
+inbound three.
 
 Each mapping takes the **whole interchange** and returns an array, because one interchange can
 legitimately carry several messages — that is exactly what a BASF master-sub is.
@@ -53,8 +77,9 @@ cd basf
 mvn -o test
 ```
 
-209 tests. Every EDIFACT interchange in `docs/example-orders/inbound` is exercised by the mapping for
-its message type: 35 IFTMIN, 13 IFTMBF, 6 IFCSUM.
+255 tests. Every EDIFACT interchange in `docs/example-orders/inbound` is exercised by the mapping for
+its message type: 35 IFTMIN, 13 IFTMBF, 6 IFCSUM. Outbound, all 14 approved IFTSTA messages
+(7 message types × FCL and LCL) are reproduced from the Carlo events that raise them.
 
 The suites run each mapping the way the data-transformer does — `evalPath` evaluates the
 uploaded script itself against a `payload` context and asserts on the JSON Carlo would receive.
@@ -84,8 +109,15 @@ under `docs/`, and the copies must be kept in step with them.
 
 ```
 python tools/edifact_to_json.py --all          # docs/example-orders/inbound -> src/test/resources/example-orders/inbound
+python tools/edifact_to_json.py --outbound     # docs/example-orders/outbound -> src/test/resources/example-orders/outbound
 python tools/edifact_to_json.py <in.txt>       # one file, to stdout
 ```
+
+`--outbound` does double duty for IFTSTA. It parses the 14 approved messages into the shape
+`OutboundIftsta.dwl` emits — which is how the suite gets an expectation it did not write itself —
+and copies the Carlo events that are the mapping's input. The mapping builds that shape from a
+Carlo event in DataWeave; the converter builds it from EDIFACT in Python; the test asserts the
+two agree.
 
 **Regenerate whenever `docs/example-orders/inbound` changes, and commit the result.** The fixture set had
 drifted once: the sources were reorganised without re-running the converter, so fixture names no
@@ -174,7 +206,24 @@ message recycles each of them.
 
 ## Open items
 
-Collected from the three specs; each is written up where it belongs.
+Collected from the four specs; each is written up where it belongs.
+
+0. **IFTSTA is not deployable yet**, for two independent reasons.
+
+   *The output shape is unconfirmed.* The EDI JSON it writes is reconstructed from the inbound
+   parser's output rather than captured from the platform's EDI *writer*. Unlike the inbound
+   three — which navigate by segment name and cannot be hurt by a wrong position — this one emits
+   the position keys, so they are load-bearing. Capture one outbound transformer envelope and
+   diff it against the structure table at the top of `OutboundIftsta.dwl`.
+
+   *The pipeline is half-known.* Carlo POSTs to `…/fra-e-inbound/carlo_be/basf_iftsta`, which
+   writes the payload to Azure blob storage — but what then picks the blob up and triggers
+   MuleSoft is not established, so the outbound `dataProfiler` `config/` still lacks cannot be
+   written. The input contract itself is settled (`docs/iftsta/02-carlo-event-contract.md`).
+
+   Both are **parked until the week of 22-09-2026**.
+   `docs/iftsta/01-IFTSTA_mapping_spec.md` §10 has the rest, including the leading-zero risk on
+   `UNB0402` and the vessel flag Carlo does not supply.
 
 1. ~~**The "GET dossier by CustomerRef" step is wired but not yet loadable.**~~ Resolved — it is
    the `dataDelivery` at sequence 3 of both the IFTMIN and IFTMBF profiles, fed by the

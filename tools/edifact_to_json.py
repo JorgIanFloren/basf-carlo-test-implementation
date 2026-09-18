@@ -218,6 +218,7 @@ BASE_SEGMENTS: dict[str, str] = {
     "RNG": "S  C",
     "SEL": "S  C  S  C",
     "SGP": "C  S",
+    "STS": "C  C  C  C",
     "TCC": "C  C  C  C",
     "TDT": "S  S  C  C  C  S  C  C  S",
     "TMD": "C  S  S",
@@ -519,16 +520,73 @@ IFCSUM_D08A = [
     ]),
 ]
 
+# --- IFTSTA D96A -----------------------------------------------------------------------
+# The one OUTBOUND structure: Carlo raises a shipment-change event, OutboundIftsta.dwl builds
+# this shape, and Fracht Connect serialises it to EDIFACT. Parsing the approved messages under
+# docs/example-orders/outbound/iftsta/basf back into it is what gives the mapping suite an
+# expectation it did not write itself.
+#
+# RECONSTRUCTED, not verified - no parser capture of an IFTSTA exists. Two things constrain it
+# and neither is proof:
+#
+#   - It consumes all 14 approved messages with nothing left over. `build_message` raises
+#     Unplaceable on a leftover segment, so a structure that is merely plausible fails loudly;
+#     this one does not. That makes the nesting self-consistent with the messages.
+#   - The TDT group carries a nested LOC+DTM group, which is how IFTMIN SG8/SG9, IFTMBF SG7/SG8
+#     and IFCSUM SG9 all model carriage in this file.
+#
+# The consequence worth knowing: because EDIFACT parsing is a left-to-right structural walk and
+# the messages put both LOC segments before all four voyage dates, DTM+133/186/132/178 land
+# under the *second* SG7 repeat - the arrival port - not the departure one. That is what the
+# grammar says, not a statement about which port the dates describe.
+#
+# See docs/iftsta/01-IFTSTA_mapping_spec.md §10.1. Positions and group numbers must be
+# confirmed against a captured outbound envelope before go-live.
+
+IFTSTA_D96A = [
+    Seg("0020", "BGM"),
+    Seg("0030", "DTM", 9),
+    Seg("0040", "TSR", 9),
+    Seg("0050", "FTX", 9),                                      # ESTIMATED
+    Seg("0060", "CNT", 9),                                      # ESTIMATED
+    Grp("0070", 1, 9, [Seg("0080", "RFF"), Seg("0090", "DTM", 9)]),
+    Grp("0100", 2, 9, [                                         # ESTIMATED
+        Seg("0110", "NAD"),
+        Grp("0120", 3, 9, [Seg("0130", "CTA"), Seg("0140", "COM", 9)]),
+    ]),
+    Grp("0150", 4, 9999, [
+        Seg("0160", "CNI"),
+        Grp("0170", 5, 9, [
+            Seg("0180", "STS"),
+            Seg("0190", "RFF", 9),
+            Seg("0200", "DTM", 9),
+            Seg("0210", "FTX", 9),                              # ESTIMATED
+            Grp("0220", 6, 9, [
+                Seg("0230", "TDT"),
+                Seg("0240", "DTM", 9),
+                Grp("0250", 7, 9, [Seg("0260", "LOC"), Seg("0270", "DTM", 9)]),
+            ]),
+            Grp("0280", 8, 999, [
+                Seg("0290", "EQD"),
+                Seg("0300", "MEA", 9),                          # ESTIMATED
+                Seg("0310", "SEL", 9),                          # ESTIMATED
+            ]),
+        ]),
+    ]),
+]
+
 STRUCTURES = {
     ("IFTMIN", "D99A"): IFTMIN_D99A,
     ("IFTMBF", "D08A"): IFTMBF_D08A,
     ("IFCSUM", "D08A"): IFCSUM_D08A,
+    ("IFTSTA", "D96A"): IFTSTA_D96A,
 }
 
 MESSAGE_NAMES = {
     "IFTMIN": "Instruction message",
     "IFTMBF": "Firm booking message",
     "IFCSUM": "Forwarding and consolidation summary message",
+    "IFTSTA": "International multimodal status report message",
 }
 
 
@@ -767,8 +825,80 @@ def as_list(node: dict, name: str) -> list:
     return []
 
 
+def convert_tree(src: str, dst: str, label: str) -> int:
+    """Convert every EDIFACT file under `src` into `dst`, mirroring the directory layout.
+
+    Shared by --all and --outbound. The inbound walk flattens one level into a scenario
+    directory and writes a manifest; the outbound tree is already `<variant>/<MESSAGE>.txt`
+    and its expectation *is* the message, so it needs neither.
+    """
+    ok = failed = skipped = 0
+    for root, _dirs, files in os.walk(src):
+        for name in sorted(files):
+            path = os.path.join(root, name)
+            if not is_edifact(path):
+                skipped += 1
+                continue
+            rel = os.path.relpath(path, src).replace("\\", "/")
+            out_path = os.path.join(dst, os.path.splitext(rel)[0] + ".json")
+            os.makedirs(os.path.dirname(out_path), exist_ok=True)
+            try:
+                doc = convert(path)
+            except Unplaceable as exc:
+                print(f"FAIL {rel}: {exc}")
+                failed += 1
+                continue
+            with open(out_path, "w", encoding="utf-8", newline="\n") as fh:
+                json.dump(doc, fh, indent=2, ensure_ascii=False)
+                fh.write("\n")
+            print(f"ok   {rel}")
+            ok += 1
+    print(f"\n{label}: {ok} converted, {failed} failed, {skipped} skipped (not EDIFACT)")
+    return 1 if failed else 0
+
+
+def copy_tree(src: str, dst: str, label: str) -> int:
+    """Copy every .json under `src` to `dst`, mirroring the layout. Re-serialised rather than
+    byte-copied so the classpath fixture is normalised the same way a converted one is."""
+    count = 0
+    for root, _dirs, files in os.walk(src):
+        for name in sorted(files):
+            if not name.endswith(".json"):
+                continue
+            rel = os.path.relpath(os.path.join(root, name), src).replace("\\", "/")
+            out_path = os.path.join(dst, rel)
+            os.makedirs(os.path.dirname(out_path), exist_ok=True)
+            with open(os.path.join(root, name), encoding="utf-8") as fh:
+                doc = json.load(fh)
+            with open(out_path, "w", encoding="utf-8", newline="\n") as fh:
+                json.dump(doc, fh, indent=2, ensure_ascii=False)
+                fh.write("\n")
+            print(f"ok   {rel}")
+            count += 1
+    print(f"\n{label}: {count} copied")
+    return 0
+
+
 def main(argv: list[str]) -> int:
     here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if argv and argv[0] == "--outbound":
+        # The approved IFTSTA messages are the *expectation* for OutboundIftsta.dwl, so they
+        # travel to the classpath parsed into the same shape the mapping emits. The mapping
+        # builds that shape from a Carlo event; this builds it from the EDIFACT. Agreement
+        # between the two is the suite's central assertion.
+        out = os.path.join(here, "src", "test", "resources", "example-orders", "outbound", "iftsta")
+        rc = convert_tree(
+            os.path.join(here, "docs", "example-orders", "outbound", "iftsta", "basf"),
+            os.path.join(out, "basf"),
+            "outbound expectations")
+        # The Carlo events are the *input*, and they are already JSON - copied rather than
+        # converted, but copied by this tool so that one command keeps the whole fixture set in
+        # step with docs/ and no file on the classpath is hand-maintained.
+        return rc or copy_tree(
+            os.path.join(here, "docs", "example-orders", "outbound", "iftsta", "carlo"),
+            os.path.join(out, "carlo"),
+            "outbound inputs")
+
     if argv and argv[0] == "--all":
         src = os.path.join(here, "docs", "example-orders", "inbound")
         dst = os.path.join(here, "src", "test", "resources", "example-orders", "inbound")
