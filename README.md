@@ -21,6 +21,11 @@ has no `dwlPath` yet because no outbound profiler exists in `config/` — see th
 items, the first of which (**the writer's JSON schema is reconstructed, not captured**) has to be
 settled before it can go live.
 
+Carlo reaches it by POSTing to `…/fra-e-inbound/carlo_be/basf_iftsta`, which writes the payload to
+Azure blob storage; MuleSoft is then triggered to process the file. The field contract is fixed
+and fully documented — `docs/iftsta/02-carlo-event-contract.md` — but **what triggers the flow off
+the blob is not established**, and that is what the missing profiler hinges on.
+
 **The target API is documented in `docs/carlo/`** — how to call it, all 54 schemas, the
 `$filter` property ids, and the behaviour its OpenAPI document does not describe. Start at
 `docs/carlo/README.md`.
@@ -200,13 +205,20 @@ message recycles each of them.
 
 Collected from the four specs; each is written up where it belongs.
 
-0. **IFTSTA is not deployable yet.** Its mapping and tests are complete, but the EDI JSON shape
-   it writes is reconstructed from the inbound parser's output rather than captured from the
-   platform's EDI *writer*, and no outbound `dataProfiler` exists in `config/`. Unlike the
-   inbound three — which navigate by segment name and cannot be hurt by a wrong position — this
-   one emits the position keys, so they are load-bearing. Capture one outbound transformer
-   envelope and diff it against the structure table at the top of `OutboundIftsta.dwl`. See
-   `docs/iftsta/01-IFTSTA_mapping_spec.md` §10, which also lists the leading-zero risk on
+0. **IFTSTA is not deployable yet**, for two independent reasons.
+
+   *The output shape is unconfirmed.* The EDI JSON it writes is reconstructed from the inbound
+   parser's output rather than captured from the platform's EDI *writer*. Unlike the inbound
+   three — which navigate by segment name and cannot be hurt by a wrong position — this one emits
+   the position keys, so they are load-bearing. Capture one outbound transformer envelope and
+   diff it against the structure table at the top of `OutboundIftsta.dwl`.
+
+   *The pipeline is half-known.* Carlo POSTs to `…/fra-e-inbound/carlo_be/basf_iftsta`, which
+   writes the payload to Azure blob storage — but what then picks the blob up and triggers
+   MuleSoft is not established, so the outbound `dataProfiler` `config/` still lacks cannot be
+   written. The input contract itself is settled (`docs/iftsta/02-carlo-event-contract.md`).
+
+   `docs/iftsta/01-IFTSTA_mapping_spec.md` §10 has the rest, including the leading-zero risk on
    `UNB0402` and the vessel flag Carlo does not supply.
 
 1. ~~**The "GET dossier by CustomerRef" step is wired but not yet loadable.**~~ Resolved — it is

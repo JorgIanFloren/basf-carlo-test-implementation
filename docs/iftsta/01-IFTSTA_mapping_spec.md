@@ -8,7 +8,7 @@ into the EDIFACT status message BASF receives.
 |---|---|
 | Authority | `docs/iftsta/IFTSTA_mapping_v1.xlsx` — one sheet per message type, plus `Sheet1` (the index); `docs/00-basf.md` §Outbound |
 | Mapping | `src/main/dw/OutboundIftsta.dwl` — one self-contained script |
-| Source | Carlo `shipmentChangeEventLogEntry` JSON — `docs/example-orders/outbound/iftsta/carlo/{fcl,lcl}/<matchcode>.json` |
+| Source | Carlo `shipmentChangeEventLogEntry` JSON — contract in `02-carlo-event-contract.md`, examples in `docs/example-orders/outbound/iftsta/carlo/{fcl,lcl}/<matchcode>.json` |
 | Target | the EDI JSON representation of an IFTSTA D96A interchange; Fracht Connect serialises it to EDIFACT text |
 | Approved output | `docs/example-orders/outbound/iftsta/basf/{fcl,lcl}/IFTSTA*.txt` — 14 files, the EDIFACT these mappings must produce |
 | Tests | `src/test/dw/IftstaMappingTest.dwl` — `mvn -o test` |
@@ -66,6 +66,12 @@ every other row, and *"Value is unique per array element"* against those two. Th
 not redundancy to be optimised away: it is what the message format requires.
 
 ## 3. Source
+
+Carlo POSTs the event to
+`https://api-ch2.fracht-connect.com/dev/s/v1/fra-e-inbound/carlo_be/basf_iftsta`, which writes the
+JSON to Azure blob storage; MuleSoft is then triggered to process the file. **The full contract —
+every field, its type, how it reaches the transformer, and what is still open about its value
+ranges — is `02-carlo-event-contract.md`.** The summary below is the part this mapping consumes.
 
 `shipmentChangeEventLogEntry[0]` — the mapping reads the **first** entry. Every captured example
 carries exactly one; see §9.
@@ -263,21 +269,27 @@ document diff.
    status transactions are 214 and 315, which are different messages). Stated because the work
    was requested in terms of "x12 json"; if an X12 target is genuinely intended, this mapping is
    the wrong shape and the sheets do not describe it.
-3. **No outbound profiler config exists.** `config/` holds three inbound `dataProfiler`
-   documents and one `dataGetter`. An IFTSTA profile needs a getter that subscribes to Carlo
-   shipment-change events, this transformer, and an EDI delivery step — none of which is
-   written. The `dwlPath` blob name is therefore not yet fixed, which is why this mapping's
-   header does not name one where the inbound three do.
+3. **No outbound profiler config exists, and the trigger is unidentified.** `config/` holds three
+   inbound `dataProfiler` documents and one `dataGetter`; an IFTSTA profile needs a source, this
+   transformer, and an EDI delivery step, none of which is written. The front half of the path is
+   now known — Carlo POSTs to `fra-e-inbound/carlo_be/basf_iftsta`, which writes the payload to
+   Azure blob storage — but **what then picks the blob up and starts the flow is not
+   established**, and that decides the profiler's source step. See `02-carlo-event-contract.md`
+   §1. The `dwlPath` blob name is consequently not fixed either, which is why this mapping's
+   header names none where the inbound three do.
 4. **The vessel flag has no source.** §8.2. Confirm with the analyst whether BASF needs it; if
    so, Carlo has to supply it.
 5. **Only `shipmentChangeEventLogEntry[0]` is read.** Every captured example carries exactly one
-   entry. If Carlo can emit several events in one payload, the mapping must decide whether that
-   is several interchanges or one — and the sheets, which describe a single message throughout,
-   do not say.
+   entry. The field set Carlo sends is now confirmed as fixed, but its *cardinality* is not: if
+   Carlo can batch several events into one payload, the tail is silently dropped, and whether
+   that should become several interchanges or several messages in one is a question the sheets
+   — which describe a single message throughout — do not answer. `02-carlo-event-contract.md`
+   §4 lists this with the two other value-range questions the examples leave open.
 6. **The example data is still partly placeholder.** `masterBillOfLadingNumber` is
    `"master bl number"` and `voyageNumber` is `"123"` in both FCL and LCL examples. The mapping
    passes them through (§6), so no change is expected when real values arrive — but the approved
    `.txt` files will need regenerating, and they are fixtures.
 7. **`preferredModeOfTransport` is `"Ocean"` in every example and is not mapped.** The mapping
    reads `mainCarriageAsOcean` unconditionally. If a road or air shipment can raise the same
-   events, `TDT`/`LOC` have no source and the sheets do not cover it.
+   events, `TDT`/`LOC` have no source and the sheets do not cover it. It is one of only three
+   contract fields the mapping ignores — `02-carlo-event-contract.md` §3.
