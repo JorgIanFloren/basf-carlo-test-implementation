@@ -12,6 +12,14 @@ space encoding wrong is an HTTP 500, not a 400.
 Two ids separated by `/` (e.g. `186062/5765907`) are the swagger's own example and mean the
 property is reachable by either id; use the first.
 
+**Ids are not stable across contract regenerations.** `MRN` on `ShipmentCargo` was `700139` when
+this page was first written and is `5745430` as of 2026-09-18; `700139` appears nowhere in the
+current document. A filter naming an id the contract does not expose is silently dropped and you
+get the unfiltered result set back (see
+[01-calling-the-api.md § `$filter`](01-calling-the-api.md#4-filter)), so a stale id here reads as
+"the filter matched everything", not as an error. Re-check this page whenever the contract is
+re-generated server-side.
+
 A `_Range` row is a pair: the property has a *from* id and a *to* id one higher, and you combine
 them with `ge` / `le`. The plain (non-range) id matches a single exact value.
 
@@ -102,7 +110,7 @@ them with `ge` / `le`. The plain (non-range) id matches a single exact value.
 | `Stackable` | `5745412` | `eq` | `5745412 eq 10` |
 | `HandlingInfo` | `5745414` | `eq`, `contains`, `endswith`, `startswith` | `5745414 eq 'yourFilterString'` |
 | `Character` | `5745413` | `eq`, `contains`, `endswith`, `startswith` | `5745413 eq 'yourFilterString'` |
-| `MRN` | `700139` | `eq`, `contains`, `endswith`, `startswith` | `700139 eq 'yourFilterString'` |
+| `MRN` | `5745430` | `eq`, `contains`, `endswith`, `startswith` | `5745430 eq 'yourFilterString'` |
 | `ArticleNumber` | `700265` | `eq`, `contains`, `endswith`, `startswith` | `700265 eq 'yourFilterString'` |
 | `GTIN` | `700266` | `eq`, `contains`, `endswith`, `startswith` | `700266 eq 'yourFilterString'` |
 | `DeliveryInfo` | `700267` | `eq`, `contains`, `endswith`, `startswith` | `700267 eq 'yourFilterString'` |

@@ -8,7 +8,8 @@ README open item 3 says:
 > fields silently. Check them against Carlo's Swagger.
 
 This page is that check, run against
-`/docs/PolytraSeafreightHouseShipment_BASF-v3/docs.json` on 2026-09-16.
+`/docs/PolytraSeafreightHouseShipment_BASF-v3/docs.json` on 2026-09-16 and **re-run on
+2026-09-18**, when the live document had moved under it — see § What changed since 2026-09-16.
 
 ## Result
 
@@ -16,9 +17,17 @@ This page is that check, run against
 
 | Mapping | Distinct keys emitted | In contract | Not in contract |
 |---|--:|--:|--:|
-| `InboundIftmin.dwl` | 130 | 128 | 2 |
-| `InboundIftmbf.dwl` | 22 | 22 | 0 |
+| `InboundIftmin.dwl` | 145 | 143 | 2 |
+| `InboundIftmbf.dwl` | 21 | 21 | 0 |
 | `InboundIfcsum.dwl` | 12 | 12 | 0 |
+
+(Counts as of 2026-09-18. The 2026-09-16 run read 130 / 22 / 12; the mappings themselves have
+moved since, not the verdict.)
+
+The `InboundIfcsum.dwl` row survives the v1-sheet feedback unchanged: dropping `ItemNumber`
+and adding `PrelegReference` leaves the count at 12, and the container-level `EDIID` reuses a
+key name already counted. `container.prelegReference` and `container.eDIID` are both defined on
+`ShipmentContainer` — see `docs/expected_output_ShipmentCargo.json`.
 
 The two exceptions are `SendDate` and `ExportItemReference`, both in one function:
 
@@ -44,7 +53,7 @@ code that would have sent unknown fields is dead. It can go.
 Two independent checks:
 
 1. **Static key extraction.** Strip comments from each `.dwl`, collect every
-   `Identifier:` that starts an object-literal entry, and look each up in the set of all 491
+   `Identifier:` that starts an object-literal entry, and look each up in the set of all 492
    distinct field names the contract defines across its 54 schemas. Case-insensitive, because the
    mappings write PascalCase and `camelKeys` lower-cases the first letter on the way out.
 2. **Structural validation of a real output.** Walk `docs/2800209301_carlo_output.json` (a
@@ -89,22 +98,53 @@ with `docs.json` fetched from
 Worth re-running whenever the contract is re-generated server-side — CarLo drops unknown fields
 in silence, so a renamed field is a mapping that quietly stops populating something.
 
+## What changed since 2026-09-16
+
+Re-run on 2026-09-18 against the same URL. The verdict above still holds — every field the three
+mappings emit still exists in the contract — but the document underneath had moved in four
+places, and the other pages in `docs/carlo/` have been corrected to match:
+
+| Change | Where | Consequence |
+|---|---|---|
+| `changedByAPI` (`boolean`) added to `ShipmentCargo`, `ShipmentContainer` and `ShipmentCargoDangerousGoodsData` | [04-schemas.md](04-schemas.md), [03-shipmentcargo.md](03-shipmentcargo.md) | none — no mapping writes it; it takes the distinct-field-name count from 491 to 492 |
+| `ShipmentCargo.mRN` `maxLength` 255 → **50** | [04-schemas.md](04-schemas.md), [03-shipmentcargo.md](03-shipmentcargo.md) | the IFCSUM mapping writes `mRN`; the captured MRNs are 18 characters, so it fits, but the margin is much smaller than the page claimed |
+| `ShipmentCargo` `MRN` filter id `700139` → **`5745430`** | [05-filter-properties.md](05-filter-properties.md) | `700139` is not in the document at all any more. A filter on a withdrawn id is **silently dropped**, so anything still filtering cargo lines by MRN was quietly reading the unfiltered set |
+| v4 diverges from v3 in four schemas, not one | § v3 versus v4 below | the earlier "the mappings would work unchanged against v4" no longer holds — see below |
+
+Nothing in `src/` needed changing: the mappings emit none of the added, removed or re-typed
+fields, and `mvn -o test` is unaffected. The behavioural notes in
+[01-calling-the-api.md](01-calling-the-api.md) (status codes, `Accept`/`Content-Type` handling,
+`$top`, the `+`-vs-`%20` trap) were **not** re-tested on 2026-09-18 — they need live calls, not
+the swagger, and still carry their 2026-09-16 date.
+
 ## v3 versus v4
 
-The host also serves `PolytraSeafreightHouseShipment_BASF_NV_20260910-v4`. This repo targets v3,
-and the difference is small and in one direction:
+The host also serves `PolytraSeafreightHouseShipment_BASF_NV_20260910-v4`. Both documents have
+the same 54 schemas under the same names, and v4 only ever *removes* properties — it gains
+nothing. But the removals are wider than this page used to say. As of 2026-09-18 four schemas
+differ:
 
-- `ShipmentCargo` is **identical** in both.
-- All 54 component schemas are identical in both.
-- `SeaHouseShipment` **loses** eight fields in v4 and gains none:
-  `shipperTAXID`, `consigneeTAXID`, `notify1TAXID`, `notify2TAXID`, `notify3TAXID`,
-  `lCNumber`, `aCIDNumber`, `preCarriageMeansofTransport`.
+| Schema | Fields v4 drops |
+|---|---|
+| `SeaHouseShipment` | `shipperTAXID`, `consigneeTAXID`, `notify1TAXID`, `notify2TAXID`, `notify3TAXID`, `lCNumber`, `aCIDNumber`, `preCarriageMeansofTransport` |
+| `OceanCarriage` | `customerPOL`, `customerPOD`, `customerPlaceofDelivery` |
+| `LocationCode` | `country` |
+| `RoadCarriage` | `haulage` |
+| `ShipmentCargo`, `ShipmentContainer`, `ShipmentCargoDangerousGoodsData` | `changedByAPI` |
 
-None of the three mappings emits any of the eight, so the mappings would work unchanged against
-v4 — only the path prefix changes
-(`/api/PolytraSeafreightHouseShipment_BASF_NV_20260910/v4/…`). v4 is a *narrower* contract, not a
-newer one, so moving to it is a decision about which integration profile BASF should be on rather
-than an upgrade.
+**This changes the migration answer.** `InboundIftmin.dwl` emits all three `OceanCarriage`
+fields — `CustomerPOL`, `CustomerPOD` and `CustomerPlaceofDelivery`, in `MainCarriageAsOcean`
+(the LOC 5 / LOC 12 / place-of-delivery routing) — so moving to v4 as the mappings stand would
+**silently drop the ocean routing**, since CarLo ignores unknown fields without a warning. None
+of the other removals touches the mappings: no mapping emits `haulage`, none puts a `Country`
+inside a `LocationCode` (the `Country` blocks they do write sit on `AddressWithAppendix` /
+`BusinessPartnerAddress`, which keep it), and none writes `changedByAPI` or any of the eight
+`SeaHouseShipment` fields.
+
+So v4 remains a *narrower* contract rather than a newer one, and moving to it is still a
+question of which integration profile BASF should be on — but it is no longer a free change of
+path prefix (`/api/PolytraSeafreightHouseShipment_BASF_NV_20260910/v4/…`). Ask BASF where the
+ocean routing is meant to go under v4 before switching.
 
 Two other sibling contracts on the same host are worth knowing about but are not this
 integration: `PolytraSeafreightHouseMasterShipmentEvents_BASF_IFTSTA-v1` (outbound status events)

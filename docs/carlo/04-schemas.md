@@ -11,6 +11,13 @@ same thing everywhere; see [§ actionAttribute](01-calling-the-api.md#actionattr
 object itself is present. **Max** is `maxLength`; a `0` there is the swagger's way of saying the
 property is generated and not writable.
 
+`changedByAPI` (`boolean`, description `-`) appears on
+[`ShipmentCargo`](#shipmentcargo), [`ShipmentCargoDangerousGoodsData`](#shipmentcargodangerousgoodsdata)
+and [`ShipmentContainer`](#shipmentcontainer) in v3 and on no other schema. It is absent from v4
+(see [07-contract-conformance.md § v3 versus v4](07-contract-conformance.md#v3-versus-v4)), so
+treat it as a server-side flag rather than something an integration sets — none of the three
+mappings writes it.
+
 Fields typed `number` below are declared `type: object` with no properties in the swagger. They
 are CarLo quantities and go on the wire as **plain JSON numbers** — see
 [§ Quantities](01-calling-the-api.md#quantities).
@@ -775,7 +782,7 @@ A task that is allocated to a house/master shipment.
 | `dimensions` | array of [`ShipmentCargoItem`](04-schemas.md#shipmentcargoitem) |  |  |  |
 | `dangerousGoods` | array of [`ShipmentCargoDangerousGoodsData`](04-schemas.md#shipmentcargodangerousgoodsdata) |  |  | Bei Klasse1 wird das Explosivgewicht als Nettogewicht interpretiert. |
 | `character` | `string` |  | 2000 |  |
-| `mRN` | `string` |  | 255 |  |
+| `mRN` | `string` |  | 50 |  |
 | `temperatureRangeFrom` | `number` |  |  |  |
 | `temperateRangeTo` | `number` |  |  |  |
 | `articleNumber` | `string` |  | 255 |  |
@@ -792,6 +799,7 @@ A task that is allocated to a house/master shipment.
 | `handlingRestrictions` | `string` |  | 4000 |  |
 | `temperatureControlInstructions` | `string` |  | 4000 |  |
 | `eDIID` | `string` |  | 255 |  |
+| `changedByAPI` | `boolean` |  |  |  |
 
 
 ## ShipmentCargoDangerousGoodsData
@@ -818,6 +826,7 @@ A task that is allocated to a house/master shipment.
 | `dangerousGoodsVolume` | `number` |  |  |  |
 | `dangerousGoodsQuantityType` | `string` |  |  |  |
 | `aggregationState` | `string` |  |  |  |
+| `changedByAPI` | `boolean` |  |  |  |
 
 
 ## ShipmentCargoItem
@@ -898,6 +907,7 @@ A task that is allocated to a house/master shipment.
 | `customsReleaseNumber` | `string` |  | 35 |  |
 | `containerGoodsInfo` | `string` |  | 255 |  |
 | `eDIID` | `string` |  | 255 |  |
+| `changedByAPI` | `boolean` |  |  |  |
 
 
 ## ShipmentExternalReference

@@ -9,14 +9,14 @@ How to call CarLo (Soloplan) from this integration, and what its contracts actua
 | Swagger UI | [`/docs/index.html?urls.primaryName=PolytraSeafreightHouseShipment_BASF-v3`](https://api-carlo-test.fracht.be:4712/docs/index.html?urls.primaryName=PolytraSeafreightHouseShipment_BASF-v3) |
 | OpenAPI document | `/docs/PolytraSeafreightHouseShipment_BASF-v3/docs.json` (OpenAPI 3.0.1) |
 | Resources | `SeaHouseShipment`, `ShipmentCargo` |
-| Verified | 2026-09-16, against the test server |
+| Verified | 2026-09-16, against the test server. Swagger re-checked 2026-09-18 — four differences, all corrected here; see [07-contract-conformance.md § What changed since 2026-09-16](07-contract-conformance.md#what-changed-since-2026-09-16) |
 
 ## Pages
 
 | | |
 |---|---|
 | [01-calling-the-api.md](01-calling-the-api.md) | **Start here.** Endpoint, the three auth schemes, the required headers, `$filter` and its encoding trap, body envelope, field naming, quantities, `actionAttribute`, the response envelope and every status code |
-| [02-seahouseshipment.md](02-seahouseshipment.md) | The house shipment (dossier) — all 123 fields, required fields, and the enum values the contract does not declare |
+| [02-seahouseshipment.md](02-seahouseshipment.md) | The house shipment (dossier) — all 122 fields, required fields, and the enum values the contract does not declare |
 | [03-shipmentcargo.md](03-shipmentcargo.md) | The cargo line — all 42 fields, and nested-vs-standalone writes |
 | [04-schemas.md](04-schemas.md) | All 54 nested component schemas, field by field |
 | [05-filter-properties.md](05-filter-properties.md) | The numeric `$filter` property ids — 71 on `SeaHouseShipment`, 21 on `ShipmentCargo` |

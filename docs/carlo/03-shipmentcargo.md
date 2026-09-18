@@ -64,7 +64,7 @@ of what an `update` matches on, together with the delivery-note reference.
 | `dimensions` | array of [`ShipmentCargoItem`](04-schemas.md#shipmentcargoitem) |  |  |  |
 | `dangerousGoods` | array of [`ShipmentCargoDangerousGoodsData`](04-schemas.md#shipmentcargodangerousgoodsdata) |  |  | Bei Klasse1 wird das Explosivgewicht als Nettogewicht interpretiert. |
 | `character` | `string` |  | 2000 |  |
-| `mRN` | `string` |  | 255 |  |
+| `mRN` | `string` |  | 50 |  |
 | `temperatureRangeFrom` | `number` |  |  |  |
 | `temperateRangeTo` | `number` |  |  |  |
 | `articleNumber` | `string` |  | 255 |  |
@@ -81,6 +81,7 @@ of what an `update` matches on, together with the delivery-note reference.
 | `handlingRestrictions` | `string` |  | 4000 |  |
 | `temperatureControlInstructions` | `string` |  | 4000 |  |
 | `eDIID` | `string` |  | 255 |  |
+| `changedByAPI` | `boolean` |  |  |  |
 
 ## Notes
 
@@ -100,6 +101,15 @@ container instead of matching the existing one.
 
 Weight, volume and count fields are plain numbers on the wire despite the swagger's
 `type: object` — see [quantities](01-calling-the-api.md#quantities).
+
+`mRN` is capped at **50** characters, not the 255 most of the string fields on this resource
+carry. The customs MRNs the IFCSUM mapping writes are 18 characters
+(`26DE590487611538B5`), so there is headroom, but it is the tightest limit on anything that
+mapping emits.
+
+`changedByAPI` is a server-side boolean with no description in the swagger; it is not one of
+the 54 schemas' usual fields (only this resource, `ShipmentContainer` and
+`ShipmentCargoDangerousGoodsData` have it) and no mapping writes it.
 
 ## Related
 
