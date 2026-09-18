@@ -246,6 +246,9 @@ document diff.
 > **Parked until the week of 22-09-2026.** Outstanding: 1–4 and 7. Items 0 and 6 are
 > housekeeping that resolves itself when a capture and real data arrive. Items 5 and 8 are
 > resolved and kept for the record.
+>
+> `03-status-and-open-issues.md` is the resume-from summary — what is built, what is decided,
+> and which two blockers stop this going live.
 
 0. **UNB0401/UNB0402 lose a leading zero.** The parser types the interchange date and time as
    numeric, so the mapping emits them as numbers to stay comparable with a parsed message. An

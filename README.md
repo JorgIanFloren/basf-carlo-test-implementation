@@ -26,6 +26,9 @@ Azure blob storage; MuleSoft is then triggered to process the file. The field co
 and fully documented — `docs/iftsta/02-carlo-event-contract.md` — but **what triggers the flow off
 the blob is not established**, and that is what the missing profiler hinges on.
 
+`docs/iftsta/` holds three documents: **01** the mapping spec, **02** the input contract, and
+**03** the current state and open issues. Start at **03** when picking this back up.
+
 **The target API is documented in `docs/carlo/`** — how to call it, all 54 schemas, the
 `$filter` property ids, and the behaviour its OpenAPI document does not describe. Start at
 `docs/carlo/README.md`.
@@ -74,7 +77,7 @@ cd basf
 mvn -o test
 ```
 
-253 tests. Every EDIFACT interchange in `docs/example-orders/inbound` is exercised by the mapping for
+255 tests. Every EDIFACT interchange in `docs/example-orders/inbound` is exercised by the mapping for
 its message type: 35 IFTMIN, 13 IFTMBF, 6 IFCSUM. Outbound, all 14 approved IFTSTA messages
 (7 message types × FCL and LCL) are reproduced from the Carlo events that raise them.
 
