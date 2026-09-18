@@ -157,7 +157,7 @@ in `inputs/` is bound as a variable of that name:
 
 | Scenario | Input |
 |---|---|
-| `InboundIfcsum/FclVgm/` | `fcl/20260625-142940-681-v2.json` — one container, VGM / seal / signatory, 3 cargo lines |
+| `InboundIfcsum/FclVgm/` | `fcl/ifcsum-2013354403.json` — one container, VGM / seal / signatory, 3 cargo lines |
 | `InboundIfcsum/LclMrn/` | `lcl/ifcsum-136579804.json` — pre-carriage truck, an MRN per consignment, 6 cargo lines |
 
 The directory name must equal the mapping **filename**, so these live under `InboundIfcsum/`. A

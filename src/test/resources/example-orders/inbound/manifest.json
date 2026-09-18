@@ -434,6 +434,23 @@
     ]
   },
   {
+    "fixture": "fcl/2800245092-iftmbf.json",
+    "source": "fcl/tax-id-consignee/2800245092 - IFTMBF.txt",
+    "scenario": "fcl",
+    "messageType": "IFTMBF",
+    "version": "D08A",
+    "messageCount": 1,
+    "masterSub": false,
+    "messages": [
+      {
+        "bl": null,
+        "code": "9",
+        "customerReference": "2800245092",
+        "equipment": 1
+      }
+    ]
+  },
+  {
     "fixture": "fcl/2800250325-iftmbf-1.json",
     "source": "fcl/2nd-notifier/2800250325 IFTMBF 1.txt",
     "scenario": "fcl",
@@ -820,6 +837,40 @@
         "bl": "BL00",
         "code": "9",
         "customerReference": "2800244245",
+        "equipment": 1
+      }
+    ]
+  },
+  {
+    "fixture": "fcl/2800245092-abschlussinfo-create.json",
+    "source": "fcl/tax-id-consignee/2800245092 - Abschlussinfo create.txt",
+    "scenario": "fcl",
+    "messageType": "IFTMIN",
+    "version": "D99A",
+    "messageCount": 1,
+    "masterSub": false,
+    "messages": [
+      {
+        "bl": "BL00",
+        "code": "9",
+        "customerReference": "2800245092",
+        "equipment": 1
+      }
+    ]
+  },
+  {
+    "fixture": "fcl/2800245092-erstinfo-create.json",
+    "source": "fcl/tax-id-consignee/2800245092 - Erstinfo create.txt",
+    "scenario": "fcl",
+    "messageType": "IFTMIN",
+    "version": "D99A",
+    "messageCount": 1,
+    "masterSub": false,
+    "messages": [
+      {
+        "bl": "BL00",
+        "code": "9",
+        "customerReference": "2800245092",
         "equipment": 1
       }
     ]

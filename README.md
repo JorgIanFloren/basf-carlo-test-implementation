@@ -53,8 +53,8 @@ cd basf
 mvn -o test
 ```
 
-215 tests. Every EDIFACT interchange in `docs/example-orders/inbound` is exercised by the mapping for
-its message type: 35 IFTMIN, 13 IFTMBF, 6 IFCSUM.
+224 tests. Every EDIFACT interchange in `docs/example-orders/inbound` is exercised by the mapping for
+its message type: 37 IFTMIN, 14 IFTMBF, 6 IFCSUM.
 
 The suites run each mapping the way the data-transformer does — `evalPath` evaluates the
 uploaded script itself against a `payload` context and asserts on the JSON Carlo would receive.
