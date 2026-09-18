@@ -281,6 +281,30 @@ what the specification itself prints:
 `2800244245` settles where BASF puts `RFF+ABT`: on the **goods item** (SG22), beside `RFF+LC`,
 not in the header. That was the one v1.1 mapping this repo could not attest before.
 
+#### `2800245092` - the tax-ID order
+
+Not one of the three spec messages, but `docs/example-orders/inbound/fcl/tax-id-consignee/` carries a
+whole order - Erstinfo, IFTMBF booking, Abschlussinfo - and it settles two things the older
+examples could not:
+
+- **A tax ID is per party.** Consignee (`NAD+DO`) and Notify1 (`NAD+N1`) carry *different*
+  167-qualified Brazilian CNPJs, `48539407000207` and `58156084000137`. `2013386790` gives both
+  parties the same value, so it could not tell a per-party mapping from one that broadcasts the
+  first identifier it finds. The same message also carries `NAD+ZZZ+BE21:160`, which is not a tax
+  ID and must not become one.
+- **`MEA+WT+AAB` is a VGM only where it is labelled.** The Erstinfo carries
+  `MEA+WT+AAB+KGM:29704.000` (planned gross weight) and the Abschlussinfo
+  `MEA+WT+AAB:::VGM+KGM:29650.000`. Only the second is reported as a verified gross mass -
+  reporting the first would be a SOLAS declaration BASF never made. The container number is
+  replaced between the two messages (`1307794927` -> `MNBU4628658`: BASF names an internal number
+  until the carrier assigns a real one) while the container's EDIID `5002376123/000010` stays
+  put, which is what lets the Abschlussinfo land on the container the Erstinfo created instead of
+  adding a second one.
+
+Both are asserted against this order in `IftminMappingTest.dwl`, alongside its voyage progression
+(`Ocean Vessel` on the Erstinfo, `635S` on the Abschlussinfo) and its `RFF+BN` booking number;
+`IftmbfMappingTest.dwl` pins the booking between them field for field.
+
 #### Other deviations
 
 - **Section 13 (VGM signature).** The spec says `NAD+AM` occurs once per message and should be

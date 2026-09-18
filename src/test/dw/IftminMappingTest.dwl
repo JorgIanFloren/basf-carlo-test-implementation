@@ -1,6 +1,6 @@
 /**
 * BASF IFTMIN mapping, exercised against every IFTMIN interchange in
-* docs/example-orders/inbound (21 fixtures: 9 FCL, 3 LCL, 9 master-sub/ms).
+* docs/example-orders/inbound (37 fixtures: 23 FCL, 3 LCL, 11 master-sub/ms).
 *
 * The mapping is run the way the data-transformer runs it: `evalPath` executes
 * src/main/dw/InboundIftmin.dwl - the whole self-contained script, output header and document
@@ -779,6 +779,90 @@ var msAfterBooking = shipmentsWith("ms/2800231445-ab-4-5.json", "iftmbf-before-i
               phone: s.phoneNumberNotify2, email: s.emailNotify2 }))
             must equalTo([{ name1: "BASF MEXICANA", tax: "BME8109104S6",
                             phone: "55-57233082", email: "Basf-coatings-MX@basf.com" }])),
+
+    // ML 2800245092, the Brazil order the tax-ID example folder is named after. A whole order
+    // rather than a single message - Erstinfo, IFTMBF booking, Abschlussinfo - so the two
+    // instructions are read here as the pair they arrive as, and the booking between them is
+    // asserted under the same heading in IftmbfMappingTest.dwl.
+
+    // Section 15 again, but on messages where the consignee and the notify party carry
+    // *different* identifiers - a 14-digit Brazilian CNPJ each. 2013386790 gives both parties
+    // the same tax ID, so a mapping that broadcast one party's identifier over the others
+    // would pass there and fail here. Shipper and Notify2/3 have no 167 identifier in this
+    // order and must stay unset rather than inherit one.
+    () -> "consignee and notify carry their own 167-qualified CNPJ, on both messages" in (
+        ([ "fcl/2800245092-erstinfo-create.json", "fcl/2800245092-abschlussinfo-create.json" ]
+            flatMap ((f) -> shipmentsOf(f) map ((s) ->
+                { cons: s.consigneeTAXID, n1: s.notify1TAXID,
+                  ship: s.shipperTAXID, n2: s.notify2TAXID, n3: s.notify3TAXID })))
+            must equalTo([
+                { cons: "48539407000207", n1: "58156084000137",
+                  ship: null, n2: null, n3: null },
+                { cons: "48539407000207", n1: "58156084000137",
+                  ship: null, n2: null, n3: null }
+            ])),
+
+    // The consignee the tax ID belongs to, off the goods-item NAD+DO. `location2` (the LOC+47
+    // region) is deliberately not asserted: it reads "Sao Paulo" with a non-ASCII a, and a
+    // non-ASCII literal in this file does not survive the test reader's decoding - the same
+    // reason the PCI test above is written line by line.
+    () -> "the consignee block comes off the goods-item NAD+DO" in (
+        (shipmentsOf("fcl/2800245092-erstinfo-create.json") map ((s) ->
+            { name1: s.consignee.name1, name2: s.consignee.name2,
+              street: s.consignee.address.street, city: s.consignee.address.location1,
+              zip: s.consignee.address.zipCode,
+              country: s.consignee.address.country.countryID,
+              phone: s.consignee.phoneNumber, email: s.consignee.emailAddress }))
+            must equalTo([{ name1: "BASF SA", name2: "ENGENHEIRO NEIVA",
+                            street: "AVENIDA BRASIL 791", city: "GUARATINGUETA",
+                            zip: "12521140", country: "BR", phone: "1231281200",
+                            email: "Certificados-BASF-GTA@basf.com" }])),
+
+    // Section 4 and general rule 6. CustomerVoyage is TDT02 verbatim and the standard CarLo
+    // Vessel and VoyageNumber stay unset. BASF sends its literal placeholder "Ocean Vessel"
+    // there until the carrier has named a voyage and the real code from then on (the same
+    // progression as 2800245098 and 2800231445), so a mapping that treated TDT02 as a code -
+    // validated it, or dropped what did not look like one - would lose the Erstinfo's value
+    // on every order. Both take the same route, and the vessel beside it does not change.
+    () -> "CustomerVoyage is TDT02 verbatim - placeholder, then the real voyage code" in (
+        ([ "fcl/2800245092-erstinfo-create.json", "fcl/2800245092-abschlussinfo-create.json" ]
+            flatMap ((f) -> shipmentsOf(f) map ((s) ->
+                { voyage: s.master.mainCarriageAsOcean.customerVoyage,
+                  vessel: s.master.mainCarriageAsOcean.customerVessel.vesselName,
+                  lloyds: s.master.mainCarriageAsOcean.customerVessel.vesselNumber,
+                  stdVessel: s.vessel, stdVoyage: s.voyageNumber })))
+            must equalTo([
+                { voyage: "Ocean Vessel", vessel: "MAERSK LA PAZ", lloyds: "9526899",
+                  stdVessel: null, stdVoyage: null },
+                { voyage: "635S", vessel: "MAERSK LA PAZ", lloyds: "9526899",
+                  stdVessel: null, stdVoyage: null }
+            ])),
+
+    // Sections 12/13 read across one order instead of one message. Both instructions carry
+    // MEA+WT+AAB; only the Abschlussinfo's is labelled ":::VGM", and only that one is a
+    // verified gross mass - the Erstinfo's 29704 is the planned gross weight and reporting it
+    // as a VGM would be a SOLAS declaration BASF never made. The container number is replaced
+    // at the same time (BASF names an internal number until the carrier assigns a real one)
+    // while the EDIID stays put, which is what lets the update land on the container the
+    // Erstinfo created rather than adding a second one.
+    () -> "the Abschlussinfo brings the real container, its VGM and its signatory" in (
+        ([ "fcl/2800245092-erstinfo-create.json", "fcl/2800245092-abschlussinfo-create.json" ]
+            flatMap ((f) -> shipmentsOf(f)[0].container map ((c) ->
+                { no: c.containerNumber, ediid: c.eDIID, vgm: c.verifiedGrossMass,
+                  sig: c.vgmVerificationSignature })))
+            must equalTo([
+                { no: "1307794927", ediid: "5002376123/000010", vgm: null, sig: null },
+                { no: "MNBU4628658", ediid: "5002376123/000010", vgm: 29650.0,
+                  sig: "NICHOLAS GIBBS" }
+            ])),
+
+    // RFF+BN occurs twice in the Abschlussinfo (header and main stage), as in 2800245098, and
+    // is mapped once. The Erstinfo has none at all - the carrier's booking number does not
+    // exist yet - so the field is absent there rather than an empty list.
+    () -> "the booking number arrives with the Abschlussinfo and is mapped once" in (
+        ([ "fcl/2800245092-erstinfo-create.json", "fcl/2800245092-abschlussinfo-create.json" ]
+            flatMap ((f) -> shipmentsOf(f) map ((s) -> s.master.externalReferences)))
+            must equalTo([null, [{ referenceType: 9, value: "275861976" }]])),
 
     // === cancel, from a real message =======================================================
     // The example set now carries an actual code 1 IFTMIN, which it did not before, so the
